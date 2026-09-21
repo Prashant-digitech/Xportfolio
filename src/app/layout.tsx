@@ -71,11 +71,12 @@ export default function RootLayout({
       className={`${outfit.variable} ${greatVibes.variable} h-full antialiased scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className="min-h-full bg-white dark:bg-[#090A0E] text-[#0A1128] dark:text-white font-sans overflow-x-hidden selection:bg-[#D4AF37]/30 selection:text-white transition-colors duration-300">
+      <body className="min-h-full bg-[#FAFAF7] dark:bg-[#090A0E] text-[#111318] dark:text-white font-sans overflow-x-hidden selection:bg-[#D4AF37]/30 selection:text-white transition-colors duration-250">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
+          storageKey="xportfolio-theme"
+          enableSystem={false}
           disableTransitionOnChange
         >
           {children}

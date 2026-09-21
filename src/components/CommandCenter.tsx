@@ -61,11 +61,11 @@ export default function CommandCenter({ profile }: CommandCenterProps) {
         <div className="mb-24">
           <div className="flex flex-col items-center text-center mb-16">
             <span className="text-xs font-bold uppercase tracking-[0.4em] text-gold-light">System Dashboard</span>
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-white">
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#111318] dark:text-white">
               AI COMMAND <span className="text-gradient-gold">CENTER</span>
             </h2>
             <div className="w-16 h-[2px] bg-gold mt-4 shadow-[0_0_8px_#D4A017]" />
-            <p className="text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
+            <p className="text-[#4B5563] dark:text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
               Futuristic mission control terminal monitoring Prashant's real-time workload, focuses, and credentials.
             </p>
           </div>
@@ -193,11 +193,11 @@ export default function CommandCenter({ profile }: CommandCenterProps) {
         <div>
           <div className="flex flex-col items-center text-center mb-16">
             <span className="text-xs font-bold uppercase tracking-[0.4em] text-gold-light">Creative Ecosystem</span>
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-white">
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#111318] dark:text-white">
               CREATIVE TOOL <span className="text-gradient-gold">STACK</span>
             </h2>
             <div className="w-16 h-[2px] bg-gold mt-4 shadow-[0_0_8px_#D4A017]" />
-            <p className="text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
+            <p className="text-[#4B5563] dark:text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
               Prashant's primary design, development, and AI tools styled as a futuristic operating system canvas.
             </p>
           </div>

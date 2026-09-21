@@ -142,11 +142,13 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
     setSettingsOpen(false);
   };
 
+  const isDark = mounted ? (resolvedTheme === "dark" || theme === "dark") : true;
+
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 dark:bg-[#050505]/90 backdrop-blur-md border-b-2 border-gold/40 shadow-[0_4px_25px_rgba(245,197,66,0.18)] ${
-          scrolled ? "py-3" : "py-5"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#FAFAF7]/95 dark:bg-[#090A0E]/95 backdrop-blur-md border-b border-[#D6D9DE] dark:border-[rgba(212,175,55,0.38)] shadow-[0_2px_12px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_25px_rgba(0,0,0,0.5)] ${
+          scrolled ? "py-2.5" : "py-4"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between relative">
@@ -156,15 +158,15 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
             className="flex items-center space-x-3 cursor-pointer group"
           >
             {/* Glowing blue square logo */}
-            <div className="w-10 h-10 bg-[#0d0d0d] border border-neon-blue rounded-md flex items-center justify-center font-bold text-lg text-neon-blue shadow-[0_0_15px_rgba(0,240,255,0.4)] group-hover:shadow-[0_0_25px_rgba(0,240,255,0.8)] group-hover:scale-105 transition-all duration-300">
+            <div className="w-10 h-10 bg-[#0d0d0d] border border-neon-blue rounded-xl flex items-center justify-center font-bold text-lg text-neon-blue shadow-[0_0_15px_rgba(0,240,255,0.4)] group-hover:shadow-[0_0_25px_rgba(0,240,255,0.8)] group-hover:scale-105 transition-all duration-300">
               PS
             </div>
             {/* Brand name */}
-            <div className="flex flex-col select-none text-black dark:text-white">
+            <div className="flex flex-col select-none text-[#111318] dark:text-white">
               <span className="font-extrabold text-sm tracking-[0.2em] group-hover:text-gold transition-colors duration-300">
                 {profile.name.split(" ")[0] || "PRASHANT"}
               </span>
-              <span className="font-medium text-[10px] tracking-[0.3em] text-gold-light group-hover:text-black dark:group-hover:text-white transition-colors duration-300">
+              <span className="font-semibold text-[10px] tracking-[0.3em] text-[#B8941F] dark:text-gold-light group-hover:text-[#111318] dark:group-hover:text-white transition-colors duration-300">
                 {profile.name.split(" ")[1] || "SISODHIYA"}
               </span>
             </div>
@@ -176,10 +178,10 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative font-semibold text-xs tracking-wider uppercase transition-all duration-300 hover:text-gold cursor-pointer py-1 ${
+                className={`relative font-semibold text-xs tracking-wider uppercase transition-all duration-200 hover:text-[#B8941F] dark:hover:text-[#D4AF37] cursor-pointer py-1 ${
                   activeSection === item.id
-                    ? "text-gold"
-                    : "text-gray-500 dark:text-gray-400"
+                    ? "text-[#B8941F] dark:text-[#D4AF37] font-bold"
+                    : "text-[#111318] dark:text-[#E5E7EB]"
                 }`}
               >
                 {item.label}
@@ -190,65 +192,72 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
             ))}
           </div>
 
-          {/* Right: Quick actions (Theme, Settings, Avatar) */}
-          <div className="hidden md:flex items-center space-x-4 relative">
-            {/* Dedicated 1-Click Dark & Light Toggle Button */}
+          {/* Right: Quick actions (Theme, Recruiter Mode, Settings, Avatar) */}
+          <div className="hidden md:flex items-center space-x-3 relative">
+            {/* Dedicated 1-Click Dark & Light Toggle Button (Sections 18, 19, 20) */}
             <button 
-              onClick={() => {
-                const nextTheme = theme === "dark" ? "light" : "dark";
-                setTheme(nextTheme);
-              }}
-              className="px-3.5 py-1.5 rounded-full border border-gold/40 hover:border-gold bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 transition-all duration-300 cursor-pointer flex items-center space-x-2 text-xs font-black uppercase tracking-wider shadow-sm"
-              title={`Switch to ${theme === "dark" ? "Light" : "Dark"} Mode`}
+              onClick={() => setTheme(isDark ? "light" : "dark")}
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              aria-pressed={isDark}
+              className={`h-[44px] px-4 rounded-xl border-[1.5px] transition-all duration-200 cursor-pointer flex items-center space-x-2 text-xs font-bold uppercase tracking-wider select-none ${
+                isDark
+                  ? "bg-[#0F1118] border-[#D4AF37] text-white shadow-[0_4px_14px_rgba(0,0,0,0.30)] hover:border-[#F5C84B] hover:bg-[#141821]"
+                  : "bg-[#FFFFFF] border-[#B8941F] text-[#111318] shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:bg-[#F4F1E8] hover:border-[#D4AF37]"
+              }`}
+              title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
             >
-              {!mounted ? (
-                <Sun className="w-4 h-4 text-gold" />
-              ) : theme === "dark" ? (
+              {isDark ? (
                 <>
-                  <Moon className="w-4 h-4 text-gold-light drop-shadow-[0_0_8px_rgba(245,197,66,0.8)]" />
-                  <span className="text-[10px] text-white">Dark</span>
+                  <Sun className="w-4 h-4 text-[#F5C84B] shrink-0" />
+                  <span>LIGHT</span>
                 </>
               ) : (
                 <>
-                  <Sun className="w-4 h-4 text-[#FF6B00] drop-shadow-[0_0_8px_rgba(255,107,0,0.8)]" />
-                  <span className="text-[10px] text-slate-900 font-extrabold">Light</span>
+                  <Moon className="w-4 h-4 text-[#A67C00] shrink-0" />
+                  <span>DARK</span>
                 </>
               )}
             </button>
             
-            {/* Recruiter Mode Toggle */}
+            {/* Recruiter Mode Toggle (Section 31) */}
             <button
               onClick={() => onToggleRecruiterMode(!recruiterMode)}
-              className={`p-2 rounded-full border transition-all duration-300 cursor-pointer flex items-center justify-center space-x-1.5 text-xs font-bold uppercase tracking-wider ${
+              className={`h-[44px] px-4 rounded-xl border-[1.5px] transition-all duration-200 cursor-pointer flex items-center space-x-2 text-xs font-bold uppercase tracking-wider ${
                 recruiterMode
-                  ? "bg-gold text-black border-gold shadow-[0_0_10px_#D4A017]"
-                  : "bg-transparent text-gray-500 dark:text-gray-400 border-black/10 dark:border-white/10 hover:border-gold hover:text-gold"
+                  ? "bg-[#D4AF37] text-black border-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.4)]"
+                  : "bg-white dark:bg-[#0F1118] text-[#111318] dark:text-white border-[#B8941F] dark:border-[#D4AF37] hover:bg-[#F4F1E8] dark:hover:bg-[#141821]"
               }`}
               title="Toggle Recruiter Mode"
+              aria-label="Toggle Recruiter Mode"
+              aria-pressed={recruiterMode}
             >
-              <Briefcase className="w-4 h-4" />
-              <span className="text-[9px] hidden lg:inline">{recruiterMode ? "Recruiter Active" : "Recruiter Mode"}</span>
+              <Briefcase className="w-4 h-4 text-[#B8941F] dark:text-[#D4AF37]" />
+              <span className="hidden lg:inline">{recruiterMode ? "Recruiter Active" : "Recruiter Mode"}</span>
             </button>
 
-            {/* Settings Gear */}
+            {/* Settings Gear (Section 32) */}
             <button 
               onClick={() => setSettingsOpen(true)}
-              className="p-2 text-gray-500 dark:text-gray-400 hover:text-gold hover:rotate-90 transition-all duration-300 cursor-pointer"
+              className="w-[44px] h-[44px] rounded-xl border-[1.5px] border-[#B8941F] dark:border-[#D4AF37] bg-white dark:bg-[#0F1118] text-[#111318] dark:text-white hover:text-gold hover:rotate-90 transition-all duration-300 flex items-center justify-center cursor-pointer shadow-sm"
+              title="Settings"
+              aria-label="Settings"
             >
-              <Settings className="w-5 h-5" />
+              <Settings className="w-4.5 h-4.5 text-[#B8941F] dark:text-[#D4AF37]" />
             </button>
             
-            {/* Avatar Profile */}
-            <div 
+            {/* Avatar Profile (Section 33) */}
+            <button 
               onClick={() => setAvatarOpen(!avatarOpen)}
-              className="w-10 h-10 rounded-full border border-gold flex items-center justify-center bg-[#0d0d0d] shadow-[0_0_10px_rgba(212,160,23,0.3)] hover:shadow-[0_0_15px_rgba(212,160,23,0.6)] transition-all duration-300 cursor-pointer overflow-hidden relative"
+              className="w-[44px] h-[44px] rounded-xl border-[1.5px] border-[#B8941F] dark:border-[#D4AF37] bg-white dark:bg-[#0F1118] flex items-center justify-center shadow-sm hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all duration-300 cursor-pointer overflow-hidden relative"
+              title="Profile"
+              aria-label="Profile Avatar"
             >
-              <User className="w-5 h-5 text-gold" />
-            </div>
+              <User className="w-4.5 h-4.5 text-[#B8941F] dark:text-[#D4AF37]" />
+            </button>
 
             {/* Avatar Dropdown Card */}
             {avatarOpen && (
-              <div className="absolute right-0 top-14 w-64 rounded-lg bg-white/98 dark:bg-[#0c0c0c]/98 border border-gold/30 p-6 shadow-[0_10px_50px_rgba(0,0,0,0.4)] z-[90] animate-fade-in text-black dark:text-white backdrop-blur-2xl">
+              <div className="absolute right-0 top-14 w-64 rounded-xl bg-white dark:bg-[#0F1118] border border-[#B8941F] dark:border-gold/40 p-6 shadow-2xl z-[90] animate-fade-in text-[#111318] dark:text-white backdrop-blur-2xl">
                 <div className="flex flex-col items-center space-y-4">
                   {/* Small portrait */}
                   <div className="relative w-16 h-16 rounded-full border border-gold overflow-hidden bg-[#050505] shadow-[0_0_15px_rgba(212,160,23,0.3)]">
@@ -262,10 +271,10 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
                   
                   {/* Name and title */}
                   <div className="text-center">
-                    <h4 className="font-extrabold text-sm tracking-wider text-black dark:text-white">
+                    <h4 className="font-extrabold text-sm tracking-wider text-[#111318] dark:text-white">
                       {profile.name}
                     </h4>
-                    <p className="text-[10px] text-gold-light mt-1 font-semibold">
+                    <p className="text-[10px] text-[#B8941F] dark:text-gold-light mt-1 font-semibold">
                       {profile.title.split("•")[0] || profile.title}
                     </p>
                   </div>
@@ -284,7 +293,7 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
                   
                   <button 
                     onClick={() => { setAvatarOpen(false); setSettingsOpen(true); }}
-                    className="w-full py-1.5 border border-gold/30 hover:border-gold text-gold hover:bg-gold/5 rounded text-[10px] font-bold uppercase tracking-wider transition-colors duration-300"
+                    className="w-full py-2 border border-gold/40 hover:border-gold text-[#B8941F] dark:text-gold hover:bg-gold/10 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-colors duration-200"
                   >
                     Manage Settings
                   </button>
@@ -296,19 +305,29 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
             <button 
-              onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")} 
-              className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg border border-gold/20 text-gold-light hover:border-gold transition-all duration-300 cursor-pointer"
-              aria-label="Toggle light and dark theme"
+              onClick={() => setTheme(isDark ? "light" : "dark")} 
+              className={`min-w-[44px] min-h-[44px] h-[44px] px-3 rounded-xl border-[1.5px] flex items-center justify-center space-x-1.5 transition-all duration-200 cursor-pointer ${
+                isDark
+                  ? "bg-[#0F1118] border-[#D4AF37] text-white"
+                  : "bg-[#FFFFFF] border-[#B8941F] text-[#111318]"
+              }`}
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
             >
-              {resolvedTheme === "dark" ? (
-                <Moon className="w-5 h-5 text-gold-light drop-shadow-[0_0_8px_rgba(245,197,66,0.6)]" />
+              {isDark ? (
+                <>
+                  <Sun className="w-4 h-4 text-[#F5C84B]" />
+                  <span className="text-[10px] font-bold">LIGHT</span>
+                </>
               ) : (
-                <Sun className="w-5 h-5 text-gold drop-shadow-[0_0_8px_rgba(212,160,23,0.6)]" />
+                <>
+                  <Moon className="w-4 h-4 text-[#A67C00]" />
+                  <span className="text-[10px] font-bold">DARK</span>
+                </>
               )}
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg border border-white/10 text-gray-300 hover:text-white hover:border-white/30 focus:outline-none focus:ring-2 focus:ring-gold"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl border border-black/15 dark:border-white/15 bg-white dark:bg-[#0F1118] text-[#111318] dark:text-white hover:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-gold"
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
             >
@@ -319,52 +338,47 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
 
         {/* Mobile Drawer menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden fixed inset-0 top-[72px] bg-[#050505]/95 backdrop-blur-lg border-t border-white/5 z-40 transition-all duration-300 animate-fade-in overflow-y-auto">
+          <div className="md:hidden fixed inset-0 top-[72px] bg-[#FAFAF7]/98 dark:bg-[#090A0E]/98 backdrop-blur-xl border-t border-black/10 dark:border-white/10 z-40 transition-all duration-300 animate-fade-in overflow-y-auto">
             <div className="flex flex-col space-y-4 p-8 h-full justify-start items-center">
               {menuItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`w-full min-h-[48px] flex items-center justify-center font-semibold text-base uppercase tracking-widest transition-all duration-300 rounded-lg ${
-                    activeSection === item.id ? "text-gold scale-110" : "text-gray-400"
+                  className={`w-full min-h-[48px] flex items-center justify-center font-bold text-base uppercase tracking-widest transition-all duration-200 rounded-xl ${
+                    activeSection === item.id 
+                      ? "text-[#B8941F] dark:text-[#D4AF37] scale-105" 
+                      : "text-[#111318] dark:text-gray-300 hover:text-gold"
                   }`}
                 >
                   {item.label}
                 </button>
               ))}
               
-              {/* Mobile 3-way Theme Selection Row */}
-              <div className="flex bg-black/10 dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-lg p-1 w-full max-w-[280px] justify-between items-center mt-4">
+              {/* Mobile 2-way Theme Selection Row */}
+              <div className="flex bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl p-1.5 w-full max-w-[280px] justify-between items-center mt-4">
                 <button
                   onClick={() => setTheme("light")}
-                  className={`flex items-center justify-center space-x-1 flex-grow py-2 rounded-md text-xs font-bold uppercase tracking-wider transition-all duration-300 ${theme === "light" ? "bg-gold text-black shadow-[0_0_8px_#D4A017]" : "text-gray-500"}`}
+                  className={`flex items-center justify-center space-x-1.5 flex-grow py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 ${!isDark ? "bg-[#D4AF37] text-black shadow-sm" : "text-gray-500"}`}
                 >
-                  <Sun className="w-3.5 h-3.5" />
-                  <span>Light</span>
+                  <Sun className="w-4 h-4" />
+                  <span>Light Mode</span>
                 </button>
                 <button
                   onClick={() => setTheme("dark")}
-                  className={`flex items-center justify-center space-x-1 flex-grow py-2 rounded-md text-xs font-bold uppercase tracking-wider transition-all duration-300 ${theme === "dark" ? "bg-gold text-black shadow-[0_0_8px_#D4A017]" : "text-gray-500"}`}
+                  className={`flex items-center justify-center space-x-1.5 flex-grow py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 ${isDark ? "bg-[#D4AF37] text-black shadow-sm" : "text-gray-500"}`}
                 >
-                  <Moon className="w-3.5 h-3.5" />
-                  <span>Dark</span>
-                </button>
-                <button
-                  onClick={() => setTheme("system")}
-                  className={`flex items-center justify-center space-x-1 flex-grow py-2 rounded-md text-xs font-bold uppercase tracking-wider transition-all duration-300 ${theme === "system" ? "bg-gold text-black shadow-[0_0_8px_#D4A017]" : "text-gray-500"}`}
-                >
-                  <Laptop className="w-3.5 h-3.5" />
-                  <span>System</span>
+                  <Moon className="w-4 h-4" />
+                  <span>Dark Mode</span>
                 </button>
               </div>
 
-              <div className="flex flex-col items-center space-y-4 pt-8 border-t border-white/10 w-full justify-center">
+              <div className="flex flex-col items-center space-y-4 pt-6 border-t border-black/10 dark:border-white/10 w-full justify-center">
                 <button
                   onClick={() => { onToggleRecruiterMode(!recruiterMode); setMobileMenuOpen(false); }}
-                  className={`w-full max-w-[280px] py-2.5 rounded border text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer ${
+                  className={`w-full max-w-[280px] py-3 rounded-xl border-[1.5px] text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center justify-center space-x-2 cursor-pointer ${
                     recruiterMode
-                      ? "bg-gold text-black border-gold shadow-[0_0_8px_#D4A017]"
-                      : "bg-[#0d0d0d] text-gray-300 border-white/10"
+                      ? "bg-[#D4AF37] text-black border-[#D4AF37] shadow-md"
+                      : "bg-white dark:bg-[#0F1118] text-[#111318] dark:text-white border-[#B8941F] dark:border-[#D4AF37]"
                   }`}
                 >
                   <Briefcase className="w-4 h-4" />

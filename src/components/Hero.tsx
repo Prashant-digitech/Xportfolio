@@ -65,9 +65,9 @@ export default function Hero({ profile }: HeroProps) {
   };
 
   return (
-    <section id="home" className="relative pt-32 pb-16 overflow-hidden bg-[#f8fafc] dark:bg-[#090A0E] text-[#0a1128] dark:text-white min-h-screen flex flex-col justify-between transition-colors duration-300">
+    <section id="home" className="relative pt-32 pb-16 overflow-hidden bg-[#FAFAF7] dark:bg-[#090A0E] text-[#111318] dark:text-white min-h-screen flex flex-col justify-between transition-colors duration-250">
       {/* Decorative Golden Blur Background */}
-      <div className="absolute top-[20%] left-[-10%] w-[300px] h-[300px] rounded-full bg-[#FF6B00]/5 blur-[100px] pointer-events-none animate-pulse-slow" />
+      <div className="absolute top-[20%] left-[-10%] w-[300px] h-[300px] rounded-full bg-gold/5 blur-[100px] pointer-events-none animate-pulse-slow" />
       <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] rounded-full bg-[#00F0FF]/5 blur-[120px] pointer-events-none animate-pulse-slow" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full flex-grow flex flex-col justify-center">
@@ -82,31 +82,31 @@ export default function Hero({ profile }: HeroProps) {
             className="lg:col-span-7 flex flex-col items-start space-y-6 z-10"
           >
             {/* Small badge */}
-            <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#0B1528]/5 dark:bg-white/5 border border-[#D4AF37]/30 text-[#0a1128] dark:text-gray-300 text-xs font-bold tracking-wider uppercase">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#0F1118] border border-[#B8941F]/40 dark:border-[#D4AF37]/30 text-[#111318] dark:text-gray-300 text-xs font-bold tracking-wider uppercase shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
               <span>UI/UX & AI Product Designer</span>
             </motion.div>
 
             {/* Main Header Name */}
             <motion.h1 variants={fadeInUp} className="text-5xl sm:text-7xl font-black tracking-tight leading-tight select-none">
-              <span className="block text-[#0a1128] dark:text-white">{firstName}</span>
-              <span className="block text-gradient-orange drop-shadow-[0_4px_12px_rgba(255,107,0,0.25)]">{lastName}</span>
+              <span className="block text-[#111318] dark:text-white">{firstName}</span>
+              <span className="block text-gradient-gold drop-shadow-[0_4px_12px_rgba(212,175,55,0.25)]">{lastName}</span>
             </motion.h1>
 
             {/* Subtitle capsule */}
-            <motion.div variants={fadeInUp} className="px-4 py-2 border border-[#D4AF37]/40 rounded-full bg-[#0B1528]/5 dark:bg-gold/5 shadow-[0_0_15px_rgba(212,160,23,0.1)]">
-              <p className="text-xs sm:text-sm font-extrabold tracking-[0.2em] text-[#FF6B00] dark:text-gold-light">
+            <motion.div variants={fadeInUp} className="px-4 py-2 border border-[#B8941F]/40 dark:border-[#D4AF37]/40 rounded-full bg-white dark:bg-[#0F1118] shadow-sm">
+              <p className="text-xs sm:text-sm font-extrabold tracking-[0.2em] text-[#B8941F] dark:text-gold-light">
                 PRODUCT THINKER • AI INTERFACES • DESIGN SYSTEMS
               </p>
             </motion.div>
 
             {/* Narrative description */}
-            <motion.p variants={fadeInUp} className="text-slate-600 dark:text-[#A1A8B5] text-base sm:text-lg max-w-xl leading-relaxed">
-              <span className="text-[#0a1128] dark:text-white font-bold block mb-1">Human-Centered Digital Products & Intelligent Interfaces</span>
+            <motion.p variants={fadeInUp} className="text-[#4B5563] dark:text-[#A1A8B5] text-base sm:text-lg max-w-xl leading-relaxed">
+              <span className="text-[#111318] dark:text-white font-bold block mb-1">Human-Centered Digital Products & Intelligent Interfaces</span>
               Designing complex fintech platforms, AI agent telemetry, and scalable design systems that transform dense workflows into intuitive, high-conversion experiences.
             </motion.p>
 
-            {/* CTAs */}
+            {/* CTAs (Sections 24, 25, 26) */}
             <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 pt-2">
               <button
                 ref={hireBtn.ref}
@@ -114,16 +114,16 @@ export default function Hero({ profile }: HeroProps) {
                 onMouseLeave={hireBtn.handleMouseLeave}
                 style={hireBtn.style}
                 onClick={() => scrollToSection("work")}
-                className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#FF6B00] via-[#FF8800] to-[#D4AF37] hover:from-[#FF7A00] hover:to-[#F5BA42] text-white font-black text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(255,107,0,0.4)] hover:shadow-[0_0_35px_rgba(255,107,0,0.8)] hover:scale-105 transition-all duration-300 cursor-pointer flex items-center space-x-2"
+                className="btn-primary"
               >
                 <span>View Selected Work</span>
-                <ArrowUpRight className="w-4 h-4 stroke-[3]" />
+                <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
               </button>
               <a
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-3.5 rounded-xl bg-transparent text-[#0a1128] dark:text-white border border-[#0a1128]/20 dark:border-white/10 hover:border-[#D4AF37] hover:text-[#D4AF37] font-bold text-sm uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center space-x-2"
+                className="btn-secondary"
               >
                 <span>Resume (PDF)</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -134,7 +134,7 @@ export default function Hero({ profile }: HeroProps) {
                 onMouseLeave={aboutBtn.handleMouseLeave}
                 style={aboutBtn.style}
                 onClick={() => scrollToSection("about")}
-                className="px-6 py-3.5 rounded-xl bg-transparent text-slate-500 dark:text-slate-400 border border-transparent hover:text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center space-x-2"
+                className="h-[46px] px-5 rounded-xl text-[#4B5563] dark:text-[#D1D5DB] hover:text-[#B8941F] dark:hover:text-[#D4AF37] font-semibold text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center space-x-1.5"
               >
                 <span>About Journey</span>
               </button>
@@ -288,26 +288,26 @@ export default function Hero({ profile }: HeroProps) {
       </div>
 
       {/* Bottom Bar: Phone, Email, Location */}
-      <div className="border-t border-black/5 dark:border-white/5 mt-12 bg-[#f5f5f5]/80 dark:bg-[#080808]/50 py-4 w-full">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs text-gray-500 dark:text-gray-400 font-semibold">
+      <div className="border-t border-black/10 dark:border-white/10 mt-12 bg-[#F4F1E8]/90 dark:bg-[#090A0E]/80 py-4 w-full">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs text-[#4B5563] dark:text-[#D1D5DB] font-semibold">
           <div className="flex flex-wrap justify-center items-center gap-6">
             <div className="flex items-center space-x-2">
-              <Phone className="w-4 h-4 text-gold" />
-              <a href={`tel:${profile.phone}`} className="hover:text-gold dark:hover:text-gold transition-colors duration-200">{profile.phone}</a>
+              <Phone className="w-4 h-4 text-[#B8941F] dark:text-gold" />
+              <a href={`tel:${profile.phone}`} className="hover:text-[#B8941F] dark:hover:text-gold transition-colors duration-200">{profile.phone}</a>
             </div>
             <div className="flex items-center space-x-2">
-              <Mail className="w-4 h-4 text-gold" />
-              <a href={`mailto:${profile.email}`} className="hover:text-gold dark:hover:text-gold transition-colors duration-200">{profile.email}</a>
+              <Mail className="w-4 h-4 text-[#B8941F] dark:text-gold" />
+              <a href={`mailto:${profile.email}`} className="hover:text-[#B8941F] dark:hover:text-gold transition-colors duration-200">{profile.email}</a>
             </div>
             <div className="flex items-center space-x-2">
-              <MapPin className="w-4 h-4 text-gold" />
+              <MapPin className="w-4 h-4 text-[#B8941F] dark:text-gold" />
               <span>{profile.location}</span>
             </div>
           </div>
           
           <button 
             onClick={() => scrollToSection("contact")}
-            className="flex items-center space-x-2 px-4 py-2 rounded-full border border-gold/30 hover:border-gold hover:text-white transition-all duration-300 text-gold-light cursor-pointer shadow-[0_0_10px_rgba(212,160,23,0.1)] hover:shadow-[0_0_15px_rgba(212,160,23,0.3)] font-bold uppercase tracking-wider text-[10px]"
+            className="flex items-center space-x-2 px-4 py-2 rounded-xl border border-[#B8941F] dark:border-gold/40 hover:bg-[#D4AF37] hover:text-black transition-all duration-200 text-[#111318] dark:text-gold-light cursor-pointer shadow-sm font-bold uppercase tracking-wider text-[11px]"
           >
             <span>Let's Work Together</span>
             <ArrowUpRight className="w-3.5 h-3.5" />

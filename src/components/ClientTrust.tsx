@@ -83,17 +83,17 @@ export default function ClientTrust() {
         <div className="mb-24">
           <div className="flex flex-col items-center text-center mb-16">
             <span className="text-xs font-bold uppercase tracking-[0.4em] text-gold-light">Ducat Vikaspuri & Student Feedback</span>
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-white">
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#111318] dark:text-white">
               TESTIMONIAL <span className="text-gradient-gold">WALL</span>
             </h2>
             <div className="w-16 h-[2px] bg-gold mt-4 shadow-[0_0_8px_#D4A017]" />
-            <p className="text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
+            <p className="text-[#4B5563] dark:text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
               Verified reviews and feedback from design students and professionals mentored by Prashant Sir at Ducat Vikaspuri. Hover to pause.
             </p>
           </div>
 
           {/* Marquee Wrapper */}
-          <div className="relative w-full flex overflow-hidden border-t border-b border-white/5 py-8 bg-[#090909]/20">
+          <div className="relative w-full flex overflow-hidden border-t border-b border-black/5 dark:border-white/5 py-8 bg-black/[0.02] dark:bg-[#090909]/20">
             {/* Gradient shadow caps on left/right edges */}
             <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-[#f8f8f8] dark:from-[#050505] to-transparent z-10 pointer-events-none" />
             <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-[#f8f8f8] dark:from-[#050505] to-transparent z-10 pointer-events-none" />
@@ -104,7 +104,7 @@ export default function ClientTrust() {
               {[...testimonials, ...testimonials].map((t, idx) => (
                 <div 
                   key={idx}
-                  className="w-[300px] sm:w-[380px] p-6 rounded-lg glass-card border border-white/5 bg-black/40 shadow-md inline-block whitespace-normal select-none"
+                  className="w-[300px] sm:w-[380px] p-6 rounded-lg glass-card border border-[#D6D9DE] dark:border-white/5 bg-white dark:bg-black/40 shadow-md inline-block whitespace-normal select-none"
                 >
                   {/* Stars */}
                   <div className="flex space-x-1 text-gold mb-4">
@@ -113,12 +113,12 @@ export default function ClientTrust() {
                     ))}
                   </div>
                   
-                  <p className="text-xs text-gray-300 leading-relaxed mb-4 italic">
+                  <p className="text-xs text-[#4B5563] dark:text-gray-300 leading-relaxed mb-4 italic">
                     "{t.quote}"
                   </p>
 
-                  <div className="border-t border-white/5 pt-3.5 flex justify-between items-center text-[10px] text-gray-400 font-mono">
-                    <span className="font-bold text-white uppercase tracking-wider">{t.author}</span>
+                  <div className="border-t border-black/5 dark:border-white/5 pt-3.5 flex justify-between items-center text-[10px] text-[#667085] dark:text-gray-400 font-mono">
+                    <span className="font-bold text-[#111318] dark:text-white uppercase tracking-wider">{t.author}</span>
                     <span>{t.role}, {t.company}</span>
                   </div>
                 </div>
@@ -131,11 +131,11 @@ export default function ClientTrust() {
         <div>
           <div className="flex flex-col items-center text-center mb-16">
             <span className="text-xs font-bold uppercase tracking-[0.4em] text-gold-light">Trust Operations Control</span>
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-white">
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#111318] dark:text-white">
               CLIENT TRUST <span className="text-gradient-gold">METRICS</span>
             </h2>
             <div className="w-16 h-[2px] bg-gold mt-4 shadow-[0_0_8px_#D4A017]" />
-            <p className="text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
+            <p className="text-[#4B5563] dark:text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
               Real-time operational dashboard monitoring quality metrics, project velocities, and system response targets.
             </p>
           </div>
@@ -145,19 +145,19 @@ export default function ClientTrust() {
             {metrics.map((m, idx) => (
               <div 
                 key={idx}
-                className="p-5 rounded-lg glass-card border border-white/5 bg-black/15 flex flex-col justify-between hover:border-gold/30 hover:shadow-[0_0_15px_rgba(212,160,23,0.08)] transition-all duration-300 group"
+                className="p-5 rounded-lg glass-card border border-[#D6D9DE] dark:border-white/5 bg-white dark:bg-black/15 flex flex-col justify-between hover:border-gold/30 hover:shadow-[0_0_15px_rgba(212,160,23,0.08)] transition-all duration-300 group"
               >
                 <div className="flex justify-between items-start mb-4">
                   <span className="text-[9px] uppercase font-mono font-bold text-gray-500 tracking-wider">// KPI_{idx + 1}</span>
-                  <div className="p-1.5 rounded bg-white/[0.03] border border-white/5 group-hover:text-gold transition-colors">{m.icon}</div>
+                  <div className="p-1.5 rounded bg-black/[0.03] dark:bg-white/[0.03] border border-black/5 dark:border-white/5 group-hover:text-gold transition-colors">{m.icon}</div>
                 </div>
 
                 <div className="my-3">
-                  <h3 className="text-2xl font-black text-white">{m.value}</h3>
+                  <h3 className="text-2xl font-black text-[#111318] dark:text-white">{m.value}</h3>
                   <span className="text-[10px] font-bold text-gold-light uppercase tracking-wider block mt-1">{m.title}</span>
                 </div>
 
-                <div className="border-t border-white/5 pt-3 text-[9px] text-gray-400 leading-normal font-mono">
+                <div className="border-t border-black/5 dark:border-white/5 pt-3 text-[9px] text-[#4B5563] dark:text-gray-400 leading-normal font-mono">
                   {m.label}
                 </div>
               </div>

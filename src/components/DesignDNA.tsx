@@ -61,11 +61,11 @@ export default function DesignDNA() {
         {/* SECTION 02: DESIGN DNA */}
         <div className="flex flex-col items-center text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-[0.4em] text-gold-light">Visual DNA Blueprint</span>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-white">
+          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#111318] dark:text-white">
             DESIGN <span className="text-gradient-gold">DNA</span>
           </h2>
           <div className="w-16 h-[2px] bg-gold mt-4 shadow-[0_0_8px_#D4A017]" />
-          <p className="text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
+          <p className="text-[#4B5563] dark:text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
             Interactive breakdown of design expertise. Hover over any spoke or outer metric label to inspect.
           </p>
         </div>
@@ -174,7 +174,7 @@ export default function DesignDNA() {
                     onMouseEnter={() => setHoveredIdx(idx)}
                     onMouseLeave={() => setHoveredIdx(null)}
                     className={`font-mono text-[9px] uppercase tracking-wider cursor-pointer transition-all duration-300 ${
-                      isHovered ? "fill-gold font-bold scale-105" : "fill-gray-400 dark:fill-gray-500"
+                      isHovered ? "fill-gold font-bold scale-105" : "fill-[#667085] dark:fill-gray-500"
                     }`}
                   >
                     {m.name}
@@ -194,7 +194,7 @@ export default function DesignDNA() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="p-8 rounded-lg glass-card border border-gold/30 bg-black/40 relative shadow-[0_0_25px_rgba(212,160,23,0.15)]"
+                  className="p-8 rounded-lg glass-card border border-[#D6D9DE] dark:border-gold/30 bg-white dark:bg-black/40 relative shadow-xl text-[#111318] dark:text-white"
                 >
                   <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-gold via-gold-light to-transparent" />
                   
@@ -203,24 +203,24 @@ export default function DesignDNA() {
                     <span className="text-xs font-bold uppercase tracking-wider font-mono">DNA_METRIC_SYS</span>
                   </div>
 
-                  <h3 className="text-xl font-black text-white uppercase tracking-wider mb-2">
+                  <h3 className="text-xl font-black text-[#111318] dark:text-white uppercase tracking-wider mb-2">
                     {metrics[hoveredIdx].name}
                   </h3>
                   
                   <div className="flex items-baseline space-x-2 mb-4">
                     <span className="text-3xl font-black text-gold">{metrics[hoveredIdx].score}%</span>
-                    <span className="text-[10px] text-gray-500 uppercase tracking-widest font-mono">proficiency score</span>
+                    <span className="text-[10px] text-[#667085] dark:text-gray-500 uppercase tracking-widest font-mono">proficiency score</span>
                   </div>
 
-                  <p className="text-xs text-gray-300 leading-relaxed mb-6">
+                  <p className="text-xs text-[#4B5563] dark:text-gray-300 leading-relaxed mb-6">
                     {metrics[hoveredIdx].description}
                   </p>
 
-                  <div className="border-t border-white/5 pt-4">
-                    <span className="text-[10px] text-gray-400 uppercase tracking-wider block mb-2.5 font-bold">Key Focus Objectives</span>
+                  <div className="border-t border-black/5 dark:border-white/5 pt-4">
+                    <span className="text-[10px] text-[#667085] dark:text-gray-400 uppercase tracking-wider block mb-2.5 font-bold">Key Focus Objectives</span>
                     <div className="space-y-2">
                       {metrics[hoveredIdx].focus.map((f, idx) => (
-                        <div key={idx} className="flex items-center space-x-2 text-xs text-gray-200">
+                        <div key={idx} className="flex items-center space-x-2 text-xs text-[#111318] dark:text-gray-200">
                           <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
                           <span>{f}</span>
                         </div>
@@ -229,7 +229,7 @@ export default function DesignDNA() {
                   </div>
                 </motion.div>
               ) : (
-                <div className="p-8 rounded-lg glass-card border border-white/5 bg-black/10 flex flex-col items-center justify-center text-center text-gray-500 py-16">
+                <div className="p-8 rounded-lg glass-card border border-[#D6D9DE] dark:border-white/5 bg-white dark:bg-black/10 flex flex-col items-center justify-center text-center text-gray-500 py-16 shadow-lg">
                   <Sparkles className="w-8 h-8 text-gray-600 mb-4 animate-pulse" />
                   <p className="text-xs max-w-xs leading-relaxed uppercase tracking-wider font-mono">
                     Select or hover over any node in the DNA matrix chart to explore skill ratings and metrics.

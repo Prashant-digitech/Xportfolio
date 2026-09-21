@@ -66,11 +66,11 @@ export default function AILab() {
         <div className="mb-24">
           <div className="flex flex-col items-center text-center mb-16">
             <span className="text-xs font-bold uppercase tracking-[0.4em] text-gold-light">Designing The Future</span>
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-white">
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#111318] dark:text-white">
               AI FUTURE <span className="text-gradient-gold">VISION</span>
             </h2>
             <div className="w-16 h-[2px] bg-gold mt-4 shadow-[0_0_8px_#D4A017]" />
-            <p className="text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
+            <p className="text-[#4B5563] dark:text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
               Prashant's focus vectors mapping human-centered AI interfaces, generative systems, and creative technology.
             </p>
           </div>
@@ -86,17 +86,17 @@ export default function AILab() {
             ].map((v, idx) => (
               <div 
                 key={idx}
-                className="p-6 rounded-lg glass-card border border-white/5 bg-black/15 hover:border-gold/30 hover:shadow-[0_0_15px_rgba(212,160,23,0.08)] transition-all duration-300 flex flex-col justify-between"
+                className="p-6 rounded-lg glass-card border border-[#D6D9DE] dark:border-white/5 bg-white dark:bg-black/15 hover:border-gold/30 hover:shadow-[0_0_15px_rgba(212,160,23,0.08)] transition-all duration-300 flex flex-col justify-between shadow-md"
               >
                 <div>
                   <div className="flex items-center space-x-2 text-gold mb-3.5">
                     <Sparkles className="w-4.5 h-4.5 animate-pulse" />
                     <span className="text-[9px] font-bold uppercase tracking-wider font-mono">VISION_NODE_{idx + 1}</span>
                   </div>
-                  <h4 className="font-extrabold text-sm text-white uppercase tracking-wider mb-2">{v.title}</h4>
-                  <p className="text-xs text-gray-400 leading-relaxed">{v.desc}</p>
+                  <h4 className="font-extrabold text-sm text-[#111318] dark:text-white uppercase tracking-wider mb-2">{v.title}</h4>
+                  <p className="text-xs text-[#4B5563] dark:text-gray-400 leading-relaxed">{v.desc}</p>
                 </div>
-                <div className="border-t border-white/5 pt-3.5 mt-4 text-[9px] font-mono text-gray-600 font-bold uppercase tracking-widest flex items-center justify-between">
+                <div className="border-t border-black/5 dark:border-white/5 pt-3.5 mt-4 text-[9px] font-mono text-[#667085] dark:text-gray-600 font-bold uppercase tracking-widest flex items-center justify-between">
                   <span>ACTIVE R&D</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </div>
@@ -109,11 +109,11 @@ export default function AILab() {
         <div>
           <div className="flex flex-col items-center text-center mb-16">
             <span className="text-xs font-bold uppercase tracking-[0.4em] text-gold-light">Orchestration & Workflow Console</span>
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-white">
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#111318] dark:text-white">
               PROMPT & AI <span className="text-gradient-gold">LAB</span>
             </h2>
             <div className="w-16 h-[2px] bg-gold mt-4 shadow-[0_0_8px_#D4A017]" />
-            <p className="text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
+            <p className="text-[#4B5563] dark:text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
               Futuristic prompt engineering simulator. Toggle the tabs below to verify systems prompts and run mock RAG agents.
             </p>
           </div>

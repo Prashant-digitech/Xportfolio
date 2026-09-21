@@ -33,11 +33,11 @@ export default function DesignSystemShowcase() {
         {/* SECTION 07: DESIGN SYSTEM SHOWCASE */}
         <div className="flex flex-col items-center text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-[0.4em] text-gold-light">How I Build Products</span>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-white">
+          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#111318] dark:text-white">
             DESIGN <span className="text-gradient-gold">SYSTEM</span>
           </h2>
           <div className="w-16 h-[2px] bg-gold mt-4 shadow-[0_0_8px_#D4A017]" />
-          <p className="text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
+          <p className="text-[#4B5563] dark:text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
             Explore the atomic tokens, components, and variables that form the visual foundation of Prashant's products.
           </p>
         </div>
@@ -47,7 +47,7 @@ export default function DesignSystemShowcase() {
           <button
             onClick={() => setActiveTab("colors")}
             className={`flex items-center space-x-2 px-5 py-3 rounded-lg border text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${
-              activeTab === "colors" ? "bg-gold text-black border-gold shadow-[0_0_15px_rgba(212,160,23,0.35)]" : "bg-black/10 border-white/5 text-gray-400 hover:border-gold hover:text-white"
+              activeTab === "colors" ? "bg-[#D4AF37] text-black border-[#D4AF37] shadow-md font-extrabold" : "bg-white dark:bg-black/10 border border-[#D6B95A] dark:border-white/5 text-[#374151] dark:text-gray-400 hover:border-[#D4AF37] hover:text-[#111318] dark:hover:text-white"
             }`}
           >
             <Palette className="w-4 h-4" />
@@ -56,7 +56,7 @@ export default function DesignSystemShowcase() {
           <button
             onClick={() => setActiveTab("typo")}
             className={`flex items-center space-x-2 px-5 py-3 rounded-lg border text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${
-              activeTab === "typo" ? "bg-gold text-black border-gold shadow-[0_0_15px_rgba(212,160,23,0.35)]" : "bg-black/10 border-white/5 text-gray-400 hover:border-gold hover:text-white"
+              activeTab === "typo" ? "bg-[#D4AF37] text-black border-[#D4AF37] shadow-md font-extrabold" : "bg-white dark:bg-black/10 border border-[#D6B95A] dark:border-white/5 text-[#374151] dark:text-gray-400 hover:border-[#D4AF37] hover:text-[#111318] dark:hover:text-white"
             }`}
           >
             <Type className="w-4 h-4" />
@@ -65,7 +65,7 @@ export default function DesignSystemShowcase() {
           <button
             onClick={() => setActiveTab("buttons")}
             className={`flex items-center space-x-2 px-5 py-3 rounded-lg border text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${
-              activeTab === "buttons" ? "bg-gold text-black border-gold shadow-[0_0_15px_rgba(212,160,23,0.35)]" : "bg-black/10 border-white/5 text-gray-400 hover:border-gold hover:text-white"
+              activeTab === "buttons" ? "bg-[#D4AF37] text-black border-[#D4AF37] shadow-md font-extrabold" : "bg-white dark:bg-black/10 border border-[#D6B95A] dark:border-white/5 text-[#374151] dark:text-gray-400 hover:border-[#D4AF37] hover:text-[#111318] dark:hover:text-white"
             }`}
           >
             <Sliders className="w-4 h-4" />
@@ -74,7 +74,7 @@ export default function DesignSystemShowcase() {
           <button
             onClick={() => setActiveTab("cards")}
             className={`flex items-center space-x-2 px-5 py-3 rounded-lg border text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${
-              activeTab === "cards" ? "bg-gold text-black border-gold shadow-[0_0_15px_rgba(212,160,23,0.35)]" : "bg-black/10 border-white/5 text-gray-400 hover:border-gold hover:text-white"
+              activeTab === "cards" ? "bg-[#D4AF37] text-black border-[#D4AF37] shadow-md font-extrabold" : "bg-white dark:bg-black/10 border border-[#D6B95A] dark:border-white/5 text-[#374151] dark:text-gray-400 hover:border-[#D4AF37] hover:text-[#111318] dark:hover:text-white"
             }`}
           >
             <LayoutGrid className="w-4 h-4" />
@@ -83,14 +83,14 @@ export default function DesignSystemShowcase() {
         </div>
 
         {/* Tab display panels */}
-        <div className="border border-white/10 rounded-xl bg-[#0a0a0a] p-8 min-h-[350px] shadow-2xl relative">
+        <div className="border border-[#D6D9DE] dark:border-white/10 rounded-xl bg-white dark:bg-[#0a0a0a] p-8 min-h-[350px] shadow-xl relative text-[#111318] dark:text-white">
           
           {/* Colors Tab */}
           {activeTab === "colors" && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
-              <div className="border-b border-white/5 pb-4">
-                <h3 className="text-lg font-black text-white uppercase tracking-wider">Accent Systems & Variable Tokens</h3>
-                <p className="text-xs text-gray-400 mt-1">Click any swatch to copy the hexadecimal token to your clipboard.</p>
+              <div className="border-b border-black/5 dark:border-white/5 pb-4">
+                <h3 className="text-lg font-black text-[#111318] dark:text-white uppercase tracking-wider">Accent Systems & Variable Tokens</h3>
+                <p className="text-xs text-[#4B5563] dark:text-gray-400 mt-1">Click any swatch to copy the hexadecimal token to your clipboard.</p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -98,10 +98,10 @@ export default function DesignSystemShowcase() {
                   <div
                     key={idx}
                     onClick={() => handleCopy(c.hex)}
-                    className="group p-4 border border-white/5 rounded-lg bg-white/[0.01] hover:border-gold/30 hover:bg-white/[0.03] transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                    className="group p-4 border border-[#D6D9DE] dark:border-white/5 rounded-lg bg-black/[0.02] dark:bg-white/[0.01] hover:border-gold/50 transition-all duration-300 cursor-pointer flex flex-col justify-between"
                   >
                     <div 
-                      className="w-full aspect-square rounded-md mb-4 shadow-inner border border-white/10 relative overflow-hidden"
+                      className="w-full aspect-square rounded-md mb-4 shadow-inner border border-black/10 dark:border-white/10 relative overflow-hidden"
                       style={{ backgroundColor: c.hex }}
                     >
                       {copiedColor === c.hex && (
@@ -111,9 +111,9 @@ export default function DesignSystemShowcase() {
                       )}
                     </div>
                     <div>
-                      <h4 className="font-extrabold text-xs text-white uppercase tracking-wider group-hover:text-gold transition-colors">{c.name}</h4>
-                      <span className="text-[10px] text-gray-500 font-mono block mt-1">{c.variable} ({c.hex})</span>
-                      <p className="text-[10px] text-gray-400 mt-2 leading-relaxed">{c.desc}</p>
+                      <h4 className="font-extrabold text-xs text-[#111318] dark:text-white uppercase tracking-wider group-hover:text-gold transition-colors">{c.name}</h4>
+                      <span className="text-[10px] text-[#667085] dark:text-gray-500 font-mono block mt-1">{c.variable} ({c.hex})</span>
+                      <p className="text-[10px] text-[#4B5563] dark:text-gray-400 mt-2 leading-relaxed">{c.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -124,35 +124,35 @@ export default function DesignSystemShowcase() {
           {/* Typography Tab */}
           {activeTab === "typo" && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
-              <div className="border-b border-white/5 pb-4">
-                <h3 className="text-lg font-black text-white uppercase tracking-wider">Typography Hierarchy</h3>
-                <p className="text-xs text-gray-400 mt-1">Atomic fonts and size scales optimized for high-readability layout ratios.</p>
+              <div className="border-b border-black/5 dark:border-white/5 pb-4">
+                <h3 className="text-lg font-black text-[#111318] dark:text-white uppercase tracking-wider">Typography Hierarchy</h3>
+                <p className="text-xs text-[#4B5563] dark:text-gray-400 mt-1">Atomic fonts and size scales optimized for high-readability layout ratios.</p>
               </div>
 
               <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 border-b border-white/5 pb-4 items-baseline">
-                  <div className="md:col-span-3 text-[10px] text-gray-500 font-mono font-bold uppercase tracking-wider">H1 // Display</div>
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 border-b border-black/5 dark:border-white/5 pb-4 items-baseline">
+                  <div className="md:col-span-3 text-[10px] text-[#667085] dark:text-gray-500 font-mono font-bold uppercase tracking-wider">H1 // Display</div>
                   <div className="md:col-span-9">
-                    <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight uppercase leading-none">PRASHANT SISODHIYA</h1>
-                    <span className="text-[9px] text-gray-500 font-mono block mt-2">font-black tracking-tight leading-none text-4xl/5xl</span>
+                    <h1 className="text-4xl md:text-5xl font-black text-[#111318] dark:text-white tracking-tight uppercase leading-none">PRASHANT SISODHIYA</h1>
+                    <span className="text-[9px] text-[#667085] dark:text-gray-500 font-mono block mt-2">font-black tracking-tight leading-none text-4xl/5xl</span>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 border-b border-white/5 pb-4 items-baseline">
-                  <div className="md:col-span-3 text-[10px] text-gray-500 font-mono font-bold uppercase tracking-wider">H2 // Section Title</div>
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 border-b border-black/5 dark:border-white/5 pb-4 items-baseline">
+                  <div className="md:col-span-3 text-[10px] text-[#667085] dark:text-gray-500 font-mono font-bold uppercase tracking-wider">H2 // Section Title</div>
                   <div className="md:col-span-9">
-                    <h2 className="text-2xl sm:text-3xl font-extrabold text-white uppercase tracking-wider">DESIGN PROCESS STAGES</h2>
-                    <span className="text-[9px] text-gray-500 font-mono block mt-2">font-extrabold tracking-wider text-2xl/3xl</span>
+                    <h2 className="text-2xl sm:text-3xl font-extrabold text-[#111318] dark:text-white uppercase tracking-wider">DESIGN PROCESS STAGES</h2>
+                    <span className="text-[9px] text-[#667085] dark:text-gray-500 font-mono block mt-2">font-extrabold tracking-wider text-2xl/3xl</span>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline">
-                  <div className="md:col-span-3 text-[10px] text-gray-500 font-mono font-bold uppercase tracking-wider">Body // Paragraph</div>
+                  <div className="md:col-span-3 text-[10px] text-[#667085] dark:text-gray-500 font-mono font-bold uppercase tracking-wider">Body // Paragraph</div>
                   <div className="md:col-span-9">
-                    <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-xl">
+                    <p className="text-xs sm:text-sm text-[#4B5563] dark:text-gray-400 leading-relaxed max-w-xl">
                       Crafting luxury glassmorphic visual layouts prioritizes the user journey, reinforce high-end branding directives, and achieves pixel-perfect alignment.
                     </p>
-                    <span className="text-[9px] text-gray-500 font-mono block mt-2">font-normal leading-relaxed text-xs/sm</span>
+                    <span className="text-[9px] text-[#667085] dark:text-gray-500 font-mono block mt-2">font-normal leading-relaxed text-xs/sm</span>
                   </div>
                 </div>
               </div>
@@ -162,15 +162,15 @@ export default function DesignSystemShowcase() {
           {/* Buttons Tab */}
           {activeTab === "buttons" && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
-              <div className="border-b border-white/5 pb-4">
-                <h3 className="text-lg font-black text-white uppercase tracking-wider">Component Buttons & Action Trigger States</h3>
-                <p className="text-xs text-gray-400 mt-1">Vibrant visual states mapping key click and action cues.</p>
+              <div className="border-b border-black/5 dark:border-white/5 pb-4">
+                <h3 className="text-lg font-black text-[#111318] dark:text-white uppercase tracking-wider">Component Buttons & Action Trigger States</h3>
+                <p className="text-xs text-[#4B5563] dark:text-gray-400 mt-1">Vibrant visual states mapping key click and action cues.</p>
               </div>
 
               <div className="flex flex-wrap gap-8 items-center py-6">
                 {/* Primary Button */}
                 <div className="space-y-2.5">
-                  <span className="text-[9px] text-gray-500 uppercase font-mono block">Primary Action Button</span>
+                  <span className="text-[9px] text-[#667085] dark:text-gray-500 uppercase font-mono block">Primary Action Button</span>
                   <button className="px-6 py-2.5 rounded bg-gradient-to-r from-gold-dark to-gold text-black font-extrabold text-xs uppercase tracking-widest shadow-[0_0_15px_rgba(212,160,23,0.35)] hover:shadow-[0_0_25px_rgba(212,160,23,0.7)] transition-all duration-300 cursor-pointer">
                     HIRE ME NOW
                   </button>
@@ -178,15 +178,15 @@ export default function DesignSystemShowcase() {
 
                 {/* Secondary Outline */}
                 <div className="space-y-2.5">
-                  <span className="text-[9px] text-gray-500 uppercase font-mono block">Secondary Outline Action</span>
-                  <button className="px-6 py-2.5 rounded border border-white/10 hover:border-gold hover:text-gold text-white font-extrabold text-xs uppercase tracking-widest bg-transparent transition-colors duration-300 cursor-pointer">
+                  <span className="text-[9px] text-[#667085] dark:text-gray-500 uppercase font-mono block">Secondary Outline Action</span>
+                  <button className="px-6 py-2.5 rounded border border-[#D6B95A] dark:border-white/10 hover:border-gold hover:text-gold text-[#111318] dark:text-white font-extrabold text-xs uppercase tracking-widest bg-transparent transition-colors duration-300 cursor-pointer">
                     CASE STUDY FILES
                   </button>
                 </div>
 
                 {/* Cyberpunk Accent */}
                 <div className="space-y-2.5">
-                  <span className="text-[9px] text-gray-500 uppercase font-mono block">System Console Toggle</span>
+                  <span className="text-[9px] text-[#667085] dark:text-gray-500 uppercase font-mono block">System Console Toggle</span>
                   <button className="px-5 py-2.5 rounded bg-[#00F0FF]/10 border border-[#00F0FF]/30 text-[#00F0FF] font-extrabold text-xs uppercase tracking-widest shadow-[0_0_12px_rgba(0,240,255,0.15)] hover:bg-[#00F0FF]/20 transition-all duration-300 cursor-pointer">
                     RUN COMMAND
                   </button>
@@ -198,34 +198,34 @@ export default function DesignSystemShowcase() {
           {/* Cards Tab */}
           {activeTab === "cards" && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
-              <div className="border-b border-white/5 pb-4">
-                <h3 className="text-lg font-black text-white uppercase tracking-wider">Glassmorphic Card Architecture</h3>
-                <p className="text-xs text-gray-400 mt-1">Multi-layered glass reflection styling designed for maximum dark-mode elegance.</p>
+              <div className="border-b border-black/5 dark:border-white/5 pb-4">
+                <h3 className="text-lg font-black text-[#111318] dark:text-white uppercase tracking-wider">Glassmorphic Card Architecture</h3>
+                <p className="text-xs text-[#4B5563] dark:text-gray-400 mt-1">Multi-layered glass reflection styling designed for maximum dark-mode elegance.</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-4">
                 {/* Standard Glass Card */}
-                <div className="p-6 rounded-lg glass-card border border-white/5 bg-white/[0.02] shadow-[0_0_30px_rgba(212,160,23,0.06)] relative overflow-hidden">
+                <div className="p-6 rounded-lg glass-card border border-[#D6D9DE] dark:border-white/5 bg-white dark:bg-white/[0.02] shadow-md relative overflow-hidden">
                   <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-gold/50 via-gold/10 to-transparent" />
                   <div className="flex items-center space-x-2 text-gold mb-3">
                     <Sparkles className="w-4.5 h-4.5 animate-pulse" />
                     <span className="text-[9px] font-bold uppercase tracking-wider font-mono">GOLDEN_REFLECTION_FRAME</span>
                   </div>
-                  <h4 className="font-extrabold text-sm text-white mb-2 uppercase tracking-wide">Figma Design System Card</h4>
-                  <p className="text-xs text-gray-400 leading-relaxed">
+                  <h4 className="font-extrabold text-sm text-[#111318] dark:text-white mb-2 uppercase tracking-wide">Figma Design System Card</h4>
+                  <p className="text-xs text-[#4B5563] dark:text-gray-400 leading-relaxed">
                     Uses a 1.5px semi-transparent golden border, deep background blur backdrop filter (20px), and subtle box shadow aura glows.
                   </p>
                 </div>
 
                 {/* Neon Cyan Glass Card */}
-                <div className="p-6 rounded-lg glass-card border border-[#00F0FF]/20 bg-white/[0.02] shadow-[0_0_30px_rgba(0,240,255,0.08)] relative overflow-hidden">
+                <div className="p-6 rounded-lg glass-card border border-[#00F0FF]/30 dark:border-[#00F0FF]/20 bg-white dark:bg-white/[0.02] shadow-md relative overflow-hidden">
                   <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#00F0FF]/60 via-[#00F0FF]/15 to-transparent" />
                   <div className="flex items-center space-x-2 text-[#00F0FF] mb-3">
                     <CheckCircle className="w-4.5 h-4.5 animate-pulse" />
                     <span className="text-[9px] font-bold uppercase tracking-wider font-mono">CYBERPUNK_CYAN_FRAME</span>
                   </div>
-                  <h4 className="font-extrabold text-sm text-white mb-2 uppercase tracking-wide">AI Prompt Interface Card</h4>
-                  <p className="text-xs text-gray-400 leading-relaxed">
+                  <h4 className="font-extrabold text-sm text-[#111318] dark:text-white mb-2 uppercase tracking-wide">AI Prompt Interface Card</h4>
+                  <p className="text-xs text-[#4B5563] dark:text-gray-400 leading-relaxed">
                     Employs cyan accent glow, high-contrast border sizing, and subtle drop shadow overlays designed to support system data grids.
                   </p>
                 </div>

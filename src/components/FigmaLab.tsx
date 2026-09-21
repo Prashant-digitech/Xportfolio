@@ -27,11 +27,11 @@ export default function FigmaLab() {
         {/* SECTION 08: FIGMA LAB */}
         <div className="flex flex-col items-center text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-[0.4em] text-gold-light">Product Playground</span>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-white">
+          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#111318] dark:text-white">
             FIGMA <span className="text-gradient-gold">LAB</span>
           </h2>
           <div className="w-16 h-[2px] bg-gold mt-4 shadow-[0_0_8px_#D4A017]" />
-          <p className="text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
+          <p className="text-[#4B5563] dark:text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
             Interactive Figma workspace emulation. Toggle the stages below to witness the canvas design scale from rough sketch to clean code.
           </p>
         </div>
@@ -44,8 +44,8 @@ export default function FigmaLab() {
               onClick={() => setActiveStage(stg.id as FigmaStage)}
               className={`px-5 py-2.5 rounded-lg border text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                 activeStage === stg.id
-                  ? "bg-gold text-black border-gold shadow-[0_0_12px_rgba(212,160,23,0.3)] scale-105"
-                  : "bg-black/15 border-white/5 text-gray-400 hover:border-gold hover:text-white"
+                  ? "bg-[#D4AF37] text-black border-[#D4AF37] shadow-md scale-105 font-extrabold"
+                  : "bg-white dark:bg-black/15 border border-[#D6B95A] dark:border-white/5 text-[#374151] dark:text-gray-400 hover:border-[#D4AF37] hover:text-[#111318] dark:hover:text-white"
               }`}
             >
               {stg.label}

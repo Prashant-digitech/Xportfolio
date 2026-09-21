@@ -220,25 +220,25 @@ export default function CertificationVault() {
                   {/* Inner Flip Wrapper */}
                   <div className={`absolute inset-0 h-full w-full rounded-2xl transition-transform duration-500 [transform-style:preserve-3d] ${
                     isFlipped ? "[transform:rotateY(180deg)]" : ""
-                  } group-hover:[transform:rotateY(180deg)] border-[1.5px] border-[#D4AF37]/50 group-hover:border-[#F5BA42] bg-gradient-to-br from-[#0D1B38] via-[#081328] to-[#050C1A] shadow-xl`}>
+                  } group-hover:[transform:rotateY(180deg)] border-[1.5px] border-[#D6D9DE] dark:border-[#D4AF37]/50 group-hover:border-[#D4AF37] dark:group-hover:border-[#F5BA42] bg-white dark:bg-gradient-to-br dark:from-[#0D1B38] dark:via-[#081328] dark:to-[#050C1A] shadow-lg`}>
                     
                     {/* Front Side */}
                     <div className="absolute inset-0 h-full w-full p-6 flex flex-col justify-between [backface-visibility:hidden]">
                       <div className="flex justify-between items-start">
                         <div className="p-2 rounded-xl bg-[#FF6B00]/15 text-[#FF6B00] border border-[#FF6B00]/30 shadow-sm"><Award className="w-5 h-5" /></div>
-                        <span className="text-[10px] text-[#F5BA42] font-mono font-bold">{c.period}</span>
+                        <span className="text-[10px] text-[#B8941F] dark:text-[#F5BA42] font-mono font-bold">{c.period}</span>
                       </div>
                       <div>
-                        <h4 className="font-extrabold text-sm text-white uppercase tracking-wider mb-1 group-hover:text-[#F5BA42] transition-colors">{c.title}</h4>
-                        <p className="text-xs text-slate-300 font-medium">{c.institution}</p>
+                        <h4 className="font-extrabold text-sm text-[#111318] dark:text-white uppercase tracking-wider mb-1 group-hover:text-[#B8941F] dark:group-hover:text-[#F5BA42] transition-colors">{c.title}</h4>
+                        <p className="text-xs text-[#4B5563] dark:text-slate-300 font-medium">{c.institution}</p>
                       </div>
                     </div>
 
                     {/* Back Side */}
-                    <div className="absolute inset-0 h-full w-full p-6 flex flex-col justify-between bg-gradient-to-br from-[#0D1B38] to-[#050C1A] border-[1.5px] border-[#F5BA42] rounded-2xl text-white [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                    <div className="absolute inset-0 h-full w-full p-6 flex flex-col justify-between bg-[#F4F1E8] dark:bg-gradient-to-br dark:from-[#0D1B38] dark:to-[#050C1A] border-[1.5px] border-[#D4AF37] rounded-2xl text-[#111318] dark:text-white [transform:rotateY(180deg)] [backface-visibility:hidden]">
                       <div>
-                        <span className="text-[9px] font-mono text-[#F5BA42] block uppercase tracking-widest mb-1.5 font-bold">CREDENTIAL OVERVIEW</span>
-                        <p className="text-[11px] text-slate-200 leading-relaxed">
+                        <span className="text-[9px] font-mono text-[#B8941F] dark:text-[#F5BA42] block uppercase tracking-widest mb-1.5 font-bold">CREDENTIAL OVERVIEW</span>
+                        <p className="text-[11px] text-[#374151] dark:text-slate-200 leading-relaxed">
                           {c.description}
                         </p>
                       </div>
@@ -247,7 +247,7 @@ export default function CertificationVault() {
                           e.stopPropagation();
                           setSelectedCert(c);
                         }}
-                        className="flex justify-between items-center text-[10px] text-[#FF6B00] hover:text-[#F5BA42] font-bold uppercase tracking-widest border-t border-[#D4AF37]/30 pt-2.5 transition-colors"
+                        className="flex justify-between items-center text-[10px] text-[#FF6B00] hover:text-[#B8941F] dark:hover:text-[#F5BA42] font-bold uppercase tracking-widest border-t border-black/10 dark:border-[#D4AF37]/30 pt-2.5 transition-colors cursor-pointer"
                       >
                         <span>Inspect verified doc</span>
                         <ExternalLink className="w-3.5 h-3.5" />
@@ -269,7 +269,7 @@ export default function CertificationVault() {
               EXPERIENCE <span className="text-gradient-orange">JOURNEY</span>
             </h2>
             <div className="w-16 h-[2px] bg-[#FF6B00] mt-4 shadow-[0_0_8px_#FF6B00]" />
-            <p className="text-slate-600 dark:text-slate-400 mt-4 max-w-xl text-sm leading-relaxed">
+            <p className="text-[#4B5563] dark:text-slate-400 mt-4 max-w-xl text-sm leading-relaxed">
               Chronological layout connecting Prashant's solid engineering roots to modern reactive UI/UX and AI product design workflows.
             </p>
           </div>
@@ -285,23 +285,23 @@ export default function CertificationVault() {
                 className="relative group"
               >
                 {/* Bullet node indicator */}
-                <div className="absolute -left-[43px] top-4 w-5 h-5 rounded-full border-2 border-[#FF6B00] bg-[#050C1A] group-hover:bg-[#FF6B00] transition-colors duration-300 shadow-[0_0_10px_#FF6B00] flex items-center justify-center">
+                <div className="absolute -left-[43px] top-4 w-5 h-5 rounded-full border-2 border-[#FF6B00] bg-white dark:bg-[#050C1A] group-hover:bg-[#FF6B00] transition-colors duration-300 shadow-[0_0_10px_#FF6B00] flex items-center justify-center">
                   <div className="w-1.5 h-1.5 bg-[#F5BA42] rounded-full" />
                 </div>
 
-                <div className="p-6 rounded-2xl border-[1.5px] border-[#D4AF37]/45 bg-gradient-to-br from-[#0D1B38] via-[#081328] to-[#050C1A] group-hover:border-[#F5BA42] shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div className="p-6 rounded-2xl border-[1.5px] border-[#D6D9DE] dark:border-[#D4AF37]/45 bg-white dark:bg-gradient-to-br dark:from-[#0D1B38] dark:via-[#081328] dark:to-[#050C1A] group-hover:border-[#D4AF37] dark:group-hover:border-[#F5BA42] shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6">
                   {/* Left Column: Details */}
                   <div className="space-y-1.5 md:max-w-md lg:max-w-lg">
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-bold text-[#F5BA42] uppercase tracking-widest font-mono block">{t.year}</span>
-                      <span className="text-[9px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-slate-300 font-mono">
+                      <span className="text-[10px] font-bold text-[#B8941F] dark:text-[#F5BA42] uppercase tracking-widest font-mono block">{t.year}</span>
+                      <span className="text-[9px] px-2 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#4B5563] dark:text-slate-300 font-mono">
                         {t.institution}
                       </span>
                     </div>
-                    <h4 className="font-extrabold text-base text-white uppercase tracking-wider group-hover:text-[#F5BA42] transition-colors">
+                    <h4 className="font-extrabold text-base text-[#111318] dark:text-white uppercase tracking-wider group-hover:text-[#B8941F] dark:group-hover:text-[#F5BA42] transition-colors">
                       {t.title}
                     </h4>
-                    <p className="text-xs text-slate-300 leading-relaxed">
+                    <p className="text-xs text-[#4B5563] dark:text-slate-300 leading-relaxed">
                       {t.desc}
                     </p>
                   </div>

@@ -206,11 +206,11 @@ export default function SkillUniverse({ profile }: SkillUniverseProps) {
         {/* SECTION 03: SKILL UNIVERSE */}
         <div className="flex flex-col items-center text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-[0.4em] text-gold-light">Interactive Skills Constellation</span>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-white">
+          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#111318] dark:text-white">
             SKILL <span className="text-gradient-gold">UNIVERSE</span>
           </h2>
           <div className="w-16 h-[2px] bg-gold mt-4 shadow-[0_0_8px_#D4A017]" />
-          <p className="text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
+          <p className="text-[#4B5563] dark:text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
             Constellation nodes mapping interrelated skill vectors. Hover to inspect, click node to lock project files.
           </p>
         </div>
@@ -219,13 +219,13 @@ export default function SkillUniverse({ profile }: SkillUniverseProps) {
           
           {/* Left panel: 3D Constellation Canvas (7 cols) */}
           <div className="lg:col-span-7 flex justify-center items-center relative min-h-[420px]">
-            <div className="border border-white/5 bg-[#090909]/40 rounded-xl p-4 shadow-2xl relative">
+            <div className="border border-[#D6D9DE] dark:border-white/5 bg-white dark:bg-[#090909]/40 rounded-xl p-4 shadow-xl relative">
               <canvas 
                 ref={canvasRef}
                 className="w-[380px] h-[380px] cursor-pointer"
                 style={{ width: "380px", height: "380px" }}
               />
-              <div className="absolute bottom-4 left-4 flex items-center space-x-2 text-[#a3a3a3] font-mono text-[9px]">
+              <div className="absolute bottom-4 left-4 flex items-center space-x-2 text-[#4B5563] dark:text-[#a3a3a3] font-mono text-[9px]">
                 <Network className="w-3.5 h-3.5 text-gold animate-pulse" />
                 <span>CLICK NODES FOR DETAILS</span>
               </div>
@@ -242,7 +242,7 @@ export default function SkillUniverse({ profile }: SkillUniverseProps) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="p-8 rounded-lg glass-card border border-gold/30 bg-black/40 relative shadow-[0_0_25px_rgba(212,160,23,0.15)]"
+                  className="p-8 rounded-lg glass-card border border-[#D6D9DE] dark:border-gold/30 bg-white dark:bg-black/40 relative shadow-xl text-[#111318] dark:text-white"
                 >
                   <button
                     onClick={() => setActivePanelIdx(null)}
@@ -256,22 +256,22 @@ export default function SkillUniverse({ profile }: SkillUniverseProps) {
                     <span className="text-[10px] font-bold uppercase tracking-wider font-mono">CONSTELLATION_LOCK</span>
                   </div>
 
-                  <h3 className="text-2xl font-black text-white uppercase tracking-wider mb-2">
+                  <h3 className="text-2xl font-black text-[#111318] dark:text-white uppercase tracking-wider mb-2">
                     {nodes[activePanelIdx].name}
                   </h3>
                   
-                  <div className="flex items-baseline space-x-2 mb-4 border-b border-white/5 pb-4">
+                  <div className="flex items-baseline space-x-2 mb-4 border-b border-black/5 dark:border-white/5 pb-4">
                     <span className="text-3xl font-black text-gold">{nodes[activePanelIdx].proficiency}</span>
                     <span className="text-[10px] text-gray-500 uppercase tracking-widest font-mono">expertise value</span>
                   </div>
 
                   <div>
-                    <span className="text-[10px] text-gray-400 uppercase tracking-wider block mb-3 font-bold">Associated Case Projects</span>
+                    <span className="text-[10px] text-[#4B5563] dark:text-gray-400 uppercase tracking-wider block mb-3 font-bold">Associated Case Projects</span>
                     <div className="space-y-3">
                       {nodes[activePanelIdx].projects.map((proj, idx) => (
                         <div 
                           key={idx} 
-                          className="p-3 border border-white/5 rounded bg-white/[0.02] text-xs font-semibold text-gray-200"
+                          className="p-3 border border-black/5 dark:border-white/5 rounded bg-black/[0.02] dark:bg-white/[0.02] text-xs font-semibold text-[#111318] dark:text-gray-200"
                         >
                           {proj}
                         </div>
@@ -280,7 +280,7 @@ export default function SkillUniverse({ profile }: SkillUniverseProps) {
                   </div>
                 </motion.div>
               ) : (
-                <div className="p-8 rounded-lg glass-card border border-white/5 bg-black/10 flex flex-col items-center justify-center text-center text-gray-500 py-16">
+                <div className="p-8 rounded-lg glass-card border border-[#D6D9DE] dark:border-white/5 bg-white dark:bg-black/10 flex flex-col items-center justify-center text-center text-gray-500 py-16 shadow-lg">
                   <Network className="w-8 h-8 text-gray-600 mb-4 animate-pulse" />
                   <p className="text-xs max-w-xs leading-relaxed uppercase tracking-wider font-mono">
                     Click any node inside the constellation graph to load associated project files.

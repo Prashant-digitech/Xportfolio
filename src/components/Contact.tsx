@@ -132,50 +132,50 @@ export default function Contact({ profile }: ContactProps) {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 space-y-6"
           >
-            <div className="p-8 rounded-lg glass-card border border-gold/30 shadow-[0_0_20px_rgba(212,160,23,0.05)] space-y-6">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500 mb-6">Contact Info</h3>
-              <p className="text-xs text-gray-400 leading-relaxed">
+            <div className="p-8 rounded-lg glass-card border border-[#D6D9DE] dark:border-gold/30 bg-white dark:bg-[#0F1118] shadow-lg space-y-6 text-[#111318] dark:text-white">
+              <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-[#667085] dark:text-gray-500 mb-6">Contact Info</h3>
+              <p className="text-xs text-[#4B5563] dark:text-gray-400 leading-relaxed">
                 Have a project in mind or want to discuss how I can help your brand grow? Feel free to reach out. I'm always open to new ideas and exciting opportunities.
               </p>
 
-              <div className="space-y-6 pt-4 border-t border-white/5">
+              <div className="space-y-6 pt-4 border-t border-black/5 dark:border-white/5">
                 <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-[#0d0d0d] border border-gold/40 flex items-center justify-center text-gold shadow-[0_0_10px_rgba(212,160,23,0.15)]">
+                  <div className="w-10 h-10 rounded-full bg-[#F4F1E8] dark:bg-[#0d0d0d] border border-gold/40 flex items-center justify-center text-gold shadow-sm">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="block text-[10px] text-gray-500 uppercase tracking-widest">Phone</span>
-                    <a href={`tel:${profile.phone}`} className="font-bold text-gray-200 hover:text-gold transition-colors duration-200">{profile.phone}</a>
+                    <span className="block text-[10px] text-[#667085] dark:text-gray-500 uppercase tracking-widest">Phone</span>
+                    <a href={`tel:${profile.phone}`} className="font-bold text-[#111318] dark:text-gray-200 hover:text-gold transition-colors duration-200">{profile.phone}</a>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-[#0d0d0d] border border-gold/40 flex items-center justify-center text-gold shadow-[0_0_10px_rgba(212,160,23,0.15)]">
+                  <div className="w-10 h-10 rounded-full bg-[#F4F1E8] dark:bg-[#0d0d0d] border border-gold/40 flex items-center justify-center text-gold shadow-sm">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="block text-[10px] text-gray-500 uppercase tracking-widest">Email</span>
-                    <a href={`mailto:${profile.email}`} className="font-bold text-gray-200 hover:text-gold transition-colors duration-200">{profile.email}</a>
+                    <span className="block text-[10px] text-[#667085] dark:text-gray-500 uppercase tracking-widest">Email</span>
+                    <a href={`mailto:${profile.email}`} className="font-bold text-[#111318] dark:text-gray-200 hover:text-gold transition-colors duration-200">{profile.email}</a>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-[#0d0d0d] border border-gold/40 flex items-center justify-center text-gold shadow-[0_0_10px_rgba(212,160,23,0.15)]">
+                  <div className="w-10 h-10 rounded-full bg-[#F4F1E8] dark:bg-[#0d0d0d] border border-gold/40 flex items-center justify-center text-gold shadow-sm">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="block text-[10px] text-gray-500 uppercase tracking-widest">Location</span>
-                    <span className="font-bold text-gray-200">{profile.location}</span>
+                    <span className="block text-[10px] text-[#667085] dark:text-gray-500 uppercase tracking-widest">Location</span>
+                    <span className="font-bold text-[#111318] dark:text-gray-200">{profile.location}</span>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-[#0d0d0d] border border-gold/40 flex items-center justify-center text-gold shadow-[0_0_10px_rgba(212,160,23,0.15)]">
+                  <div className="w-10 h-10 rounded-full bg-[#F4F1E8] dark:bg-[#0d0d0d] border border-gold/40 flex items-center justify-center text-gold shadow-sm">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="block text-[10px] text-gray-500 uppercase tracking-widest">Availability</span>
-                    <span className="font-bold text-gray-200">Mon – Sat : 9:00 AM – 8:00 PM</span>
+                    <span className="block text-[10px] text-[#667085] dark:text-gray-500 uppercase tracking-widest">Availability</span>
+                    <span className="font-bold text-[#111318] dark:text-gray-200">Mon – Sat : 9:00 AM – 8:00 PM</span>
                   </div>
                 </div>
               </div>
@@ -190,7 +190,7 @@ export default function Contact({ profile }: ContactProps) {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7"
           >
-            <div className="p-8 rounded-lg glass-card border border-gold/30 shadow-[0_0_30px_rgba(212,160,23,0.1)] relative overflow-hidden">
+            <div className="p-8 rounded-lg glass-card border border-[#D6D9DE] dark:border-gold/30 bg-white dark:bg-[#0F1118] shadow-lg relative overflow-hidden text-[#111318] dark:text-white">
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-gold via-gold-light to-transparent" />
               
               <div className="flex items-center space-x-3 mb-6">
@@ -198,16 +198,16 @@ export default function Contact({ profile }: ContactProps) {
                   <Mail className="w-4.5 h-4.5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-sm">SEND ME A MESSAGE</h3>
-                  <p className="text-[10px] text-gray-500">Fill out the form and I'll get back to you as soon as possible.</p>
+                  <h3 className="font-bold text-[#111318] dark:text-white text-sm">SEND ME A MESSAGE</h3>
+                  <p className="text-[10px] text-[#667085] dark:text-gray-500">Fill out the form and I'll get back to you as soon as possible.</p>
                 </div>
               </div>
 
               {status === "success" ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center space-y-4 animate-scale-up">
                   <CheckCircle2 className="w-16 h-16 text-gold animate-bounce" />
-                  <h4 className="text-xl font-bold text-white">Message Sent Successfully!</h4>
-                  <p className="text-xs text-gray-400 max-w-xs leading-relaxed">
+                  <h4 className="text-xl font-bold text-[#111318] dark:text-white">Message Sent Successfully!</h4>
+                  <p className="text-xs text-[#4B5563] dark:text-gray-400 max-w-xs leading-relaxed">
                     Thank you for writing. Prashant will respond to your email shortly.
                   </p>
                 </div>
@@ -215,7 +215,7 @@ export default function Contact({ profile }: ContactProps) {
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[10px] text-gray-500 uppercase tracking-wider mb-1">Your Name</label>
+                      <label className="block text-[10px] text-[#374151] dark:text-gray-400 font-bold uppercase tracking-wider mb-1">Your Name</label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#D4A017]/80">
                           <User className="w-4 h-4" />
@@ -227,12 +227,12 @@ export default function Contact({ profile }: ContactProps) {
                           onChange={handleChange}
                           required
                           placeholder="Your Name"
-                          className="w-full bg-[#050505] border border-gold/20 rounded pl-10 pr-4 py-2.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold transition-colors duration-300"
+                          className="w-full bg-white dark:bg-[#050505] border border-[#D6D9DE] dark:border-gold/20 rounded pl-10 pr-4 py-2.5 text-xs text-[#111318] dark:text-white placeholder-[#667085] dark:placeholder-gray-600 focus:outline-none focus:border-gold transition-colors duration-300"
                         />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-[10px] text-gray-500 uppercase tracking-wider mb-1">Your Email</label>
+                      <label className="block text-[10px] text-[#374151] dark:text-gray-400 font-bold uppercase tracking-wider mb-1">Your Email</label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#D4A017]/80">
                           <Mail className="w-4 h-4" />
@@ -244,13 +244,13 @@ export default function Contact({ profile }: ContactProps) {
                           onChange={handleChange}
                           required
                           placeholder="Your Email"
-                          className="w-full bg-[#050505] border border-gold/20 rounded pl-10 pr-4 py-2.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold transition-colors duration-300"
+                          className="w-full bg-white dark:bg-[#050505] border border-[#D6D9DE] dark:border-gold/20 rounded pl-10 pr-4 py-2.5 text-xs text-[#111318] dark:text-white placeholder-[#667085] dark:placeholder-gray-600 focus:outline-none focus:border-gold transition-colors duration-300"
                         />
                       </div>
                     </div>
                   </div>
                   <div>
-                    <label className="block text-[10px] text-gray-500 uppercase tracking-wider mb-1">Subject</label>
+                    <label className="block text-[10px] text-[#374151] dark:text-gray-400 font-bold uppercase tracking-wider mb-1">Subject</label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#D4A017]/80">
                         <PenTool className="w-4 h-4" />
@@ -261,12 +261,12 @@ export default function Contact({ profile }: ContactProps) {
                         value={formData.subject}
                         onChange={handleChange}
                         placeholder="Subject"
-                        className="w-full bg-[#050505] border border-gold/20 rounded pl-10 pr-4 py-2.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold transition-colors duration-300"
+                        className="w-full bg-white dark:bg-[#050505] border border-[#D6D9DE] dark:border-gold/20 rounded pl-10 pr-4 py-2.5 text-xs text-[#111318] dark:text-white placeholder-[#667085] dark:placeholder-gray-600 focus:outline-none focus:border-gold transition-colors duration-300"
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-[10px] text-gray-500 uppercase tracking-wider mb-1">Your Message</label>
+                    <label className="block text-[10px] text-[#374151] dark:text-gray-400 font-bold uppercase tracking-wider mb-1">Your Message</label>
                     <div className="relative">
                       <div className="absolute top-3 left-3 pointer-events-none text-[#D4A017]/80">
                         <MessageSquare className="w-4 h-4" />
@@ -278,7 +278,7 @@ export default function Contact({ profile }: ContactProps) {
                         required
                         rows={5}
                         placeholder="Your Message"
-                        className="w-full bg-[#050505] border border-gold/20 rounded pl-10 pr-4 py-2.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-gold transition-colors duration-300"
+                        className="w-full bg-white dark:bg-[#050505] border border-[#D6D9DE] dark:border-gold/20 rounded pl-10 pr-4 py-2.5 text-xs text-[#111318] dark:text-white placeholder-[#667085] dark:placeholder-gray-600 focus:outline-none focus:border-gold transition-colors duration-300"
                       />
                     </div>
                   </div>
@@ -289,7 +289,7 @@ export default function Contact({ profile }: ContactProps) {
                     style={submitBtn.style}
                     type="submit"
                     disabled={status === "sending"}
-                    className="w-full mt-4 py-3 bg-gradient-to-r from-gold-dark via-gold to-gold-light text-black font-extrabold text-xs uppercase tracking-widest rounded shadow-[0_0_15px_rgba(212,160,23,0.3)] hover:shadow-[0_0_25px_rgba(212,160,23,0.7)] transition-all duration-300 hover:scale-[1.02] flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-50"
+                    className="w-full mt-4 py-3 bg-[#D4AF37] hover:bg-[#B8941F] text-black font-extrabold text-xs uppercase tracking-widest rounded shadow-md transition-all duration-300 hover:scale-[1.01] flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-50"
                   >
                     <span>{status === "sending" ? "SENDING MESSAGE..." : "SEND MESSAGE"}</span>
                     <Send className="w-3.5 h-3.5 fill-black stroke-[3]" />
@@ -307,12 +307,12 @@ export default function Contact({ profile }: ContactProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="p-8 rounded-lg glass-card border border-gold/15 bg-gradient-to-br from-[#0d0d0d]/80 via-transparent to-white/[0.01] relative overflow-hidden"
+          className="p-8 rounded-lg glass-card border border-[#D6D9DE] dark:border-gold/15 bg-white dark:bg-gradient-to-br dark:from-[#0d0d0d]/80 dark:via-transparent dark:to-white/[0.01] shadow-lg relative overflow-hidden text-[#111318] dark:text-white"
         >
           {/* Rotated, glowing post-it note at top-right */}
-          <div className="absolute top-6 right-6 w-36 h-36 bg-[#0d0d0d] border border-gold rounded p-4 shadow-[0_0_20px_rgba(212,160,23,0.25)] rotate-6 hidden md:flex flex-col justify-between hover:rotate-0 hover:scale-105 transition-all duration-300 select-none animate-float">
+          <div className="absolute top-6 right-6 w-36 h-36 bg-[#F4F1E8] dark:bg-[#0d0d0d] border border-gold rounded p-4 shadow-md rotate-6 hidden md:flex flex-col justify-between hover:rotate-0 hover:scale-105 transition-all duration-300 select-none animate-float text-[#111318] dark:text-white">
             <span className="text-[10px] text-gold font-bold tracking-widest">NOTE:</span>
-            <p className="font-signature text-sm text-gold-light leading-snug">
+            <p className="font-signature text-sm text-[#B8941F] dark:text-gold-light leading-snug">
               Let's create something amazing together! 😊
             </p>
           </div>
@@ -347,23 +347,23 @@ export default function Contact({ profile }: ContactProps) {
               </div>
 
               {/* Title handwritten signature-style */}
-              <h3 className="font-signature text-5xl text-gold-light select-none drop-shadow-[0_2px_4px_rgba(212,160,23,0.1)]">
+              <h3 className="font-signature text-5xl text-[#B8941F] dark:text-gold-light select-none drop-shadow-[0_2px_4px_rgba(212,160,23,0.1)]">
                 Thank You!
               </h3>
               
               {/* Heading */}
-              <h4 className="font-extrabold text-xs tracking-[0.25em] text-white uppercase">
+              <h4 className="font-extrabold text-xs tracking-[0.25em] text-[#111318] dark:text-white uppercase">
                 THANK YOU FOR VISITING I APPRECIATE YOUR TIME AND INTEREST.
               </h4>
 
               {/* Message */}
-              <p className="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xl">
+              <p className="text-[#4B5563] dark:text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xl">
                 Thank you for visiting my portfolio. I truly appreciate your time and interest. Whether you have a project idea, collaboration opportunity, or simply want to connect, I would be delighted to hear from you. Let's create something extraordinary together.
               </p>
 
               {/* Gold handwritten signature */}
               <div className="pt-2">
-                <span className="font-signature text-2xl text-gold-light select-none">
+                <span className="font-signature text-2xl text-[#B8941F] dark:text-gold-light select-none">
                   — {profile.name}
                 </span>
               </div>

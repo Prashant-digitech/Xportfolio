@@ -55,11 +55,11 @@ export default function BeforeAfter() {
         {/* SECTION 06: BEFORE AFTER SHOWCASE */}
         <div className="flex flex-col items-center text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-[0.4em] text-gold-light">Interface Transformation</span>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-white">
+          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#111318] dark:text-white">
             BEFORE <span className="text-gradient-gold">AFTER</span>
           </h2>
           <div className="w-16 h-[2px] bg-gold mt-4 shadow-[0_0_8px_#D4A017]" />
-          <p className="text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
+          <p className="text-[#4B5563] dark:text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
             Drag the handle in the center to reveal the transition from initial wireframe sketch to final high-fidelity product.
           </p>
         </div>

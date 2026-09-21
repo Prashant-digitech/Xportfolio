@@ -98,40 +98,51 @@ export default function DesignProcess() {
   ];
 
   return (
-    <section id="process" className="relative py-24 bg-[#f5f5f5] dark:bg-[#090A0E] text-black dark:text-white transition-colors duration-300">
+    <section id="process" className="relative py-24 bg-[#FAFAF7] dark:bg-[#090A0E] text-[#111318] dark:text-white transition-colors duration-250">
       <div className="absolute top-[30%] right-[10%] w-[300px] h-[300px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
-        {/* SECTION 04: DESIGN PROCESS EXPERIENCE */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-[0.4em] text-gold-light">Creative Roadmap</span>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-white">
-            DESIGN <span className="text-gradient-gold">PROCESS</span>
+        {/* SECTION 04: DESIGN PROCESS EXPERIENCE (Sections 34, 38, 39) */}
+        <div className="flex flex-col items-center text-center mb-14">
+          <span className="text-xs font-bold uppercase tracking-[0.4em] text-[#B8941F] dark:text-gold-light">Creative Roadmap</span>
+          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#111318] dark:text-white">
+            DESIGN <span className="text-[#B7791F] dark:text-[#D4AF37]">PROCESS</span>
           </h2>
-          <div className="w-16 h-[2px] bg-gold mt-4 shadow-[0_0_8px_#D4A017]" />
-          <p className="text-gray-400 mt-4 max-w-xl text-sm leading-relaxed">
-            Click on any phase below to expand the detailed UX case study files and metrics.
+          <div className="w-16 h-[2px] bg-[#D4AF37] mt-4 shadow-[0_0_8px_#D4A017]" />
+          <p className="text-[#4B5563] dark:text-[#D1D5DB] mt-4 max-w-2xl text-base sm:text-lg leading-relaxed">
+            Click on any phase below to expand the detailed UX case study files, architecture decisions, and verified metrics.
           </p>
         </div>
 
-        {/* Horizontal journey timeline steps */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12 border-b border-black/5 dark:border-white/5 pb-8">
-          {steps.map((s, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveStep(idx)}
-              className={`flex items-center space-x-3 px-5 py-3 rounded-lg border text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-                activeStep === idx
-                  ? "bg-gold text-black border-gold shadow-[0_0_15px_rgba(212,160,23,0.35)] scale-105"
-                  : "bg-black/10 border-white/5 text-gray-400 hover:border-gold hover:text-white"
-              }`}
-            >
-              <span>{s.icon}</span>
-              <span className="font-mono text-[10px] text-gray-500">{s.step}</span>
-              <span>{s.title}</span>
-            </button>
-          ))}
+        {/* Horizontal journey timeline steps (Sections 35, 36, 37) */}
+        <div className="w-full overflow-x-auto no-scrollbar pb-4 mb-10">
+          <div className="flex items-center justify-start lg:justify-center gap-3 min-w-max px-2">
+            {steps.map((s, idx) => {
+              const isSelected = activeStep === idx;
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setActiveStep(idx)}
+                  className={`min-w-[150px] sm:min-w-[170px] h-[48px] flex items-center justify-center space-x-3 px-4 py-2.5 rounded-xl border-[1.5px] text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-gold ${
+                    isSelected
+                      ? "bg-[#D4AF37] text-[#111318] dark:text-[#000000] border-[#D4AF37] shadow-[0_4px_16px_rgba(212,175,55,0.35)] scale-[1.03]"
+                      : "bg-[#FFFFFF] dark:bg-[#0F1118] border-[#D6B95A] dark:border-[rgba(212,175,55,0.45)] text-[#374151] dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:bg-[#FFF9E8] dark:hover:bg-[#171A21] hover:border-[#D4AF37] hover:text-[#111318]"
+                  }`}
+                  aria-pressed={isSelected}
+                  aria-label={`Step ${s.step}: ${s.title}`}
+                >
+                  <span className={isSelected ? "text-[#111318] dark:text-[#000000]" : "text-[#6B7280] dark:text-[#D4AF37]"}>
+                    {s.icon}
+                  </span>
+                  <span className={`font-mono text-[11px] ${isSelected ? "text-[#111318] dark:text-[#000000] font-bold" : "text-[#B8941F] dark:text-[#F5BA42]"}`}>
+                    {s.step}
+                  </span>
+                  <span>{s.title}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* SECTION 05: CASE STUDY EXPERIENCE DETAIL */}
@@ -143,18 +154,18 @@ export default function DesignProcess() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.35 }}
-              className="p-8 rounded-lg glass-card border border-white/10 bg-black/40 relative"
+              className="p-6 sm:p-8 rounded-2xl border-[1.5px] border-[#D4AF37]/50 dark:border-[rgba(212,175,55,0.38)] bg-white dark:bg-[#0F1118] shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.6)] text-[#111318] dark:text-white relative"
             >
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#00F0FF] shadow-[0_0_10px_#00F0FF]" />
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#D4AF37] shadow-[0_0_10px_#D4AF37]" />
               
-              <div className="mb-6 border-b border-white/5 pb-4">
-                <span className="text-xs font-mono text-gold-light block uppercase tracking-widest mb-1">
+              <div className="mb-6 border-b border-black/5 dark:border-white/5 pb-4">
+                <span className="text-xs font-mono text-[#B8941F] dark:text-gold-light block uppercase tracking-widest mb-1 font-bold">
                   PHASE_{steps[activeStep].step} // CASE_STUDY_METRICS
                 </span>
-                <h3 className="text-2xl font-black text-white uppercase tracking-wider">
+                <h3 className="text-2xl font-black text-[#111318] dark:text-white uppercase tracking-wider">
                   {steps[activeStep].title} Stage Analysis
                 </h3>
-                <p className="text-xs text-gray-400 mt-2 font-medium">
+                <p className="text-sm text-[#4B5563] dark:text-[#D1D5DB] mt-2 font-medium">
                   {steps[activeStep].subtitle}
                 </p>
               </div>
@@ -163,15 +174,15 @@ export default function DesignProcess() {
                 {/* Challenge & Research */}
                 <div className="space-y-6">
                   <div>
-                    <h4 className="text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-2 font-mono">// Core Challenge</h4>
-                    <p className="text-xs text-gray-300 leading-relaxed bg-white/[0.01] p-4 rounded border border-white/5">
+                    <h4 className="text-[10px] uppercase font-bold text-[#B8941F] dark:text-gray-400 tracking-wider mb-2 font-mono">// Core Challenge</h4>
+                    <p className="text-xs text-[#374151] dark:text-gray-300 leading-relaxed bg-[#F4F1E8] dark:bg-white/[0.02] p-4 rounded-xl border border-black/5 dark:border-white/5">
                       {steps[activeStep].challenge}
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-2 font-mono">// UX Research & Personas</h4>
-                    <p className="text-xs text-gray-300 leading-relaxed bg-white/[0.01] p-4 rounded border border-white/5">
+                    <h4 className="text-[10px] uppercase font-bold text-[#B8941F] dark:text-gray-400 tracking-wider mb-2 font-mono">// UX Research & Personas</h4>
+                    <p className="text-xs text-[#374151] dark:text-gray-300 leading-relaxed bg-[#F4F1E8] dark:bg-white/[0.02] p-4 rounded-xl border border-black/5 dark:border-white/5">
                       {steps[activeStep].research}
                     </p>
                   </div>
@@ -181,29 +192,29 @@ export default function DesignProcess() {
                 <div className="space-y-6">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <h4 className="text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-2 font-mono">// Business Goal</h4>
-                      <p className="text-xs text-gray-300 leading-relaxed bg-white/[0.01] p-4 rounded border border-white/5">
+                      <h4 className="text-[10px] uppercase font-bold text-[#B8941F] dark:text-gray-400 tracking-wider mb-2 font-mono">// Business Goal</h4>
+                      <p className="text-xs text-[#374151] dark:text-gray-300 leading-relaxed bg-[#F4F1E8] dark:bg-white/[0.02] p-4 rounded-xl border border-black/5 dark:border-white/5">
                         {steps[activeStep].goal}
                       </p>
                     </div>
                     <div>
-                      <h4 className="text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-2 font-mono">// Strategy & Flow</h4>
-                      <p className="text-xs text-gray-300 leading-relaxed bg-white/[0.01] p-4 rounded border border-white/5">
+                      <h4 className="text-[10px] uppercase font-bold text-[#B8941F] dark:text-gray-400 tracking-wider mb-2 font-mono">// Strategy & Flow</h4>
+                      <p className="text-xs text-[#374151] dark:text-gray-300 leading-relaxed bg-[#F4F1E8] dark:bg-white/[0.02] p-4 rounded-xl border border-black/5 dark:border-white/5">
                         {steps[activeStep].flow}
                       </p>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-4 border-t border-white/5 pt-6">
+                  <div className="grid grid-cols-3 gap-4 border-t border-black/5 dark:border-white/5 pt-6">
                     <div className="col-span-2">
-                      <h4 className="text-[10px] uppercase font-bold text-gray-500 tracking-wider mb-1 font-mono">// Visual Prototype Output</h4>
-                      <p className="text-xs text-gray-200 font-bold">
+                      <h4 className="text-[10px] uppercase font-bold text-[#B8941F] dark:text-gray-400 tracking-wider mb-1 font-mono">// Visual Prototype Output</h4>
+                      <p className="text-xs text-[#111318] dark:text-gray-200 font-bold">
                         {steps[activeStep].result}
                       </p>
                     </div>
                     <div className="text-right flex flex-col justify-center">
-                      <span className="text-[9px] uppercase font-bold text-gold tracking-widest block mb-1 font-mono">Verified Impact</span>
-                      <span className="text-sm font-black text-[#00F0FF]">{steps[activeStep].metrics}</span>
+                      <span className="text-[9px] uppercase font-bold text-[#B8941F] dark:text-gold tracking-widest block mb-1 font-mono">Verified Impact</span>
+                      <span className="text-sm font-black text-[#2563EB] dark:text-[#00F0FF]">{steps[activeStep].metrics}</span>
                     </div>
                   </div>
                 </div>
