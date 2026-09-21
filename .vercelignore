@@ -1,0 +1,11 @@
+.git
+.next
+node_modules
+*.exe
+portfolio.exe
+personal
+test-results
+*.log
+make.env
+make.txt
+_
