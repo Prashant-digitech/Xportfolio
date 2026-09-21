@@ -1,0 +1,7 @@
+fix: enforce high-contrast adaptive light/dark theme across all cards and viewports
+
+- globals.css: global h1-h6 color enforcement, adaptive-card helper class
+- About.tsx: fixed text-white to dark:text-white across biography, expertise, drives, education, skills
+- Services.tsx: service cards white bg in light mode, dark gradient only in dark mode
+- Work.tsx: UXProjectCard white bg in light mode with dark text; info bar adaptive
+- ProjectShowcase.tsx: video showreel panel and presentation deck adaptive
