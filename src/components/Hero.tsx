@@ -1,0 +1,330 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import { ArrowUpRight, Phone, Mail, MapPin, Layers, Film, PenTool, Award, Users, CheckCircle, Briefcase } from "lucide-react";
+import { ProfileData } from "@/app/page";
+import { useMagnetic, useTilt, useCountUp } from "@/hooks/useAnimations";
+import { motion } from "framer-motion";
+
+interface HeroProps {
+  profile: ProfileData;
+}
+
+export default function Hero({ profile }: HeroProps) {
+  const hireBtn = useMagnetic();
+  const aboutBtn = useMagnetic();
+  const portraitTilt = useTilt();
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const softwareIcons = [
+    { name: "Ps", color: "bg-[#001d3d] border-[#00f0ff] text-[#00f0ff]", style: "top-[15%] right-[5%]", delay: "0s" },
+    { name: "Ai", color: "bg-[#2c1a04] border-[#ff9f1c] text-[#ff9f1c]", style: "top-[45%] right-[-10px]", delay: "1.5s" },
+    { name: "Ae", color: "bg-[#1d003d] border-[#9d4edd] text-[#9d4edd]", style: "bottom-[20%] right-[5%]", delay: "0.8s" },
+    { name: "Pr", color: "bg-[#210029] border-[#ea00d9] text-[#ea00d9]", style: "bottom-[5%] left-[20%]", delay: "2.1s" },
+  ];
+
+  const stats = [
+    { value: profile.projects || "50+", label: "Projects Completed", icon: <Briefcase className="w-5 h-5 text-gold" /> },
+    { value: "30+", label: "Happy Clients", icon: <Users className="w-5 h-5 text-gold" /> },
+    { value: profile.experience || "3+", label: "Years Experience", icon: <Award className="w-5 h-5 text-gold" /> },
+    { value: profile.certifications || "10+", label: "Certifications", icon: <CheckCircle className="w-5 h-5 text-gold" /> },
+  ];
+
+  const nameParts = profile.name.split(" ");
+  const firstName = nameParts[0] || "PRASHANT";
+  const lastName = nameParts.slice(1).join(" ") || "SISODHIYA";
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 25 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  return (
+    <section id="home" className="relative pt-32 pb-16 overflow-hidden bg-[#f8fafc] dark:bg-[#050814] text-[#0a1128] dark:text-white min-h-screen flex flex-col justify-between transition-colors duration-300">
+      {/* Decorative Golden Blur Background */}
+      <div className="absolute top-[20%] left-[-10%] w-[300px] h-[300px] rounded-full bg-[#FF6B00]/5 blur-[100px] pointer-events-none animate-pulse-slow" />
+      <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] rounded-full bg-[#00F0FF]/5 blur-[120px] pointer-events-none animate-pulse-slow" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full flex-grow flex flex-col justify-center">
+        {/* Main Grid: Hero content */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Left Panel */}
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+            className="lg:col-span-7 flex flex-col items-start space-y-6 z-10"
+          >
+            {/* Small badge */}
+            <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#0B1528]/5 dark:bg-white/5 border border-[#D4AF37]/30 text-[#0a1128] dark:text-gray-300 text-xs font-bold tracking-wider uppercase">
+              <span>👋 Hello, I'm</span>
+            </motion.div>
+
+            {/* Main Header Name */}
+            <motion.h1 variants={fadeInUp} className="text-5xl sm:text-7xl font-black tracking-tight leading-tight select-none">
+              <span className="block text-[#0a1128] dark:text-white">{firstName}</span>
+              <span className="block text-gradient-orange drop-shadow-[0_4px_12px_rgba(255,107,0,0.25)]">{lastName}</span>
+            </motion.h1>
+
+            {/* Subtitle capsule */}
+            <motion.div variants={fadeInUp} className="px-4 py-2 border border-[#D4AF37]/40 rounded-full bg-[#0B1528]/5 dark:bg-gold/5 shadow-[0_0_15px_rgba(212,160,23,0.1)]">
+              <p className="text-xs sm:text-sm font-extrabold tracking-[0.25em] text-[#FF6B00] dark:text-gold-light">
+                {profile.title}
+              </p>
+            </motion.div>
+
+            {/* Narrative description */}
+            <motion.p variants={fadeInUp} className="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-xl leading-relaxed">
+              <span className="text-[#0a1128] dark:text-white font-bold block mb-1">Crafting Digital Experiences That Inspire</span>
+              Helping brands grow through intuitive UI/UX design, engaging video editing, and impactful visual storytelling. Combine technical precision with luxury visual design.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 pt-2">
+              <button
+                ref={hireBtn.ref}
+                onMouseMove={hireBtn.handleMouseMove}
+                onMouseLeave={hireBtn.handleMouseLeave}
+                style={hireBtn.style}
+                onClick={() => scrollToSection("contact")}
+                className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#FF6B00] via-[#FF8800] to-[#D4AF37] hover:from-[#FF7A00] hover:to-[#F5BA42] text-white font-black text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(255,107,0,0.4)] hover:shadow-[0_0_35px_rgba(255,107,0,0.8)] hover:scale-105 transition-all duration-300 cursor-pointer flex items-center space-x-2"
+              >
+                <span>Hire Me</span>
+                <ArrowUpRight className="w-4 h-4 stroke-[3]" />
+              </button>
+              <button
+                ref={aboutBtn.ref}
+                onMouseMove={aboutBtn.handleMouseMove}
+                onMouseLeave={aboutBtn.handleMouseLeave}
+                style={aboutBtn.style}
+                onClick={() => scrollToSection("about")}
+                className="px-8 py-3.5 rounded-xl bg-transparent text-[#0a1128] dark:text-white border border-[#0a1128]/20 dark:border-white/10 hover:border-[#FF6B00] hover:text-[#FF6B00] font-bold text-sm uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center space-x-2"
+              >
+                <span>About Me</span>
+              </button>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Panel: Portrait with halo, icons, UI screens */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 relative flex justify-center lg:justify-end items-center"
+          >
+            {/* Custom Pulsing Hero Halo Effect */}
+            <div className="hero-halo absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0" />
+            
+            <div 
+              ref={portraitTilt.ref}
+              onMouseMove={portraitTilt.handleMouseMove}
+              onMouseLeave={portraitTilt.handleMouseLeave}
+              style={portraitTilt.style}
+              className="relative w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] flex items-center justify-center cursor-pointer transition-transform duration-300 ease-out z-10"
+            >
+              {/* Rotating glowing golden circle / halo */}
+              <div className="absolute inset-0 rounded-full border-2 border-dashed border-gold/40 animate-spin-slow opacity-60 pointer-events-none" />
+              <div className="absolute inset-2 rounded-full border border-gold/25 shadow-[0_0_40px_rgba(212,160,23,0.2)] pointer-events-none" />
+
+              {/* Portrait Container */}
+              <div className="relative w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] rounded-full overflow-hidden border-2 border-gold shadow-[0_0_35px_rgba(212,160,23,0.3)] bg-gradient-to-b from-[#0d0d0d] to-[#050505]">
+                <Image
+                  src="/images/profile/pic.png"
+                  alt="Prashant Sisodhiya"
+                  fill
+                  priority
+                  className="object-cover object-top brightness-[1.05] contrast-[1.05]"
+                />
+              </div>
+
+              {/* Floating Software Icons */}
+              {softwareIcons.map((ico, idx) => (
+                <div
+                  key={idx}
+                  className={`absolute w-10 h-10 rounded-md border flex items-center justify-center font-bold text-sm shadow-lg ${ico.color} ${ico.style} animate-float`}
+                  style={{ animationDelay: ico.delay }}
+                >
+                  {ico.name}
+                </div>
+              ))}
+
+              {/* Floating Figma Icon */}
+              <div className="absolute top-[5%] left-[5%] w-10 h-10 rounded-md border border-white/10 bg-[#0d0d0d] shadow-lg flex items-center justify-center animate-float" style={{ animationDelay: "2.5s" }}>
+                <svg className="w-5 h-5" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 0C10.7157 0 4 6.71573 4 15C4 20.4069 6.86438 25.1423 11.2 27.8C6.86438 30.4577 4 35.1931 4 40.6C4 48.8843 10.7157 55.6 19 55.6C27.2843 55.6 34 48.8843 34 40.6C34 35.1931 31.1356 30.4577 26.8 27.8C31.1356 25.1423 34 20.4069 34 15C34 6.71573 27.2843 0 19 0Z" fill="url(#figma_grad)" />
+                  <defs>
+                    <linearGradient id="figma_grad" x1="4" y1="0" x2="34" y2="55.6" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#F24E1E" />
+                      <stop offset="0.25" stopColor="#FF7262" />
+                      <stop offset="0.5" stopColor="#A259FF" />
+                      <stop offset="0.75" stopColor="#1ABC9C" />
+                      <stop offset="1" stopColor="#19BC9C" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+
+              {/* Floating UI Card Mockup */}
+              <div className="absolute top-[75%] right-[-10px] w-24 h-16 rounded-md glass-card-blue flex flex-col justify-between p-1.5 shadow-md scale-90 opacity-80 hover:opacity-100 hover:scale-100 transition-all duration-300 animate-float" style={{ animationDelay: "1s" }}>
+                <div className="flex items-center space-x-1 border-b border-white/10 pb-1">
+                  <div className="w-1 h-1 rounded-full bg-red-500" />
+                  <div className="w-1 h-1 rounded-full bg-yellow-500" />
+                  <div className="w-1 h-1 rounded-full bg-green-500" />
+                </div>
+                <div className="flex-grow flex flex-col justify-center space-y-1">
+                  <div className="h-1 bg-white/20 rounded w-8" />
+                  <div className="h-1.5 bg-[#00F0FF]/35 rounded w-12" />
+                </div>
+              </div>
+
+            </div>
+          </motion.div>
+        </div>
+
+        {/* What I Do Capsules & Achievements Panel */}
+        <div className="mt-16 border-t border-black/5 dark:border-white/10 pt-12 flex flex-col space-y-8">
+          
+          {/* Row 1: What I Do Grid */}
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400 mb-6">What I Do</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Card 1: UI/UX */}
+              <div 
+                onClick={() => scrollToSection("services")}
+                className="group p-6 rounded-lg glass-card border border-white/5 hover:border-neon-blue hover:shadow-[0_0_20px_rgba(0,240,255,0.15)] transition-all duration-300 cursor-pointer"
+              >
+                <div className="flex items-center space-x-4 mb-3">
+                  <div className="w-10 h-10 rounded-md bg-[#00d4ff]/10 border border-[#00d4ff]/20 flex items-center justify-center text-neon-blue group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+                    <Layers className="w-5 h-5" />
+                  </div>
+                  <h4 className="font-bold tracking-wider text-black dark:text-white group-hover:text-neon-blue transition-colors duration-300">UI/UX Design</h4>
+                </div>
+                <p className="text-xs text-gray-400 dark:text-gray-400 leading-relaxed">
+                  Designing intuitive, user-centered dashboards, websites, and mobile applications with system flow consistency.
+                </p>
+              </div>
+
+              {/* Card 2: Video Editing */}
+              <div 
+                onClick={() => scrollToSection("services")}
+                className="group p-6 rounded-lg glass-card border border-white/5 hover:border-neon-violet hover:shadow-[0_0_20px_rgba(157,78,221,0.15)] transition-all duration-300 cursor-pointer"
+              >
+                <div className="flex items-center space-x-4 mb-3">
+                  <div className="w-10 h-10 rounded-md bg-[#9d4edd]/10 border border-[#9d4edd]/20 flex items-center justify-center text-neon-violet group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(157,78,221,0.2)]">
+                    <Film className="w-5 h-5" />
+                  </div>
+                  <h4 className="font-bold tracking-wider text-black dark:text-white group-hover:text-neon-violet transition-colors duration-300">Video Editing</h4>
+                </div>
+                <p className="text-xs text-gray-400 dark:text-gray-400 leading-relaxed">
+                  Crafting cinematic video transitions, YouTube content, commercial reels, and customized motion animations.
+                </p>
+              </div>
+
+              {/* Card 3: Graphics Design */}
+              <div 
+                onClick={() => scrollToSection("services")}
+                className="group p-6 rounded-lg glass-card border border-white/5 hover:border-gold hover:shadow-[0_0_20px_rgba(212,160,23,0.15)] transition-all duration-300 cursor-pointer"
+              >
+                <div className="flex items-center space-x-4 mb-3">
+                  <div className="w-10 h-10 rounded-md bg-[#D4A017]/10 border border-[#D4A017]/20 flex items-center justify-center text-gold group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(212,160,23,0.2)]">
+                    <PenTool className="w-5 h-5" />
+                  </div>
+                  <h4 className="font-bold tracking-wider text-black dark:text-white group-hover:text-gold transition-colors duration-300">Graphics Design</h4>
+                </div>
+                <p className="text-xs text-gray-400 dark:text-gray-400 leading-relaxed">
+                  Developing high-end branding materials, logos, poster campaigns, and luxury marketing assets.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Row 2: Achievements Stats Panel */}
+          <div className="p-8 rounded-lg glass-card border border-white/5 bg-gradient-to-r from-white/[0.01] to-transparent">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
+              {stats.map((stat, idx) => (
+                <StatCounter key={idx} value={stat.value} label={stat.label} icon={stat.icon} />
+              ))}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* Bottom Bar: Phone, Email, Location */}
+      <div className="border-t border-black/5 dark:border-white/5 mt-12 bg-[#f5f5f5]/80 dark:bg-[#080808]/50 py-4 w-full">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs text-gray-500 dark:text-gray-400 font-semibold">
+          <div className="flex flex-wrap justify-center items-center gap-6">
+            <div className="flex items-center space-x-2">
+              <Phone className="w-4 h-4 text-gold" />
+              <a href={`tel:${profile.phone}`} className="hover:text-gold dark:hover:text-gold transition-colors duration-200">{profile.phone}</a>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Mail className="w-4 h-4 text-gold" />
+              <a href={`mailto:${profile.email}`} className="hover:text-gold dark:hover:text-gold transition-colors duration-200">{profile.email}</a>
+            </div>
+            <div className="flex items-center space-x-2">
+              <MapPin className="w-4 h-4 text-gold" />
+              <span>{profile.location}</span>
+            </div>
+          </div>
+          
+          <button 
+            onClick={() => scrollToSection("contact")}
+            className="flex items-center space-x-2 px-4 py-2 rounded-full border border-gold/30 hover:border-gold hover:text-white transition-all duration-300 text-gold-light cursor-pointer shadow-[0_0_10px_rgba(212,160,23,0.1)] hover:shadow-[0_0_15px_rgba(212,160,23,0.3)] font-bold uppercase tracking-wider text-[10px]"
+          >
+            <span>Let's Work Together</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Sub-component for viewport-triggered count up animations
+function StatCounter({ value, label, icon }: { value: string; label: string; icon: React.ReactNode }) {
+  const targetNumber = parseInt(value) || 0;
+  const suffix = value.replace(/[0-9]/g, ""); // get symbol like '+'
+  const { count, elementRef } = useCountUp(targetNumber, 1500);
+
+  return (
+    <div ref={elementRef} className="flex flex-col md:flex-row items-center md:items-start md:space-x-4 space-y-2 md:space-y-0">
+      <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/25 flex items-center justify-center flex-shrink-0 shadow-[inset_0_1px_2px_rgba(255,255,255,0.05)]">
+        {icon}
+      </div>
+      <div>
+        <span className="block text-3xl font-extrabold text-black dark:text-white tracking-tight">
+          {count}{suffix}
+        </span>
+        <span className="text-xs font-semibold text-gray-500 uppercase tracking-widest">{label}</span>
+      </div>
+    </div>
+  );
+}

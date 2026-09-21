@@ -1,65 +1,200 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Services from "@/components/Services";
+import Work from "@/components/Work";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+import BackgroundParticles from "@/components/BackgroundParticles";
+import SectionSeparator from "@/components/SectionSeparator";
+import FloatingAssistant from "@/components/FloatingAssistant";
+
+// Advanced Sections
+import CustomCursor from "@/components/CustomCursor";
+import RecruiterLayout from "@/components/RecruiterLayout";
+import CommandCenter from "@/components/CommandCenter";
+import DesignDNA from "@/components/DesignDNA";
+import SkillUniverse from "@/components/SkillUniverse";
+import DesignProcess from "@/components/DesignProcess";
+import BeforeAfter from "@/components/BeforeAfter";
+import DesignSystemShowcase from "@/components/DesignSystemShowcase";
+import FigmaLab from "@/components/FigmaLab";
+import CertificationVault from "@/components/CertificationVault";
+import ClientTrust from "@/components/ClientTrust";
+import ProjectShowcase from "@/components/ProjectShowcase";
+import AILab from "@/components/AILab";
+import ThankYouSign from "@/components/ThankYouSign";
+
+export interface ProfileData {
+  name: string;
+  title: string;
+  phone: string;
+  email: string;
+  location: string;
+  dob: string;
+  accent: "gold" | "blue" | "violet";
+  status: string;
+  experience: string;
+  projects: string;
+  certifications: string;
+  focus: string[];
+}
 
 export default function Home() {
+  const [profile, setProfile] = useState<ProfileData>({
+    name: "PRASHANT SISODHIYA",
+    title: "UI/UX DESIGNER • VIDEO EDITOR • GRAPHICS DESIGNER",
+    phone: "7006998128",
+    email: "psisodhiya01@gmail.com",
+    location: "Vadodara, India",
+    dob: "30-01-1986",
+    accent: "gold",
+    status: "Available for Projects",
+    experience: "3+ Years",
+    projects: "50+",
+    certifications: "10+",
+    focus: ["AI UX", "Design Systems", "Creative Direction"],
+  });
+
+  const [recruiterMode, setRecruiterMode] = useState<boolean>(false);
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const savedProfile = localStorage.getItem("profile");
+    if (savedProfile) {
+      try {
+        setProfile(JSON.parse(savedProfile));
+      } catch (e) {
+        console.error("Failed to parse profile", e);
+      }
+    }
+
+    const savedMode = localStorage.getItem("recruiterMode");
+    if (savedMode) {
+      setRecruiterMode(savedMode === "true");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      document.documentElement.setAttribute("data-accent", profile.accent);
+    }
+  }, [profile.accent, mounted]);
+
+  const updateProfile = (newProfile: ProfileData) => {
+    setProfile(newProfile);
+    localStorage.setItem("profile", JSON.stringify(newProfile));
+  };
+
+  const toggleRecruiterMode = (val: boolean) => {
+    setRecruiterMode(val);
+    localStorage.setItem("recruiterMode", String(val));
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      {/* Custom Cursor for Ultra Premium feel (disabled in recruiter mode) */}
+      {mounted && !recruiterMode && <CustomCursor />}
+
+      {/* Dynamic Animated Particles in Background (disabled in recruiter mode) */}
+      {mounted && !recruiterMode && <BackgroundParticles accent={profile.accent} />}
+
+      {/* Main layout */}
+      <div className="relative z-10 min-h-screen flex flex-col text-[#171717] dark:text-white transition-colors duration-300">
+        {/* Sticky Header */}
+        <Navbar 
+          profile={profile} 
+          onUpdateProfile={updateProfile} 
+          recruiterMode={recruiterMode}
+          onToggleRecruiterMode={toggleRecruiterMode}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        {/* Content sections */}
+        <main className="flex-grow">
+          {recruiterMode ? (
+            <RecruiterLayout profile={profile} />
+          ) : (
+            <>
+              {/* Cinematic Portfolio */}
+              <Hero profile={profile} />
+              <SectionSeparator />
+              <About profile={profile} />
+              <SectionSeparator />
+              
+              {/* SECTION 01 & 09: AI Command Center & Tool Stack */}
+              <CommandCenter profile={profile} />
+              <SectionSeparator />
+
+              {/* SECTION 02: Design DNA Radar Chart */}
+              <DesignDNA />
+              <SectionSeparator />
+
+              {/* SECTION 03: Skill Universe Constellation */}
+              <SkillUniverse profile={profile} />
+              <SectionSeparator />
+
+              {/* SECTION 04 & 05: Design Process & Case Study Experience */}
+              <DesignProcess />
+              <SectionSeparator />
+
+              {/* SECTION 06: Before After Slider */}
+              <BeforeAfter />
+              <SectionSeparator />
+
+              {/* SECTION 07: Design System Showcase */}
+              <DesignSystemShowcase />
+              <SectionSeparator />
+
+              {/* SECTION 08: Figma Lab */}
+              <FigmaLab />
+              <SectionSeparator />
+
+              {/* SECTION 11 & 12: Certification Vault & Experience Journey */}
+              <CertificationVault />
+              <SectionSeparator />
+
+              {/* SECTION 13 & 14: Client Trust Section & Testimonials */}
+              <ClientTrust />
+              <SectionSeparator />
+
+              {/* SECTION 15, 16, 17, 18, 21: Featured Projects, Filters, Showreel, Graphics Showcase, Presentations */}
+              <ProjectShowcase profile={profile} />
+              <SectionSeparator />
+
+              {/* SECTION 19, 20, 22: AI Future Vision, Prompt Lab, AI Projects Lab */}
+              <AILab />
+              <SectionSeparator />
+              
+              {/* Core Legacy Fallbacks */}
+              <Services />
+              <SectionSeparator />
+              <Work />
+              <SectionSeparator />
+              
+              {/* Contact Experience */}
+              <Contact profile={profile} />
+              <SectionSeparator />
+
+              {/* SECTION 26: Thank You Experience */}
+              <ThankYouSign profile={profile} />
+            </>
+          )}
+        </main>
+
+        {/* Brand Footer */}
+        <Footer profile={profile} />
+
+        {/* Floating Utilities */}
+        <FloatingAssistant 
+          profile={profile} 
+          recruiterMode={recruiterMode}
+          onToggleRecruiterMode={toggleRecruiterMode}
+        />
+      </div>
+    </>
   );
 }
