@@ -1,7 +1,7 @@
-fix: enforce high-contrast adaptive light/dark theme across all cards and viewports
+feat: replace all project video and graphics thumbnails with high-quality cinematic posters
 
-- globals.css: global h1-h6 color enforcement, adaptive-card helper class
-- About.tsx: fixed text-white to dark:text-white across biography, expertise, drives, education, skills
-- Services.tsx: service cards white bg in light mode, dark gradient only in dark mode
-- Work.tsx: UXProjectCard white bg in light mode with dark text; info bar adaptive
-- ProjectShowcase.tsx: video showreel panel and presentation deck adaptive
+- project_video_travel_cinematic.jpg: cinematic travel portfolio poster (786KB)
+- project_graphics_promo_poster.jpg: corporate pitch slide deck collage (765KB)
+- project_video_fitness_promo.jpg: high-energy fitness promo poster (949KB)
+- project_video_product_ad.jpg: luxury product ad with After Effects overlay (684KB)
+- project_video_wedding_highlights.jpg: luxury wedding highlight film poster (784KB)
