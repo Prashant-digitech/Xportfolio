@@ -610,8 +610,8 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
             </p>
           </div>
 
-          <div className="border-[1.5px] border-[#D4AF37]/50 rounded-2xl overflow-hidden bg-gradient-to-br from-[#0D1B38] to-[#050C1A] shadow-2xl">
-            <div className="bg-[#081226] border-b border-white/10 flex flex-wrap">
+          <div className="border-[1.5px] border-[#D4AF37]/50 rounded-2xl overflow-hidden bg-white dark:bg-gradient-to-br dark:from-[#0D1B38] dark:to-[#050C1A] shadow-2xl">
+            <div className="bg-[#F0F4F8] dark:bg-[#081226] border-b border-black/10 dark:border-white/10 flex flex-wrap">
               {[
                 { id: "showreel", label: "Play Showreel", icon: <Play className="w-3.5 h-3.5" /> },
                 { id: "bts", label: "Behind The Scenes", icon: <Layers className="w-3.5 h-3.5" /> },
@@ -620,8 +620,8 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                 <button
                   key={tab.id}
                   onClick={() => setShowreelTab(tab.id as "showreel" | "bts" | "motion")}
-                  className={`px-6 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center space-x-2 border-r border-white/5 transition-colors cursor-pointer ${
-                    showreelTab === tab.id ? "bg-gradient-to-r from-[#FF6B00] to-[#D4AF37] text-white font-extrabold" : "text-slate-300 hover:bg-white/5 hover:text-white"
+                  className={`px-6 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center space-x-2 border-r border-black/5 dark:border-white/5 transition-colors cursor-pointer ${
+                    showreelTab === tab.id ? "bg-gradient-to-r from-[#FF6B00] to-[#D4AF37] text-white font-extrabold" : "text-[#374151] dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5 hover:text-[#111318] dark:hover:text-white"
                   }`}
                 >
                   {tab.icon}
@@ -760,7 +760,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
             </p>
           </div>
 
-          <div className="relative border-[1.5px] border-[#D4AF37]/50 rounded-2xl bg-gradient-to-br from-[#0D1B38] to-[#050C1A] p-6 sm:p-8 md:p-10 shadow-2xl overflow-hidden min-h-[350px]">
+          <div className="relative border-[1.5px] border-[#D4AF37]/50 rounded-2xl bg-white dark:bg-gradient-to-br dark:from-[#0D1B38] dark:to-[#050C1A] p-6 sm:p-8 md:p-10 shadow-2xl overflow-hidden min-h-[350px]">
             <div className="absolute top-4 left-6 text-[9px] font-mono text-slate-400 uppercase tracking-widest font-bold">
               SLIDE_DECK_FRAME // SHEET_0{pptSlideIdx + 1}_OF_03
             </div>
@@ -773,18 +773,18 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.3 }}
-                  className="w-full max-w-[600px] border border-[#D4AF37]/40 bg-[#0B1736]/60 rounded-2xl p-6 relative shadow-[0_0_20px_rgba(212,175,55,0.15)] text-center"
+                  className="w-full max-w-[600px] border border-[#D4AF37]/40 bg-[#F4F8FF] dark:bg-[#0B1736]/60 rounded-2xl p-6 relative shadow-[0_0_20px_rgba(212,175,55,0.15)] text-center"
                 >
                   <span className="text-[9px] font-mono text-[#F5BA42] uppercase tracking-widest block mb-1">
                     {pptSlides[pptSlideIdx].sub}
                   </span>
-                  <h3 className="text-lg sm:text-xl font-black text-white uppercase tracking-wider mb-6">
+                  <h3 className="text-lg sm:text-xl font-black text-[#111318] dark:text-white uppercase tracking-wider mb-6">
                     {pptSlides[pptSlideIdx].title}
                   </h3>
                   
                   <div className="space-y-3 text-left max-w-md mx-auto">
                     {pptSlides[pptSlideIdx].points.map((p, pIdx) => (
-                      <div key={pIdx} className="flex items-start space-x-2.5 text-xs text-slate-200">
+                      <div key={pIdx} className="flex items-start space-x-2.5 text-xs text-[#374151] dark:text-slate-200">
                         <span className="h-1.5 w-1.5 rounded-full bg-[#FF6B00] mt-1.5 shrink-0" />
                         <p className="leading-relaxed">{p}</p>
                       </div>

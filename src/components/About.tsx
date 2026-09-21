@@ -197,9 +197,9 @@ export default function About({ profile }: AboutProps) {
             <div className="p-8 rounded-lg glass-card border border-white/5 relative">
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold-light to-transparent" />
               <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-light mb-4">Biography</h3>
-              <div className="space-y-4 text-gray-400 text-sm sm:text-base leading-relaxed">
+              <div className="space-y-4 text-[#4B5563] dark:text-gray-400 text-sm sm:text-base leading-relaxed">
                 <p>
-                  <strong className="text-white font-bold">{profile.name}</strong> is a passionate designer and creative professional with expertise in UI/UX Design, Web Design, Graphics Design, and Video Editing.
+                  <strong className="text-[#111318] dark:text-white font-bold">{profile.name}</strong> is a passionate designer and creative professional with expertise in UI/UX Design, Web Design, Graphics Design, and Video Editing.
                 </p>
                 <p>
                   Combining raw artistic creativity with a strong technical understanding of mechanical frameworks and coding languages, he builds engaging digital solutions. He crafts elegant, premium visual interfaces that prioritize the user journey and reinforce high-end branding directives.
@@ -225,26 +225,26 @@ export default function About({ profile }: AboutProps) {
 
             {/* Right Side Part 1: My Expertise cards */}
             <div className="p-8 rounded-lg glass-card border border-white/5">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500 mb-6">My Expertise</h3>
+              <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-[#667085] dark:text-gray-500 mb-6">My Expertise</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* UI/UX Expert */}
                 <div className="flex flex-col space-y-2">
-                  <div className="flex items-center space-x-2 text-neon-blue">
+                  <div className="flex items-center space-x-2 text-[#2563EB] dark:text-neon-blue">
                     <Layers className="w-4.5 h-4.5" />
-                    <span className="font-bold text-xs uppercase tracking-wider text-white">UI/UX DESIGNER</span>
+                    <span className="font-bold text-xs uppercase tracking-wider text-[#111318] dark:text-white">UI/UX DESIGNER</span>
                   </div>
-                  <p className="text-xs text-gray-400 leading-relaxed">
+                  <p className="text-xs text-[#4B5563] dark:text-gray-400 leading-relaxed">
                     Designing user centered interfaces and seamless experiences that solve real problems.
                   </p>
                 </div>
 
                 {/* Video Expert */}
                 <div className="flex flex-col space-y-2">
-                  <div className="flex items-center space-x-2 text-neon-violet">
+                   <div className="flex items-center space-x-2 text-[#7C3AED] dark:text-neon-violet">
                     <Film className="w-4.5 h-4.5" />
-                    <span className="font-bold text-xs uppercase tracking-wider text-white">VIDEO EDITOR</span>
+                    <span className="font-bold text-xs uppercase tracking-wider text-[#111318] dark:text-white">VIDEO EDITOR</span>
                   </div>
-                  <p className="text-xs text-gray-400 leading-relaxed">
+                  <p className="text-xs text-[#4B5563] dark:text-gray-400 leading-relaxed">
                     Editing cinematic videos that tell stories, engage audiences and leave a lasting impact.
                   </p>
                 </div>
@@ -253,9 +253,9 @@ export default function About({ profile }: AboutProps) {
                 <div className="flex flex-col space-y-2">
                   <div className="flex items-center space-x-2 text-gold">
                     <PenTool className="w-4.5 h-4.5" />
-                    <span className="font-bold text-xs uppercase tracking-wider text-white">GRAPHICS DESIGNER</span>
+                    <span className="font-bold text-xs uppercase tracking-wider text-[#111318] dark:text-white">GRAPHICS DESIGNER</span>
                   </div>
-                  <p className="text-xs text-gray-400 leading-relaxed">
+                  <p className="text-xs text-[#4B5563] dark:text-gray-400 leading-relaxed">
                     Creating visual identities, branding assets and designs that make brands stand out.
                   </p>
                 </div>
@@ -264,7 +264,7 @@ export default function About({ profile }: AboutProps) {
 
             {/* Right Side Part 2: Tools I Use */}
             <div className="p-8 rounded-lg glass-card border border-white/5">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500 mb-6">Tools I Use</h3>
+              <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-[#667085] dark:text-gray-500 mb-6">Tools I Use</h3>
               <div className="flex flex-wrap gap-3">
                 {tools.map((t, idx) => (
                   <motion.div
@@ -288,15 +288,15 @@ export default function About({ profile }: AboutProps) {
 
         {/* Section: What Drives Me banner */}
         <div className="mb-20">
-          <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-center text-gray-500 mb-8">What Drives Me</h3>
+          <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-center text-[#667085] dark:text-gray-500 mb-8">What Drives Me</h3>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {drives.map((d, idx) => (
               <div key={idx} className="p-5 rounded-lg glass-card border border-white/5 hover:border-gold/30 flex flex-col items-center text-center space-y-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(212,160,23,0.05)]">
                 <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center shadow-inner">
                   {d.icon}
                 </div>
-                <h4 className="font-extrabold text-xs tracking-wider text-white">{d.title}</h4>
-                <p className="text-[11px] text-gray-500 leading-relaxed">{d.desc}</p>
+                <h4 className="font-extrabold text-xs tracking-wider text-[#111318] dark:text-white">{d.title}</h4>
+                <p className="text-[11px] text-[#4B5563] dark:text-gray-500 leading-relaxed">{d.desc}</p>
               </div>
             ))}
           </div>
@@ -319,16 +319,16 @@ export default function About({ profile }: AboutProps) {
               <h3 className="text-xl font-bold tracking-wider text-[#0a1128] dark:text-white">Education & Timeline</h3>
             </div>
             
-            <div className="relative border-l border-white/10 pl-6 ml-5 space-y-8">
+            <div className="relative border-l border-black/10 dark:border-white/10 pl-6 ml-5 space-y-8">
               {education.map((edu, idx) => (
                 <div key={idx} className="relative group">
                   {/* Bullet */}
                   <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full border border-gold bg-[#050505] group-hover:bg-gold transition-colors duration-300 shadow-[0_0_8px_#D4A017]" />
                   
                   <div className="p-5 rounded-lg glass-card border border-white/5 group-hover:border-gold/30 transition-all duration-300">
-                    <span className="text-[10px] font-bold text-gold-light uppercase tracking-wider block mb-1">{edu.period}</span>
-                    <h4 className="font-extrabold text-sm text-white leading-snug group-hover:text-gold transition-colors duration-300">{edu.title}</h4>
-                    <p className="text-xs text-gray-400 mt-1">{edu.institution}</p>
+                    <span className="text-[10px] font-bold text-[#B8941F] dark:text-gold-light uppercase tracking-wider block mb-1">{edu.period}</span>
+                    <h4 className="font-extrabold text-sm text-[#111318] dark:text-white leading-snug group-hover:text-[#B8941F] dark:group-hover:text-gold transition-colors duration-300">{edu.title}</h4>
+                    <p className="text-xs text-[#4B5563] dark:text-gray-400 mt-1">{edu.institution}</p>
                   </div>
                 </div>
               ))}
@@ -378,7 +378,7 @@ export default function About({ profile }: AboutProps) {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: idx * 0.04 }}
-                      className="px-3.5 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs font-semibold text-gray-300 hover:border-gold hover:text-white hover:bg-gold/10 transition-all duration-300 cursor-default"
+                      className="px-3.5 py-1.5 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full text-xs font-semibold text-[#4B5563] dark:text-gray-300 hover:border-gold hover:text-[#111318] dark:hover:text-white hover:bg-gold/10 transition-all duration-300 cursor-default"
                     >
                       {skill}
                     </motion.span>
@@ -410,8 +410,8 @@ function AchievementCounter({ rank, detail }: { rank: string; detail: string }) 
       <span className="text-xs font-black uppercase text-gold-light tracking-widest">
         {num !== null ? `${prefix}${count}${suffix}` : rank}
       </span>
-      <p className="text-xs text-gray-400 mt-2 leading-relaxed">{detail}</p>
-      <div className="w-6 h-[1px] bg-white/20 mt-4 group-hover:w-12 group-hover:bg-gold transition-all duration-300" />
+      <p className="text-xs text-[#4B5563] dark:text-gray-400 mt-2 leading-relaxed">{detail}</p>
+      <div className="w-6 h-[1px] bg-black/20 dark:bg-white/20 mt-4 group-hover:w-12 group-hover:bg-gold transition-all duration-300" />
     </div>
   );
 }

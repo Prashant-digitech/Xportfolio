@@ -387,6 +387,64 @@ html.dark .btn-secondary:hover {
   color: #FFFFFF !important;
 }
 
+/* ==========================================================================
+   GLOBAL LIGHT/DARK MODE TEXT ENFORCEMENT (FAILSAFE LAYER)
+   Prevents white text on white/light backgrounds in light mode.
+   These rules apply at the root level to catch any missed hardcoded text-white.
+   .keep-white class is a whitelist for overlays on dark image/video thumbnails.
+   ========================================================================== */
+
+/* LIGHT MODE: force all headings and text-white to dark charcoal */
+html:not(.dark) h1:not(.keep-white),
+html:not(.dark) h2:not(.keep-white),
+html:not(.dark) h3:not(.keep-white),
+html:not(.dark) h4:not(.keep-white),
+html:not(.dark) h5:not(.keep-white),
+html:not(.dark) h6:not(.keep-white) {
+  color: #111318 !important;
+}
+
+/* LIGHT MODE: strong/bold text inside cards should also be dark */
+html:not(.dark) .glass-card strong,
+html:not(.dark) .glass-card b,
+html:not(.dark) .card-theme strong,
+html:not(.dark) .card-theme b {
+  color: #111318 !important;
+}
+
+/* LIGHT MODE: span badges inside glass-cards with text-white should be dark */
+html:not(.dark) .glass-card span:not(.keep-white):not(.text-gradient-gold):not(.text-gradient-orange):not([class*="text-gold"]):not([class*="text-neon"]):not([class*="text-[#"]) {
+  color: inherit;
+}
+
+/* DARK MODE: ensure headings are white */
+html.dark h1:not(.text-gradient-gold):not(.text-gradient-orange),
+html.dark h2:not(.text-gradient-gold):not(.text-gradient-orange),
+html.dark h3:not(.text-gradient-gold):not(.text-gradient-orange):not([class*="text-gold"]):not([class*="text-neon"]):not([class*="text-[#F5BA42"]):not([class*="text-[#D4AF37"]):not([class*="text-[#FF6B00"]):not([class*="text-[#00F0FF"]),
+html.dark h4:not(.text-gradient-gold):not(.text-gradient-orange):not([class*="text-gold"]):not([class*="text-neon"]):not([class*="text-[#F5BA42"]):not([class*="text-[#D4AF37"]):not([class*="text-[#FF6B00"]):not([class*="text-[#00F0FF"]) {
+  color: #FFFFFF !important;
+}
+
+/* ADAPTIVE CARD SYSTEM for light mode: cards with dark blue gradient bg */
+html:not(.dark) .adaptive-card {
+  background: #FFFFFF !important;
+  color: #111318 !important;
+  border-color: #E5E7EB !important;
+}
+html:not(.dark) .adaptive-card h1,
+html:not(.dark) .adaptive-card h2,
+html:not(.dark) .adaptive-card h3,
+html:not(.dark) .adaptive-card h4,
+html:not(.dark) .adaptive-card p,
+html:not(.dark) .adaptive-card span:not(.keep-white):not([class*="text-gold"]):not([class*="text-neon"]):not([class*="text-[#FF6B00"]) {
+  color: #111318 !important;
+}
+html.dark .adaptive-card {
+  background: #0F1118 !important;
+  color: #FFFFFF !important;
+  border-color: rgba(212, 175, 55, 0.38) !important;
+}
+
 /* Hide Scrollbar */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

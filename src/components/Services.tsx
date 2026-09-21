@@ -184,7 +184,7 @@ export default function Services() {
                 initial: { opacity: 0, y: 40 },
                 whileInView: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
               }}
-              className={`p-6 sm:p-8 rounded-2xl flex flex-col justify-between transition-all duration-400 hover:-translate-y-2 border bg-gradient-to-br from-[#0D1B38] via-[#081328] to-[#050C1A] text-white ${srv.glassStyle}`}
+              className={`p-6 sm:p-8 rounded-2xl flex flex-col justify-between transition-all duration-400 hover:-translate-y-2 border bg-white dark:bg-gradient-to-br dark:from-[#0D1B38] dark:via-[#081328] dark:to-[#050C1A] text-[#111318] dark:text-white ${srv.glassStyle} border-[#E5E7EB] dark:border-[inherit]`}
             >
               {/* Card top */}
               <div>
@@ -230,19 +230,19 @@ export default function Services() {
                 </div>
 
                 {/* Service Title */}
-                <h3 className="text-xl font-black tracking-wider text-white mb-2 flex items-center justify-between">
+                <h3 className="text-xl font-black tracking-wider text-[#111318] dark:text-white mb-2 flex items-center justify-between">
                   <span>{srv.title}</span>
                 </h3>
                 
                 {/* Description */}
-                <p className="text-xs text-slate-300 mb-6 leading-relaxed">
+                <p className="text-xs text-[#4B5563] dark:text-slate-300 mb-6 leading-relaxed">
                   {srv.desc}
                 </p>
 
                 {/* Features list */}
                 <ul className="space-y-3 mb-8">
                   {srv.points.map((pt, pIdx) => (
-                    <li key={pIdx} className="flex items-center space-x-2.5 text-xs text-slate-200">
+                    <li key={pIdx} className="flex items-center space-x-2.5 text-xs text-[#374151] dark:text-slate-200">
                       <div className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${srv.badgeColor}`}>
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
@@ -280,9 +280,9 @@ export default function Services() {
                   <div className="w-8 h-8 rounded-full bg-[#F5BA42]/10 border border-[#F5BA42]/30 flex items-center justify-center">
                     {v.icon}
                   </div>
-                  <span className="font-extrabold text-xs tracking-widest text-white">{v.title}</span>
+                  <span className="font-extrabold text-xs tracking-widest text-[#111318] dark:text-white">{v.title}</span>
                 </div>
-                <p className="text-[11px] text-slate-400 leading-relaxed pl-0 md:pl-11">
+                <p className="text-[11px] text-[#4B5563] dark:text-slate-400 leading-relaxed pl-0 md:pl-11">
                   {v.desc}
                 </p>
               </div>
@@ -296,15 +296,15 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="p-6 sm:p-8 rounded-2xl border border-[#D4AF37]/40 bg-gradient-to-r from-[#0B1528] via-[#081226] to-[#050C1A] flex flex-col md:flex-row justify-between items-center gap-6 shadow-2xl text-white"
+          className="p-6 sm:p-8 rounded-2xl border border-[#D4AF37]/40 bg-white dark:bg-gradient-to-r dark:from-[#0B1528] dark:via-[#081226] dark:to-[#050C1A] flex flex-col md:flex-row justify-between items-center gap-6 shadow-2xl text-[#111318] dark:text-white"
         >
           <div className="flex items-center space-x-4">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FF6B00] to-[#D4AF37] flex items-center justify-center text-white shadow-[0_0_20px_rgba(255,107,0,0.4)]">
               <Rocket className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-extrabold text-white text-base sm:text-lg">Have a project or high-impact role in mind?</h4>
-              <p className="text-xs text-slate-400">Let's craft memorable digital products and visual stories together.</p>
+              <h4 className="font-extrabold text-[#111318] dark:text-white text-base sm:text-lg">Have a project or high-impact role in mind?</h4>
+              <p className="text-xs text-[#4B5563] dark:text-slate-400">Let's craft memorable digital products and visual stories together.</p>
             </div>
           </div>
           <button

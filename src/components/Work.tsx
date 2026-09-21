@@ -379,9 +379,9 @@ export default function Work() {
         {/* UI/UX TAB: FULL FLAGSHIP GALLERY */}
         {activeTab === "uiux" && (
           <div className="space-y-8 overflow-visible">
-            <div className="p-6 rounded-2xl bg-gradient-to-r from-[#0C1A38] to-[#060D1E] border-[1.5px] border-[#D4AF37]/50 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xl">
+            <div className="p-6 rounded-2xl bg-white dark:bg-gradient-to-r dark:from-[#0C1A38] dark:to-[#060D1E] border-[1.5px] border-[#D4AF37]/50 dark:text-white text-[#111318] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xl">
               <div className="space-y-1">
-                <h3 className="text-base sm:text-lg font-black text-white flex items-center gap-2">
+                <h3 className="text-base sm:text-lg font-black text-[#111318] dark:text-white flex items-center gap-2">
                   <Compass className="w-5 h-5 text-[#FF6B00]" />
                   UI/UX Design Projects & End-to-End Case Studies
                 </h3>
@@ -563,7 +563,7 @@ function UXProjectCard({ project, onOpenCaseStudy }: UXProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="group relative rounded-2xl overflow-visible border-[1.5px] border-[#D4AF37]/50 hover:border-[#F5BA42] bg-gradient-to-br from-[#0D1B38] via-[#081328] to-[#050C1A] shadow-[0_12px_35px_rgba(0,0,0,0.45),0_0_15px_rgba(212,175,55,0.15)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.75),0_0_30px_rgba(245,186,66,0.35)] transition-all duration-300 ease-out hover:scale-[1.02] hover:-translate-y-1.5 flex flex-col will-change-transform dark-blue-gold-card"
+      className="group relative rounded-2xl overflow-visible border-[1.5px] border-[#D4AF37]/50 hover:border-[#F5BA42] bg-white dark:bg-gradient-to-br dark:from-[#0D1B38] dark:via-[#081328] dark:to-[#050C1A] shadow-[0_12px_35px_rgba(0,0,0,0.12)] dark:shadow-[0_12px_35px_rgba(0,0,0,0.45),0_0_15px_rgba(212,175,55,0.15)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.2),0_0_30px_rgba(245,186,66,0.15)] dark:hover:shadow-[0_20px_45px_rgba(0,0,0,0.75),0_0_30px_rgba(245,186,66,0.35)] transition-all duration-300 ease-out hover:scale-[1.02] hover:-translate-y-1.5 flex flex-col will-change-transform dark-blue-gold-card border-[#E5E7EB] dark:border-[rgba(212,175,55,0.5)]"
     >
       {/* Visual Header with Mockup Image */}
       <div 
@@ -610,14 +610,14 @@ function UXProjectCard({ project, onOpenCaseStudy }: UXProjectCardProps) {
       </div>
 
       {/* Card Content Details */}
-      <div className="p-5 sm:p-7 flex-1 flex flex-col justify-between space-y-5 bg-gradient-to-b from-[#081328] to-[#050C1A] rounded-b-2xl">
+      <div className="p-5 sm:p-7 flex-1 flex flex-col justify-between space-y-5 bg-[#F8FAFC] dark:bg-gradient-to-b dark:from-[#081328] dark:to-[#050C1A] rounded-b-2xl">
         <div className="space-y-3">
           {/* Tags */}
           <div className="flex flex-wrap gap-1.5">
             {project.tags.map((tag, idx) => (
               <span 
                 key={idx} 
-                className="px-2.5 py-0.5 rounded text-[10px] font-semibold bg-[#0F2248] border border-[#D4AF37]/30 text-[#F5BA42]"
+                className="px-2.5 py-0.5 rounded text-[10px] font-semibold bg-[#EEF2FF] dark:bg-[#0F2248] border border-[#D4AF37]/30 text-[#374151] dark:text-[#F5BA42]"
               >
                 {tag}
               </span>
@@ -626,26 +626,26 @@ function UXProjectCard({ project, onOpenCaseStudy }: UXProjectCardProps) {
 
           {/* Title & Subtitle */}
           <div>
-            <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-[#F5BA42] transition-colors flex items-center justify-between">
+            <h3 className="text-xl sm:text-2xl font-black text-[#111318] dark:text-white group-hover:text-[#B8941F] dark:group-hover:text-[#F5BA42] transition-colors flex items-center justify-between">
               <span>{project.title}</span>
               <ArrowRight className="w-4 h-4 text-[#FF6B00] group-hover:translate-x-1 transition-all" />
             </h3>
-            <p className="text-xs sm:text-sm font-semibold text-[#94A3B8] mt-1">
+            <p className="text-xs sm:text-sm font-semibold text-[#374151] dark:text-[#94A3B8] mt-1">
               {project.subtitle}
             </p>
           </div>
 
           {/* Summary */}
-          <p className="text-xs sm:text-sm text-[#CBD5E1] leading-relaxed line-clamp-3">
+          <p className="text-xs sm:text-sm text-[#4B5563] dark:text-[#CBD5E1] leading-relaxed line-clamp-3">
             {project.summary}
           </p>
         </div>
 
         {/* Dual Actions Footer */}
         <div className="pt-4 border-t border-[#D4AF37]/20 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="text-[11px] font-mono text-[#94A3B8] w-full sm:w-auto">
+          <div className="text-[11px] font-mono text-[#667085] dark:text-[#94A3B8] w-full sm:w-auto">
             <span>Impact: </span>
-            <span className="text-[#00F0FF] font-bold">{project.caseStudy.metrics[0].value}</span>
+            <span className="text-[#2563EB] dark:text-[#00F0FF] font-bold">{project.caseStudy.metrics[0].value}</span>
           </div>
 
           <div className="flex items-center space-x-2 w-full sm:w-auto">
@@ -661,6 +661,7 @@ function UXProjectCard({ project, onOpenCaseStudy }: UXProjectCardProps) {
 
       </div>
     </motion.div>
+
   );
 }
 
