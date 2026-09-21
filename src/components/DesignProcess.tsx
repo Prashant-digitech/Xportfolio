@@ -98,7 +98,7 @@ export default function DesignProcess() {
   ];
 
   return (
-    <section className="relative py-24 bg-[#f5f5f5] dark:bg-[#080808] text-black dark:text-white transition-colors duration-300">
+    <section id="process" className="relative py-24 bg-[#f5f5f5] dark:bg-[#090A0E] text-black dark:text-white transition-colors duration-300">
       <div className="absolute top-[30%] right-[10%] w-[300px] h-[300px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8">

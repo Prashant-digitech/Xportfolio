@@ -17,6 +17,12 @@ interface Certificate {
 
 export default function CertificationVault() {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
+  const [flippedCertIdx, setFlippedCertIdx] = useState<number | null>(null);
+
+  const toggleFlip = (idx: number, e?: React.MouseEvent | React.KeyboardEvent) => {
+    e?.stopPropagation();
+    setFlippedCertIdx(prev => prev === idx ? null : idx);
+  };
 
   const certificates: Certificate[] = [
     {
@@ -194,44 +200,64 @@ export default function CertificationVault() {
 
           {/* 3D Flip Certificate Grid (Dark Blue with Golden Stroke) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {certificates.map((c, idx) => (
-              <div 
-                key={idx}
-                onClick={() => setSelectedCert(c)}
-                className="group relative h-48 w-full cursor-pointer [perspective:1000px] select-none"
-              >
-                {/* Inner Flip Wrapper */}
-                <div className="absolute inset-0 h-full w-full rounded-2xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] border-[1.5px] border-[#D4AF37]/50 group-hover:border-[#F5BA42] bg-gradient-to-br from-[#0D1B38] via-[#081328] to-[#050C1A] shadow-xl">
-                  
-                  {/* Front Side */}
-                  <div className="absolute inset-0 h-full w-full p-6 flex flex-col justify-between [backface-visibility:hidden]">
-                    <div className="flex justify-between items-start">
-                      <div className="p-2 rounded-xl bg-[#FF6B00]/15 text-[#FF6B00] border border-[#FF6B00]/30 shadow-sm"><Award className="w-5 h-5" /></div>
-                      <span className="text-[10px] text-[#F5BA42] font-mono font-bold">{c.period}</span>
+            {certificates.map((c, idx) => {
+              const isFlipped = flippedCertIdx === idx;
+              return (
+                <div 
+                  key={idx}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`${c.title}, issued by ${c.institution} in ${c.period}. Press Enter or Space to flip, or click inspect button to view document.`}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      toggleFlip(idx, e);
+                    }
+                  }}
+                  onClick={() => toggleFlip(idx)}
+                  className="group relative h-48 w-full cursor-pointer [perspective:1000px] select-none focus:outline-none focus:ring-2 focus:ring-[#D4AF37] rounded-2xl"
+                >
+                  {/* Inner Flip Wrapper */}
+                  <div className={`absolute inset-0 h-full w-full rounded-2xl transition-transform duration-500 [transform-style:preserve-3d] ${
+                    isFlipped ? "[transform:rotateY(180deg)]" : ""
+                  } group-hover:[transform:rotateY(180deg)] border-[1.5px] border-[#D4AF37]/50 group-hover:border-[#F5BA42] bg-gradient-to-br from-[#0D1B38] via-[#081328] to-[#050C1A] shadow-xl`}>
+                    
+                    {/* Front Side */}
+                    <div className="absolute inset-0 h-full w-full p-6 flex flex-col justify-between [backface-visibility:hidden]">
+                      <div className="flex justify-between items-start">
+                        <div className="p-2 rounded-xl bg-[#FF6B00]/15 text-[#FF6B00] border border-[#FF6B00]/30 shadow-sm"><Award className="w-5 h-5" /></div>
+                        <span className="text-[10px] text-[#F5BA42] font-mono font-bold">{c.period}</span>
+                      </div>
+                      <div>
+                        <h4 className="font-extrabold text-sm text-white uppercase tracking-wider mb-1 group-hover:text-[#F5BA42] transition-colors">{c.title}</h4>
+                        <p className="text-xs text-slate-300 font-medium">{c.institution}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-extrabold text-sm text-white uppercase tracking-wider mb-1 group-hover:text-[#F5BA42] transition-colors">{c.title}</h4>
-                      <p className="text-xs text-slate-300 font-medium">{c.institution}</p>
-                    </div>
-                  </div>
 
-                  {/* Back Side */}
-                  <div className="absolute inset-0 h-full w-full p-6 flex flex-col justify-between bg-gradient-to-br from-[#0D1B38] to-[#050C1A] border-[1.5px] border-[#F5BA42] rounded-2xl text-white [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                    <div>
-                      <span className="text-[9px] font-mono text-[#F5BA42] block uppercase tracking-widest mb-1.5 font-bold">CREDENTIAL_SPECS</span>
-                      <p className="text-[11px] text-slate-200 leading-relaxed">
-                        {c.description}
-                      </p>
+                    {/* Back Side */}
+                    <div className="absolute inset-0 h-full w-full p-6 flex flex-col justify-between bg-gradient-to-br from-[#0D1B38] to-[#050C1A] border-[1.5px] border-[#F5BA42] rounded-2xl text-white [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                      <div>
+                        <span className="text-[9px] font-mono text-[#F5BA42] block uppercase tracking-widest mb-1.5 font-bold">CREDENTIAL OVERVIEW</span>
+                        <p className="text-[11px] text-slate-200 leading-relaxed">
+                          {c.description}
+                        </p>
+                      </div>
+                      <div 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedCert(c);
+                        }}
+                        className="flex justify-between items-center text-[10px] text-[#FF6B00] hover:text-[#F5BA42] font-bold uppercase tracking-widest border-t border-[#D4AF37]/30 pt-2.5 transition-colors"
+                      >
+                        <span>Inspect verified doc</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </div>
                     </div>
-                    <div className="flex justify-between items-center text-[10px] text-[#FF6B00] font-bold uppercase tracking-widest border-t border-[#D4AF37]/30 pt-2.5">
-                      <span>Inspect verified doc</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </div>
-                  </div>
 
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -311,11 +337,11 @@ export default function CertificationVault() {
                     </div>
 
                     <div className="hidden lg:flex flex-col items-end text-right space-y-1">
-                      <span className="text-[9px] font-mono text-[#00F0FF] font-bold uppercase tracking-widest">
-                        VECTOR_LOCK_{t.year.split("+")[0]}
+                      <span className="text-[9px] font-mono text-emerald-400 font-bold uppercase tracking-widest">
+                        VERIFIED CREDENTIAL
                       </span>
                       <span className="text-[8px] font-mono text-slate-400">
-                        VERIFIED_DOC
+                        OFFICIAL RECORD
                       </span>
                     </div>
                   </div>

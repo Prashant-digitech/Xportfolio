@@ -57,7 +57,7 @@ export default function AILab() {
   };
 
   return (
-    <section className="relative py-24 bg-[#f8f8f8] dark:bg-[#050505] text-black dark:text-white transition-colors duration-300">
+    <section id="lab" className="relative py-24 bg-[#f8f8f8] dark:bg-[#090A0E] text-black dark:text-white transition-colors duration-300">
       <div className="absolute top-[20%] left-[-10%] w-[300px] h-[300px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8">

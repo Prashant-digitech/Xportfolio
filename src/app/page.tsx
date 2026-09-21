@@ -119,67 +119,55 @@ export default function Home() {
             <RecruiterLayout profile={profile} />
           ) : (
             <>
-              {/* Cinematic Portfolio */}
+              {/* 01: HERO */}
               <Hero profile={profile} />
               <SectionSeparator />
-              <About profile={profile} />
-              <SectionSeparator />
-              
-              {/* SECTION 01 & 09: AI Command Center & Tool Stack */}
-              <CommandCenter profile={profile} />
-              <SectionSeparator />
 
-              {/* SECTION 02: Design DNA Radar Chart */}
-              <DesignDNA />
-              <SectionSeparator />
-
-              {/* SECTION 03: Skill Universe Constellation */}
-              <SkillUniverse profile={profile} />
-              <SectionSeparator />
-
-              {/* SECTION 04 & 05: Design Process & Case Study Experience */}
-              <DesignProcess />
-              <SectionSeparator />
-
-              {/* SECTION 06: Before After Slider */}
-              <BeforeAfter />
-              <SectionSeparator />
-
-              {/* SECTION 07: Design System Showcase */}
-              <DesignSystemShowcase />
-              <SectionSeparator />
-
-              {/* SECTION 08: Figma Lab */}
-              <FigmaLab />
-              <SectionSeparator />
-
-              {/* SECTION 11 & 12: Certification Vault & Experience Journey */}
-              <CertificationVault />
-              <SectionSeparator />
-
-              {/* SECTION 13 & 14: Client Trust Section & Testimonials */}
-              <ClientTrust />
-              <SectionSeparator />
-
-              {/* SECTION 15, 16, 17, 18, 21: Featured Projects, Filters, Showreel, Graphics Showcase, Presentations */}
+              {/* 02: SELECTED WORK */}
               <ProjectShowcase profile={profile} />
               <SectionSeparator />
 
-              {/* SECTION 19, 20, 22: AI Future Vision, Prompt Lab, AI Projects Lab */}
+              {/* 03: PROCESS & DESIGN SYSTEMS */}
+              <DesignProcess />
+              <SectionSeparator />
+              <BeforeAfter />
+              <SectionSeparator />
+              <DesignSystemShowcase />
+              <SectionSeparator />
+
+              {/* 04: ABOUT & CREDENTIAL JOURNEY */}
+              <About profile={profile} />
+              <SectionSeparator />
+              <CertificationVault />
+              <SectionSeparator />
+              <CommandCenter profile={profile} />
+              <SectionSeparator />
+              <DesignDNA />
+              <SectionSeparator />
+              <SkillUniverse profile={profile} />
+              <SectionSeparator />
+
+              {/* CLIENT TRUST & TESTIMONIALS */}
+              <ClientTrust />
+              <SectionSeparator />
+
+              {/* 05: LAB & AI EXPERIMENTS */}
               <AILab />
               <SectionSeparator />
+              <FigmaLab />
+              <SectionSeparator />
               
-              {/* Core Legacy Fallbacks */}
+              {/* EXTENDED MEDIA & SERVICES */}
               <Services />
               <SectionSeparator />
               <Work />
               <SectionSeparator />
               
-              {/* Contact Experience */}
+              {/* 06: CONTACT */}
               <Contact profile={profile} />
               <SectionSeparator />
 
-              {/* SECTION 26: Thank You Experience */}
+              {/* THANK YOU */}
               <ThankYouSign profile={profile} />
             </>
           )}

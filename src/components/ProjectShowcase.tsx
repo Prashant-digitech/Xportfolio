@@ -37,36 +37,69 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
   const [isPlayingShowreel, setIsPlayingShowreel] = useState<boolean>(true);
   const [showreelChapter, setShowreelChapter] = useState<number>(0);
 
-  // Cinematic Featured Projects (Section 15)
+  // Cinematic Featured Projects (Canonical Order 01-05+)
   const featuredProjects = [
-    {
-      id: "tradex",
-      title: "TradeX Pro Financial Terminal",
-      desc: "Enterprise-grade quantitative crypto & algorithmic trading terminal. Features sub-second execution speeds, live order book depth, and customizable modular smart-tile workspaces.",
-      accent: "#00F5A0",
-      spec: "FINTECH UX • HIGH-FREQUENCY TRADING • DARK MODE",
-      challenge: "High-frequency traders faced severe cognitive overload and costly execution errors across fragmented, rigid legacy trading software.",
-      impact: "Handled $1.2B+ quarterly volume with 0.12s execution latency and an 83% drop in erroneous order sizes.",
-      img: "/images/ux/projects/TradeX.png",
-      uxProjectId: "tradex",
-    },
     {
       id: "deepastro",
       title: "DeepAstro AI Life Intelligence",
       desc: "An AI-powered Vedic astrology platform blending ancient cosmic wisdom with modern generative intelligence. Provides personalized life optimization roadmaps, planetary alignments, and evidence-based guidance.",
       accent: "#00F0FF",
-      spec: "UI/UX • AI LIFE PLATFORM • MULTI-DEVICE",
+      spec: "01 • UI/UX • AI LIFE PLATFORM • MULTI-DEVICE",
       challenge: "Traditional Vedic astrology is intimidating and hard to decipher, while modern horoscope apps deliver superficial, generic predictions without depth.",
       impact: "Designed luminous Cosmic Glassmorphism dashboards and 5-year optimization roadmaps. 50,000+ active seekers with a 4.9/5 user rating.",
       img: "/images/ux/deepastro-hero.jpg",
       uxProjectId: "deepastro",
     },
     {
+      id: "tradex",
+      title: "TradeX Pro Financial Terminal",
+      desc: "Enterprise-grade quantitative crypto & algorithmic trading terminal. Features sub-second execution speeds, live order book depth, and customizable modular smart-tile workspaces.",
+      accent: "#00F5A0",
+      spec: "02 • FINTECH UX • QUANT TRADING • DARK MODE",
+      challenge: "High-frequency traders faced severe cognitive overload and costly execution errors across fragmented, rigid legacy trading software.",
+      impact: "Sub-second 0.12s execution latency, dynamic smart-tiles, and an 83% drop in erroneous order placements.",
+      img: "/images/ux/projects/TradeX.png",
+      uxProjectId: "tradex",
+    },
+    {
+      id: "securex",
+      title: "SecureX Zero-Trust Security",
+      desc: "Next-gen Security Operations Center (SOC) dashboard. Delivers attack path topology graphs, automated entity threat clustering, and one-click incident containment.",
+      accent: "#EF4444",
+      spec: "03 • CYBERSECURITY UX • SOC DASHBOARD • ZERO-TRUST",
+      challenge: "SecOps teams suffered severe alert fatigue, with 92% of security warnings being redundant false positives.",
+      impact: "Reduced alert fatigue by 75% and accelerated breach containment response time by 48%.",
+      img: "/images/ux/projects/secureX.png",
+      uxProjectId: "securex",
+    },
+    {
+      id: "futuremind",
+      title: "FutureMind AI Career Operating System",
+      desc: "An AI career navigation platform featuring dynamic mountain elevation roadmaps, AI Career Coach drawer, skill intelligence modules, and live mentor connection.",
+      accent: "#2563EB",
+      spec: "04 • EDTECH UX • AI CAREER OS • DESIGN TOKENS",
+      challenge: "Tech career growth is fragmented across disjointed tutorials, static video courses, and unhelpful job boards, creating imposter syndrome and stalled progress.",
+      impact: "Pioneered mountain elevation milestone visualization. Boosted path completion rate to 68.4% across 50,000+ tech learners.",
+      img: "/images/ux/futuremind-hero.jpg",
+      uxProjectId: "futuremind",
+    },
+    {
+      id: "presentx",
+      title: "PresentX AI Slide Operating System",
+      desc: "An intelligent presentation builder that transforms structured narratives and research into brand-aligned executive decks with design system tokens and dynamic canvas telemetry.",
+      accent: "#F5BA42",
+      spec: "05 • AI GENERATIVE UX • DYNAMIC CANVAS • DESIGN TOKENS",
+      challenge: "Professionals spend 70% of presentation preparation time on manual slide formatting, creating brand drift and cognitive fatigue.",
+      impact: "Cut deck build time by 70% while ensuring 100% token consistency across typography and color palettes.",
+      img: "/images/ux/projects/presentX.png",
+      uxProjectId: "presentx",
+    },
+    {
       id: "cosmosx",
       title: "CosmosX Planetary Telemetry",
       desc: "Deep space mission control dashboard with 3D orbital trajectory simulation, real-time planetary sensor arrays, spacecraft sub-system telemetry, and communication link status.",
       accent: "#38BDF8",
-      spec: "DEEP TECH UX • 3D ORBIT TELEMETRY • MISSION CONTROL",
+      spec: "06 • DEEP TECH UX • 3D ORBIT TELEMETRY • MISSION CONTROL",
       challenge: "Aerospace telemetry was siloed in monochrome text logs, slowing anomaly triage during critical orbital insertion windows.",
       impact: "Achieved sub-80ms telemetry synchronization and a 54% acceleration in anomaly detection across aerospace simulation teams.",
       img: "/images/ux/projects/CosmosX.png",
@@ -77,33 +110,11 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       title: "CureIQ Clinical Intelligence",
       desc: "AI-assisted clinical diagnostics and empathetic patient health portal. Features differential diagnosis summaries, longitudinal biomarker trendlines, and automated treatment protocols.",
       accent: "#06B6D4",
-      spec: "HEALTHCARE UX • AI DIAGNOSTICS • WCAG 2.1 AA",
+      spec: "07 • HEALTHCARE UX • AI DIAGNOSTICS • WCAG 2.1 AA",
       challenge: "Clinicians face EHR documentation burnout while patients struggle to comprehend complex clinical lab results.",
       impact: "Saved physicians 42 minutes per day in EHR charting and boosted patient medication adherence by 38%.",
       img: "/images/ux/projects/CureIQ.png",
       uxProjectId: "cureiq",
-    },
-    {
-      id: "futuremind",
-      title: "FutureMind AI Career Operating System",
-      desc: "An AI career navigation platform featuring dynamic mountain elevation roadmaps, AI Career Coach drawer, skill intelligence modules, and live mentor connection.",
-      accent: "#2563EB",
-      spec: "EDTECH UX • AI CAREER OS • DESIGN TOKENS",
-      challenge: "Tech career growth is fragmented across disjointed tutorials, static video courses, and unhelpful job boards, creating imposter syndrome and stalled progress.",
-      impact: "Pioneered mountain elevation milestone visualization. Boosted path completion rate to 68.4% across 50,000+ tech learners.",
-      img: "/images/ux/futuremind-hero.jpg",
-      uxProjectId: "futuremind",
-    },
-    {
-      id: "securex",
-      title: "SecureX Zero-Trust Security",
-      desc: "Next-gen Security Operations Center (SOC) dashboard. Delivers attack path topology graphs, automated entity threat clustering, and one-click incident containment.",
-      accent: "#EF4444",
-      spec: "CYBERSECURITY UX • SOC DASHBOARD • ZERO-TRUST",
-      challenge: "SecOps teams suffered severe alert fatigue, with 92% of security warnings being redundant false positives.",
-      impact: "Reduced alert fatigue by 75% and accelerated breach containment response time by 48%.",
-      img: "/images/ux/projects/secureX.png",
-      uxProjectId: "securex",
     },
   ];
 
@@ -116,17 +127,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
 
   // Projects Grid (Section 16, 18)
   const projects: ShowcaseProject[] = [
-    // UI/UX Projects
-    { 
-      title: "TradeX Pro Trading Terminal", 
-      category: "uiux", 
-      description: "High-frequency financial terminal with dynamic smart-tiles, candlestick charts, and instant order execution.", 
-      img: "/images/ux/projects/TradeX.png", 
-      caseStudy: "Read UX Case Study", 
-      figmaUrl: "#work",
-      uxProjectId: "tradex",
-      statsBadge: "$1.2B+ Vol • 0.12s Latency"
-    },
+    // UI/UX Projects (Canonical Order)
     { 
       title: "DeepAstro AI Life Platform", 
       category: "uiux", 
@@ -138,24 +139,14 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       statsBadge: "50K+ Users • 4.9/5 ★"
     },
     { 
-      title: "CosmosX Orbit Mission Control", 
+      title: "TradeX Pro Trading Terminal", 
       category: "uiux", 
-      description: "3D planetary trajectory visualizer and aerospace sensor telemetry operations dashboard.", 
-      img: "/images/ux/projects/CosmosX.png", 
+      description: "High-frequency financial terminal with dynamic smart-tiles, candlestick charts, and instant order execution.", 
+      img: "/images/ux/projects/TradeX.png", 
       caseStudy: "Read UX Case Study", 
       figmaUrl: "#work",
-      uxProjectId: "cosmosx",
-      statsBadge: "100K+ Bodies • 80ms Sync"
-    },
-    { 
-      title: "CureIQ Health Intelligence", 
-      category: "uiux", 
-      description: "AI-powered clinical diagnostic hub with biomarker trendlines and empathetic patient care pathways.", 
-      img: "/images/ux/projects/CureIQ.png", 
-      caseStudy: "Read UX Case Study", 
-      figmaUrl: "#work",
-      uxProjectId: "cureiq",
-      statsBadge: "99.2% Accuracy • HIPAA"
+      uxProjectId: "tradex",
+      statsBadge: "Institutional Terminal • 0.12s"
     },
     { 
       title: "SecureX SOC Security Console", 
@@ -176,6 +167,36 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       figmaUrl: "#work",
       uxProjectId: "futuremind",
       statsBadge: "50K+ Learners • 200+ Paths"
+    },
+    { 
+      title: "PresentX AI Slide System", 
+      category: "uiux", 
+      description: "Intelligent presentation builder with dynamic canvas telemetry, design tokens, and automated layout engine.", 
+      img: "/images/ux/projects/presentX.png", 
+      caseStudy: "Read UX Case Study", 
+      figmaUrl: "#work",
+      uxProjectId: "presentx",
+      statsBadge: "Dynamic AI Canvas • Tokens"
+    },
+    { 
+      title: "CosmosX Orbit Mission Control", 
+      category: "uiux", 
+      description: "3D planetary trajectory visualizer and aerospace sensor telemetry operations dashboard.", 
+      img: "/images/ux/projects/CosmosX.png", 
+      caseStudy: "Read UX Case Study", 
+      figmaUrl: "#work",
+      uxProjectId: "cosmosx",
+      statsBadge: "100K+ Bodies • 80ms Sync"
+    },
+    { 
+      title: "CureIQ Health Intelligence", 
+      category: "uiux", 
+      description: "AI-powered clinical diagnostic hub with biomarker trendlines and empathetic patient care pathways.", 
+      img: "/images/ux/projects/CureIQ.png", 
+      caseStudy: "Read UX Case Study", 
+      figmaUrl: "#work",
+      uxProjectId: "cureiq",
+      statsBadge: "99.2% Accuracy • HIPAA"
     },
     { 
       title: "PathWise Skill Roadmap", 
@@ -342,7 +363,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
 
 
   return (
-    <section className="relative py-24 bg-[#f8fafc] dark:bg-[#050814] text-[#0a1128] dark:text-white transition-colors duration-300">
+    <section id="work" className="relative py-24 bg-[#f8fafc] dark:bg-[#090A0E] text-[#0a1128] dark:text-white transition-colors duration-300">
       <div className="absolute top-[10%] left-[-10%] w-[350px] h-[350px] bg-[#FF6B00]/5 blur-[120px] rounded-full pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">

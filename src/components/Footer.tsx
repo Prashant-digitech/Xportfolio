@@ -275,7 +275,7 @@ export default function Footer({ profile }: FooterProps) {
   };
 
   return (
-    <footer className="relative bg-white dark:bg-[#050505] border-t border-black/5 dark:border-white/5 py-8 overflow-hidden transition-colors duration-300">
+    <footer className="relative bg-white dark:bg-[#090A0E] border-t border-black/5 dark:border-white/10 py-10 overflow-hidden transition-colors duration-300">
       
       {/* Canvas for Twinkling Stars strictly within the footer container */}
       <canvas
@@ -286,18 +286,30 @@ export default function Footer({ profile }: FooterProps) {
       {/* Subtle Glowing Top Border Line */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#00F0FF] via-[#D4A017] via-[#9d4edd] to-transparent opacity-40 dark:opacity-60 shadow-[0_0_8px_rgba(0,240,255,0.3)] z-10" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center space-y-5 z-10">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center space-y-6 z-10">
         
-        {/* Quick Navigation Links (Section 27) */}
+        {/* Editorial Brand Name */}
+        <div className="text-center">
+          <span className="font-extrabold text-sm tracking-[0.25em] text-slate-900 dark:text-white uppercase">
+            PRASHANT SISODHIYA
+          </span>
+          <span className="mx-2 text-gold">|</span>
+          <span className="text-xs font-mono text-[#F5BA42] tracking-wider uppercase">
+            UI/UX • PRODUCT • AI • VISUAL SYSTEMS
+          </span>
+        </div>
+
+        {/* Quick Navigation Links (Canonical Sequence) */}
         <div className="flex flex-wrap justify-center gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">
           <button onClick={() => handleScrollTo("home")} className="hover:text-gold transition-colors cursor-pointer">Home</button>
-          <button onClick={() => handleScrollTo("about")} className="hover:text-gold transition-colors cursor-pointer">About Me</button>
-          <button onClick={() => handleScrollTo("services")} className="hover:text-gold transition-colors cursor-pointer">Services</button>
-          <button onClick={() => handleScrollTo("work")} className="hover:text-gold transition-colors cursor-pointer">Portfolio</button>
-          <button onClick={() => handleScrollTo("contact")} className="hover:text-gold transition-colors cursor-pointer">Contact Us</button>
-          <a href="/resume.pdf" download className="hover:text-gold transition-colors cursor-pointer flex items-center space-x-1">
-            <span>Download CV</span>
-            <Download className="w-3 h-3" />
+          <button onClick={() => handleScrollTo("work")} className="hover:text-gold transition-colors cursor-pointer">Selected Work</button>
+          <button onClick={() => handleScrollTo("process")} className="hover:text-gold transition-colors cursor-pointer">Process</button>
+          <button onClick={() => handleScrollTo("about")} className="hover:text-gold transition-colors cursor-pointer">About</button>
+          <button onClick={() => handleScrollTo("lab")} className="hover:text-gold transition-colors cursor-pointer">Lab</button>
+          <button onClick={() => handleScrollTo("contact")} className="hover:text-gold transition-colors cursor-pointer">Contact</button>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors cursor-pointer flex items-center space-x-1">
+            <span>Resume (PDF)</span>
+            <ExternalLink className="w-3 h-3" />
           </a>
         </div>
 
@@ -309,7 +321,7 @@ export default function Footer({ profile }: FooterProps) {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`w-8 h-8 rounded-full bg-white dark:bg-[#0d0d0d] border border-black/10 dark:border-white/10 flex items-center justify-center text-gray-500 dark:text-gray-400 ${social.hoverClass} transition-all duration-300 transform hover:scale-105`}
+              className={`w-8 h-8 rounded-full bg-white dark:bg-[#141821] border border-black/10 dark:border-white/10 flex items-center justify-center text-gray-500 dark:text-gray-400 ${social.hoverClass} transition-all duration-300 transform hover:scale-105`}
               title={social.name}
             >
               {social.icon}
@@ -318,17 +330,17 @@ export default function Footer({ profile }: FooterProps) {
         </div>
 
         {/* Dynamic Divider */}
-        <div className="w-full border-t border-black/5 dark:border-white/5 pt-4 flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0 text-[10px] text-gray-500 dark:text-gray-400 font-medium">
+        <div className="w-full border-t border-black/5 dark:border-white/10 pt-4 flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0 text-[10px] text-gray-500 dark:text-gray-400 font-medium">
           
           {/* Copyright */}
           <span>
-            © {currentYear} Prashant Sisodhiya. All Rights Reserved.
+            © 2026 Prashant Sisodhiya. All Rights Reserved.
           </span>
 
           {/* Tagline */}
           <div className="flex items-center space-x-1.5">
-            <span>Crafting Digital Experiences That Inspire</span>
-            <span className="text-[#D4A017] dark:text-[#FFCC4D] animate-pulse">💛</span>
+            <span>Designed with Precision & Empathy</span>
+            <span className="text-[#D4A017] dark:text-[#FFCC4D] animate-pulse">✦</span>
           </div>
 
         </div>

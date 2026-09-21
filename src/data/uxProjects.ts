@@ -219,6 +219,254 @@ export const uxProjectsList: UXProject[] = [
     },
   },
   {
+    id: "tradex",
+    title: "TradeX Pro",
+    subtitle: "High-Frequency Algorithmic & Crypto Trading Terminal UX",
+    category: "uiux",
+    featured: true,
+    image: "/images/ux/projects/TradeX.png",
+    gallery: [
+      {
+        url: "/images/ux/projects/TradeX.png",
+        title: "TradeX Multi-Asset Trading Terminal",
+        caption: "Dark-mode high-contrast trading workstation with real-time order books, multi-timeframe candlestick charts, and instant execution drawer.",
+      },
+      {
+        url: "/images/ux/projects/tradex.png",
+        title: "Algorithmic Risk Management Console",
+        caption: "Automated stop-loss, take-profit triggers, volatility gauges, and multi-exchange liquidity depth.",
+      },
+      {
+        url: "/images/ux/projects/Ux projects overview.png",
+        title: "TradeX Within UX Portfolio Ecosystem",
+        caption: "Cross-platform design token system bridging desktop power user layouts and mobile swift orders.",
+      },
+    ],
+    summary: "An enterprise-grade financial terminal built for institutional and active retail traders, delivering millisecond execution speed, customizable modular widget workspaces, and intuitive visual risk controls.",
+    tags: ["Fintech UX", "Trading Terminal", "Data Density", "Design Tokens", "Dark Mode UI"],
+    statsBadge: "Institutional Quantitative Terminal • 0.12s Latency",
+    caseStudy: {
+      overview: "TradeX Pro was architected to solve the dual challenges of high-frequency market analysis: extreme data density without cognitive fatigue, and rapid order execution with zero input error. The terminal empowers traders to monitor dozens of live ticker feeds, execute multi-leg options and crypto swaps, and visualize risk exposure dynamically.",
+      clientType: "Fintech & Web3 Quantitative Trading Firm",
+      role: "Lead Product Designer & Financial Systems UX Architect",
+      duration: "16 Weeks (Concept, Research, Design System, Testing)",
+      tools: ["Figma", "Design Tokens", "React", "TradingView Lightweight Charts", "Tailwind CSS"],
+      deliverables: ["Terminal Layout Framework", "Modular Widget Drag-and-Drop System", "Keyboard Shortcut & Hotkey Engine", "Mobile Companion App Layouts"],
+      metrics: [
+        { label: "Execution Latency", value: "0.12s", detail: "Fastest single-click order entry workflow in benchmark testing" },
+        { label: "Trader Volume", value: "$1.2B+", detail: "Quarterly volume processed through the redesigned terminal" },
+        { label: "Order Error Reduction", value: "83%", detail: "Drop in erroneous order sizes due to smart risk safeguards" },
+        { label: "User Retention", value: "91.4%", detail: "30-day active trader retention rate" },
+      ],
+      problem: {
+        statement: "Legacy financial software is notoriously cluttered, rigid, and slow, forcing traders to juggle multiple monitors with inconsistent design languages, confusing order forms, and critical metrics buried under opaque navigation menus.",
+        points: [
+          "Information overload during volatile market breakouts causing costly mis-clicks.",
+          "Rigid grid systems that do not allow custom floating or docked analytics panels.",
+          "Poor accessibility in low-light trading environments with uncalibrated contrast ratios.",
+          "Disconnected mobile apps that fail to synchronize live watchlists and open positions in real time.",
+        ],
+        userQuote: "When Bitcoin drops $4,000 in 3 minutes, I need instant visual clarity on my liquidation levels without hunting through five sub-menus.",
+      },
+      solution: {
+        statement: "Engineered a modular, 'High-Signal Obsidian' terminal interface centered on user ergonomics, customizable tile layouts, and bi-directional visual risk feedback.",
+        highlights: [
+          {
+            title: "Dynamic Smart-Tile Workspace",
+            desc: "Drag-and-dock widget architecture enabling users to arrange depth charts, order books, and news feeds to their individual workflow.",
+          },
+          {
+            title: "One-Click Safe Execution Bar",
+            desc: "Unified order entry component with slider leverage controls, slippage tolerance indicators, and dual confirmation triggers.",
+          },
+          {
+            title: "Calibrated Color Accents",
+            desc: "Tailored emerald green (#00F5A0) and crimson (#FF3366) values optimized for prolonged screen exposure without eye strain.",
+          },
+        ],
+      },
+      research: {
+        summary: "Conducted contextual inquiries and eye-tracking studies with 24 professional crypto and equities day traders.",
+        personas: [
+          {
+            name: "Devon Vance (31)",
+            role: "Quantitative Crypto Trader",
+            goal: "Execute fast scalping strategies across multiple DEX/CEX pairs with sub-second feedback.",
+            painPoint: "Previous software lagged during high volume spikes, causing slippage and anxiety.",
+          },
+        ],
+        insights: [
+          "Traders prioritize hotkey navigation: 76% of actions were initiated via keyboard rather than mouse clicks.",
+          "Visual depth cues on order book volumes reduced order assessment time by 44%.",
+        ],
+      },
+      informationArchitecture: {
+        description: "Hierarchical 3-zone layout: Macro Market Bar -> Active Analytics Canvas -> Action Execution Dock.",
+        hierarchy: [
+          "Zone 1: Global Header with P&L ticker, network health, gas fees, and account switcher",
+          "Zone 2: Main Workspace containing TradingView charting, depth map, and live trade history",
+          "Zone 3: Order Execution dock with Leverage Slider, Position Management, and Open Orders table",
+        ],
+      },
+      designSystem: {
+        theme: "Obsidian High-Signal Financial UI",
+        colors: [
+          { name: "Terminal Black", hex: "#070B14", role: "Primary Background" },
+          { name: "Profit Emerald", hex: "#00F5A0", role: "Long Signals & Gains" },
+          { name: "Risk Crimson", hex: "#FF3366", role: "Short Signals & Liquidation" },
+          { name: "Vibrant Cyan", hex: "#00E5FF", role: "Interactive Highlights" },
+          { name: "Muted Slate", hex: "#475569", role: "Secondary Data & Grids" },
+        ],
+        typography: "JetBrains Mono for numerical data and order tables; Inter for labels and UI actions.",
+        principles: ["Speed Over Decoration", "Zero Ambiguity in Financial Data", "Ergonomic Long-Session Comfort"],
+      },
+      keyFeatures: [
+        {
+          title: "Multi-Timeframe Candlestick Matrix",
+          desc: "Synchronized dual-chart views allowing simultaneous inspection of macro trend and micro order flow.",
+          screenImg: "/images/ux/projects/TradeX.png",
+          tags: ["Candlesticks", "TradingView", "Indicators"],
+        },
+        {
+          title: "Visual Order Depth & Liquidations",
+          desc: "Real-time liquidity heatmap mapping bid/ask walls and liquidation clusters.",
+          screenImg: "/images/ux/projects/tradex.png",
+          tags: ["Liquidity Map", "Heatmap", "Risk Telemetry"],
+        },
+      ],
+      impact: {
+        summary: "Established TradeX Pro as an industry benchmark for crypto trading UX, achieving dramatic reductions in user error and record engagement metrics.",
+        stats: [
+          { number: "$1.2B+", label: "Quarterly Volume" },
+          { number: "0.12s", label: "Execution Latency" },
+          { number: "83%", label: "Error Reduction" },
+          { number: "91.4%", label: "30-Day Retention" },
+        ],
+      },
+    },
+  },
+  {
+    id: "securex",
+    title: "SecureX",
+    subtitle: "Enterprise Zero-Trust Cybersecurity & Threat Intelligence Dashboard",
+    category: "uiux",
+    featured: true,
+    image: "/images/ux/projects/secureX.png",
+    gallery: [
+      {
+        url: "/images/ux/projects/secureX.png",
+        title: "SecureX SOC Command Center",
+        caption: "Real-time threat vectors map, endpoint vulnerability scoreboards, automated incident response triage, and zero-trust policy enforcement.",
+      },
+      {
+        url: "/images/ux/projects/Ux projects overview.png",
+        title: "SecureX Cybersecurity UX Suite",
+        caption: "Cross-platform design token architecture for Security Operations Centers (SOC) and incident response engineers.",
+      },
+    ],
+    summary: "An advanced cybersecurity operations center (SOC) platform designed for SecOps teams to identify, correlate, and neutralize zero-day vulnerabilities across multi-cloud enterprise infrastructure.",
+    tags: ["Cybersecurity UX", "SOC Dashboard", "Zero-Trust", "Threat Intelligence", "Dark Mode UI"],
+    statsBadge: "99.99% Threat Mitigation • Sub-1s Triage",
+    caseStudy: {
+      overview: "SecureX provides enterprise security teams with a unified command glass for proactive threat hunting, firewall event correlation, and zero-trust identity verification. It transforms millions of raw system logs into a streamlined, high-priority visual incident queue that stops breaches before lateral movement occurs.",
+      clientType: "Enterprise Cloud Cybersecurity Provider",
+      role: "Lead Product Designer & Security UX Specialist",
+      duration: "10 Weeks",
+      tools: ["Figma", "Design Tokens", "Tailwind CSS", "React"],
+      deliverables: ["SOC Incident Queue UX", "Threat Correlation Topology Graph", "Zero-Trust Access Policy Builder", "Mobile Security Incident Pager"],
+      metrics: [
+        { label: "Mean Time to Detect (MTTD)", value: "-62%", detail: "Reduction in detection time for suspicious network traversal" },
+        { label: "Mean Time to Respond (MTTR)", value: "-48%", detail: "Accelerated containment via automated playbook triggers" },
+        { label: "SOC Analyst Burnout", value: "-75%", detail: "Drastic decrease in alert fatigue through AI log deduplication" },
+        { label: "Protected Assets", value: "500K+", detail: "Enterprise endpoints monitored across multi-cloud regions" },
+      ],
+      problem: {
+        statement: "Modern Security Operations Centers drown in alert noise: analysts are bombarded by tens of thousands of false alarms daily across disparate SIEM and endpoint tools, causing fatigue and delayed responses to genuine attacks.",
+        points: [
+          "Severe alert fatigue: 92% of security warnings were non-critical or duplicate events.",
+          "Lack of visual attack path topology: analysts had to manually stitch together IP addresses and server names.",
+          "Clunky manual containment actions requiring multiple terminal commands during active breaches.",
+        ],
+        userQuote: "When a ransomware attempt starts, we have less than 4 minutes to isolate the endpoint before it compromises our domain controller.",
+      },
+      solution: {
+        statement: "Architected a 'High-Contrast Cyber Defense' interface built around three core pillars: Automated Alert Clustering, Interactive Attack Path Visualization, and One-Click Containment Playbooks.",
+        highlights: [
+          {
+            title: "Threat Vector Correlation Map",
+            desc: "Visual node graph mapping how malicious actors attempted to pivot from initial phishing payload to internal databases.",
+          },
+          {
+            title: "Severity-Ranked Incident Queue",
+            desc: "Dynamically triaged list grouping related log events into actionable case tickets with confidence scores.",
+          },
+          {
+            title: "Instant One-Click Quarantine",
+            desc: "Emergency isolation triggers that sever host network adapters while preserving memory state for forensics.",
+          },
+        ],
+      },
+      research: {
+        summary: "Interviewed 20 Tier-1 and Tier-2 SOC analysts and observed live breach containment simulations.",
+        personas: [
+          {
+            name: "Marcus Ward (35)",
+            role: "Senior Incident Responder",
+            goal: "Rapidly triage alerts during night shifts without missing critical indicators of compromise (IOCs).",
+            painPoint: "Switching between 6 different monitoring tabs slowed containment response time.",
+          },
+        ],
+        insights: [
+          "Grouping alerts by entity (host/user) rather than time cut triage duration by 58%.",
+          "High-contrast dark themes with electric cyan, amber, and crimson indicators enabled fast anomaly scanning.",
+        ],
+      },
+      informationArchitecture: {
+        description: "Zero-Trust Command: Global Security Posture -> High-Priority Incidents -> Deep Forensics Canvas.",
+        hierarchy: [
+          "Global Posture Header: Zero-Trust Health Score, Active Threats, High Severity Anomalies",
+          "Threat Topology Hub: Interactive network node diagram with lateral movement vectors",
+          "Incident Action Feed: Triaged incidents with affected endpoints, risk score, and assigned analyst",
+          "Containment Drawer: Playbook triggers (Quarantine Host, Revoke Token, Block IP)",
+        ],
+      },
+      designSystem: {
+        theme: "Cyber Obsidian & Electric Threat Matrix",
+        colors: [
+          { name: "Deep Cyber Void", hex: "#040814", role: "SOC Console Background" },
+          { name: "Shield Cyan", hex: "#00F0FF", role: "Verified Endpoints & Active Security" },
+          { name: "Critical Breach Red", hex: "#EF4444", role: "Active Exploits & Critical Alerts" },
+          { name: "Warning Amber", hex: "#F59E0B", role: "Suspicious Behavior & Policy Drifts" },
+        ],
+        typography: "Chakra Petch / Inter for sleek futuristic readability; JetBrains Mono for IPs and hashes.",
+        principles: ["Cut Through Noise", "Decisive Speed in Containment", "Fail-Safe Confirmations"],
+      },
+      keyFeatures: [
+        {
+          title: "Attack Path Topology Graph",
+          desc: "Dynamic node network showing breach entry points and targeted cloud database clusters.",
+          screenImg: "/images/ux/projects/secureX.png",
+          tags: ["Attack Graph", "Topology", "Threat Vis"],
+        },
+        {
+          title: "Instant One-Click Quarantine",
+          desc: "Protected action modal enabling immediate network isolation of compromised hosts.",
+          screenImg: "/images/ux/projects/secureX.png",
+          tags: ["Quarantine", "Playbooks", "Rapid Containment"],
+        },
+      ],
+      impact: {
+        summary: "SecureX dramatically empowered SOC teams, reducing alert fatigue by 75% and cutting breach response time in half for enterprise clients.",
+        stats: [
+          { number: "-62%", label: "Detection Time (MTTD)" },
+          { number: "-48%", label: "Response Time (MTTR)" },
+          { number: "-75%", label: "Alert Fatigue" },
+          { number: "500K+", label: "Assets Guarded" },
+        ],
+      },
+    },
+  },
+  {
     id: "futuremind",
     title: "FutureMind",
     subtitle: "AI Career Intelligence Operating System",
@@ -359,364 +607,122 @@ export const uxProjectsList: UXProject[] = [
     },
   },
   {
-    id: "deepastro-future-intel",
-    title: "DeepAstro: Future Intelligence 8.0",
-    subtitle: "5-Year Optimization Roadmap & Life Domain Analytics",
-    category: "uiux",
-    image: "/images/ux/deepastro-future-intelligence.jpg",
-    gallery: [
-      {
-        url: "/images/ux/deepastro-future-intelligence.jpg",
-        title: "Future Intelligence 8.0 Dashboard",
-        caption: "5-year horizon planning with dominant themes, alignment index, life domain scores, and traditional remedies.",
-      },
-      {
-        url: "/images/ux/deepastro-hero.jpg",
-        title: "Platform Context",
-        caption: "Part of the comprehensive DeepAstro AI life intelligence ecosystem.",
-      },
-    ],
-    summary: "Deep dive UX architecture into the Future Intelligence module: mapping 5-year planetary transitions into actionable life domain radar scores and personalized remedial plans.",
-    tags: ["Predictive Analytics", "Data Visualization", "5-Year Horizon", "Remedies Engine"],
-    statsBadge: "72% Alignment Index • 5-Year Horizon",
-    caseStudy: {
-      overview: "A specialized module case study examining how DeepAstro visualizes long-term future timelines. Rather than delivering static yearly predictions, the interface provides a dynamic horizon selector (3 Years, 5 Years, 10 Years) with confidence scores, dominant themes (e.g. 2027: Career Growth), and specific behavioral recommendations.",
-      clientType: "DeepAstro Product Division",
-      role: "Lead Product Designer & Data Visualization Specialist",
-      duration: "6 Weeks",
-      tools: ["Figma", "Tailwind CSS", "Data Vis Design Tokens"],
-      deliverables: ["Timeline Slider Interaction", "Life Domain Radial Gauge System", "Remedies Recommendation Cards"],
-      metrics: [
-        { label: "Roadmap Engagement", value: "91%", detail: "Users explored all 5 milestone cards during onboarding" },
-        { label: "Action Plan Generation", value: "78%", detail: "Users triggered 'Generate My Improvement Plan'" },
-        { label: "Readability Score", value: "96 / 100", detail: "Heuristic evaluation score for multi-metric layout" },
-        { label: "Mobile Bounce Rate", value: "14.2%", detail: "Extremely low drop-off rate on responsive layout" },
-      ],
-      problem: {
-        statement: "Users find it hard to comprehend how shifting planetary cycles impact different areas of life concurrently (e.g., strong career growth coinciding with needing extra relationship care). Traditional charts present this as disjointed text blocks.",
-        points: [
-          "Information clutter when presenting career, wealth, health, relationships, learning, and spirituality scores simultaneously.",
-          "Difficulty connecting planetary alignments with concrete actions (e.g., gemstones, mantras, habit resets).",
-          "Risk of cognitive overload on mobile and tablet screens.",
-        ],
-      },
-      solution: {
-        statement: "Designed a modular 3-tier card hierarchy: (1) Key Year & Dominant Theme banner with Alignment Index gauge, (2) Interactive 5-Year timeline with color-coded support tags (Strong, Good, Moderate), and (3) Life Domain radial dials paired with an Action Plan generator.",
-        highlights: [
-          {
-            title: "Dynamic Timeline Selector",
-            desc: "Enables seekers to toggle between 3, 5, and 10-year forecasts with smooth layout animations.",
-          },
-          {
-            title: "Radial Life Domain Gauges",
-            desc: "Clean circular progress gauges showing percentages across 6 critical life areas: Career (78%), Wealth (72%), Relations (68%), Health (65%), Learning (70%), Spirituality (82%).",
-          },
-          {
-            title: "Curated Remedial Action Stack",
-            desc: "Interactive recommendation cards offering practical advice (Skill Development), gemstone consultations (Yellow Sapphire), mantras, and temple visits.",
-          },
-        ],
-      },
-      research: {
-        summary: "Tested 4 different data visualization archetypes with 35 participants to determine the most intuitive presentation of simultaneous life domain ratings.",
-        personas: [
-          {
-            name: "Rajesh K. (36)",
-            role: "Entrepreneur",
-            goal: "Time major business expansions and asset investments according to astrological high-confidence windows.",
-            painPoint: "Needed to see both wealth upside and potential personal health stress simultaneously.",
-          },
-        ],
-        insights: [
-          "Users strongly preferred percentage gauges over abstract planetary symbols.",
-          "Interactive year cards (2026 Foundation -> 2027 Career Growth -> 2028 Wealth) increased feelings of life control by 74%.",
-        ],
-      },
-      informationArchitecture: {
-        description: "Progressive disclosure from macro indicators to granular daily practices.",
-        hierarchy: [
-          "Header: Next Key Year (2027), Dominant Theme (Career Growth), Alignment Index (72%), Confidence (High)",
-          "Sub-Nav: Category filters (Overview, Timeline, Career, Wealth, Relationships, Health, Remedies, Evidence)",
-          "Timeline Hub: 5-Year timeline cards with status pills (Foundation, Career Growth, Wealth Expansion, Relationships, Balance)",
-          "Bottom Matrix: Radial domain scores & One-click 'Generate My Improvement Plan' CTA",
-        ],
-      },
-      designSystem: {
-        theme: "Cosmic Dark & Celestial Radials",
-        colors: [
-          { name: "Deep Space Navy", hex: "#060A1A", role: "Module Background" },
-          { name: "Vedic Gold", hex: "#F5BA42", role: "Key Year & Dominant Accents" },
-          { name: "Cyan Alignment", hex: "#00F0FF", role: "Active Year Card & Progress Bars" },
-          { name: "Lotus Magenta", hex: "#EC4899", role: "Relationship & Spiritual Badges" },
-        ],
-        typography: "Cinzel Display paired with Inter for high-contrast numeric legibility.",
-        principles: ["Context Before Detail", "Color-Coded Status Consistency", "Actionable Next Step Always Present"],
-      },
-      keyFeatures: [
-        {
-          title: "5-Year Horizon Timeline",
-          desc: "Smooth horizontal card deck allowing users to inspect focus, opportunities, and confidence for each year.",
-          screenImg: "/images/ux/deepastro-future-intelligence.jpg",
-          tags: ["Horizon Timeline", "Year Milestones", "Support Badges"],
-        },
-        {
-          title: "Life Domain Radar Scores",
-          desc: "Six synchronized circular dials summarizing multi-year life balance.",
-          screenImg: "/images/ux/deepastro-future-intelligence.jpg",
-          tags: ["Radial Dials", "Life Balance", "Data Vis"],
-        },
-      ],
-      impact: {
-        summary: "Transformed future astrological inquiries from anxiety-inducing guesswork into structured, reassuring personal roadmaps.",
-        stats: [
-          { number: "91%", label: "Timeline Exploration Rate" },
-          { number: "78%", label: "Action Plan Generation" },
-          { number: "96/100", label: "Readability Score" },
-        ],
-      },
-    },
-  },
-  {
-    id: "deepastro-soultrace",
-    title: "DeepAstro: SoulTrace Karmic Matrix",
-    subtitle: "Karmic Patterns, Past Life Influences & Soul Lessons UX",
-    category: "uiux",
-    image: "/images/ux/deepastro-soultrace-karmic.jpg",
-    gallery: [
-      {
-        url: "/images/ux/deepastro-soultrace-karmic.jpg",
-        title: "SoulTrace Karmic Dashboard",
-        caption: "Deep karmic patterns, influenced astrological houses, and Rahu-Ketu nodal balancing axis.",
-      },
-      {
-        url: "/images/ux/deepastro-soultrace-card.jpg",
-        title: "Soul Journey Experience Modal",
-        caption: "Ethereal journey modal with tactile touch targets, planetary indicators, and authentic calculation badge.",
-      },
-    ],
-    summary: "UX case study exploring how DeepAstro structures existential and karmic reflections into a calm, reverent, and psychologically supportive digital dashboard.",
-    tags: ["Karmic Matrix", "Soul Journey", "Empathetic UX", "Psychological Safety"],
-    statsBadge: "4 Houses Mapped • Saturn & Rahu-Ketu Axis",
-    caseStudy: {
-      overview: "SoulTrace addresses one of the deepest inquiries in Vedic thought: why do certain challenges and emotional patterns recur throughout life? The UX challenge was to translate esoteric karmic concepts into empathetic, reassuring insights that encourage personal growth without inducing fear or fatalism.",
-      clientType: "DeepAstro Product Division",
-      role: "Lead UI/UX Designer & Creative Technologist",
-      duration: "8 Weeks",
-      tools: ["Figma", "Design Tokens", "Framer Motion"],
-      deliverables: ["Karmic Pattern Severity Matrix", "Influenced Houses Visualizer", "Atmospheric Modal Transitions"],
-      metrics: [
-        { label: "Emotional Reassurance", value: "95%", detail: "Users reported feeling comforted rather than anxious" },
-        { label: "Average Reading Time", value: "11.2 min", detail: "Deepest reading duration among all DeepAstro modules" },
-        { label: "Exploration Rate", value: "88%", detail: "Users navigated into Past Life Influences deep dive" },
-      ],
-      problem: {
-        statement: "Past life and karmic discussions often trigger anxiety or skepticism if presented dogmatically. Most existing platforms present karmic debt as a punishment rather than a curriculum of soul growth.",
-        points: [
-          "Users feel apprehensive about exploring 'bad karma' or negative astrological placements.",
-          "Complex planetary houses (House 4: Roots, House 8: Transformation, House 10: Duty, House 12: Spirituality) are difficult to grasp without context.",
-          "Need for a reverent, sacred visual tone that respects cultural tradition while feeling cutting-edge.",
-        ],
-      },
-      solution: {
-        statement: "Framed challenges through the reassuring UX philosophy: 'Your challenges are not punishments, but invitations to become the highest version of your soul.' Designed peaceful visual cues, cosmic portal artwork, and gentle strength indicators.",
-        highlights: [
-          {
-            title: "Karmic Axis Visualization",
-            desc: "Clearly displays Dominant Karmic Theme (Saturn / Shani: Discipline & Responsibility) alongside Karmic Axis (Rahu - Ketu: Material vs Spiritual Balance).",
-          },
-          {
-            title: "Key Karmic Patterns Intensity Stack",
-            desc: "Card list with distinct intensity badges (Authority: Strong, Detachment: Moderate, Service & Healing: Strong, Spiritual Seeking: Moderate, Material Attachment: Mild).",
-          },
-          {
-            title: "Influenced Houses Navigation",
-            desc: "Direct interactive link connecting Houses 4, 8, 10, and 12 with related planets (Saturn, Rahu, Ketu) and Kundli chart layers.",
-          },
-        ],
-      },
-      research: {
-        summary: "Worked alongside Vedic scholars and transpersonal psychology researchers to ensure visual metaphors and copywriting promoted psychological wellbeing and resilience.",
-        personas: [
-          {
-            name: "Sunita M. (42)",
-            role: "Yoga Instructor & Seeker",
-            goal: "Understand why certain relationship dynamics recur and find constructive ways to heal generational patterns.",
-            painPoint: "Traditional astrologers told her she had 'harsh doshas' without explaining how to work through them constructively.",
-          },
-        ],
-        insights: [
-          "Reverent visual design (celestial arches, warm gold illumination) increased user trust and emotional resonance by 85%.",
-          "Replacing terms like 'Karmic Debt' with 'Soul Lessons & Recurring Themes' reduced user drop-off during onboarding from 32% to under 6%.",
-        ],
-      },
-      informationArchitecture: {
-        description: "Designed to evoke contemplation, reflection, and proactive mindfulness.",
-        hierarchy: [
-          "Hero: Ethereal Soul Portal & SoulTrace Quote ('Same Soul. Many Journeys. Greater Wisdom.')",
-          "Karmic Overview: Cosmic artwork with dominant theme (Saturn) and Rahu-Ketu nodal axis",
-          "Karmic Patterns: Authority, Detachment, Service & Healing, Spiritual Seeking, Material Attachment",
-          "Cosmic Influence: Related Planets (Saturn, Rahu, Ketu) & Influenced Houses (4, 8, 10, 12)",
-          "Takeaway Insight & CTA: Reassuring philosophical synthesis and 'Explore Past Life Influences' trigger",
-        ],
-      },
-      designSystem: {
-        theme: "Celestial Sanctuary & Astral Blue",
-        colors: [
-          { name: "Deep Astral Indigo", hex: "#070B1E", role: "Sanctuary Canvas" },
-          { name: "Soul Portal Gold", hex: "#F6C865", role: "Enlightenment & Gateway Illuminations" },
-          { name: "Ethereal Cyan", hex: "#22D3EE", role: "Primary Interactive Triggers" },
-          { name: "Transcendence Violet", hex: "#A855F7", role: "Karmic Axis Connectors" },
-        ],
-        typography: "Classical Serif headers paired with clean sans body text to evoke timeless wisdom and modern precision.",
-        principles: ["Dignity and Empathy in Every Word", "No Fear-Based Messaging", "Respect Cultural & Spiritual Roots"],
-      },
-      keyFeatures: [
-        {
-          title: "Karmic Pattern Intensity Indicators",
-          desc: "Clean color-coded pills communicating recurring themes and opportunities for completion and growth.",
-          screenImg: "/images/ux/deepastro-soultrace-karmic.jpg",
-          tags: ["Karmic Matrix", "Intensity Indicators", "Soul Lessons"],
-        },
-        {
-          title: "Ethereal Celestial Gateway Modal",
-          desc: "Inspiring portal animation welcoming seekers into authentic chart calculations and past life reflections.",
-          screenImg: "/images/ux/deepastro-soultrace-card.jpg",
-          tags: ["Visual Portal", "Empathetic Design", "Interactive Flow"],
-        },
-      ],
-      impact: {
-        summary: "Created a breakthrough experience in compassionate digital introspection, praised by seekers worldwide for transforming intimidating astrology into comforting clarity.",
-        stats: [
-          { number: "95%", label: "Emotional Reassurance Rating" },
-          { number: "11.2 min", label: "Average Session Duration" },
-          { number: "88%", label: "Deep Dive Exploration Rate" },
-        ],
-      },
-    },
-  },
-  {
-    id: "tradex",
-    title: "TradeX Pro",
-    subtitle: "High-Frequency Algorithmic & Crypto Trading Terminal UX",
+    id: "presentx",
+    title: "PresentX",
+    subtitle: "AI Presentation & Dynamic Slides Operating System",
     category: "uiux",
     featured: true,
-    image: "/images/ux/projects/TradeX.png",
+    image: "/images/ux/projects/presentX.png",
     gallery: [
       {
-        url: "/images/ux/projects/TradeX.png",
-        title: "TradeX Multi-Asset Trading Terminal",
-        caption: "Dark-mode high-contrast trading workstation with real-time order books, multi-timeframe candlestick charts, and instant execution drawer.",
-      },
-      {
-        url: "/images/ux/projects/tradex.png",
-        title: "Algorithmic Risk Management Console",
-        caption: "Automated stop-loss, take-profit triggers, volatility gauges, and multi-exchange liquidity depth.",
+        url: "/images/ux/projects/presentX.png",
+        title: "PresentX Intelligent Slide Workspace",
+        caption: "Real-time AI narrative outline, slide layout tokens, data visualization transforms, and audience presentation mode.",
       },
       {
         url: "/images/ux/projects/Ux projects overview.png",
-        title: "TradeX Within UX Portfolio Ecosystem",
-        caption: "Cross-platform design token system bridging desktop power user layouts and mobile swift orders.",
+        title: "PresentX Design System & Component Library",
+        caption: "Design token architecture supporting rapid dark/light themes, typography scales, and modular slide components.",
       },
     ],
-    summary: "An enterprise-grade financial terminal built for institutional and active retail traders, delivering millisecond execution speed, customizable modular widget workspaces, and intuitive visual risk controls.",
-    tags: ["Fintech UX", "Trading Terminal", "Data Density", "Design Tokens", "Dark Mode UI"],
-    statsBadge: "$1.2B+ Vol Handled • 0.12s Latency",
+    summary: "An intelligent generative presentation workspace designed to convert raw research papers, executive outlines, and product roadmaps into high-impact visual decks with automated typography and tokenized layouts.",
+    tags: ["AI Generative UX", "Presentation Tool", "Design Tokens", "Canvas UX", "Data Visualization"],
+    statsBadge: "Dynamic AI Canvas • Real-Time Flow",
     caseStudy: {
-      overview: "TradeX Pro was architected to solve the dual challenges of high-frequency market analysis: extreme data density without cognitive fatigue, and rapid order execution with zero input error. The terminal empowers traders to monitor dozens of live ticker feeds, execute multi-leg options and crypto swaps, and visualize risk exposure dynamically.",
-      clientType: "Fintech & Web3 Quantitative Trading Firm",
-      role: "Lead Product Designer & Financial Systems UX Architect",
-      duration: "16 Weeks (Concept, Research, Design System, Testing)",
-      tools: ["Figma", "Design Tokens", "React", "TradingView Lightweight Charts", "Tailwind CSS"],
-      deliverables: ["Terminal Layout Framework", "Modular Widget Drag-and-Drop System", "Keyboard Shortcut & Hotkey Engine", "Mobile Companion App Layouts"],
+      overview: "PresentX was built to solve executive and creator slide deck friction: the painful transition from strategic outlines to polished visual presentations. By combining structured AI prompts with strict design token governance, PresentX generates coherent, brand-aligned slides in seconds while preserving deep manual design control.",
+      clientType: "Enterprise Productivity & AI Workspace Platform",
+      role: "Lead Product Designer & Design Systems Architect",
+      duration: "10 Weeks",
+      tools: ["Figma", "Design Tokens", "React", "Tailwind CSS", "Framer Motion"],
+      deliverables: ["Dynamic Infinite Canvas UI", "AI Narrative Prompt Engine", "Slide Component Design System", "Presenter Telemetry Mode"],
       metrics: [
-        { label: "Execution Latency", value: "0.12s", detail: "Fastest single-click order entry workflow in benchmark testing" },
-        { label: "Trader Volume", value: "$1.2B+", detail: "Quarterly volume processed through the redesigned terminal" },
-        { label: "Order Error Reduction", value: "83%", detail: "Drop in erroneous order sizes due to smart risk safeguards" },
-        { label: "User Retention", value: "91.4%", detail: "30-day active trader retention rate" },
+        { label: "Deck Build Time", value: "-70%", detail: "Time saved per executive presentation generated" },
+        { label: "Design Consistency", value: "100%", detail: "Automatic enforcement of company brand tokens and fonts" },
+        { label: "User Satisfaction", value: "4.8 / 5", detail: "Positive feedback from product managers and consultants" },
+        { label: "Export Versatility", value: "Multi-Format", detail: "PDF, PPTX, and responsive live web URL presentations" },
       ],
       problem: {
-        statement: "Legacy financial software is notoriously cluttered, rigid, and slow, forcing traders to juggle multiple monitors with inconsistent design languages, confusing order forms, and critical metrics buried under opaque navigation menus.",
+        statement: "Professionals spend hours formatting text boxes, aligning icons, and fixing font weights in outdated presentation software rather than refining their narrative and strategic argument.",
         points: [
-          "Information overload during volatile market breakouts causing costly mis-clicks.",
-          "Rigid grid systems that do not allow custom floating or docked analytics panels.",
-          "Poor accessibility in low-light trading environments with uncalibrated contrast ratios.",
-          "Disconnected mobile apps that fail to synchronize live watchlists and open positions in real time.",
+          "Manual slide formatting takes 70% of preparation time, leaving little bandwidth for storytelling.",
+          "Disjointed brand consistency when multiple team members collaborate across presentation decks.",
+          "Inability to dynamically update live metrics or embed interactive web components into static slides.",
         ],
-        userQuote: "When Bitcoin drops $4,000 in 3 minutes, I need instant visual clarity on my liquidation levels without hunting through five sub-menus.",
+        userQuote: "I have the quarterly data and the strategy ready, but I end up losing 6 hours manually nudging bullet points and shapes in PowerPoint.",
       },
       solution: {
-        statement: "Engineered a modular, 'High-Signal Obsidian' terminal interface centered on user ergonomics, customizable tile layouts, and bi-directional visual risk feedback.",
+        statement: "Designed a clean dual-surface workspace: a left-hand semantic narrative editor paired with a live right-hand dynamic canvas that automatically arranges typography, imagery, and diagrams according to design system tokens.",
         highlights: [
           {
-            title: "Dynamic Smart-Tile Workspace",
-            desc: "Drag-and-dock widget architecture enabling users to arrange depth charts, order books, and news feeds to their individual workflow.",
+            title: "Semantic Outline to Slide Transformer",
+            desc: "Users draft bullet points in markdown; PresentX automatically chooses optimal layouts (cards, radial metrics, timeline, side-by-side comparison).",
           },
           {
-            title: "One-Click Safe Execution Bar",
-            desc: "Unified order entry component with slider leverage controls, slippage tolerance indicators, and dual confirmation triggers.",
+            title: "Design System Token Lock",
+            desc: "Guarantees WCAG AA color contrast, uniform typography scales (Cinzel/Inter/Outfit), and modular padding across every exported slide.",
           },
           {
-            title: "Calibrated Color Accents",
-            desc: "Tailored emerald green (#00F5A0) and crimson (#FF3366) values optimized for prolonged screen exposure without eye strain.",
+            title: "Presenter Mode with Telemetry",
+            desc: "Seamless dual-screen presenter view with pacing timer, private speaker notes, and live slide preview scrubber.",
           },
         ],
       },
       research: {
-        summary: "Conducted contextual inquiries and eye-tracking studies with 24 professional crypto and equities day traders.",
+        summary: "Shadowed 22 founders, product leads, and management consultants during their weekly deck creation workflows.",
         personas: [
           {
-            name: "Devon Vance (31)",
-            role: "Quantitative Crypto Trader",
-            goal: "Execute fast scalping strategies across multiple DEX/CEX pairs with sub-second feedback.",
-            painPoint: "Previous software lagged during high volume spikes, causing slippage and anxiety.",
+            name: "Rohan Varma (34)",
+            role: "Product VP & Startup Advisor",
+            goal: "Quickly build compelling investor and customer pitch decks without hiring an external agency.",
+            painPoint: "Traditional software breaks formatting as soon as text length changes or new team members edit slides.",
           },
         ],
         insights: [
-          "Traders prioritize hotkey navigation: 76% of actions were initiated via keyboard rather than mouse clicks.",
-          "Visual depth cues on order book volumes reduced order assessment time by 44%.",
+          "Users want narrative structure suggestions rather than just blank templates.",
+          "Enforcing automated responsive grid margins reduced user layout adjustments by 82%.",
         ],
       },
       informationArchitecture: {
-        description: "Hierarchical 3-zone layout: Macro Market Bar -> Active Analytics Canvas -> Action Execution Dock.",
+        description: "Focus-Driven Slide Creation: Narrative Document -> Live Tokenized Preview -> Presenter Telemetry.",
         hierarchy: [
-          "Zone 1: Global Header with P&L ticker, network health, gas fees, and account switcher",
-          "Zone 2: Main Workspace containing TradingView charting, depth map, and live trade history",
-          "Zone 3: Order Execution dock with Leverage Slider, Position Management, and Open Orders table",
+          "Top Bar: Deck Title, Theme Selector (Dark Cyber, Clean Editorial, Light Minimal), Export & Present buttons",
+          "Left Rail: Narrative Outline & Slide sorter thumbnails with reorder handles",
+          "Central Canvas: High-resolution slide viewport with real-time responsive component rendering",
+          "Right Utility Panel: AI Content Enhancer, Typography scale adjustments, and Media Library",
         ],
       },
       designSystem: {
-        theme: "Obsidian High-Signal Financial UI",
+        theme: "Obsidian Editorial & Luminous Gold",
         colors: [
-          { name: "Terminal Black", hex: "#070B14", role: "Primary Background" },
-          { name: "Profit Emerald", hex: "#00F5A0", role: "Long Signals & Gains" },
-          { name: "Risk Crimson", hex: "#FF3366", role: "Short Signals & Liquidation" },
-          { name: "Vibrant Cyan", hex: "#00E5FF", role: "Interactive Highlights" },
-          { name: "Muted Slate", hex: "#475569", role: "Secondary Data & Grids" },
+          { name: "Obsidian Canvas", hex: "#080C16", role: "App Background" },
+          { name: "Editorial Gold", hex: "#F5BA42", role: "Primary Accents & Active Slide Focus" },
+          { name: "Electric Cyan", hex: "#00F0FF", role: "Interactive Canvas Handles" },
+          { name: "Surface Card", hex: "#111827", role: "Slide Background Containers" },
         ],
-        typography: "JetBrains Mono for numerical data and order tables; Inter for labels and UI actions.",
-        principles: ["Speed Over Decoration", "Zero Ambiguity in Financial Data", "Ergonomic Long-Session Comfort"],
+        typography: "Outfit for impactful slide headlines; Inter for readable body copy and data tables.",
+        principles: ["Story First, Aesthetics Follow", "Zero Layout Drift", "Instant Keyboard Command Ergonomics"],
       },
       keyFeatures: [
         {
-          title: "Multi-Timeframe Candlestick Matrix",
-          desc: "Synchronized dual-chart views allowing simultaneous inspection of macro trend and micro order flow.",
-          screenImg: "/images/ux/projects/TradeX.png",
-          tags: ["Candlesticks", "TradingView", "Indicators"],
+          title: "Intelligent Layout Engine",
+          desc: "Auto-arranges slide content into balanced grids, comparison matrices, or timeline cards.",
+          screenImg: "/images/ux/projects/presentX.png",
+          tags: ["Dynamic Canvas", "Layout Engine", "Design Tokens"],
         },
         {
-          title: "Visual Order Depth & Liquidations",
-          desc: "Real-time liquidity heatmap mapping bid/ask walls and liquidation clusters.",
-          screenImg: "/images/ux/projects/tradex.png",
-          tags: ["Liquidity Map", "Heatmap", "Risk Telemetry"],
+          title: "Executive Presenter Hub",
+          desc: "Full-screen presentation mode with elapsed time tracking, question queues, and live audience reactions.",
+          screenImg: "/images/ux/projects/presentX.png",
+          tags: ["Presenter View", "Telemetry", "Remote Control"],
         },
       ],
       impact: {
-        summary: "Established TradeX Pro as an industry benchmark for crypto trading UX, achieving dramatic reductions in user error and record engagement metrics.",
+        summary: "PresentX transformed presentation authoring into a seamless, intelligent process, cutting deck creation time by 70% while guaranteeing pristine visual consistency.",
         stats: [
-          { number: "$1.2B+", label: "Quarterly Volume" },
-          { number: "0.12s", label: "Execution Latency" },
-          { number: "83%", label: "Error Reduction" },
-          { number: "91.4%", label: "30-Day Retention" },
+          { number: "-70%", label: "Deck Build Time" },
+          { number: "100%", label: "Brand Token Parity" },
+          { number: "4.8/5", label: "User Satisfaction" },
+          { number: "Multi-OS", label: "Web & Desktop Sync" },
         ],
       },
     },
@@ -964,127 +970,6 @@ export const uxProjectsList: UXProject[] = [
     },
   },
   {
-    id: "securex",
-    title: "SecureX",
-    subtitle: "Enterprise Zero-Trust Cybersecurity & Threat Intelligence Dashboard",
-    category: "uiux",
-    featured: true,
-    image: "/images/ux/projects/secureX.png",
-    gallery: [
-      {
-        url: "/images/ux/projects/secureX.png",
-        title: "SecureX SOC Command Center",
-        caption: "Real-time threat vectors map, endpoint vulnerability scoreboards, automated incident response triage, and zero-trust policy enforcement.",
-      },
-      {
-        url: "/images/ux/projects/Ux projects overview.png",
-        title: "SecureX Cybersecurity UX Suite",
-        caption: "Cross-platform design token architecture for Security Operations Centers (SOC) and incident response engineers.",
-      },
-    ],
-    summary: "An advanced cybersecurity operations center (SOC) platform designed for SecOps teams to identify, correlate, and neutralize zero-day vulnerabilities across multi-cloud enterprise infrastructure.",
-    tags: ["Cybersecurity UX", "SOC Dashboard", "Zero-Trust", "Threat Intelligence", "Dark Mode UI"],
-    statsBadge: "99.99% Threat Mitigation • Sub-1s Triage",
-    caseStudy: {
-      overview: "SecureX provides enterprise security teams with a unified command glass for proactive threat hunting, firewall event correlation, and zero-trust identity verification. It transforms millions of raw system logs into a streamlined, high-priority visual incident queue that stops breaches before lateral movement occurs.",
-      clientType: "Enterprise Cloud Cybersecurity Provider",
-      role: "Lead Product Designer & Security UX Specialist",
-      duration: "10 Weeks",
-      tools: ["Figma", "Design Tokens", "Tailwind CSS", "React"],
-      deliverables: ["SOC Incident Queue UX", "Threat Correlation Topology Graph", "Zero-Trust Access Policy Builder", "Mobile Security Incident Pager"],
-      metrics: [
-        { label: "Mean Time to Detect (MTTD)", value: "-62%", detail: "Reduction in detection time for suspicious network traversal" },
-        { label: "Mean Time to Respond (MTTR)", value: "-48%", detail: "Accelerated containment via automated playbook triggers" },
-        { label: "SOC Analyst Burnout", value: "-75%", detail: "Drastic decrease in alert fatigue through AI log deduplication" },
-        { label: "Protected Assets", value: "500K+", detail: "Enterprise endpoints monitored across multi-cloud regions" },
-      ],
-      problem: {
-        statement: "Modern Security Operations Centers drown in alert noise: analysts are bombarded by tens of thousands of false alarms daily across disparate SIEM and endpoint tools, causing fatigue and delayed responses to genuine attacks.",
-        points: [
-          "Severe alert fatigue: 92% of security warnings were non-critical or duplicate events.",
-          "Lack of visual attack path topology: analysts had to manually stitch together IP addresses and server names.",
-          "Clunky manual containment actions requiring multiple terminal commands during active breaches.",
-        ],
-        userQuote: "When a ransomware attempt starts, we have less than 4 minutes to isolate the endpoint before it compromises our domain controller.",
-      },
-      solution: {
-        statement: "Architected a 'High-Contrast Cyber Defense' interface built around three core pillars: Automated Alert Clustering, Interactive Attack Path Visualization, and One-Click Containment Playbooks.",
-        highlights: [
-          {
-            title: "Threat Vector Correlation Map",
-            desc: "Visual node graph mapping how malicious actors attempted to pivot from initial phishing payload to internal databases.",
-          },
-          {
-            title: "Severity-Ranked Incident Queue",
-            desc: "Dynamically triaged list grouping related log events into actionable case tickets with confidence scores.",
-          },
-          {
-            title: "Instant One-Click Quarantine",
-            desc: "Emergency isolation triggers that sever host network adapters while preserving memory state for forensics.",
-          },
-        ],
-      },
-      research: {
-        summary: "Interviewed 20 Tier-1 and Tier-2 SOC analysts and observed live breach containment simulations.",
-        personas: [
-          {
-            name: "Marcus Ward (35)",
-            role: "Senior Incident Responder",
-            goal: "Rapidly triage alerts during night shifts without missing critical indicators of compromise (IOCs).",
-            painPoint: "Switching between 6 different monitoring tabs slowed containment response time.",
-          },
-        ],
-        insights: [
-          "Grouping alerts by entity (host/user) rather than time cut triage duration by 58%.",
-          "High-contrast dark themes with electric cyan, amber, and crimson indicators enabled fast anomaly scanning.",
-        ],
-      },
-      informationArchitecture: {
-        description: "Zero-Trust Command: Global Security Posture -> High-Priority Incidents -> Deep Forensics Canvas.",
-        hierarchy: [
-          "Global Posture Header: Zero-Trust Health Score, Active Threats, High Severity Anomalies",
-          "Threat Topology Hub: Interactive network node diagram with lateral movement vectors",
-          "Incident Action Feed: Triaged incidents with affected endpoints, risk score, and assigned analyst",
-          "Containment Drawer: Playbook triggers (Quarantine Host, Revoke Token, Block IP)",
-        ],
-      },
-      designSystem: {
-        theme: "Cyber Obsidian & Electric Threat Matrix",
-        colors: [
-          { name: "Deep Cyber Void", hex: "#040814", role: "SOC Console Background" },
-          { name: "Shield Cyan", hex: "#00F0FF", role: "Verified Endpoints & Active Security" },
-          { name: "Critical Breach Red", hex: "#EF4444", role: "Active Exploits & Critical Alerts" },
-          { name: "Warning Amber", hex: "#F59E0B", role: "Suspicious Behavior & Policy Drifts" },
-        ],
-        typography: "Chakra Petch / Inter for sleek futuristic readability; JetBrains Mono for IPs and hashes.",
-        principles: ["Cut Through Noise", "Decisive Speed in Containment", "Fail-Safe Confirmations"],
-      },
-      keyFeatures: [
-        {
-          title: "Attack Path Topology Graph",
-          desc: "Dynamic node network showing breach entry points and targeted cloud database clusters.",
-          screenImg: "/images/ux/projects/secureX.png",
-          tags: ["Attack Graph", "Topology", "Threat Vis"],
-        },
-        {
-          title: "Instant One-Click Quarantine",
-          desc: "Protected action modal enabling immediate network isolation of compromised hosts.",
-          screenImg: "/images/ux/projects/secureX.png",
-          tags: ["Quarantine", "Playbooks", "Rapid Containment"],
-        },
-      ],
-      impact: {
-        summary: "SecureX dramatically empowered SOC teams, reducing alert fatigue by 75% and cutting breach response time in half for enterprise clients.",
-        stats: [
-          { number: "-62%", label: "Detection Time (MTTD)" },
-          { number: "-48%", label: "Response Time (MTTR)" },
-          { number: "-75%", label: "Alert Fatigue" },
-          { number: "500K+", label: "Assets Guarded" },
-        ],
-      },
-    },
-  },
-  {
     id: "pathwise",
     title: "PathWise",
     subtitle: "Adaptive Career Navigation & Gamified Skill Mastery Architecture",
@@ -1205,5 +1090,240 @@ export const uxProjectsList: UXProject[] = [
       },
     },
   },
+  {
+    id: "deepastro-future-intel",
+    title: "DeepAstro: Future Intelligence 8.0",
+    subtitle: "5-Year Optimization Roadmap & Life Domain Analytics",
+    category: "uiux",
+    image: "/images/ux/deepastro-future-intelligence.jpg",
+    gallery: [
+      {
+        url: "/images/ux/deepastro-future-intelligence.jpg",
+        title: "Future Intelligence 8.0 Dashboard",
+        caption: "5-year horizon planning with dominant themes, alignment index, life domain scores, and traditional remedies.",
+      },
+      {
+        url: "/images/ux/deepastro-hero.jpg",
+        title: "Platform Context",
+        caption: "Part of the comprehensive DeepAstro AI life intelligence ecosystem.",
+      },
+    ],
+    summary: "Deep dive UX architecture into the Future Intelligence module: mapping 5-year planetary transitions into actionable life domain radar scores and personalized remedial plans.",
+    tags: ["Predictive Analytics", "Data Visualization", "5-Year Horizon", "Remedies Engine"],
+    statsBadge: "72% Alignment Index • 5-Year Horizon",
+    caseStudy: {
+      overview: "A specialized module case study examining how DeepAstro visualizes long-term future timelines. Rather than delivering static yearly predictions, the interface provides a dynamic horizon selector (3 Years, 5 Years, 10 Years) with confidence scores, dominant themes (e.g. 2027: Career Growth), and specific behavioral recommendations.",
+      clientType: "DeepAstro Product Division",
+      role: "Lead Product Designer & Data Visualization Specialist",
+      duration: "6 Weeks",
+      tools: ["Figma", "Tailwind CSS", "Data Vis Design Tokens"],
+      deliverables: ["Timeline Slider Interaction", "Life Domain Radial Gauge System", "Remedies Recommendation Cards"],
+      metrics: [
+        { label: "Roadmap Engagement", value: "91%", detail: "Users explored all 5 milestone cards during onboarding" },
+        { label: "Action Plan Generation", value: "78%", detail: "Users triggered 'Generate My Improvement Plan'" },
+        { label: "Readability Score", value: "96 / 100", detail: "Heuristic evaluation score for multi-metric layout" },
+        { label: "Mobile Bounce Rate", value: "14.2%", detail: "Extremely low drop-off rate on responsive layout" },
+      ],
+      problem: {
+        statement: "Users find it hard to comprehend how shifting planetary cycles impact different areas of life concurrently (e.g., strong career growth coinciding with needing extra relationship care). Traditional charts present this as disjointed text blocks.",
+        points: [
+          "Information clutter when presenting career, wealth, health, relationships, learning, and spirituality scores simultaneously.",
+          "Difficulty connecting planetary alignments with concrete actions (e.g., gemstones, mantras, habit resets).",
+          "Risk of cognitive overload on mobile and tablet screens.",
+        ],
+      },
+      solution: {
+        statement: "Designed a modular 3-tier card hierarchy: (1) Key Year & Dominant Theme banner with Alignment Index gauge, (2) Interactive 5-Year timeline with color-coded support tags (Strong, Good, Moderate), and (3) Life Domain radial dials paired with an Action Plan generator.",
+        highlights: [
+          {
+            title: "Dynamic Timeline Selector",
+            desc: "Enables seekers to toggle between 3, 5, and 10-year forecasts with smooth layout animations.",
+          },
+          {
+            title: "Radial Life Domain Gauges",
+            desc: "Clean circular progress gauges showing percentages across 6 critical life areas: Career (78%), Wealth (72%), Relations (68%), Health (65%), Learning (70%), Spirituality (82%).",
+          },
+          {
+            title: "Curated Remedial Action Stack",
+            desc: "Interactive recommendation cards offering practical advice (Skill Development), gemstone consultations (Yellow Sapphire), mantras, and temple visits.",
+          },
+        ],
+      },
+      research: {
+        summary: "Tested 4 different data visualization archetypes with 35 participants to determine the most intuitive presentation of simultaneous life domain ratings.",
+        personas: [
+          {
+            name: "Rajesh K. (36)",
+            role: "Entrepreneur",
+            goal: "Time major business expansions and asset investments according to astrological high-confidence windows.",
+            painPoint: "Needed to see both wealth upside and potential personal health stress simultaneously.",
+          },
+        ],
+        insights: [
+          "Users strongly preferred percentage gauges over abstract planetary symbols.",
+          "Interactive year cards (2026 Foundation -> 2027 Career Growth -> 2028 Wealth) increased feelings of life control by 74%.",
+        ],
+      },
+      informationArchitecture: {
+        description: "Progressive disclosure from macro indicators to granular daily practices.",
+        hierarchy: [
+          "Header: Next Key Year (2027), Dominant Theme (Career Growth), Alignment Index (72%), Confidence (High)",
+          "Sub-Nav: Category filters (Overview, Timeline, Career, Wealth, Relationships, Health, Remedies, Evidence)",
+          "Timeline Hub: 5-Year timeline cards with status pills (Foundation, Career Growth, Wealth Expansion, Relationships, Balance)",
+          "Bottom Matrix: Radial domain scores & One-click 'Generate My Improvement Plan' CTA",
+        ],
+      },
+      designSystem: {
+        theme: "Cosmic Dark & Celestial Radials",
+        colors: [
+          { name: "Deep Space Navy", hex: "#060A1A", role: "Module Background" },
+          { name: "Vedic Gold", hex: "#F5BA42", role: "Key Year & Dominant Accents" },
+          { name: "Cyan Alignment", hex: "#00F0FF", role: "Active Year Card & Progress Bars" },
+          { name: "Lotus Magenta", hex: "#EC4899", role: "Relationship & Spiritual Badges" },
+        ],
+        typography: "Cinzel Display paired with Inter for high-contrast numeric legibility.",
+        principles: ["Context Before Detail", "Color-Coded Status Consistency", "Actionable Next Step Always Present"],
+      },
+      keyFeatures: [
+        {
+          title: "5-Year Horizon Timeline",
+          desc: "Smooth horizontal card deck allowing users to inspect focus, opportunities, and confidence for each year.",
+          screenImg: "/images/ux/deepastro-future-intelligence.jpg",
+          tags: ["Horizon Timeline", "Year Milestones", "Support Badges"],
+        },
+        {
+          title: "Life Domain Radar Scores",
+          desc: "Six synchronized circular dials summarizing multi-year life balance.",
+          screenImg: "/images/ux/deepastro-future-intelligence.jpg",
+          tags: ["Radial Dials", "Life Balance", "Data Vis"],
+        },
+      ],
+      impact: {
+        summary: "Transformed future astrological inquiries from anxiety-inducing guesswork into structured, reassuring personal roadmaps.",
+        stats: [
+          { number: "91%", label: "Timeline Exploration Rate" },
+          { number: "78%", label: "Action Plan Generation" },
+          { number: "96/100", label: "Readability Score" },
+        ],
+      },
+    },
+  },
+  {
+    id: "deepastro-soultrace",
+    title: "DeepAstro: SoulTrace Karmic Matrix",
+    subtitle: "Karmic Patterns, Past Life Influences & Soul Lessons UX",
+    category: "uiux",
+    image: "/images/ux/deepastro-soultrace-karmic.jpg",
+    gallery: [
+      {
+        url: "/images/ux/deepastro-soultrace-karmic.jpg",
+        title: "SoulTrace Karmic Dashboard",
+        caption: "Deep karmic patterns, influenced astrological houses, and Rahu-Ketu nodal balancing axis.",
+      },
+      {
+        url: "/images/ux/deepastro-soultrace-card.jpg",
+        title: "Soul Journey Experience Modal",
+        caption: "Ethereal journey modal with tactile touch targets, planetary indicators, and authentic calculation badge.",
+      },
+    ],
+    summary: "UX case study exploring how DeepAstro structures existential and karmic reflections into a calm, reverent, and psychologically supportive digital dashboard.",
+    tags: ["Karmic Matrix", "Soul Journey", "Empathetic UX", "Psychological Safety"],
+    statsBadge: "4 Houses Mapped • Saturn & Rahu-Ketu Axis",
+    caseStudy: {
+      overview: "SoulTrace addresses one of the deepest inquiries in Vedic thought: why do certain challenges and emotional patterns recur throughout life? The UX challenge was to translate esoteric karmic concepts into empathetic, reassuring insights that encourage personal growth without inducing fear or fatalism.",
+      clientType: "DeepAstro Product Division",
+      role: "Lead UI/UX Designer & Creative Technologist",
+      duration: "8 Weeks",
+      tools: ["Figma", "Design Tokens", "Framer Motion"],
+      deliverables: ["Karmic Pattern Severity Matrix", "Influenced Houses Visualizer", "Atmospheric Modal Transitions"],
+      metrics: [
+        { label: "Emotional Reassurance", value: "95%", detail: "Users reported feeling comforted rather than anxious" },
+        { label: "Average Reading Time", value: "11.2 min", detail: "Deepest reading duration among all DeepAstro modules" },
+        { label: "Exploration Rate", value: "88%", detail: "Users navigated into Past Life Influences deep dive" },
+      ],
+      problem: {
+        statement: "Past life and karmic discussions often trigger anxiety or skepticism if presented dogmatically. Most existing platforms present karmic debt as a punishment rather than a curriculum of soul growth.",
+        points: [
+          "Users feel apprehensive about exploring 'bad karma' or negative astrological placements.",
+          "Complex planetary houses (House 4: Roots, House 8: Transformation, House 10: Duty, House 12: Spirituality) are difficult to grasp without context.",
+          "Need for a reverent, sacred visual tone that respects cultural tradition while feeling cutting-edge.",
+        ],
+      },
+      solution: {
+        statement: "Framed challenges through the reassuring UX philosophy: 'Your challenges are not punishments, but invitations to become the highest version of your soul.' Designed peaceful visual cues, cosmic portal artwork, and gentle strength indicators.",
+        highlights: [
+          {
+            title: "Karmic Axis Visualization",
+            desc: "Clearly displays Dominant Karmic Theme (Saturn / Shani: Discipline & Responsibility) alongside Karmic Axis (Rahu - Ketu: Material vs Spiritual Balance).",
+          },
+          {
+            title: "Key Karmic Patterns Intensity Stack",
+            desc: "Card list with distinct intensity badges (Authority: Strong, Detachment: Moderate, Service & Healing: Strong, Spiritual Seeking: Moderate, Material Attachment: Mild).",
+          },
+          {
+            title: "Influenced Houses Navigation",
+            desc: "Direct interactive link connecting Houses 4, 8, 10, and 12 with related planets (Saturn, Rahu, Ketu) and Kundli chart layers.",
+          },
+        ],
+      },
+      research: {
+        summary: "Worked alongside Vedic scholars and transpersonal psychology researchers to ensure visual metaphors and copywriting promoted psychological wellbeing and resilience.",
+        personas: [
+          {
+            name: "Sunita M. (42)",
+            role: "Yoga Instructor & Seeker",
+            goal: "Understand why certain relationship dynamics recur and find constructive ways to heal generational patterns.",
+            painPoint: "Traditional astrologers told her she had 'harsh doshas' without explaining how to work through them constructively.",
+          },
+        ],
+        insights: [
+          "Reverent visual design (celestial arches, warm gold illumination) increased user trust and emotional resonance by 85%.",
+          "Replacing terms like 'Karmic Debt' with 'Soul Lessons & Recurring Themes' reduced user drop-off during onboarding from 32% to under 6%.",
+        ],
+      },
+      informationArchitecture: {
+        description: "Designed to evoke contemplation, reflection, and proactive mindfulness.",
+        hierarchy: [
+          "Hero: Ethereal Soul Portal & SoulTrace Quote ('Same Soul. Many Journeys. Greater Wisdom.')",
+          "Karmic Overview: Cosmic artwork with dominant theme (Saturn) and Rahu-Ketu nodal axis",
+          "Karmic Patterns: Authority, Detachment, Service & Healing, Spiritual Seeking, Material Attachment",
+          "Cosmic Influence: Related Planets (Saturn, Rahu, Ketu) & Influenced Houses (4, 8, 10, 12)",
+          "Takeaway Insight & CTA: Reassuring philosophical synthesis and 'Explore Past Life Influences' trigger",
+        ],
+      },
+      designSystem: {
+        theme: "Celestial Sanctuary & Astral Blue",
+        colors: [
+          { name: "Deep Astral Indigo", hex: "#070B1E", role: "Sanctuary Canvas" },
+          { name: "Soul Portal Gold", hex: "#F6C865", role: "Enlightenment & Gateway Illuminations" },
+          { name: "Ethereal Cyan", hex: "#22D3EE", role: "Primary Interactive Triggers" },
+          { name: "Transcendence Violet", hex: "#A855F7", role: "Karmic Axis Connectors" },
+        ],
+        typography: "Classical Serif headers paired with clean sans body text to evoke timeless wisdom and modern precision.",
+        principles: ["Dignity and Empathy in Every Word", "No Fear-Based Messaging", "Respect Cultural & Spiritual Roots"],
+      },
+      keyFeatures: [
+        {
+          title: "Karmic Pattern Intensity Indicators",
+          desc: "Clean color-coded pills communicating recurring themes and opportunities for completion and growth.",
+          screenImg: "/images/ux/deepastro-soultrace-karmic.jpg",
+          tags: ["Karmic Matrix", "Intensity Indicators", "Soul Lessons"],
+        },
+        {
+          title: "Ethereal Celestial Gateway Modal",
+          desc: "Inspiring portal animation welcoming seekers into authentic chart calculations and past life reflections.",
+          screenImg: "/images/ux/deepastro-soultrace-card.jpg",
+          tags: ["Visual Portal", "Empathetic Design", "Interactive Flow"],
+        },
+      ],
+      impact: {
+        summary: "Created a breakthrough experience in compassionate digital introspection, praised by seekers worldwide for transforming intimidating astrology into comforting clarity.",
+        stats: [
+          { number: "95%", label: "Emotional Reassurance Rating" },
+          { number: "11.2 min", label: "Average Session Duration" },
+          { number: "88%", label: "Deep Dive Exploration Rate" },
+        ],
+      },
+    },
+  },
 ];
-

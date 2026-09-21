@@ -64,10 +64,33 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
   }, [profile]);
 
   useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMobileMenuOpen(false);
+        setSettingsOpen(false);
+        setAvatarOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      const sections = ["home", "about", "services", "work", "contact"];
+      const sections = ["home", "work", "process", "about", "lab", "contact"];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -89,10 +112,11 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
 
   const menuItems = [
     { label: "Home", id: "home" },
-    { label: "About Me", id: "about" },
-    { label: "My Services", id: "services" },
-    { label: "My Work", id: "work" },
-    { label: "Contact Us", id: "contact" },
+    { label: "Work", id: "work" },
+    { label: "Process", id: "process" },
+    { label: "About", id: "about" },
+    { label: "Lab", id: "lab" },
+    { label: "Contact", id: "contact" },
   ];
 
   const scrollToSection = (id: string) => {
@@ -270,10 +294,11 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-3">
+          <div className="md:hidden flex items-center space-x-2">
             <button 
               onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")} 
-              className="p-2 transition-all duration-300 cursor-pointer"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg border border-gold/20 text-gold-light hover:border-gold transition-all duration-300 cursor-pointer"
+              aria-label="Toggle light and dark theme"
             >
               {resolvedTheme === "dark" ? (
                 <Moon className="w-5 h-5 text-gold-light drop-shadow-[0_0_8px_rgba(245,197,66,0.6)]" />
@@ -283,7 +308,9 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-gray-500 dark:text-gray-400 hover:text-white focus:outline-none"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg border border-white/10 text-gray-300 hover:text-white hover:border-white/30 focus:outline-none focus:ring-2 focus:ring-gold"
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -292,13 +319,13 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
 
         {/* Mobile Drawer menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden fixed inset-0 top-[72px] bg-[#050505]/95 backdrop-blur-lg border-t border-white/5 z-40 transition-all duration-300 animate-fade-in">
-            <div className="flex flex-col space-y-6 p-8 h-full justify-start items-center">
+          <div className="md:hidden fixed inset-0 top-[72px] bg-[#050505]/95 backdrop-blur-lg border-t border-white/5 z-40 transition-all duration-300 animate-fade-in overflow-y-auto">
+            <div className="flex flex-col space-y-4 p-8 h-full justify-start items-center">
               {menuItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`font-semibold text-lg uppercase tracking-widest py-2 transition-all duration-300 ${
+                  className={`w-full min-h-[48px] flex items-center justify-center font-semibold text-base uppercase tracking-widest transition-all duration-300 rounded-lg ${
                     activeSection === item.id ? "text-gold scale-110" : "text-gray-400"
                   }`}
                 >

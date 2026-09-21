@@ -69,7 +69,7 @@ export default function Contact({ profile }: ContactProps) {
   };
 
   return (
-    <section id="contact" className="relative py-24 bg-[#f5f5f5] dark:bg-[#080808] border-t border-black/5 dark:border-white/5 text-black dark:text-white transition-colors duration-300">
+    <section id="contact" className="relative py-24 bg-[#f8fafc] dark:bg-[#090A0E] border-t border-black/5 dark:border-white/5 text-[#0a1128] dark:text-white transition-colors duration-300">
       {/* Background gradients */}
       <div className="absolute top-[20%] right-[10%] w-[300px] h-[300px] rounded-full bg-gold/5 blur-[120px] pointer-events-none animate-pulse-slow" />
       <div className="absolute bottom-[20%] left-[10%] w-[350px] h-[350px] rounded-full bg-neon-blue/5 blur-[120px] pointer-events-none animate-pulse-slow" />
@@ -111,11 +111,11 @@ export default function Contact({ profile }: ContactProps) {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col items-center text-center mb-16"
         >
-          <span className="text-xs font-bold uppercase tracking-[0.4em] text-gold-light">Get in touch</span>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-white">
-            LET'S <span className="text-gradient-gold">WORK TOGETHER</span>
+          <span className="text-xs font-bold uppercase tracking-[0.4em] text-[#D4AF37]">Get in touch</span>
+          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#0a1128] dark:text-white">
+            LET&apos;S BUILD SOMETHING <span className="text-gradient-orange">MEANINGFUL</span>
           </h2>
-          <div className="w-16 h-[2px] bg-gold mt-4 shadow-[0_0_8px_#D4A017]" />
+          <div className="w-16 h-[2px] bg-[#FF6B00] mt-4 shadow-[0_0_8px_#FF6B00]" />
           <p className="font-signature text-2xl text-gold-light mt-4 select-none">
             I'd love to hear from you!
           </p>

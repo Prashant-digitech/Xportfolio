@@ -48,3 +48,5 @@ make.env
 make.txt
 _
 scripts/
+
+.vercel

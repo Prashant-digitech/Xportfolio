@@ -40,10 +40,10 @@ export default function Hero({ profile }: HeroProps) {
   ];
 
   const stats = [
-    { value: profile.projects || "50+", label: "Projects Completed", icon: <Briefcase className="w-5 h-5 text-gold" /> },
-    { value: "30+", label: "Happy Clients", icon: <Users className="w-5 h-5 text-gold" /> },
-    { value: profile.experience || "3+", label: "Years Experience", icon: <Award className="w-5 h-5 text-gold" /> },
-    { value: profile.certifications || "10+", label: "Certifications", icon: <CheckCircle className="w-5 h-5 text-gold" /> },
+    { value: "10+", label: "Product Studies", icon: <Briefcase className="w-5 h-5 text-gold" /> },
+    { value: "10+", label: "Certifications", icon: <CheckCircle className="w-5 h-5 text-gold" /> },
+    { value: "3+", label: "Years Craft", icon: <Award className="w-5 h-5 text-gold" /> },
+    { value: "100%", label: "System-Driven", icon: <Layers className="w-5 h-5 text-gold" /> },
   ];
 
   const nameParts = profile.name.split(" ");
@@ -65,7 +65,7 @@ export default function Hero({ profile }: HeroProps) {
   };
 
   return (
-    <section id="home" className="relative pt-32 pb-16 overflow-hidden bg-[#f8fafc] dark:bg-[#050814] text-[#0a1128] dark:text-white min-h-screen flex flex-col justify-between transition-colors duration-300">
+    <section id="home" className="relative pt-32 pb-16 overflow-hidden bg-[#f8fafc] dark:bg-[#090A0E] text-[#0a1128] dark:text-white min-h-screen flex flex-col justify-between transition-colors duration-300">
       {/* Decorative Golden Blur Background */}
       <div className="absolute top-[20%] left-[-10%] w-[300px] h-[300px] rounded-full bg-[#FF6B00]/5 blur-[100px] pointer-events-none animate-pulse-slow" />
       <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] rounded-full bg-[#00F0FF]/5 blur-[120px] pointer-events-none animate-pulse-slow" />
@@ -83,7 +83,8 @@ export default function Hero({ profile }: HeroProps) {
           >
             {/* Small badge */}
             <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#0B1528]/5 dark:bg-white/5 border border-[#D4AF37]/30 text-[#0a1128] dark:text-gray-300 text-xs font-bold tracking-wider uppercase">
-              <span>👋 Hello, I'm</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              <span>UI/UX & AI Product Designer</span>
             </motion.div>
 
             {/* Main Header Name */}
@@ -94,15 +95,15 @@ export default function Hero({ profile }: HeroProps) {
 
             {/* Subtitle capsule */}
             <motion.div variants={fadeInUp} className="px-4 py-2 border border-[#D4AF37]/40 rounded-full bg-[#0B1528]/5 dark:bg-gold/5 shadow-[0_0_15px_rgba(212,160,23,0.1)]">
-              <p className="text-xs sm:text-sm font-extrabold tracking-[0.25em] text-[#FF6B00] dark:text-gold-light">
-                {profile.title}
+              <p className="text-xs sm:text-sm font-extrabold tracking-[0.2em] text-[#FF6B00] dark:text-gold-light">
+                PRODUCT THINKER • AI INTERFACES • DESIGN SYSTEMS
               </p>
             </motion.div>
 
             {/* Narrative description */}
-            <motion.p variants={fadeInUp} className="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-xl leading-relaxed">
-              <span className="text-[#0a1128] dark:text-white font-bold block mb-1">Crafting Digital Experiences That Inspire</span>
-              Helping brands grow through intuitive UI/UX design, engaging video editing, and impactful visual storytelling. Combine technical precision with luxury visual design.
+            <motion.p variants={fadeInUp} className="text-slate-600 dark:text-[#A1A8B5] text-base sm:text-lg max-w-xl leading-relaxed">
+              <span className="text-[#0a1128] dark:text-white font-bold block mb-1">Human-Centered Digital Products & Intelligent Interfaces</span>
+              Designing complex fintech platforms, AI agent telemetry, and scalable design systems that transform dense workflows into intuitive, high-conversion experiences.
             </motion.p>
 
             {/* CTAs */}
@@ -112,21 +113,30 @@ export default function Hero({ profile }: HeroProps) {
                 onMouseMove={hireBtn.handleMouseMove}
                 onMouseLeave={hireBtn.handleMouseLeave}
                 style={hireBtn.style}
-                onClick={() => scrollToSection("contact")}
+                onClick={() => scrollToSection("work")}
                 className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#FF6B00] via-[#FF8800] to-[#D4AF37] hover:from-[#FF7A00] hover:to-[#F5BA42] text-white font-black text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(255,107,0,0.4)] hover:shadow-[0_0_35px_rgba(255,107,0,0.8)] hover:scale-105 transition-all duration-300 cursor-pointer flex items-center space-x-2"
               >
-                <span>Hire Me</span>
+                <span>View Selected Work</span>
                 <ArrowUpRight className="w-4 h-4 stroke-[3]" />
               </button>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-3.5 rounded-xl bg-transparent text-[#0a1128] dark:text-white border border-[#0a1128]/20 dark:border-white/10 hover:border-[#D4AF37] hover:text-[#D4AF37] font-bold text-sm uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center space-x-2"
+              >
+                <span>Resume (PDF)</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
               <button
                 ref={aboutBtn.ref}
                 onMouseMove={aboutBtn.handleMouseMove}
                 onMouseLeave={aboutBtn.handleMouseLeave}
                 style={aboutBtn.style}
                 onClick={() => scrollToSection("about")}
-                className="px-8 py-3.5 rounded-xl bg-transparent text-[#0a1128] dark:text-white border border-[#0a1128]/20 dark:border-white/10 hover:border-[#FF6B00] hover:text-[#FF6B00] font-bold text-sm uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center space-x-2"
+                className="px-6 py-3.5 rounded-xl bg-transparent text-slate-500 dark:text-slate-400 border border-transparent hover:text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center space-x-2"
               >
-                <span>About Me</span>
+                <span>About Journey</span>
               </button>
             </motion.div>
           </motion.div>
@@ -210,55 +220,55 @@ export default function Hero({ profile }: HeroProps) {
         {/* What I Do Capsules & Achievements Panel */}
         <div className="mt-16 border-t border-black/5 dark:border-white/10 pt-12 flex flex-col space-y-8">
           
-          {/* Row 1: What I Do Grid */}
+          {/* Row 1: Core Disciplines */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400 mb-6">What I Do</h3>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-[#A1A8B5] mb-6">Core Disciplines</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Card 1: UI/UX */}
+              {/* Card 1: Product Design */}
               <div 
-                onClick={() => scrollToSection("services")}
+                onClick={() => scrollToSection("work")}
                 className="group p-6 rounded-lg glass-card border border-white/5 hover:border-neon-blue hover:shadow-[0_0_20px_rgba(0,240,255,0.15)] transition-all duration-300 cursor-pointer"
               >
                 <div className="flex items-center space-x-4 mb-3">
                   <div className="w-10 h-10 rounded-md bg-[#00d4ff]/10 border border-[#00d4ff]/20 flex items-center justify-center text-neon-blue group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(0,240,255,0.2)]">
                     <Layers className="w-5 h-5" />
                   </div>
-                  <h4 className="font-bold tracking-wider text-black dark:text-white group-hover:text-neon-blue transition-colors duration-300">UI/UX Design</h4>
+                  <h4 className="font-bold tracking-wider text-black dark:text-white group-hover:text-neon-blue transition-colors duration-300">Product & UI/UX Design</h4>
                 </div>
-                <p className="text-xs text-gray-400 dark:text-gray-400 leading-relaxed">
-                  Designing intuitive, user-centered dashboards, websites, and mobile applications with system flow consistency.
+                <p className="text-xs text-slate-500 dark:text-[#A1A8B5] leading-relaxed">
+                  Architecting multi-platform SaaS products, responsive responsive layouts, and design systems grounded in user psychology.
                 </p>
               </div>
 
-              {/* Card 2: Video Editing */}
+              {/* Card 2: AI Interfaces */}
               <div 
-                onClick={() => scrollToSection("services")}
+                onClick={() => scrollToSection("lab")}
                 className="group p-6 rounded-lg glass-card border border-white/5 hover:border-neon-violet hover:shadow-[0_0_20px_rgba(157,78,221,0.15)] transition-all duration-300 cursor-pointer"
               >
                 <div className="flex items-center space-x-4 mb-3">
                   <div className="w-10 h-10 rounded-md bg-[#9d4edd]/10 border border-[#9d4edd]/20 flex items-center justify-center text-neon-violet group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(157,78,221,0.2)]">
                     <Film className="w-5 h-5" />
                   </div>
-                  <h4 className="font-bold tracking-wider text-black dark:text-white group-hover:text-neon-violet transition-colors duration-300">Video Editing</h4>
+                  <h4 className="font-bold tracking-wider text-black dark:text-white group-hover:text-neon-violet transition-colors duration-300">AI Interfaces & Telemetry</h4>
                 </div>
-                <p className="text-xs text-gray-400 dark:text-gray-400 leading-relaxed">
-                  Crafting cinematic video transitions, YouTube content, commercial reels, and customized motion animations.
+                <p className="text-xs text-slate-500 dark:text-[#A1A8B5] leading-relaxed">
+                  Designing conversational agent states, multimodal telemetry, real-time prompt surfaces, and autonomous copilot experiences.
                 </p>
               </div>
 
-              {/* Card 3: Graphics Design */}
+              {/* Card 3: Visual Identity */}
               <div 
-                onClick={() => scrollToSection("services")}
+                onClick={() => scrollToSection("work")}
                 className="group p-6 rounded-lg glass-card border border-white/5 hover:border-gold hover:shadow-[0_0_20px_rgba(212,160,23,0.15)] transition-all duration-300 cursor-pointer"
               >
                 <div className="flex items-center space-x-4 mb-3">
                   <div className="w-10 h-10 rounded-md bg-[#D4A017]/10 border border-[#D4A017]/20 flex items-center justify-center text-gold group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(212,160,23,0.2)]">
                     <PenTool className="w-5 h-5" />
                   </div>
-                  <h4 className="font-bold tracking-wider text-black dark:text-white group-hover:text-gold transition-colors duration-300">Graphics Design</h4>
+                  <h4 className="font-bold tracking-wider text-black dark:text-white group-hover:text-gold transition-colors duration-300">Visual Identity & Motion</h4>
                 </div>
-                <p className="text-xs text-gray-400 dark:text-gray-400 leading-relaxed">
-                  Developing high-end branding materials, logos, poster campaigns, and luxury marketing assets.
+                <p className="text-xs text-slate-500 dark:text-[#A1A8B5] leading-relaxed">
+                  Delivering high-fidelity brand systems, micro-interactions, editorial typography, and cinematic motion graphics.
                 </p>
               </div>
             </div>
