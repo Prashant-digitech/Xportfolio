@@ -246,7 +246,8 @@ export default function SkillUniverse({ profile }: SkillUniverseProps) {
                 >
                   <button
                     onClick={() => setActivePanelIdx(null)}
-                    className="absolute top-4 right-4 text-xs font-mono text-gray-500 hover:text-gold uppercase cursor-pointer"
+                    aria-label="Reset skill details panel"
+                    className="absolute top-3 right-3 min-h-[44px] min-w-[44px] px-3 py-2 flex items-center justify-center text-xs font-mono text-gray-500 hover:text-gold uppercase cursor-pointer rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                   >
                     RESET
                   </button>

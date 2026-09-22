@@ -185,6 +185,9 @@ export default function FloatingAssistant({ profile, recruiterMode, onToggleRecr
       <AnimatePresence>
         {chatOpen && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="PS AI Portfolio Assistant"
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -207,6 +210,7 @@ export default function FloatingAssistant({ profile, recruiterMode, onToggleRecr
               </div>
               <button 
                 onClick={() => setChatOpen(false)}
+                aria-label="Close AI assistant"
                 className="p-1 rounded-full hover:bg-black/10 transition-colors duration-200 cursor-pointer"
               >
                 <X className="w-5 h-5" />
@@ -303,6 +307,7 @@ export default function FloatingAssistant({ profile, recruiterMode, onToggleRecr
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setChatOpen(!chatOpen)}
+        aria-label={chatOpen ? "Close AI Assistant" : "Open AI Assistant"}
         className="w-14 h-14 rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-light text-black flex items-center justify-center shadow-[0_5px_20px_rgba(245,197,66,0.3),0_0_20px_rgba(245,197,66,0.15)] cursor-pointer relative z-[99]"
         title="PS AI Assistant"
       >

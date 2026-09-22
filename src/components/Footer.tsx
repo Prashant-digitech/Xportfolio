@@ -321,6 +321,7 @@ export default function Footer({ profile }: FooterProps) {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Visit Prashant's ${social.name} profile`}
               className={`w-8 h-8 rounded-full bg-white dark:bg-[#141821] border border-black/10 dark:border-white/10 flex items-center justify-center text-gray-500 dark:text-gray-400 ${social.hoverClass} transition-all duration-300 transform hover:scale-105`}
               title={social.name}
             >

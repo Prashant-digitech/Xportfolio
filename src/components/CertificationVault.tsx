@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Award, Calendar, BookOpen, ExternalLink, X, HelpCircle, GraduationCap, ShieldCheck
@@ -18,6 +18,24 @@ interface Certificate {
 export default function CertificationVault() {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
   const [flippedCertIdx, setFlippedCertIdx] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (selectedCert) {
+      document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setSelectedCert(null);
+        }
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [selectedCert]);
 
   const toggleFlip = (idx: number, e?: React.MouseEvent | React.KeyboardEvent) => {
     e?.stopPropagation();
@@ -365,6 +383,9 @@ export default function CertificationVault() {
           >
             {/* Modal Box */}
             <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-label="Verified Credential Document Viewer"
               initial={{ scale: 0.95, y: 15 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 15 }}
@@ -373,6 +394,7 @@ export default function CertificationVault() {
               <button
                 onClick={() => setSelectedCert(null)}
                 className="absolute top-4 right-4 p-1 rounded-full bg-white/5 border border-white/10 hover:border-gold text-gray-400 hover:text-white transition-colors cursor-pointer"
+                aria-label="Close credential viewer"
               >
                 <X className="w-4.5 h-4.5" />
               </button>

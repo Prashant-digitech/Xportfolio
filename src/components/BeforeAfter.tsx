@@ -163,7 +163,28 @@ export default function BeforeAfter() {
               style={{ left: `${position}%` }}
             >
               <div 
-                className="w-8 h-8 rounded-full bg-gold text-black border-2 border-white dark:border-[#050505] flex items-center justify-center shadow-lg transform -translate-x-1/2"
+                role="slider"
+                tabIndex={0}
+                aria-valuenow={Math.round(position)}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-label="Before and after interface transformation comparison slider"
+                onKeyDown={(e) => {
+                  if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+                    e.preventDefault();
+                    setPosition((prev) => Math.max(0, prev - 5));
+                  } else if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+                    e.preventDefault();
+                    setPosition((prev) => Math.min(100, prev + 5));
+                  } else if (e.key === "Home") {
+                    e.preventDefault();
+                    setPosition(0);
+                  } else if (e.key === "End") {
+                    e.preventDefault();
+                    setPosition(100);
+                  }
+                }}
+                className="w-8 h-8 rounded-full bg-gold text-black border-2 border-white dark:border-[#050505] flex items-center justify-center shadow-lg transform -translate-x-1/2 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
                 onMouseDown={handleMouseDown}
                 onTouchStart={handleMouseDown}
               >

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { 
   Check, ArrowRight, Layers, Film, PenTool, Target, Zap, Rocket, ShieldCheck, 
@@ -20,6 +20,24 @@ interface ServicePreviewModal {
 
 export default function Services() {
   const [activePreview, setActivePreview] = useState<ServicePreviewModal | null>(null);
+
+  useEffect(() => {
+    if (activePreview) {
+      document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setActivePreview(null);
+        }
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [activePreview]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -331,6 +349,9 @@ export default function Services() {
             />
 
             <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-label={activePreview.title}
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -339,7 +360,7 @@ export default function Services() {
               <button
                 onClick={() => setActivePreview(null)}
                 className="absolute top-4 right-4 z-20 p-2 text-gray-400 hover:text-white rounded-full bg-black/70 border border-white/10 transition-colors cursor-pointer"
-                aria-label="Close"
+                aria-label="Close preview modal"
               >
                 <X className="w-5 h-5" />
               </button>

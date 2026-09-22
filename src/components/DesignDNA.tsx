@@ -140,9 +140,20 @@ export default function DesignDNA() {
                 return (
                   <g 
                     key={idx}
-                    className="cursor-pointer"
+                    tabIndex={0}
+                    role="button"
+                    aria-label={`${m.name}: ${m.score}% proficiency. Click or press Enter to inspect focus objectives.`}
+                    className="cursor-pointer focus:outline-none"
                     onMouseEnter={() => setHoveredIdx(idx)}
                     onMouseLeave={() => setHoveredIdx(null)}
+                    onFocus={() => setHoveredIdx(idx)}
+                    onBlur={() => setHoveredIdx(null)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setHoveredIdx(hoveredIdx === idx ? null : idx);
+                      }
+                    }}
                   >
                     <circle
                       cx={coords.x}
@@ -168,12 +179,23 @@ export default function DesignDNA() {
                 return (
                   <text
                     key={idx}
+                    tabIndex={0}
+                    role="button"
+                    aria-label={`${m.name}: ${m.score}%`}
                     x={labelCoords.x}
                     y={labelCoords.y + 4} // small vertical offset
                     textAnchor={textAnchor}
                     onMouseEnter={() => setHoveredIdx(idx)}
                     onMouseLeave={() => setHoveredIdx(null)}
-                    className={`font-mono text-[9px] uppercase tracking-wider cursor-pointer transition-all duration-300 ${
+                    onFocus={() => setHoveredIdx(idx)}
+                    onBlur={() => setHoveredIdx(null)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setHoveredIdx(hoveredIdx === idx ? null : idx);
+                      }
+                    }}
+                    className={`font-mono text-[9px] uppercase tracking-wider cursor-pointer transition-all duration-300 focus:outline-none ${
                       isHovered ? "fill-gold font-bold scale-105" : "fill-[#667085] dark:fill-gray-500"
                     }`}
                   >

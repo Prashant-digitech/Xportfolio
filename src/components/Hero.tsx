@@ -200,16 +200,33 @@ export default function Hero({ profile }: HeroProps) {
                 </svg>
               </div>
 
-              {/* Floating UI Card Mockup */}
-              <div className="absolute top-[75%] right-[-10px] w-24 h-16 rounded-md glass-card-blue flex flex-col justify-between p-1.5 shadow-md scale-90 opacity-80 hover:opacity-100 hover:scale-100 transition-all duration-300 animate-float" style={{ animationDelay: "1s" }}>
-                <div className="flex items-center space-x-1 border-b border-white/10 pb-1">
-                  <div className="w-1 h-1 rounded-full bg-red-500" />
-                  <div className="w-1 h-1 rounded-full bg-yellow-500" />
-                  <div className="w-1 h-1 rounded-full bg-green-500" />
+              {/* Floating Live Product Showcase Widget */}
+              <div 
+                onClick={() => scrollToSection("work")}
+                className="absolute top-[70%] sm:top-[74%] right-[-15px] sm:right-[-25px] w-48 sm:w-56 p-2.5 rounded-xl border border-[#D4AF37]/50 bg-[#0A0E17]/95 backdrop-blur-xl shadow-[0_15px_35px_rgba(0,0,0,0.8),0_0_20px_rgba(0,245,160,0.2)] hover:border-[#00F5A0] hover:scale-105 transition-all duration-300 animate-float z-20 group/hud cursor-pointer" 
+                style={{ animationDelay: "1s" }}
+              >
+                <div className="flex items-center justify-between border-b border-white/10 pb-1.5 mb-1.5">
+                  <div className="flex items-center space-x-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00F5A0] animate-ping" />
+                    <span className="text-[9px] font-mono font-bold text-white tracking-wider">TradeX Pro // 0.12s</span>
+                  </div>
+                  <span className="text-[8px] font-mono text-[#00F5A0] font-bold px-1 rounded bg-[#00F5A0]/10 border border-[#00F5A0]/30">LIVE UI</span>
                 </div>
-                <div className="flex-grow flex flex-col justify-center space-y-1">
-                  <div className="h-1 bg-white/20 rounded w-8" />
-                  <div className="h-1.5 bg-[#00F0FF]/35 rounded w-12" />
+                <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden border border-white/10 mb-1.5">
+                  <Image
+                    src="/images/ux/projects/TradeX.png"
+                    alt="TradeX Pro Live Interface Preview"
+                    fill
+                    className="object-cover group-hover/hud:scale-105 transition-transform duration-500"
+                    sizes="200px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  <span className="absolute bottom-1 left-1.5 text-[8px] font-mono text-[#00F5A0] font-semibold">Institutional Terminal</span>
+                </div>
+                <div className="flex items-center justify-between text-[8px] font-mono text-slate-300 pt-0.5">
+                  <span className="text-[#F5BA42]">7 UX Case Studies</span>
+                  <span className="text-[#00F0FF] group-hover/hud:translate-x-0.5 transition-transform">Explore →</span>
                 </div>
               </div>
 

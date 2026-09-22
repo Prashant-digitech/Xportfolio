@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ProfileData } from "@/app/page";
@@ -36,6 +36,24 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
   const [showreelModalOpen, setShowreelModalOpen] = useState<boolean>(false);
   const [isPlayingShowreel, setIsPlayingShowreel] = useState<boolean>(true);
   const [showreelChapter, setShowreelChapter] = useState<number>(0);
+
+  useEffect(() => {
+    if (showreelModalOpen) {
+      document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setShowreelModalOpen(false);
+        }
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [showreelModalOpen]);
 
   // Cinematic Featured Projects (Canonical Order 01-05+)
   const featuredProjects = [
@@ -329,6 +347,33 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       caseStudy: "Watch Video", 
       figmaUrl: "#work",
       statsBadge: "Color LUTs • Sound Sync"
+    },
+    { 
+      title: "Fitness Commercial Promo", 
+      category: "video", 
+      description: "High-energy commercial advertisement with synchronized sound design, rapid visual pacing, and kinetic transitions.", 
+      img: "/images/project_video_fitness_promo.jpg", 
+      caseStudy: "Watch Video", 
+      figmaUrl: "#work",
+      statsBadge: "High Energy • Speed Ramping"
+    },
+    { 
+      title: "Product 3D Advertisement", 
+      category: "video", 
+      description: "Commercial showcase for wireless audio hardware integrating motion typography overlays, detailed macros, and 3D space tracking.", 
+      img: "/images/project_video_product_ad.jpg", 
+      caseStudy: "Watch Video", 
+      figmaUrl: "#work",
+      statsBadge: "Motion Typography • 3D Tracking"
+    },
+    { 
+      title: "Luxury Wedding Highlights", 
+      category: "video", 
+      description: "Luxurious wedding highlight reel with emotional music synchronization, warm cinematic color tones, and film transitions.", 
+      img: "/images/project_video_wedding_highlights.jpg", 
+      caseStudy: "Watch Video", 
+      figmaUrl: "#work",
+      statsBadge: "Emotional Narrative • Film Look"
     },
     { 
       title: "Corporate Pitch Slide Deck", 
@@ -838,6 +883,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
             />
 
             <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-label="Cinematic Video Showreel Player"
               initial={{ opacity: 0, scale: 0.94, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.94, y: 20 }}
@@ -854,6 +902,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                 <button
                   onClick={() => setShowreelModalOpen(false)}
                   className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white transition-colors cursor-pointer"
+                  aria-label="Close showreel modal"
                 >
                   <X className="w-5 h-5" />
                 </button>
