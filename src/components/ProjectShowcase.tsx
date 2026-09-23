@@ -21,6 +21,8 @@ interface ShowcaseProject {
   figmaUrl: string;
   uxProjectId?: string;
   statsBadge?: string;
+  videoUrl?: string;
+  tags?: string[];
 }
 
 interface ProjectShowcaseProps {
@@ -33,16 +35,18 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
   const [pptSlideIdx, setPptSlideIdx] = useState<number>(0);
   const [showreelTab, setShowreelTab] = useState<"showreel" | "bts" | "motion">("showreel");
   const [selectedUXProject, setSelectedUXProject] = useState<UXProject | null>(null);
+  const [selectedVideoProject, setSelectedVideoProject] = useState<ShowcaseProject | null>(null);
   const [showreelModalOpen, setShowreelModalOpen] = useState<boolean>(false);
   const [isPlayingShowreel, setIsPlayingShowreel] = useState<boolean>(true);
   const [showreelChapter, setShowreelChapter] = useState<number>(0);
 
   useEffect(() => {
-    if (showreelModalOpen) {
+    if (showreelModalOpen || selectedVideoProject) {
       document.body.style.overflow = "hidden";
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === "Escape") {
           setShowreelModalOpen(false);
+          setSelectedVideoProject(null);
         }
       };
       window.addEventListener("keydown", handleKeyDown);
@@ -53,7 +57,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
     } else {
       document.body.style.overflow = "";
     }
-  }, [showreelModalOpen]);
+  }, [showreelModalOpen, selectedVideoProject]);
 
   // Cinematic Featured Projects (Canonical Order 01-05+)
   const featuredProjects = [
@@ -337,7 +341,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/images/showreel/video-showreel.png", 
       caseStudy: "Launch Showreel", 
       figmaUrl: "#work",
-      statsBadge: "4K Master • Speed Ramping"
+      statsBadge: "4K Master • Speed Ramping",
+      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+      tags: ["Premiere Pro", "After Effects", "Showreel", "Sound Design"]
     },
     { 
       title: "Travel Cinematic Video", 
@@ -346,7 +352,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/images/project_video_travel_cinematic.jpg", 
       caseStudy: "Watch Video", 
       figmaUrl: "#work",
-      statsBadge: "Color LUTs • Sound Sync"
+      statsBadge: "Color LUTs • Sound Sync",
+      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+      tags: ["Premiere Pro", "Color Grading", "Sound Design", "Rec.709"]
     },
     { 
       title: "Fitness Commercial Promo", 
@@ -355,7 +363,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/images/project_video_fitness_promo.jpg", 
       caseStudy: "Watch Video", 
       figmaUrl: "#work",
-      statsBadge: "High Energy • Speed Ramping"
+      statsBadge: "High Energy • Speed Ramping",
+      videoUrl: "https://www.w3schools.com/html/movie.mp4",
+      tags: ["Commercial", "After Effects", "Rhythm Cut", "Sound FX"]
     },
     { 
       title: "Product 3D Advertisement", 
@@ -364,7 +374,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/images/project_video_product_ad.jpg", 
       caseStudy: "Watch Video", 
       figmaUrl: "#work",
-      statsBadge: "Motion Typography • 3D Tracking"
+      statsBadge: "Motion Typography • 3D Tracking",
+      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+      tags: ["Product Ad", "3D Camera", "Commercial", "Kinetic Typography"]
     },
     { 
       title: "Luxury Wedding Highlights", 
@@ -373,7 +385,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/images/project_video_wedding_highlights.jpg", 
       caseStudy: "Watch Video", 
       figmaUrl: "#work",
-      statsBadge: "Emotional Narrative • Film Look"
+      statsBadge: "Emotional Narrative • Film Look",
+      videoUrl: "https://www.w3schools.com/html/movie.mp4",
+      tags: ["Wedding Film", "Storytelling", "Color LUTs", "Cinematic Audio"]
     },
     { 
       title: "Corporate Pitch Slide Deck", 
@@ -582,8 +596,16 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                     {/* Visual Image Box */}
                     <div 
                       onClick={() => {
-                        if (p.uxProjectId) {
+                        if (p.category === "video") {
+                          if (p.title.includes("Showreel")) {
+                            setShowreelModalOpen(true);
+                          } else if (p.videoUrl) {
+                            setSelectedVideoProject(p);
+                          }
+                        } else if (p.uxProjectId) {
                           handleOpenCaseStudy(p.uxProjectId);
+                        } else if (p.figmaUrl.startsWith("/")) {
+                          window.location.href = p.figmaUrl;
                         }
                       }}
                       className="w-full aspect-[16/10] rounded-xl bg-[#050C1A] border border-[#D4AF37]/30 flex flex-col items-center justify-center text-center mb-4 relative overflow-hidden group cursor-pointer"
@@ -596,6 +618,15 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+
+                      {/* Video Play badge overlay for video items */}
+                      {p.category === "video" && (
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                          <div className="w-12 h-12 rounded-full bg-black/60 border border-[#F5BA42]/70 text-[#F5BA42] backdrop-blur-md flex items-center justify-center shadow-[0_0_15px_rgba(245,186,66,0.4)] group-hover:scale-110 transition-transform">
+                            <Play className="w-5 h-5 fill-current ml-0.5" />
+                          </div>
+                        </div>
+                      )}
 
                       {p.statsBadge && (
                         <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md border border-[#D4AF37]/40 text-[9px] font-mono text-[#F5BA42] font-bold">
@@ -616,7 +647,21 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                   </div>
 
                   <div className="flex items-center justify-between border-t border-black/10 dark:border-white/10 pt-4 text-xs font-bold uppercase tracking-wider">
-                    {p.uxProjectId ? (
+                    {p.category === "video" ? (
+                      <button
+                        onClick={() => {
+                          if (p.title.includes("Showreel")) {
+                            setShowreelModalOpen(true);
+                          } else {
+                            setSelectedVideoProject(p);
+                          }
+                        }}
+                        className="text-[#B8941F] dark:text-[#F5BA42] flex items-center space-x-1.5 hover:underline cursor-pointer"
+                      >
+                        <Play className="w-3.5 h-3.5 fill-current" />
+                        <span>{p.caseStudy}</span>
+                      </button>
+                    ) : p.uxProjectId ? (
                       <button
                         onClick={() => handleOpenCaseStudy(p.uxProjectId)}
                         className="text-[#B8941F] dark:text-[#F5BA42] flex items-center space-x-1 hover:underline cursor-pointer"
@@ -999,6 +1044,85 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                     </button>
                   ))}
                 </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* INDIVIDUAL VIDEO PROJECT PLAYER MODAL */}
+      <AnimatePresence>
+        {selectedVideoProject && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.25 }}
+              className="relative w-full max-w-4xl bg-[#090D18] border border-[#D4AF37]/40 rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+            >
+              {/* Header */}
+              <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-[#050C1A]">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-[#FF6B00]/15 border border-[#FF6B00]/30 text-[#FF6B00]">
+                    <Video className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono text-[#F5BA42] font-bold uppercase tracking-wider block">
+                      {selectedVideoProject.statsBadge || "Cinematic Video Production"}
+                    </span>
+                    <h3 className="text-base sm:text-lg font-black text-white uppercase tracking-wider">
+                      {selectedVideoProject.title}
+                    </h3>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setSelectedVideoProject(null)}
+                  className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white transition-colors cursor-pointer"
+                  aria-label="Close video player modal"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Video Player */}
+              <div className="relative w-full aspect-[16/9] bg-black">
+                {selectedVideoProject.videoUrl ? (
+                  <video
+                    src={selectedVideoProject.videoUrl}
+                    controls
+                    autoPlay
+                    className="w-full h-full object-contain"
+                  />
+                ) : (
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={selectedVideoProject.img}
+                      alt={selectedVideoProject.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )}
+              </div>
+
+              {/* Footer Details & Tags */}
+              <div className="p-5 bg-[#050C1A] border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
+                  {selectedVideoProject.description}
+                </p>
+                {selectedVideoProject.tags && selectedVideoProject.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 shrink-0">
+                    {selectedVideoProject.tags.map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] font-mono text-[#F5BA42] font-bold"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.div>
           </div>
