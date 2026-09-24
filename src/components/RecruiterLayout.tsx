@@ -5,7 +5,8 @@ import { ProfileData } from "@/app/page";
 import { 
   Briefcase, Award, CheckCircle, MapPin, Mail, Phone, Calendar, Download, 
   Layers, Film, PenTool, ExternalLink, Cpu, BookOpen, Clock, Check, Send, 
-  Sparkles, RefreshCw, Clipboard, CheckCircle2, User, ChevronRight, MessageSquare
+  Sparkles, RefreshCw, Clipboard, CheckCircle2, User, ChevronRight, MessageSquare,
+  Palette, Play, Eye, Video
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMagnetic, useTilt } from "@/hooks/useAnimations";
@@ -780,6 +781,137 @@ Status: Available immediately / Relocation OK`}
         </div>
 
       </div>
+
+      {/* ── Visual & Motion Portfolio Strip ─────────────────────── */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="mt-12 pt-10 border-t border-black/10 dark:border-white/10"
+      >
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+          <div>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-gold dark:text-gold-light block mb-1">
+              VISUAL SYSTEMS &amp; MOTION PORTFOLIO
+            </span>
+            <h3 className="text-xl font-black tracking-tight text-black dark:text-white uppercase">
+              Creative Craft Evidence
+            </h3>
+            <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5 font-medium">
+              Brand identity, graphic design, compositing, and cinematic motion — a recruiter-focused snapshot.
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <a
+              href="#visual"
+              onClick={(e) => { e.preventDefault(); document.getElementById('visual')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="px-4 py-2 bg-gold/10 border border-gold/30 rounded text-[10px] font-black uppercase tracking-wider text-gold hover:bg-gold hover:text-black transition-colors flex items-center space-x-1.5 cursor-pointer"
+              aria-label="View full Visual Systems section"
+            >
+              <Palette className="w-3 h-3" aria-hidden="true" />
+              <span>Full Visual Gallery</span>
+            </a>
+            <a
+              href="#motion"
+              onClick={(e) => { e.preventDefault(); document.getElementById('motion')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="px-4 py-2 bg-gold/10 border border-gold/30 rounded text-[10px] font-black uppercase tracking-wider text-gold hover:bg-gold hover:text-black transition-colors flex items-center space-x-1.5 cursor-pointer"
+              aria-label="View full Motion Lab section"
+            >
+              <Film className="w-3 h-3" aria-hidden="true" />
+              <span>Full Motion Lab</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Visual Discipline Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          {/* Visual Systems Summary */}
+          <div className="p-5 rounded-2xl glass-card space-y-4">
+            <div className="flex items-center space-x-2.5">
+              <div className="p-2 rounded-lg bg-gold/10 border border-gold/20">
+                <Palette className="w-4 h-4 text-gold" aria-hidden="true" />
+              </div>
+              <div>
+                <h4 className="text-sm font-black text-white uppercase tracking-wide">Visual Systems &amp; Art Direction</h4>
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Brand • Editorial • Compositing • Print</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              {[
+                { label: "Brand Identity Systems", spec: "Full Guidelines" },
+                { label: "Theatrical Movie Poster", spec: "27×40 CMYK Print" },
+                { label: "Surreal Compositing", spec: "6000×4000 • 48 Layers" },
+                { label: "Editorial Magazine Cover", spec: "A4 UV Coated" },
+                { label: "Social Media Campaign", spec: "Meta • LinkedIn" },
+                { label: "Luxury Event Stationery", spec: "Gold Foil Finish" },
+              ].map((item, idx) => (
+                <div key={idx} className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-gold/30 transition-colors">
+                  <p className="text-[11px] font-bold text-white leading-tight">{item.label}</p>
+                  <p className="text-[9px] font-mono text-gold mt-0.5">{item.spec}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-1.5 pt-2 border-t border-white/5">
+              {["Photoshop CC", "Illustrator", "InDesign", "Figma", "Lightroom"].map((tool, i) => (
+                <span key={i} className="px-2 py-0.5 rounded bg-gold/10 border border-gold/10 text-[9px] font-mono text-gold font-bold">{tool}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Motion Summary */}
+          <div className="p-5 rounded-2xl glass-card space-y-4">
+            <div className="flex items-center space-x-2.5">
+              <div className="p-2 rounded-lg bg-gold/10 border border-gold/20">
+                <Video className="w-4 h-4 text-gold" aria-hidden="true" />
+              </div>
+              <div>
+                <h4 className="text-sm font-black text-white uppercase tracking-wide">Motion / Film Lab</h4>
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Showreel • Cinematic • Commercial</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              {[
+                { label: "Cinematic Showreel 4K", spec: "Speed Ramp • Rec.709" },
+                { label: "Travel Cinematic Film", spec: "Drone • Whip-Pans" },
+                { label: "Fitness Brand Commercial", spec: "Glitch VFX • 140 BPM" },
+                { label: "Luxury Product Ad", spec: "3D AE • Cinema 4D" },
+                { label: "Wedding Documentary", spec: "Emotional Narrative" },
+                { label: "Corporate Pitch Film", spec: "Executive Motion" },
+              ].map((item, idx) => (
+                <div key={idx} className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-gold/30 transition-colors">
+                  <p className="text-[11px] font-bold text-white leading-tight">{item.label}</p>
+                  <p className="text-[9px] font-mono text-gold mt-0.5">{item.spec}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-1.5 pt-2 border-t border-white/5">
+              {["Premiere Pro", "After Effects", "DaVinci Resolve", "Audition", "Cinema 4D"].map((tool, i) => (
+                <span key={i} className="px-2 py-0.5 rounded bg-gold/10 border border-gold/10 text-[9px] font-mono text-gold font-bold">{tool}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Photoshop Gallery Callout */}
+        <div className="p-5 rounded-2xl border border-gold/30 bg-gold/5 dark:bg-gold/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-gold block mb-0.5">EXTENDED VISUAL PORTFOLIO</span>
+            <h4 className="text-base font-black text-black dark:text-white uppercase">21 Full-Resolution Photoshop Artworks</h4>
+            <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">
+              Matte paintings, surreal compositing studies, and professional photo retouching — navigable gallery.
+            </p>
+          </div>
+          <a
+            href="/photoshop"
+            className="px-5 py-2.5 bg-gold text-black rounded font-black uppercase tracking-wider text-[11px] flex items-center space-x-2 hover:bg-gold-light transition-colors shrink-0 cursor-pointer shadow-[0_4px_12px_rgba(212,160,23,0.2)]"
+            aria-label="Open Photoshop 21-artwork gallery"
+          >
+            <Eye className="w-3.5 h-3.5" aria-hidden="true" />
+            <span>View Gallery</span>
+            <ExternalLink className="w-3 h-3" aria-hidden="true" />
+          </a>
+        </div>
+      </motion.div>
 
     </div>
   );
