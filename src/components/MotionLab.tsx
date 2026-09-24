@@ -94,6 +94,19 @@ export default function MotionLab() {
       highlights: ["Frame-accurate beat matching", "Rec.709 film LUT calibration", "Kinetic subtitle typography"],
     },
     {
+      id: "deepastro-walkthrough",
+      title: "DeepAstro AI // 30s UX Product Walkthrough",
+      category: "Product Walkthrough",
+      role: "Lead UI/UX Designer & Product Architect",
+      tools: ["Figma", "Design Tokens", "Next.js", "Framer Motion", "Antigravity"],
+      duration: "00:30",
+      description: "High-fidelity 30-second live product walkthrough of DeepAstro AI — demonstrating Vedic chart intelligence, Cosmic Dark glassmorphic design system, and multi-year life trajectory roadmap.",
+      poster: "/images/ux/deepastro-hero.jpg",
+      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+      statsBadge: "30s Walkthrough • AI Life System",
+      highlights: ["Cosmic Dark glassmorphism UI", "5-Year Future Intelligence roadmap", "SoulTrace karmic matrix"],
+    },
+    {
       id: "travel-cinematic",
       title: "Alpine Horizons // Travel Cinematic Film",
       category: "Cinematic Travel",
@@ -370,8 +383,8 @@ export default function MotionLab() {
             <h3 className="text-xl sm:text-2xl font-black text-[#111318] dark:text-white uppercase tracking-wider">
               Selected Motion Portfolio
             </h3>
-            <span className="text-xs font-mono text-[#667085] dark:text-gray-400 font-bold" aria-label="6 motion projects">
-              6 Motion Pieces
+            <span className="text-xs font-mono text-[#667085] dark:text-gray-400 font-bold" aria-label={`${motionProjects.length} motion projects`}>
+              {motionProjects.length} Motion Pieces
             </span>
           </div>
 
