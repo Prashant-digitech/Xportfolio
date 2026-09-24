@@ -81,33 +81,38 @@ export default function Hero({ profile }: HeroProps) {
             animate="animate"
             className="lg:col-span-7 flex flex-col items-start space-y-6 z-10"
           >
-            {/* Small badge */}
+            {/* Eyebrow */}
             <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#0F1118] border border-[#B8941F]/40 dark:border-[#D4AF37]/30 text-[#111318] dark:text-gray-300 text-xs font-bold tracking-wider uppercase shadow-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-              <span>UI/UX & AI Product Designer</span>
+              <span>PRASHANT SISODHIYA</span>
             </motion.div>
 
-            {/* Main Header Name */}
-            <motion.h1 variants={fadeInUp} className="text-5xl sm:text-7xl font-black tracking-tight leading-tight select-none">
-              <span className="block text-[#111318] dark:text-white">{firstName}</span>
-              <span className="block text-gradient-gold drop-shadow-[0_4px_12px_rgba(212,175,55,0.25)]">{lastName}</span>
+            {/* Main Title */}
+            <motion.h1 variants={fadeInUp} className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] select-none">
+              <span className="block text-[#111318] dark:text-white">UI/UX &amp; AI</span>
+              <span className="block text-gradient-gold drop-shadow-[0_4px_12px_rgba(212,175,55,0.25)]">PRODUCT DESIGNER</span>
             </motion.h1>
 
-            {/* Subtitle capsule */}
-            <motion.div variants={fadeInUp} className="px-4 py-2 border border-[#B8941F]/40 dark:border-[#D4AF37]/40 rounded-full bg-white dark:bg-[#0F1118] shadow-sm">
-              <p className="text-xs sm:text-sm font-extrabold tracking-[0.2em] text-[#B8941F] dark:text-gold-light">
-                PRODUCT THINKER • AI INTERFACES • DESIGN SYSTEMS
-              </p>
-            </motion.div>
-
-            {/* Narrative description */}
-            <motion.p variants={fadeInUp} className="text-[#4B5563] dark:text-[#A1A8B5] text-base sm:text-lg max-w-xl leading-relaxed">
-              <span className="text-[#111318] dark:text-white font-bold block mb-1">Human-Centered Digital Products & Intelligent Interfaces</span>
-              Designing complex fintech platforms, AI agent telemetry, and scalable design systems that transform dense workflows into intuitive, high-conversion experiences.
+            {/* Supporting Value Proposition */}
+            <motion.p variants={fadeInUp} className="text-[#374151] dark:text-[#D1D5DB] text-base sm:text-lg max-w-xl leading-relaxed font-medium">
+              Designing digital products, visual systems and intelligent experiences from strategy to final execution.
             </motion.p>
 
-            {/* CTAs (Sections 24, 25, 26) */}
-            <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 pt-2">
+            {/* Credibility Strip Pill */}
+            <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono uppercase tracking-widest text-[#B8941F] dark:text-[#D4AF37]">
+              <span>PRODUCT DESIGN</span>
+              <span className="text-gray-400 dark:text-gray-600">•</span>
+              <span>UI/UX</span>
+              <span className="text-gray-400 dark:text-gray-600">•</span>
+              <span>AI SYSTEMS</span>
+              <span className="text-gray-400 dark:text-gray-600">•</span>
+              <span>VISUAL SYSTEMS</span>
+              <span className="text-gray-400 dark:text-gray-600">•</span>
+              <span>MOTION</span>
+            </motion.div>
+
+            {/* CTAs (Primary, Secondary, Tertiary) */}
+            <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-4 pt-3">
               <button
                 ref={hireBtn.ref}
                 onMouseMove={hireBtn.handleMouseMove}
@@ -125,7 +130,7 @@ export default function Hero({ profile }: HeroProps) {
                 rel="noopener noreferrer"
                 className="btn-secondary"
               >
-                <span>Resume (PDF)</span>
+                <span>Download Resume</span>
                 <ArrowUpRight className="w-4 h-4" />
               </a>
               <button
@@ -133,10 +138,10 @@ export default function Hero({ profile }: HeroProps) {
                 onMouseMove={aboutBtn.handleMouseMove}
                 onMouseLeave={aboutBtn.handleMouseLeave}
                 style={aboutBtn.style}
-                onClick={() => scrollToSection("about")}
-                className="h-[46px] px-5 rounded-xl text-[#4B5563] dark:text-[#D1D5DB] hover:text-[#B8941F] dark:hover:text-[#D4AF37] font-semibold text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center space-x-1.5"
+                onClick={() => scrollToSection("contact")}
+                className="h-[46px] px-5 rounded-xl text-[#4B5563] dark:text-[#D1D5DB] hover:text-[#B8941F] dark:hover:text-[#D4AF37] font-semibold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center space-x-1.5"
               >
-                <span>About Journey</span>
+                <span>Contact Me</span>
               </button>
             </motion.div>
           </motion.div>

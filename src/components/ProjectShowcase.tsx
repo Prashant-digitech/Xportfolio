@@ -23,6 +23,10 @@ interface ShowcaseProject {
   statsBadge?: string;
   videoUrl?: string;
   tags?: string[];
+  num?: string;
+  role?: string;
+  year?: string;
+  valueProposition?: string;
 }
 
 interface ProjectShowcaseProps {
@@ -147,98 +151,142 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
     { title: "Cinematic Storytelling & Brand Value", sub: "Slide 3: Video Showreels", points: ["Storyboarding visual timelines to boost customer retention", "Dynamic color grading matching core brand guidelines", "Integrating kinetic motion templates into web assets"] }
   ];
 
-  // Projects Grid (Section 16, 18)
+  // Projects Grid (Canonical Order 01-05 + Extended)
   const projects: ShowcaseProject[] = [
-    // UI/UX Projects (Canonical Order)
+    // 01: DEEPASTRO
     { 
+      num: "01",
       title: "DeepAstro AI Life Platform", 
       category: "uiux", 
       description: "Comprehensive AI life intelligence system featuring cosmic dashboard, Kundli charts, and mobile companion app.", 
       img: "/images/ux/deepastro-hero.jpg", 
-      caseStudy: "Read UX Case Study", 
+      caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "deepastro",
-      statsBadge: "50K+ Users • 4.9/5 ★"
+      statsBadge: "50K+ Users • 4.9/5 ★",
+      role: "Product Design · UX · UI · AI",
+      year: "2026",
+      valueProposition: "Making complex personal intelligence understandable through a human-centered interface."
     },
+    // 02: TRADEX
     { 
-      title: "TradeX Pro Trading Terminal", 
+      num: "02",
+      title: "TradeX Pro Financial Terminal", 
       category: "uiux", 
       description: "High-frequency financial terminal with dynamic smart-tiles, candlestick charts, and instant order execution.", 
       img: "/images/ux/projects/TradeX.png", 
-      caseStudy: "Read UX Case Study", 
+      caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "tradex",
-      statsBadge: "Institutional Terminal • 0.12s"
+      statsBadge: "Institutional Terminal • 0.12s",
+      role: "Fintech UX · Design System · Data Viz",
+      year: "2026",
+      valueProposition: "Sub-second execution speeds and modular smart-tile workspaces reducing order errors by 83%."
     },
+    // 03: SECUREX
     { 
-      title: "SecureX SOC Security Console", 
+      num: "03",
+      title: "SecureX Zero-Trust Security", 
       category: "uiux", 
       description: "Zero-Trust enterprise cybersecurity dashboard with threat vector correlation and one-click quarantine.", 
       img: "/images/ux/projects/secureX.png", 
-      caseStudy: "Read UX Case Study", 
+      caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "securex",
-      statsBadge: "99.99% Mitigation • SOC"
+      statsBadge: "99.99% Mitigation • SOC",
+      role: "Cybersecurity UX · SOC Dashboards · Tokens",
+      year: "2026",
+      valueProposition: "Zero-Trust attack path topology graphs cutting SecOps alert fatigue by 75%."
     },
+    // 04: FUTUREMIND
     { 
-      title: "FutureMind Career OS", 
+      num: "04",
+      title: "FutureMind AI Career OS", 
       category: "uiux", 
       description: "AI-guided tech career roadmap with mountain elevation progress curves, AI Career Coach, and skill intelligence.", 
       img: "/images/ux/futuremind-hero.jpg", 
-      caseStudy: "Read UX Case Study", 
+      caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "futuremind",
-      statsBadge: "50K+ Learners • 200+ Paths"
+      statsBadge: "50K+ Learners • 200+ Paths",
+      role: "EdTech UX · AI Guidance · Gamification",
+      year: "2026",
+      valueProposition: "Mountain elevation milestone roadmaps boosting tech career completion by 68%."
     },
+    // 05: PRESENTX
     { 
+      num: "05",
       title: "PresentX AI Slide System", 
       category: "uiux", 
       description: "Intelligent presentation builder with dynamic canvas telemetry, design tokens, and automated layout engine.", 
       img: "/images/ux/projects/presentX.png", 
-      caseStudy: "Read UX Case Study", 
+      caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "presentx",
-      statsBadge: "Dynamic AI Canvas • Tokens"
+      statsBadge: "Dynamic AI Canvas • Tokens",
+      role: "Generative AI UX · Dynamic Canvas · Tokens",
+      year: "2026",
+      valueProposition: "Intelligent presentation builder transforming structured research into branded decks in minutes."
     },
+    // 06: COSMOSX (Extended)
     { 
+      num: "06",
       title: "CosmosX Orbit Mission Control", 
       category: "uiux", 
       description: "3D planetary trajectory visualizer and aerospace sensor telemetry operations dashboard.", 
       img: "/images/ux/projects/CosmosX.png", 
-      caseStudy: "Read UX Case Study", 
+      caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "cosmosx",
-      statsBadge: "100K+ Bodies • 80ms Sync"
+      statsBadge: "100K+ Bodies • 80ms Sync",
+      role: "Deep Tech UX · 3D WebGL · Telemetry",
+      year: "2026",
+      valueProposition: "Sub-80ms aerospace telemetry synchronization and 3D orbital trajectory simulation."
     },
+    // 07: CUREIQ (Extended)
     { 
-      title: "CureIQ Health Intelligence", 
+      num: "07",
+      title: "CureIQ Clinical Intelligence", 
       category: "uiux", 
       description: "AI-powered clinical diagnostic hub with biomarker trendlines and empathetic patient care pathways.", 
       img: "/images/ux/projects/CureIQ.png", 
-      caseStudy: "Read UX Case Study", 
+      caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "cureiq",
-      statsBadge: "99.2% Accuracy • HIPAA"
+      statsBadge: "99.2% Accuracy • HIPAA",
+      role: "Healthcare UX · AI Diagnostics · WCAG AA",
+      year: "2026",
+      valueProposition: "AI-assisted clinical diagnostics and empathetic patient health portal saving doctors 42m/day."
     },
+    // 08: PATHWISE (Extended)
     { 
+      num: "08",
       title: "PathWise Skill Roadmap", 
       category: "uiux", 
       description: "Gamified career elevation roadmap with verified portfolio challenges and senior mentorship reviews.", 
       img: "/images/ux/projects/pathwise.png", 
-      caseStudy: "Read UX Case Study", 
+      caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "pathwise",
-      statsBadge: "78% Completion • Gamified"
+      statsBadge: "78% Completion • Gamified",
+      role: "Product Design · Gamified UX · Mentorship",
+      year: "2026",
+      valueProposition: "Gamified career roadmap with verified portfolio challenges and senior mentorship reviews."
     },
+    // Soul Journey Mobile
     { 
+      num: "09",
       title: "Soul Journey Mobile Experience", 
       category: "mobile", 
       description: "Tactile mobile journey modal with atmospheric astral portal aesthetics and authentic Vedic chart calculations.", 
       img: "/images/ux/deepastro-soultrace-card.jpg", 
-      caseStudy: "Read UX Case Study", 
+      caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "deepastro",
-      statsBadge: "Mobile UX • Touch Targets"
+      statsBadge: "Mobile UX • Touch Targets",
+      role: "Mobile App UX · Touch Micro-interactions",
+      year: "2026",
+      valueProposition: "Tactile modal journey with atmospheric astral portal aesthetics and authentic chart calculations."
     },
 
     // Real Graphics Design Works from Desktop
@@ -427,16 +475,16 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
         
-        {/* SECTION 15: FEATURED PROJECTS CINEMATIC SLIDER */}
+        {/* SECTION 15: SELECTED WORK (Master Prompt 12) */}
         <div className="mb-24">
           <div className="flex flex-col items-center text-center mb-14">
-            <span className="text-xs font-bold uppercase tracking-[0.4em] text-[#B8941F] dark:text-gold-light">Interactive Cinematic Slider</span>
+            <span className="text-xs font-bold uppercase tracking-[0.4em] text-[#B8941F] dark:text-gold-light">Flagship Products &amp; Systems</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mt-2 text-[#111318] dark:text-white">
-              FEATURED <span className="text-gradient-gold">PROJECTS</span>
+              SELECTED <span className="text-gradient-gold">WORK</span>
             </h2>
             <div className="w-16 h-[2px] bg-[#D4AF37] mt-4 shadow-[0_0_8px_#D4A017]" />
-            <p className="text-[#4B5563] dark:text-[#D1D5DB] mt-4 max-w-xl text-xs sm:text-sm md:text-base leading-relaxed">
-              Explore Prashant&apos;s high-impact production designs. Toggle slides to inspect case notes, specs, and complete UX systems.
+            <p className="text-[#374151] dark:text-[#D1D5DB] mt-4 max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed font-medium">
+              A selection of products, systems and experiences designed across AI, UX, product and visual design.
             </p>
           </div>
 
@@ -579,7 +627,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
             ))}
           </div>
 
-          {/* Filtered Grid Display */}
+          {/* Filtered Grid Display (Master Prompt 13 Card System) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 overflow-visible py-4">
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((p) => (
@@ -590,9 +638,38 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="group relative p-5 rounded-2xl transition-all duration-300 ease-out hover:scale-[1.015] hover:-translate-y-1.5 flex flex-col justify-between glass-card dark-blue-gold-card will-change-transform"
+                  className="group relative p-6 rounded-2xl transition-all duration-300 ease-out hover:scale-[1.015] hover:-translate-y-1.5 flex flex-col justify-between glass-card dark-blue-gold-card will-change-transform border border-black/10 dark:border-[rgba(212,175,55,0.35)] shadow-md hover:border-[#D4AF37]"
                 >
                   <div>
+                    {/* Top Metadata Row: Number & Category & Badge */}
+                    <div className="flex items-center justify-between mb-3 text-[10px] font-mono">
+                      <div className="flex items-center space-x-2">
+                        {p.num && (
+                          <span className="w-6 h-6 rounded-md bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#B8941F] dark:text-[#D4AF37] font-black flex items-center justify-center">
+                            {p.num}
+                          </span>
+                        )}
+                        <span className="text-[#B8941F] dark:text-[#F5BA42] uppercase tracking-wider font-bold">
+                          {p.category.toUpperCase()} PRODUCT
+                        </span>
+                      </div>
+                      {p.statsBadge && (
+                        <span className="px-2 py-0.5 rounded bg-black/5 dark:bg-black/60 border border-black/10 dark:border-[#D4AF37]/30 text-[9px] font-mono text-[#667085] dark:text-[#F5BA42] font-bold">
+                          {p.statsBadge}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Project Name */}
+                    <h4 className="font-black text-lg text-[#111318] dark:text-white uppercase tracking-wider mb-2 group-hover:text-[#B8941F] dark:group-hover:text-[#F5BA42] transition-colors leading-snug">
+                      {p.title}
+                    </h4>
+
+                    {/* One-Line Problem / Value */}
+                    <p className="text-xs text-[#374151] dark:text-slate-300 leading-relaxed mb-4 line-clamp-2">
+                      {p.valueProposition || p.description}
+                    </p>
+
                     {/* Visual Image Box */}
                     <div 
                       onClick={() => {
@@ -627,26 +704,17 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                           </div>
                         </div>
                       )}
-
-                      {p.statsBadge && (
-                        <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md border border-[#D4AF37]/40 text-[9px] font-mono text-[#F5BA42] font-bold">
-                          {p.statsBadge}
-                        </div>
-                      )}
                     </div>
 
-                    <span className="text-[10px] font-mono text-[#B8941F] dark:text-[#F5BA42] uppercase tracking-wider block mb-1 font-bold">
-                      {p.category.toUpperCase()} PROJECT
-                    </span>
-                    <h4 className="font-extrabold text-base text-[#111318] dark:text-white uppercase tracking-wider mb-1.5 group-hover:text-[#B8941F] dark:group-hover:text-[#F5BA42] transition-colors">
-                      {p.title}
-                    </h4>
-                    <p className="text-xs text-[#4B5563] dark:text-slate-300 leading-relaxed mb-4">
-                      {p.description}
-                    </p>
+                    {/* Role & Year Specification */}
+                    <div className="text-[10px] font-mono text-[#667085] dark:text-gray-400 mb-3 flex items-center justify-between border-t border-black/5 dark:border-white/5 pt-2.5">
+                      <span className="truncate pr-2">{p.role || "Product Design · UX · UI"}</span>
+                      <span className="shrink-0 font-bold text-[#B8941F] dark:text-[#D4AF37]">{p.year || "2026"}</span>
+                    </div>
                   </div>
 
-                  <div className="flex items-center justify-between border-t border-black/10 dark:border-white/10 pt-4 text-xs font-bold uppercase tracking-wider">
+                  {/* CTA Button */}
+                  <div className="border-t border-black/10 dark:border-white/10 pt-4">
                     {p.category === "video" ? (
                       <button
                         onClick={() => {
@@ -656,26 +724,32 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                             setSelectedVideoProject(p);
                           }
                         }}
-                        className="text-[#B8941F] dark:text-[#F5BA42] flex items-center space-x-1.5 hover:underline cursor-pointer"
+                        className="w-full py-2.5 rounded-lg border border-[#D4AF37]/50 bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#B8941F] hover:text-black dark:text-[#F5BA42] dark:hover:text-black flex items-center justify-center space-x-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
                       >
                         <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>{p.caseStudy}</span>
+                        <span>Watch Project</span>
                       </button>
                     ) : p.uxProjectId ? (
                       <button
                         onClick={() => handleOpenCaseStudy(p.uxProjectId)}
-                        className="text-[#B8941F] dark:text-[#F5BA42] flex items-center space-x-1 hover:underline cursor-pointer"
+                        className="w-full py-2.5 rounded-lg border border-[#D4AF37]/50 bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#B8941F] hover:text-black dark:text-[#F5BA42] dark:hover:text-black flex items-center justify-center space-x-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
                       >
-                        <span>{p.caseStudy}</span>
+                        <span>Explore Case Study</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     ) : p.figmaUrl.startsWith("/") ? (
-                      <a href={p.figmaUrl} className="text-[#B8941F] dark:text-[#F5BA42] flex items-center space-x-1 hover:underline">
+                      <a 
+                        href={p.figmaUrl} 
+                        className="w-full py-2.5 rounded-lg border border-[#D4AF37]/50 bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#B8941F] hover:text-black dark:text-[#F5BA42] dark:hover:text-black flex items-center justify-center space-x-2 text-xs font-bold uppercase tracking-wider transition-colors"
+                      >
                         <span>{p.caseStudy || "Explore Gallery"}</span>
                         <ExternalLink className="w-3.5 h-3.5" />
                       </a>
                     ) : (
-                      <a href={p.figmaUrl} className="text-[#B8941F] dark:text-[#F5BA42] flex items-center space-x-1 hover:underline">
+                      <a 
+                        href={p.figmaUrl} 
+                        className="w-full py-2.5 rounded-lg border border-[#D4AF37]/50 bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#B8941F] hover:text-black dark:text-[#F5BA42] dark:hover:text-black flex items-center justify-center space-x-2 text-xs font-bold uppercase tracking-wider transition-colors"
+                      >
                         <span>{p.caseStudy}</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </a>
@@ -687,153 +761,56 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
           </div>
         </div>
 
-        {/* SECTION 17: VIDEO SHOWREEL */}
-        <div className="mb-24">
-          <div className="flex flex-col items-center text-center mb-14">
-            <span className="text-xs font-bold uppercase tracking-[0.4em] text-[#D4AF37]">Cinematic Media Studio</span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mt-2 text-[#0a1128] dark:text-white">
-              VIDEO <span className="text-gradient-orange">SHOWREEL</span>
-            </h2>
-            <div className="w-16 h-[2px] bg-[#FF6B00] mt-4 shadow-[0_0_8px_#FF6B00]" />
-            <p className="text-slate-600 dark:text-slate-400 mt-4 max-w-xl text-xs sm:text-sm md:text-base leading-relaxed">
-              Explore showreels, motion templates, and behind-the-scenes editing timeline panels.
-            </p>
+        {/* GATEWAY TO DEDICATED VISUAL & MOTION LABS (Master Prompt 08, 23, 26) */}
+        <div className="mb-24 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Card 1: Visual Systems Gateway */}
+          <div className="p-8 rounded-2xl border-[1.5px] border-[#D4AF37]/50 bg-white dark:bg-[#0F1118] shadow-xl flex flex-col justify-between group hover:border-[#F5BA42] transition-all duration-300">
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#B8941F] dark:text-[#D4AF37]">
+                  LEVEL 05 • VISUAL CRAFT
+                </span>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#D4AF37] animate-pulse" />
+              </div>
+              <h3 className="text-2xl font-black text-[#111318] dark:text-white uppercase tracking-wider mb-2 group-hover:text-[#B8941F] dark:group-hover:text-[#F5BA42] transition-colors">
+                Visual Systems &amp; Brand Lab
+              </h3>
+              <p className="text-xs text-[#4B5563] dark:text-gray-300 leading-relaxed mb-6">
+                Explore brand identity guidelines, geometric logo construction (Concept → Sketch → Construction → Application), theatrical print keyart, and the 21-artwork Photoshop vault.
+              </p>
+            </div>
+            <a 
+              href="#visual"
+              className="btn-secondary w-full flex items-center justify-center space-x-2 text-xs font-bold uppercase tracking-wider"
+            >
+              <span>Explore Visual Systems</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
           </div>
 
-          <div className="border-[1.5px] border-[#D4AF37]/50 rounded-2xl overflow-hidden bg-white dark:bg-gradient-to-br dark:from-[#0D1B38] dark:to-[#050C1A] shadow-2xl">
-            <div className="bg-[#F0F4F8] dark:bg-[#081226] border-b border-black/10 dark:border-white/10 flex flex-wrap">
-              {[
-                { id: "showreel", label: "Play Showreel", icon: <Play className="w-3.5 h-3.5" /> },
-                { id: "bts", label: "Behind The Scenes", icon: <Layers className="w-3.5 h-3.5" /> },
-                { id: "motion", label: "Motion Graphics", icon: <Film className="w-3.5 h-3.5" /> }
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setShowreelTab(tab.id as "showreel" | "bts" | "motion")}
-                  className={`px-6 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center space-x-2 border-r border-black/5 dark:border-white/5 transition-colors cursor-pointer ${
-                    showreelTab === tab.id ? "bg-gradient-to-r from-[#FF6B00] to-[#D4AF37] text-white font-extrabold" : "text-[#374151] dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5 hover:text-[#111318] dark:hover:text-white"
-                  }`}
-                >
-                  {tab.icon}
-                  <span>{tab.label}</span>
-                </button>
-              ))}
+          {/* Card 2: Motion Lab Gateway */}
+          <div className="p-8 rounded-2xl border-[1.5px] border-[#D4AF37]/50 bg-white dark:bg-[#0F1118] shadow-xl flex flex-col justify-between group hover:border-[#00F0FF] transition-all duration-300">
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#00F0FF]">
+                  LEVEL 06 • MOTION &amp; FILM
+                </span>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#00F0FF] animate-pulse" />
+              </div>
+              <h3 className="text-2xl font-black text-[#111318] dark:text-white uppercase tracking-wider mb-2 group-hover:text-[#00F0FF] transition-colors">
+                Motion / Film Lab
+              </h3>
+              <p className="text-xs text-[#4B5563] dark:text-gray-300 leading-relaxed mb-6">
+                Experience 4K showreels, speed ramping, Rec.709 color grading, multi-track audio balancing, and commercial brand films with full video player controls.
+              </p>
             </div>
-
-            <div className="p-6 sm:p-8 min-h-[360px] flex items-center justify-center relative bg-transparent">
-              <div className="absolute inset-0 bg-radial-glow opacity-30 pointer-events-none" />
-              
-              <AnimatePresence mode="wait">
-                {showreelTab === "showreel" && (
-                  <motion.div 
-                    key="showreel" 
-                    initial={{ opacity: 0, scale: 0.96 }} 
-                    animate={{ opacity: 1, scale: 1 }} 
-                    exit={{ opacity: 0, scale: 0.96 }} 
-                    className="w-full max-w-2xl relative z-10"
-                  >
-                    {/* Real Video Frame Preview */}
-                    <div 
-                      onClick={() => setShowreelModalOpen(true)}
-                      className="group relative aspect-[16/9] w-full rounded-2xl overflow-hidden border-[1.5px] border-[#D4AF37]/60 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_25px_rgba(212,175,55,0.2)] hover:border-[#F5BA42] cursor-pointer"
-                    >
-                      <Image
-                        src="/images/showreel/video-showreel.png"
-                        alt="Cinematic Video Showreel"
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
-                        sizes="(max-width: 768px) 100vw, 60vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/40 opacity-75 group-hover:opacity-40 transition-opacity" />
-
-                      {/* Top Badges */}
-                      <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-                        <span className="px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-[#D4AF37]/50 text-[10px] font-mono font-bold text-[#F5BA42] uppercase tracking-wider">
-                          4K UHD • 60 FPS • MASTER REEL
-                        </span>
-                        <span className="px-2.5 py-1 rounded bg-[#FF6B00] text-white text-[10px] font-black uppercase tracking-wider shadow-[0_0_10px_rgba(255,107,0,0.6)]">
-                          02:45 DURATION
-                        </span>
-                      </div>
-
-                      {/* Center Pulsing Play Button */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-r from-[#FF6B00] via-[#FF8800] to-[#D4AF37] text-white flex items-center justify-center shadow-[0_0_35px_rgba(255,107,0,0.8)] scale-95 group-hover:scale-110 transition-transform duration-300">
-                          <Play className="w-7 h-7 sm:w-9 sm:h-9 fill-current ml-1" />
-                        </div>
-                      </div>
-
-                      {/* Bottom Title & Specs */}
-                      <div className="absolute bottom-4 left-4 right-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2 pointer-events-none">
-                        <div>
-                          <h4 className="font-black text-base sm:text-lg uppercase text-white tracking-wider">
-                            PRASHANT SISODHIYA • CINEMATIC REEL
-                          </h4>
-                          <p className="text-[11px] text-slate-300">
-                            Speed Ramping • Match Cuts • Rec.709 Color Grading • Kinetic Typography
-                          </p>
-                        </div>
-                        <span className="px-3 py-1 rounded bg-black/70 backdrop-blur-md border border-white/20 text-[10px] font-bold text-[#00F0FF] self-start sm:self-auto">
-                          Click to Launch Player
-                        </span>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
-                {showreelTab === "bts" && (
-                  <motion.div key="bts" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-center space-y-4 max-w-lg relative z-10 font-mono text-xs w-full">
-                    <div className="p-5 rounded-2xl border border-[#D4AF37]/40 bg-[#060D1E] text-[#00F0FF] shadow-2xl">
-                      <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
-                        <span className="text-slate-400 uppercase tracking-widest text-[10px] font-bold flex items-center gap-2">
-                          <Sliders className="w-3.5 h-3.5 text-[#F5BA42]" />
-                          TIMELINE_MULTITRACK_MONITOR
-                        </span>
-                        <span className="text-[#00F5A0] text-[10px]">SYNC_LOCKED</span>
-                      </div>
-                      <div className="space-y-2.5 text-left text-[11px]">
-                        <div className="flex items-center justify-between p-2 rounded bg-black/40 border border-white/5">
-                          <span>V3 [Motion Titles]: Kinetic Lottie & After Effects 3D Camera</span>
-                          <span className="text-[#F5BA42]">AE_Linked</span>
-                        </div>
-                        <div className="flex items-center justify-between p-2 rounded bg-black/40 border border-white/5">
-                          <span>V2 [VFX/Grade]: Lumetri Rec.709 Film LUT + Glow Mask (1.4x)</span>
-                          <span className="text-[#00F0FF]">LUT_Applied</span>
-                        </div>
-                        <div className="flex items-center justify-between p-2 rounded bg-black/40 border border-white/5">
-                          <span>V1 [Footage]: 4K ProRes Master, Speed Ramped Beats</span>
-                          <span className="text-[#38BDF8]">ProRes_422</span>
-                        </div>
-                        <div className="flex items-center justify-between p-2 rounded bg-black/40 border border-white/5">
-                          <span>A1-A4 [Audio]: Multi-track SFX, Whooshes, Sub-bass hit (-3dB)</span>
-                          <span className="text-[#10B981]">Normalized</span>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
-                {showreelTab === "motion" && (
-                  <motion.div key="motion" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-center space-y-4 max-w-md relative z-10">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FF6B00] to-[#D4AF37] text-white flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(255,107,0,0.5)]">
-                      <Film className="w-7 h-7" />
-                    </div>
-                    <h4 className="font-extrabold text-sm uppercase text-white tracking-wider">
-                      ADOBE AFTER EFFECTS MOTION GRAPHICS
-                    </h4>
-                    <p className="text-xs text-slate-300 leading-relaxed">
-                      Custom 2D/3D kinetic titles, geometric stinger transitions, particle disintegrations, and interactive UI animations designed for digital campaigns.
-                    </p>
-                    <button
-                      onClick={() => setShowreelModalOpen(true)}
-                      className="px-5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs uppercase tracking-wider"
-                    >
-                      Inspect Reel Transitions
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            <a 
+              href="#motion"
+              className="btn-primary w-full flex items-center justify-center space-x-2 text-xs font-bold uppercase tracking-wider"
+            >
+              <Play className="w-3.5 h-3.5 fill-current" />
+              <span>Launch Motion Lab</span>
+            </a>
           </div>
         </div>
 

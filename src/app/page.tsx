@@ -20,6 +20,8 @@ import SkillUniverse from "@/components/SkillUniverse";
 import DesignProcess from "@/components/DesignProcess";
 import BeforeAfter from "@/components/BeforeAfter";
 import DesignSystemShowcase from "@/components/DesignSystemShowcase";
+import VisualSystems from "@/components/VisualSystems";
+import MotionLab from "@/components/MotionLab";
 import FigmaLab from "@/components/FigmaLab";
 import CertificationVault from "@/components/CertificationVault";
 import ClientTrust from "@/components/ClientTrust";
@@ -134,7 +136,15 @@ export default function Home() {
               <DesignSystemShowcase />
               <SectionSeparator />
 
-              {/* 04: ABOUT & CREDENTIAL JOURNEY */}
+              {/* 04: VISUAL SYSTEMS & ART DIRECTION */}
+              <VisualSystems />
+              <SectionSeparator />
+
+              {/* 05: MOTION / FILM LAB */}
+              <MotionLab />
+              <SectionSeparator />
+
+              {/* 06: ABOUT & CREDENTIAL JOURNEY */}
               <About profile={profile} />
               <SectionSeparator />
               <CertificationVault />
@@ -150,7 +160,7 @@ export default function Home() {
               <ClientTrust />
               <SectionSeparator />
 
-              {/* 05: LAB & AI EXPERIMENTS */}
+              {/* 07: LAB & AI EXPERIMENTS */}
               <AILab />
               <SectionSeparator />
               <FigmaLab />
@@ -160,7 +170,7 @@ export default function Home() {
               <Services />
               <SectionSeparator />
               
-              {/* 06: CONTACT */}
+              {/* 08: CONTACT */}
               <Contact profile={profile} />
               <SectionSeparator />
 

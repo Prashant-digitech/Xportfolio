@@ -90,7 +90,7 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      const sections = ["home", "work", "process", "about", "lab", "contact"];
+      const sections = ["home", "work", "process", "visual", "motion", "about", "lab", "contact"];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -114,6 +114,8 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
     { label: "Home", id: "home" },
     { label: "Work", id: "work" },
     { label: "Process", id: "process" },
+    { label: "Visual", id: "visual" },
+    { label: "Motion", id: "motion" },
     { label: "About", id: "about" },
     { label: "Lab", id: "lab" },
     { label: "Contact", id: "contact" },
