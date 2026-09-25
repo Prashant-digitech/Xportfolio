@@ -85,13 +85,13 @@ export default function BeforeAfter() {
               
               <div className="flex-grow flex flex-col justify-center space-y-4 my-6">
                 <div className="h-6 bg-white/5 rounded w-1/3" />
-                <div className="h-12 border border-dashed border-white/10 rounded flex items-center justify-center text-[10px] text-gray-500">
-                  [HERO HEADER PLACEHOLDER AREA]
+                <div className="h-12 border border-dashed border-white/10 rounded flex items-center justify-center text-[10px] text-gray-500 font-mono">
+                  [HERO VIEWPORT REGION]
                 </div>
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="h-16 border border-dashed border-white/10 rounded flex items-center justify-center text-[9px] text-gray-500">[BOX_01]</div>
-                  <div className="h-16 border border-dashed border-white/10 rounded flex items-center justify-center text-[9px] text-gray-500">[BOX_02]</div>
-                  <div className="h-16 border border-dashed border-white/10 rounded flex items-center justify-center text-[9px] text-gray-500">[BOX_03]</div>
+                  <div className="h-16 border border-dashed border-white/10 rounded flex items-center justify-center text-[9px] text-gray-500 font-mono">[MODULE_01]</div>
+                  <div className="h-16 border border-dashed border-white/10 rounded flex items-center justify-center text-[9px] text-gray-500 font-mono">[MODULE_02]</div>
+                  <div className="h-16 border border-dashed border-white/10 rounded flex items-center justify-center text-[9px] text-gray-500 font-mono">[MODULE_03]</div>
                 </div>
               </div>
 

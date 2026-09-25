@@ -39,6 +39,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
   const [pptSlideIdx, setPptSlideIdx] = useState<number>(0);
   const [showreelTab, setShowreelTab] = useState<"showreel" | "bts" | "motion">("showreel");
   const [selectedUXProject, setSelectedUXProject] = useState<UXProject | null>(null);
+  const [initialModalTab, setInitialModalTab] = useState<"overview" | "deck" | "walkthrough" | "research" | "architecture" | "flows" | "system" | "gallery" | "decisions" | "impact">("overview");
   const [selectedVideoProject, setSelectedVideoProject] = useState<ShowcaseProject | null>(null);
   const [showreelModalOpen, setShowreelModalOpen] = useState<boolean>(false);
   const [isPlayingShowreel, setIsPlayingShowreel] = useState<boolean>(true);
@@ -70,10 +71,10 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       title: "DeepAstro AI Life Intelligence",
       desc: "An AI-powered Vedic astrology platform blending ancient cosmic wisdom with modern generative intelligence. Provides personalized life optimization roadmaps, planetary alignments, and evidence-based guidance.",
       accent: "#00F0FF",
-      spec: "01 • UI/UX • AI LIFE PLATFORM • MULTI-DEVICE",
-      challenge: "Traditional Vedic astrology is intimidating and hard to decipher, while modern horoscope apps deliver superficial, generic predictions without depth.",
-      impact: "Designed luminous Cosmic Glassmorphism dashboards and 5-year optimization roadmaps. 50,000+ active seekers with a 4.9/5 user rating.",
-      img: "/images/ux/deepastro-hero.jpg",
+      spec: "01 • FLAGSHIP • UI/UX • AI LIFE PLATFORM • MULTI-DEVICE",
+      challenge: "Traditional Vedic astrology is intimidating and hard to decipher, while modern horoscope apps deliver superficial, generic predictions without architectural depth or personalized context.",
+      impact: "18 synthesized domain insights, 10-slide verified case-study boards, Cosmic Glassmorphism design system, and multi-tier interactive architecture.",
+      img: "/images/ux/deepastro/slide-01.png",
       uxProjectId: "deepastro",
     },
     {
@@ -81,10 +82,10 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       title: "TradeX Pro Financial Terminal",
       desc: "Enterprise-grade quantitative crypto & algorithmic trading terminal. Features sub-second execution speeds, live order book depth, and customizable modular smart-tile workspaces.",
       accent: "#00F5A0",
-      spec: "02 • FINTECH UX • QUANT TRADING • DARK MODE",
-      challenge: "High-frequency traders faced severe cognitive overload and costly execution errors across fragmented, rigid legacy trading software.",
-      impact: "Sub-second 0.12s execution latency, dynamic smart-tiles, and an 83% drop in erroneous order placements.",
-      img: "/images/ux/projects/TradeX.png",
+      spec: "02 • SECOND FLAGSHIP • FINTECH UX • QUANT TRADING • DARK MODE",
+      challenge: "High-frequency traders faced severe cognitive overload and latency friction across fragmented, rigid legacy trading software.",
+      impact: "Authentic 10-screen trading terminal architecture, live order depth workspace, sub-second execution logic, and dark mode interface.",
+      img: "/images/ux/tradex/case-study-preview.png",
       uxProjectId: "tradex",
     },
     {
@@ -92,9 +93,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       title: "SecureX Zero-Trust Security",
       desc: "Next-gen Security Operations Center (SOC) dashboard. Delivers attack path topology graphs, automated entity threat clustering, and one-click incident containment.",
       accent: "#EF4444",
-      spec: "03 • CYBERSECURITY UX • SOC DASHBOARD • ZERO-TRUST",
-      challenge: "SecOps teams suffered severe alert fatigue, with 92% of security warnings being redundant false positives.",
-      impact: "Reduced alert fatigue by 75% and accelerated breach containment response time by 48%.",
+      spec: "03 • SELECTED CASE STUDY • CYBERSECURITY UX • SOC DASHBOARD",
+      challenge: "SecOps teams suffered severe alert fatigue, with redundant security warnings slowing critical incident triage.",
+      impact: "Zero-Trust attack path topology graphs, automated threat clustering, and accelerated incident containment workflows.",
       img: "/images/ux/projects/secureX.png",
       uxProjectId: "securex",
     },
@@ -103,10 +104,10 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       title: "FutureMind AI Career Operating System",
       desc: "An AI career navigation platform featuring dynamic mountain elevation roadmaps, AI Career Coach drawer, skill intelligence modules, and live mentor connection.",
       accent: "#2563EB",
-      spec: "04 • EDTECH UX • AI CAREER OS • DESIGN TOKENS",
+      spec: "04 • AUTHENTIC PREVIEW • EDTECH UX • AI CAREER OS",
       challenge: "Tech career growth is fragmented across disjointed tutorials, static video courses, and unhelpful job boards, creating imposter syndrome and stalled progress.",
-      impact: "Pioneered mountain elevation milestone visualization. Boosted path completion rate to 68.4% across 50,000+ tech learners.",
-      img: "/images/ux/futuremind-hero.jpg",
+      impact: "Authentic career navigation framework, 10-slide case study overview, mountain elevation roadmap UX, and AI career guidance interface.",
+      img: "/images/ux/futuremind/overview-case-study.png",
       uxProjectId: "futuremind",
     },
     {
@@ -153,35 +154,35 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
 
   // Projects Grid (Canonical Order 01-05 + Extended)
   const projects: ShowcaseProject[] = [
-    // 01: DEEPASTRO
+    // 01: DEEPASTRO (Flagship)
     { 
       num: "01",
       title: "DeepAstro AI Life Platform", 
       category: "uiux", 
       description: "Comprehensive AI life intelligence system featuring cosmic dashboard, Kundli charts, and mobile companion app.", 
-      img: "/images/ux/deepastro-hero.jpg", 
+      img: "/images/ux/deepastro/slide-01.png", 
       caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "deepastro",
-      statsBadge: "50K+ Users • 4.9/5 ★",
-      role: "Product Design · UX · UI · AI",
+      statsBadge: "AUTHENTIC ARTIFACT • 10 SLIDES",
+      role: "Lead Product Designer · UX · UI · Systems",
       year: "2026",
-      valueProposition: "Making complex personal intelligence understandable through a human-centered interface."
+      valueProposition: "Structured complex astrological mathematics into a lucid, modern AI cosmic workspace."
     },
-    // 02: TRADEX
+    // 02: TRADEX (Second Flagship)
     { 
       num: "02",
       title: "TradeX Pro Financial Terminal", 
       category: "uiux", 
       description: "High-frequency financial terminal with dynamic smart-tiles, candlestick charts, and instant order execution.", 
-      img: "/images/ux/projects/TradeX.png", 
+      img: "/images/ux/tradex/case-study-preview.png", 
       caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "tradex",
-      statsBadge: "Institutional Terminal • 0.12s",
+      statsBadge: "AUTHENTIC ARTIFACT • 10 SCREENS",
       role: "Fintech UX · Design System · Data Viz",
       year: "2026",
-      valueProposition: "Sub-second execution speeds and modular smart-tile workspaces reducing order errors by 83%."
+      valueProposition: "High-frequency quantitative trading terminal with live order depth and modular tile workspaces."
     },
     // 03: SECUREX
     { 
@@ -193,10 +194,10 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "securex",
-      statsBadge: "99.99% Mitigation • SOC",
+      statsBadge: "CASE STUDY • ZERO-TRUST",
       role: "Cybersecurity UX · SOC Dashboards · Tokens",
       year: "2026",
-      valueProposition: "Zero-Trust attack path topology graphs cutting SecOps alert fatigue by 75%."
+      valueProposition: "Zero-Trust attack path topology graphs cutting SecOps alert fatigue and accelerating containment."
     },
     // 04: FUTUREMIND
     { 
@@ -204,14 +205,14 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       title: "FutureMind AI Career OS", 
       category: "uiux", 
       description: "AI-guided tech career roadmap with mountain elevation progress curves, AI Career Coach, and skill intelligence.", 
-      img: "/images/ux/futuremind-hero.jpg", 
+      img: "/images/ux/futuremind/overview-case-study.png", 
       caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "futuremind",
-      statsBadge: "50K+ Learners • 200+ Paths",
+      statsBadge: "AUTHENTIC ARTIFACT • OVERVIEW",
       role: "EdTech UX · AI Guidance · Gamification",
       year: "2026",
-      valueProposition: "Mountain elevation milestone roadmaps boosting tech career completion by 68%."
+      valueProposition: "Mountain elevation milestone roadmaps and AI Career Coach for focused technical progression."
     },
     // 05: PRESENTX
     { 
@@ -456,10 +457,14 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
     setActiveCinemaIdx((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
   };
 
-  const handleOpenCaseStudy = (uxId?: string) => {
+  const handleOpenCaseStudy = (
+    uxId?: string,
+    tab: "overview" | "deck" | "walkthrough" | "research" | "architecture" | "flows" | "system" | "gallery" | "decisions" | "impact" = "overview"
+  ) => {
     if (!uxId) return;
     const match = uxProjectsList.find((p) => p.id === uxId);
     if (match) {
+      setInitialModalTab(tab);
       setSelectedUXProject(match);
     }
   };
@@ -532,11 +537,20 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                     <BookOpen className="w-3.5 h-3.5" />
                     <span>Read Complete Case Study</span>
                   </button>
+                  {featuredProjects[activeCinemaIdx].id === "deepastro" && (
+                    <button 
+                      onClick={() => handleOpenCaseStudy("deepastro", "deck")}
+                      className="px-4 py-2.5 rounded-lg border border-[#D4AF37] bg-[#D4AF37]/15 hover:bg-[#D4AF37] hover:text-black text-[#D4AF37] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
+                    >
+                      <Layers className="w-3.5 h-3.5" />
+                      <span>View 10-Slide Deck</span>
+                    </button>
+                  )}
                   <a 
-                    href="#work"
+                    href="#figma-lab"
                     className="btn-secondary"
                   >
-                    <span>View In Gallery</span>
+                    <span>Inspect Figma Lab</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </a>
                 </div>

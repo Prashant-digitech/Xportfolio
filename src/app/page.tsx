@@ -124,7 +124,7 @@ export default function Home() {
               <Hero profile={profile} />
               <SectionSeparator />
 
-              {/* 02: SELECTED WORK */}
+              {/* 02: SELECTED WORK (Flagship DeepAstro & Second Flagship TradeX) */}
               <ProjectShowcase profile={profile} />
               <SectionSeparator />
 
@@ -136,15 +136,19 @@ export default function Home() {
               <DesignSystemShowcase />
               <SectionSeparator />
 
-              {/* 04: VISUAL SYSTEMS & ART DIRECTION */}
+              {/* 04: FIGMA LAB — DESIGN PROCESS LAB (How I Work: Wireframes → Mid-Fi → System → Iterations → Prototype → Handoff) */}
+              <FigmaLab />
+              <SectionSeparator />
+
+              {/* 05: VISUAL SYSTEMS & ART DIRECTION */}
               <VisualSystems />
               <SectionSeparator />
 
-              {/* 05: MOTION / FILM LAB */}
+              {/* 06: MOTION / FILM LAB */}
               <MotionLab />
               <SectionSeparator />
 
-              {/* 06: ABOUT & CREDENTIAL JOURNEY */}
+              {/* 07: MULTIDISCIPLINARY JOURNEY & CREDENTIALS */}
               <About profile={profile} />
               <SectionSeparator />
               <CertificationVault />
@@ -160,17 +164,15 @@ export default function Home() {
               <ClientTrust />
               <SectionSeparator />
 
-              {/* 07: LAB & AI EXPERIMENTS */}
+              {/* 08: AI LAB & EXPERIMENTS */}
               <AILab />
               <SectionSeparator />
-              <FigmaLab />
-              <SectionSeparator />
               
-              {/* EXTENDED MEDIA & SERVICES */}
+              {/* 09: EXTENDED MEDIA & SERVICES */}
               <Services />
               <SectionSeparator />
               
-              {/* 08: CONTACT */}
+              {/* 10: CONTACT */}
               <Contact profile={profile} />
               <SectionSeparator />
 

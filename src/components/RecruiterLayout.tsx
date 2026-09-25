@@ -1,15 +1,18 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { ProfileData } from "@/app/page";
 import { 
   Briefcase, Award, CheckCircle, MapPin, Mail, Phone, Calendar, Download, 
   Layers, Film, PenTool, ExternalLink, Cpu, BookOpen, Clock, Check, Send, 
   Sparkles, RefreshCw, Clipboard, CheckCircle2, User, ChevronRight, MessageSquare,
-  Palette, Play, Eye, Video
+  Palette, Play, Eye, Video, ArrowRight, ShieldCheck, Target, FileText
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMagnetic, useTilt } from "@/hooks/useAnimations";
+import { uxProjectsList, UXProject } from "@/data/uxProjects";
+import UXCaseStudyModal from "@/components/UXCaseStudyModal";
 
 interface RecruiterLayoutProps {
   profile: ProfileData;
@@ -23,6 +26,13 @@ interface Message {
 }
 
 export default function RecruiterLayout({ profile }: RecruiterLayoutProps) {
+  // Case Study Modal State
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState<UXProject | null>(null);
+
+  const handleOpenCaseStudy = (id: string) => {
+    const found = uxProjectsList.find(p => p.id === id);
+    if (found) setSelectedCaseStudy(found);
+  };
   // 1. Role Filter State
   const [activeCategory, setActiveCategory] = useState<"all" | "design" | "video" | "dev" | "academic">("all");
   
@@ -246,25 +256,54 @@ VERIFICATION TICKET STATUS:
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 text-black dark:text-white transition-colors duration-300">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 text-black dark:text-white transition-colors duration-300">
       
-      {/* Top Welcome Title Panel */}
+      {/* ── 01: STICKY RECRUITER QUICK SCAN BAR (Req 28) ── */}
+      <div className="sticky top-16 z-30 mb-8 -mx-4 sm:-mx-6 px-4 sm:px-6 py-2.5 bg-white/95 dark:bg-[#07090E]/95 backdrop-blur-md border-y border-black/10 dark:border-gold/25 shadow-md">
+        <div className="max-w-7xl mx-auto flex items-center justify-between overflow-x-auto gap-4 scrollbar-none">
+          <div className="flex items-center space-x-2 shrink-0">
+            <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+            <span className="text-[10px] font-mono font-black uppercase tracking-widest text-[#B8941F] dark:text-gold">
+              RECRUITER QUICK SCAN:
+            </span>
+          </div>
+          <div className="flex items-center space-x-3 sm:space-x-5 text-[10px] sm:text-[11px] font-mono font-bold tracking-wider uppercase text-gray-700 dark:text-gray-300 shrink-0">
+            <span className="hover:text-gold transition-colors">PRODUCT DESIGN</span>
+            <span className="text-gold/40">•</span>
+            <span className="hover:text-gold transition-colors">UI/UX</span>
+            <span className="text-gold/40">•</span>
+            <span className="hover:text-gold transition-colors">DESIGN SYSTEMS</span>
+            <span className="text-gold/40">•</span>
+            <span className="hover:text-gold transition-colors">AI EXPERIENCES</span>
+            <span className="text-gold/40">•</span>
+            <span className="hover:text-gold transition-colors">VISUAL DESIGN</span>
+          </div>
+          <div className="hidden lg:flex items-center space-x-2 text-[10px] font-mono text-gray-500 dark:text-gray-400 shrink-0">
+            <span className="text-green-500 font-bold">● 0-Day Notice</span>
+            <span>• Immediate Remote / Relocation</span>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Top Welcome & Header Panel ── */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10 border-b border-black/10 dark:border-white/10 pb-6"
+        className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8 border-b border-black/10 dark:border-white/10 pb-6"
       >
         <div>
           <div className="flex items-center space-x-2.5 mb-2">
-            <span className="h-2.5 w-2.5 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-xs font-black uppercase tracking-widest text-green-500">Recruiter Cockpit Ready</span>
+            <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+            <span className="text-[10px] font-mono font-black uppercase tracking-widest text-green-500">
+              Verified Candidate Dossier Ready
+            </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight uppercase">
-            Recruiter <span className="text-gradient-gold">Twin Center</span>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight uppercase">
+            Recruiter <span className="text-gradient-gold">Hiring Cockpit</span>
           </h1>
-          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 max-w-xl font-medium uppercase tracking-wider">
-            Evaluate skills, run custom JD matches, and interrogate virtual AI twins in real-time.
+          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 max-w-xl font-medium">
+            Fast-track review for hiring managers: inspect real case studies, verified Figma artifacts, and skills match.
           </p>
         </div>
         
@@ -279,7 +318,7 @@ VERIFICATION TICKET STATUS:
             className="px-5 py-2.5 bg-gold text-black rounded font-black uppercase tracking-wider text-[11px] flex items-center space-x-2 hover:bg-gold-light transition-colors duration-300 cursor-pointer shadow-[0_4px_12px_rgba(212,160,23,0.15)]"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Download Official CV</span>
+            <span>Download Official CV (PDF)</span>
           </a>
           <a 
             href={`mailto:${profile.email}`}
@@ -290,6 +329,253 @@ VERIFICATION TICKET STATUS:
           </a>
         </div>
       </motion.div>
+
+      {/* ── 02: SELECTED PRODUCT WORK (Req 27 & 29) ── */}
+      <section className="mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 pb-3 border-b border-black/10 dark:border-white/10 gap-2">
+          <div>
+            <div className="flex items-center space-x-2">
+              <ShieldCheck className="w-4 h-4 text-gold" />
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#B8941F] dark:text-gold">
+                EVIDENCE-FIRST PRODUCT ARTIFACTS
+              </span>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-black dark:text-white mt-1">
+              Selected Product Work
+            </h2>
+          </div>
+          <p className="text-[11px] text-gray-500 font-medium">
+            Click any project to inspect full 10-slide decks, research, and design systems.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Card 1: DEEPASTRO (Primary Flagship) */}
+          <div className="group relative p-5 rounded-2xl glass-card border border-gold/40 hover:border-gold transition-all duration-300 flex flex-col justify-between shadow-lg hover:-translate-y-1">
+            <div>
+              <div className="flex items-center justify-between mb-3 text-[10px] font-mono">
+                <span className="px-2 py-0.5 rounded bg-gold/15 text-gold font-bold border border-gold/30">
+                  FLAGSHIP 01
+                </span>
+                <span className="text-[9px] font-bold text-green-400 bg-green-500/10 px-2 py-0.5 rounded border border-green-500/20">
+                  AUTHENTIC ARTIFACT
+                </span>
+              </div>
+
+              <div 
+                onClick={() => handleOpenCaseStudy("deepastro")}
+                className="w-full aspect-[16/10] rounded-xl relative overflow-hidden mb-4 border border-gold/25 group-hover:border-gold/60 cursor-pointer transition-colors"
+              >
+                <Image
+                  src="/images/ux/deepastro/slide-01.png"
+                  alt="DeepAstro AI Life Intelligence Case Study"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+                <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[10px] text-white">
+                  <span className="font-mono text-gold font-bold">10-Slide Verified Deck</span>
+                  <span className="px-2 py-0.5 rounded bg-black/70 border border-gold/40 text-[9px] font-mono">Inspect</span>
+                </div>
+              </div>
+
+              <span className="text-[10px] font-mono font-bold text-[#B8941F] dark:text-gold uppercase tracking-wider block mb-1">
+                AI PRODUCT / UI/UX
+              </span>
+              <h3 className="text-lg font-black uppercase text-black dark:text-white group-hover:text-gold transition-colors">
+                DeepAstro
+              </h3>
+              <p className="text-xs text-gray-600 dark:text-gray-300 mt-1.5 leading-relaxed line-clamp-2">
+                Vedic cosmic intelligence workspace blending ancient astrological mathematics with modern generative AI models.
+              </p>
+
+              {/* Evidence Chips */}
+              <div className="mt-4 pt-3 border-t border-black/5 dark:border-white/5">
+                <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest block mb-2 font-bold">Verified Evidence:</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {["10-SLIDE CASE STUDY", "FIGMA LAB", "PROTOTYPE", "DESIGN SYSTEM"].map((chip, idx) => (
+                    <span 
+                      key={idx}
+                      className="px-2 py-0.5 rounded bg-gold/10 border border-gold/20 text-[9px] font-mono font-bold text-gold"
+                    >
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={() => handleOpenCaseStudy("deepastro")}
+              className="mt-5 w-full py-2.5 rounded-lg bg-gold text-black font-black uppercase tracking-wider text-[11px] flex items-center justify-center space-x-2 hover:bg-gold-light transition-colors cursor-pointer shadow-md"
+            >
+              <span>VIEW CASE STUDY</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          {/* Card 2: TRADEX (Second Flagship) */}
+          <div className="group relative p-5 rounded-2xl glass-card border border-black/10 dark:border-white/10 hover:border-gold/60 transition-all duration-300 flex flex-col justify-between shadow-md hover:-translate-y-1">
+            <div>
+              <div className="flex items-center justify-between mb-3 text-[10px] font-mono">
+                <span className="px-2 py-0.5 rounded bg-white/10 text-gray-300 font-bold border border-white/10">
+                  FLAGSHIP 02
+                </span>
+                <span className="text-[9px] font-bold text-green-400 bg-green-500/10 px-2 py-0.5 rounded border border-green-500/20">
+                  AUTHENTIC ARTIFACT
+                </span>
+              </div>
+
+              <div 
+                onClick={() => handleOpenCaseStudy("tradex")}
+                className="w-full aspect-[16/10] rounded-xl relative overflow-hidden mb-4 border border-white/10 group-hover:border-gold/40 cursor-pointer transition-colors"
+              >
+                <Image
+                  src="/images/ux/tradex/case-study-preview.png"
+                  alt="TradeX Quantitative Trading Terminal"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+                <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[10px] text-white">
+                  <span className="font-mono text-gold font-bold">10-Screen Terminal</span>
+                  <span className="px-2 py-0.5 rounded bg-black/70 border border-gold/40 text-[9px] font-mono">Inspect</span>
+                </div>
+              </div>
+
+              <span className="text-[10px] font-mono font-bold text-[#B8941F] dark:text-gold uppercase tracking-wider block mb-1">
+                FINTECH / QUANT TRADING UI
+              </span>
+              <h3 className="text-lg font-black uppercase text-black dark:text-white group-hover:text-gold transition-colors">
+                TradeX Pro
+              </h3>
+              <p className="text-xs text-gray-600 dark:text-gray-300 mt-1.5 leading-relaxed line-clamp-2">
+                Quantitative trading terminal engineered for high-frequency execution, live order book depth, and customizable tiles.
+              </p>
+
+              {/* Evidence Chips */}
+              <div className="mt-4 pt-3 border-t border-black/5 dark:border-white/5">
+                <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest block mb-2 font-bold">Verified Evidence:</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {["10-SCREEN SYSTEM", "ORDER BOOK DEPTH", "INTERACTIVE SANDBOX", "DARK MODE"].map((chip, idx) => (
+                    <span 
+                      key={idx}
+                      className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[9px] font-mono font-bold text-gray-300"
+                    >
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={() => handleOpenCaseStudy("tradex")}
+              className="mt-5 w-full py-2.5 rounded-lg border border-gold/40 hover:border-gold hover:bg-gold hover:text-black font-black uppercase tracking-wider text-[11px] text-gold flex items-center justify-center space-x-2 transition-all cursor-pointer"
+            >
+              <span>VIEW CASE STUDY</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          {/* Card 3: SECUREX (Third Selected) */}
+          <div className="group relative p-5 rounded-2xl glass-card border border-black/10 dark:border-white/10 hover:border-gold/60 transition-all duration-300 flex flex-col justify-between shadow-md hover:-translate-y-1">
+            <div>
+              <div className="flex items-center justify-between mb-3 text-[10px] font-mono">
+                <span className="px-2 py-0.5 rounded bg-white/10 text-gray-300 font-bold border border-white/10">
+                  SELECTED 03
+                </span>
+                <span className="text-[9px] font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
+                  CASE STUDY
+                </span>
+              </div>
+
+              <div 
+                onClick={() => handleOpenCaseStudy("securex")}
+                className="w-full aspect-[16/10] rounded-xl relative overflow-hidden mb-4 border border-white/10 group-hover:border-gold/40 cursor-pointer transition-colors"
+              >
+                <Image
+                  src="/images/ux/projects/secureX.png"
+                  alt="SecureX Zero-Trust Security Dashboard"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+                <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[10px] text-white">
+                  <span className="font-mono text-gold font-bold">SOC Telemetry</span>
+                  <span className="px-2 py-0.5 rounded bg-black/70 border border-gold/40 text-[9px] font-mono">Inspect</span>
+                </div>
+              </div>
+
+              <span className="text-[10px] font-mono font-bold text-[#B8941F] dark:text-gold uppercase tracking-wider block mb-1">
+                CYBERSECURITY / SOC DASHBOARD
+              </span>
+              <h3 className="text-lg font-black uppercase text-black dark:text-white group-hover:text-gold transition-colors">
+                SecureX
+              </h3>
+              <p className="text-xs text-gray-600 dark:text-gray-300 mt-1.5 leading-relaxed line-clamp-2">
+                Zero-Trust SOC dashboard delivering attack path topology graphs, automated threat clustering, and containment flows.
+              </p>
+
+              {/* Evidence Chips */}
+              <div className="mt-4 pt-3 border-t border-black/5 dark:border-white/5">
+                <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest block mb-2 font-bold">Verified Evidence:</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {["TOPOLOGY GRAPH", "ZERO-TRUST TOKENS", "ENTITY CLUSTERING", "CASE STUDY"].map((chip, idx) => (
+                    <span 
+                      key={idx}
+                      className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[9px] font-mono font-bold text-gray-300"
+                    >
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={() => handleOpenCaseStudy("securex")}
+              className="mt-5 w-full py-2.5 rounded-lg border border-gold/40 hover:border-gold hover:bg-gold hover:text-black font-black uppercase tracking-wider text-[11px] text-gold flex items-center justify-center space-x-2 transition-all cursor-pointer"
+            >
+              <span>VIEW CASE STUDY</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 03: PROCESS PROGRESSION (Req 27) ── */}
+      <section className="mb-12 p-6 rounded-2xl glass-card border border-black/10 dark:border-white/10">
+        <div className="flex items-center space-x-2 mb-1">
+          <Target className="w-4 h-4 text-gold" />
+          <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#B8941F] dark:text-gold">
+            SENIOR DESIGN METHODOLOGY
+          </span>
+        </div>
+        <h3 className="text-lg font-black uppercase tracking-tight text-black dark:text-white mb-4">
+          Structured 6-Stage Process
+        </h3>
+        
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          {[
+            { step: "01", name: "Research", desc: "Domain synthesis, mental models, competitive teardowns" },
+            { step: "02", name: "IA", desc: "Hierarchy mapping, navigation models, task routing" },
+            { step: "03", name: "Wireframes", desc: "Low-fidelity structural validation in Figma" },
+            { step: "04", name: "Design System", desc: "Atomic tokens, WCAG AA contrast, reusable components" },
+            { step: "05", name: "Prototype", desc: "Interactive flows, tactile states, micro-interactions" },
+            { step: "06", name: "Handoff", desc: "Dev Mode tokens, component spec, engineering collaboration" },
+          ].map((item, idx) => (
+            <div key={idx} className="p-3.5 rounded-xl bg-white/5 border border-white/5 hover:border-gold/30 transition-all">
+              <span className="text-[10px] font-mono font-black text-gold block mb-1">{item.step}</span>
+              <h4 className="text-xs font-black uppercase text-black dark:text-white">{item.name}</h4>
+              <p className="text-[10px] text-gray-500 dark:text-gray-400 mt-1 leading-snug">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Grid Setup */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -912,6 +1198,14 @@ Status: Available immediately / Relocation OK`}
           </a>
         </div>
       </motion.div>
+
+      {/* Case Study Modal Injection */}
+      {selectedCaseStudy && (
+        <UXCaseStudyModal
+          project={selectedCaseStudy}
+          onClose={() => setSelectedCaseStudy(null)}
+        />
+      )}
 
     </div>
   );

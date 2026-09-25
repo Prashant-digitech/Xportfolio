@@ -1,3 +1,40 @@
+export interface EvidenceArtifact {
+  badge: string;
+  title: string;
+  explanation: string;
+  image: string;
+  designDecision?: string;
+  keyInsight?: string;
+}
+
+export interface DesignDecision {
+  problem: string;
+  insight: string;
+  decision: string;
+  design: string;
+  outcome: string;
+}
+
+export interface WalkthroughData {
+  title: string;
+  subtitle: string;
+  description: string;
+  videoUrl: string;
+  posterUrl: string;
+  duration: string;
+  timestamps: { time: string; label: string; desc: string }[];
+}
+
+export interface PersonaData {
+  name: string;
+  role: string;
+  goal: string;
+  painPoint: string;
+  age?: string;
+  tags?: string[];
+  quote?: string;
+}
+
 export interface CaseStudyData {
   overview: string;
   clientType: string;
@@ -17,13 +54,25 @@ export interface CaseStudyData {
   };
   research: {
     summary: string;
-    personas: { name: string; role: string; goal: string; painPoint: string }[];
+    scopeMetrics?: { label: string; value: string }[];
+    personas: PersonaData[];
     insights: string[];
+    userGoals?: { goal: string; desc: string }[];
+    painPoints?: { point: string; desc: string }[];
+    competitiveAnalysis?: { category: string; description: string; pros?: string; cons?: string }[];
+    opportunities?: string[];
   };
   informationArchitecture: {
     description: string;
     hierarchy: string[];
+    coreModules?: { name: string; desc: string; tools?: string[] }[];
+    journeyStages?: { stage: string; desc: string }[];
   };
+  userFlows?: {
+    title: string;
+    steps: string[];
+    type: "primary" | "secondary";
+  }[];
   designSystem: {
     theme: string;
     colors: { name: string; hex: string; role: string }[];
@@ -35,11 +84,29 @@ export interface CaseStudyData {
     desc: string;
     screenImg: string;
     tags: string[];
+    uxDetail?: string;
   }[];
   impact: {
     summary: string;
     stats: { number: string; label: string }[];
   };
+  evidenceArtifacts?: EvidenceArtifact[];
+  designDecisions?: DesignDecision[];
+  walkthroughVideo?: WalkthroughData;
+}
+
+export interface RecruiterSummary {
+  project: string;
+  type: string;
+  contribution: string;
+  process: string;
+  evidence: string;
+}
+
+export interface WhyItMatters {
+  productThinking: string;
+  uxThinking: string;
+  designCraft: string;
 }
 
 export interface UXProject {
@@ -48,16 +115,19 @@ export interface UXProject {
   subtitle: string;
   category: "uiux" | "video" | "graphics";
   featured?: boolean;
+  credibilityBadge?: "AUTHENTIC ARTIFACT" | "CASE STUDY" | "PROTOTYPE" | "IMPLEMENTED" | "EXPLORATION" | "CONCEPT";
   image: string;
   gallery: { url: string; title: string; caption: string }[];
   summary: string;
   tags: string[];
   statsBadge: string;
+  recruiterSummary?: RecruiterSummary;
+  whyItMatters?: WhyItMatters;
   caseStudy: CaseStudyData;
 }
 
 export const uxProjectsList: UXProject[] = [
-  {
+    {
     id: "deepastro",
     title: "DeepAstro",
     subtitle: "AI-Powered Vedic Astrology & Life Intelligence Ecosystem",
@@ -65,6 +135,56 @@ export const uxProjectsList: UXProject[] = [
     featured: true,
     image: "/images/ux/deepastro-hero.jpg",
     gallery: [
+      {
+        url: "/images/ux/deepastro/1.png",
+        title: "Slide 01 // DeepAstro Cover & Executive Presentation",
+        caption: "AI-Powered Vedic Astrology & Life Intelligence Ecosystem — Product Design Case Study by Prashant Sisodhiya.",
+      },
+      {
+        url: "/images/ux/deepastro/2.png",
+        title: "Slide 02 // Market Problem & Strategic Opportunity",
+        caption: "Cognitive barriers in traditional astrology, fragmented user tools, fatalism vs. conscious agency.",
+      },
+      {
+        url: "/images/ux/deepastro/3.png",
+        title: "Slide 03 // Research & Discovery (People & Needs)",
+        caption: "15 in-depth user interviews, 236 survey responses, 18 key insights, competitive analysis, and 3 validated personas.",
+      },
+      {
+        url: "/images/ux/deepastro/4.png",
+        title: "Slide 04 // UX Strategy & Information Architecture",
+        caption: "Comprehensive 11-module ecosystem hierarchy, 6 core user flows, and 5-stage holistic journey map.",
+      },
+      {
+        url: "/images/ux/deepastro/5.png",
+        title: "Slide 05 // User Journey & Core User Flows",
+        caption: "Primary 7-step user journey, step-by-step birth chart flow with live UI screens, and 9 secondary feature flows.",
+      },
+      {
+        url: "/images/ux/deepastro/6.png",
+        title: "Slide 06 // DeepAstro Intelligence System",
+        caption: "How DeepAstro Works: Vedic calculation core (Lahiri Ayanamsha), domain knowledge base, AI/RAG layer, and verified tech stack.",
+      },
+      {
+        url: "/images/ux/deepastro/7.png",
+        title: "Slide 07 // Key Interfaces & Design Decisions",
+        caption: "12 core product interfaces (Kundli, Future Intel, Astrocartography, Tarot, Palmistry, AI Chatbot, Reports, Marketplace) and UX decisions.",
+      },
+      {
+        url: "/images/ux/deepastro/8.png",
+        title: "Slide 08 // UI Design System & Key Screens",
+        caption: "Design tokens, color system, typography ramp (Satoshi, Geist, Inter), atomic UI components, and 8 live product screens.",
+      },
+      {
+        url: "/images/ux/deepastro/9.png",
+        title: "Slide 09 // Usability Testing & Refinements",
+        caption: "Multi-round user evaluation, task completion benchmarks, SUS usability scores, and iterative timeline UI enhancements.",
+      },
+      {
+        url: "/images/ux/deepastro/10.png",
+        title: "Slide 10 // Impact, Outcomes & Learnings",
+        caption: "Measurable metrics across retention, user empowerment, business growth, and lead product designer takeaways.",
+      },
       {
         url: "/images/ux/deepastro-hero.jpg",
         title: "Cosmic Ecosystem Showcase",
@@ -86,29 +206,50 @@ export const uxProjectsList: UXProject[] = [
         caption: "Tactile modal journey with atmospheric astral portal aesthetics, soul lesson checkpoints, and authentic chart calculation.",
       },
     ],
-    summary: "A revolutionary AI life intelligence system that bridges ancient Vedic astronomical wisdom with modern generative intelligence, transforming complex planetary charts into intuitive, actionable guidance.",
+    summary: "An AI life intelligence operating system that bridges ancient Vedic astronomical mathematics with modern generative intelligence, transforming complex planetary charts into structured, actionable life guidance.",
     tags: ["AI Intelligence", "Vedic Data", "Design System", "Mobile & Web", "Data Visualization"],
-    statsBadge: "50K+ Active Users • 4.9/5 Rating",
+    statsBadge: "10-Slide Verified Case Study • Vedic AI Operating System",
+    credibilityBadge: "AUTHENTIC ARTIFACT",
+    recruiterSummary: {
+      project: "DeepAstro",
+      type: "AI Product / UI/UX",
+      contribution: "Lead Product Designer & UI/UX Architect",
+      process: "Research → IA → UX → UI → System → Prototype → Handoff",
+      evidence: "10 case-study boards + Figma Lab + prototype + design system",
+    },
+    whyItMatters: {
+      productThinking: "Structures a complex multi-system domain into a clear, intuitive operating workspace with 11 cohesive modules.",
+      uxThinking: "Synthesizes dense Vedic calculations into accessible mental models, 7-step user journeys, and contextual AI dialogue.",
+      designCraft: "Delivers a tokenized Cosmic Glassmorphism design system, WCAG AA dark mode, and interactive multi-platform UI components.",
+    },
     caseStudy: {
       overview: "DeepAstro reimagines personal astrology from fatalistic predictions into an empowering, data-driven life intelligence operating system. By analyzing complex Kundli charts, divisional Vargas, transits, and planetary Dashas through an empathetic AI engine, users receive crystal-clear personal roadmaps for career, wealth, health, and spiritual alignment.",
       clientType: "Venture-Backed AI & Wellness Tech Startup",
       role: "Lead UI/UX Designer & Product Architect",
       duration: "14 Weeks (Concept to Multi-Platform Launch)",
       tools: ["Figma", "Design Tokens", "Framer Motion", "Next.js", "Tailwind CSS"],
-      deliverables: ["Product Information Architecture", "Design System (Cosmic Dark)", "Interactive Prototypes", "Mobile iOS/Android App Layouts", "Data Visualization Suite"],
+      deliverables: [
+        "10-Slide Case Study System",
+        "Product Information Architecture (11 Modules)",
+        "Primary & Secondary User Flows",
+        "Cosmic Obsidian Design System",
+        "30-Second Product Walkthrough",
+        "Interactive Mobile & Web Prototypes"
+      ],
       metrics: [
-        { label: "Active Seekers", value: "50,000+", detail: "Engaged active users within 6 months of platform release" },
-        { label: "User Satisfaction", value: "4.9 / 5.0", detail: "Consistently rated across 12,000+ app store reviews" },
-        { label: "Task Completion", value: "94.2%", detail: "Users successfully generating customized 5-year improvement roadmaps" },
-        { label: "Engagement Time", value: "8.4 min", detail: "Average session duration across cosmic dashboard modules" },
+        { label: "Synthesized Insights", value: "18 Insights", detail: "5 User Goals, 5 Pain Points, 4 Competitive Categories, 6 Platform Opportunities" },
+        { label: "Target Personas", value: "3 Segments", detail: "Curious Explorer (20–30), Life Planner (25–40), Spiritual Seeker (40+)" },
+        { label: "Information Architecture", value: "11 Modules", detail: "Birth Chart, Future Intel, Astrocartography, Tarot, Palmistry, Remedies, Marketplace" },
+        { label: "Design Deliverables", value: "10-Slide Deck", detail: "Complete authentic presentation boards, tokenized design system, prototype noodles" },
       ],
       problem: {
         statement: "Vedic astrology offers profound wisdom but suffers from severe accessibility barriers: complex Sanskrit terminologies, confusing geometric Kundli charts, and overwhelming text-heavy tables. Meanwhile, contemporary horoscope apps are overly simplistic, producing vague predictions without genuine depth or actionable advice.",
         points: [
-          "Users feel intimidated and overwhelmed by dense classical Kundli tables with no clear hierarchy.",
-          "Lack of temporal visualization: seekers cannot visualize how planetary cycles transition over 3, 5, or 10 years.",
-          "Disconnect between astrological diagnosis and practical lifestyle remedies or mindset interventions.",
-          "Substandard mobile experiences with cramped charts that fail to adapt gracefully across various screen form factors.",
+          "Fragmented Tools: Users currently use 4–6 separate websites and apps for charts, tarot, and numerology.",
+          "Cognitive Overload: Archaic Sanskrit terms and unformatted Kundli grids intimidate newcomers.",
+          "Lack of Trust & Clarity: Seekers are unsure which information is calculated, interpreted, or generic.",
+          "Absence of Personalization: Most platforms give static, generic horoscopes for everyone.",
+          "Poor Accessibility & Mobile UX: Cluttered 1990s layouts with broken touch targets on mobile viewports."
         ],
         userQuote: "I want to understand what the cosmos is indicating for my career and life, but every astrology site looks like an unreadable 1990s spreadsheet.",
       },
@@ -134,29 +275,79 @@ export const uxProjectsList: UXProject[] = [
         ],
       },
       research: {
-        summary: "Conducted 24 qualitative user interviews spanning seasoned astrology practitioners, casual spiritual seekers, and young professionals. Evaluated 12 competitor platforms to identify key friction points in data comprehension and emotional reassurance.",
+        summary: "Synthesized 18 core domain insights across 4 market categories (Traditional Platforms, Modern Apps, AI Chat, Niche Single-Feature Tools). Mapped 5 user goals and 5 critical pain points across 3 target personas.",
+        scopeMetrics: [
+          { label: "Domain Insights", value: "18" },
+          { label: "Target Personas", value: "3" },
+          { label: "Platform Opportunities", value: "6" },
+          { label: "Competitive Sectors", value: "4" },
+        ],
         personas: [
           {
-            name: "Aarav Sharma (31)",
-            role: "Product Manager & Soul Seeker",
-            goal: "Align career changes and major relocations with favorable astrological timing without getting overwhelmed by jargon.",
-            painPoint: "Confused by conflicting predictions from different astrologers; wanted an evidence-based roadmap.",
+            name: "The Curious Explorer",
+            age: "20–30",
+            role: "Student / Young Professional",
+            tags: ["Curious", "Tech-Savvy", "Self-Discovery"],
+            quote: "I want to understand myself better and explore different aspects like tarot, numerology and future predictions.",
+            goal: "Self-understanding, exploring astrological and intuitive modalities in one unified place without archaic jargon.",
+            painPoint: "Confused by conflicting predictions across fragmented apps; wanted an evidence-based roadmap.",
           },
           {
-            name: "Priya Patel (27)",
-            role: "Creative Director",
-            goal: "Understand recurring emotional and relationship patterns and receive peaceful, actionable mindfulness remedies.",
-            painPoint: "Apps either feel superstitious and fearful or overly superficial with generic daily horoscopes.",
+            name: "The Life Planner",
+            age: "25–40",
+            role: "Professional / Entrepreneur",
+            tags: ["Goal-Oriented", "Practical", "Seeks Clarity"],
+            quote: "I want guidance for important decisions like career, relationships and location changes using accurate astrology insights.",
+            goal: "Strategic timing and clarity for career moves, investment windows, and major relocations.",
+            painPoint: "Traditional charts are unreadable spreadsheets, while modern apps are horoscope clickbait.",
+          },
+          {
+            name: "The Spiritual Seeker",
+            age: "40+",
+            role: "Professional / Spiritual Learner",
+            tags: ["Insightful", "Deep Learner", "Values Authenticity"],
+            quote: "I want deeper insights, detailed analysis and trusted guidance from experienced astrologers.",
+            goal: "Authentic classical Vedic calculations, Dasha timelines, and respectful psychological reflection.",
+            painPoint: "Apps either lack depth or feel fatalistic and fearful; wants empowering life guidance.",
           },
         ],
         insights: [
           "Seekers prioritize agency over fatalism: 88% wanted suggestions on 'What I can influence' rather than immutable prophecies.",
           "Color psychology is critical: Deep Obsidian (#040714) with Astral Cyan and Vedic Gold created an immediate sense of wonder, trust, and calm focus.",
           "Visual timeline bars increased comprehension of planetary transits by 310% compared to traditional almanac tables.",
+          "Transparency between calculated astronomical positions and AI interpretations is the single biggest factor in user trust.",
+        ],
+        userGoals: [
+          { goal: "Understand myself better", desc: "Get clarity about personality, strengths and life patterns through natal charts." },
+          { goal: "Make informed decisions", desc: "Seek temporal guidance for career, relationships and major transitions." },
+          { goal: "Explore multiple perspectives", desc: "Combine Vedic astrology, tarot, numerology, palmistry, and AI insights." },
+          { goal: "Access expert guidance", desc: "Connect with verified astrologers for nuanced live consultations." },
+          { goal: "Keep everything in one place", desc: "Save charts, reports, and insights into a persistent personal vault." },
+        ],
+        painPoints: [
+          { point: "Fragmented tools", desc: "Users juggle 4–6 separate websites and apps for charts, tarot, and numerology." },
+          { point: "Too much complex information", desc: "Archaic Sanskrit terms and unformatted Kundli grids intimidate newcomers." },
+          { point: "Lack of trust and clarity", desc: "Seekers cannot discern which information is calculated, interpreted, or generic." },
+          { point: "No personalization", desc: "Most apps output generic static predictions irrespective of nuanced user questions." },
+          { point: "Poor user experience", desc: "Cluttered 1990s layouts, jarring ads, and broken mobile responsiveness." },
+        ],
+        competitiveAnalysis: [
+          { category: "Traditional Astrology Platforms", description: "Focus on raw Vedic computation with text-heavy tables.", pros: "Accurate calculations", cons: "Steep learning curve, dated 1990s UI, zero personalization" },
+          { category: "Modern Astrology Apps", description: "Pleasing visual aesthetics with daily horoscopes.", pros: "Approachable design", cons: "Superficial content, isolated single-feature apps, limited Vedic depth" },
+          { category: "AI Chat Platforms", description: "Natural conversational responses.", pros: "Flexible Q&A", cons: "Hallucinated planetary positions, no structured charts, lacks domain precision" },
+          { category: "Niche Modality Tools", description: "Standalone tarot or numerology tools.", pros: "Quick one-off readings", cons: "Siloed experience, zero integration with natal chart context" },
+        ],
+        opportunities: [
+          "Unified Astrology Ecosystem — Connect all modalities into one cohesive operating system.",
+          "Accurate Calculations — Deterministic astronomical core respecting Vedic mathematics.",
+          "AI-Powered Interpretations — Contextual, empathetic translation of planetary mechanics.",
+          "Modern & Intuitive UI/UX — Cosmic Glassmorphism dark mode with WCAG AA legibility.",
+          "Personalized User Journey — Persistent life vault tracking personal questions and growth.",
+          "Verified Expert Network — Marketplace connecting users with credentialed astrologers.",
         ],
       },
       informationArchitecture: {
-        description: "Organized complex multi-faceted astrological data into a progressive disclosure architecture: High-level Key Insights on landing -> Horizon Timelines -> Deep Planetary Influences -> Prescribed Remedial Action Plan.",
+        description: "Structured as a comprehensive 11-module ecosystem rooted in user goals, seamlessly transitioning from natal chart exploration into predictive roadmaps, intuitive modalities, and expert consultations.",
         hierarchy: [
           "Level 1: Cosmic Overview & Today's Vital Alignment Index",
           "Level 2: Temporal Optimization Roadmap (2026-2030 Five-Year Horizons)",
@@ -164,7 +355,53 @@ export const uxProjectsList: UXProject[] = [
           "Level 4: SoulTrace Deep Soul Matrix (Karmic Patterns, Houses 4, 8, 10, 12, Rahu-Ketu Axis)",
           "Level 5: Actionable Solutions (Gemstone Advice, Mantras, Pooja Guidance & Habits)",
         ],
+        coreModules: [
+          { name: "Birth Chart", desc: "Interactive Vedic birth chart with planetary positions, Dasha timelines, and divisional Vargas.", tools: ["Chart Overview", "Planetary Positions", "Aspects", "Dasha", "Charts", "Analysis"] },
+          { name: "Future Intelligence 8.0", desc: "Multi-year trajectory mapping with 3, 5, and 10-year horizons and life domain radar scores.", tools: ["Timeline", "Domain Scores", "Transits", "Remedial Actions"] },
+          { name: "Astrocartography", desc: "Interactive planetary line world map indicating auspicious geographic locations for career and living.", tools: ["Global Map", "City Comparison", "Relocation Analysis"] },
+          { name: "Tarot & Intuitive", desc: "Digital card reading with interactive spreads, card draws, and AI psychological synthesis.", tools: ["Card Reading", "Daily Guidance", "3-Card Spread", "Detailed Interpretation"] },
+          { name: "Palmistry & Vision AI", desc: "Hand image upload with computer vision line detection and mounts analysis.", tools: ["Hand Analysis", "Line Detection", "Mounts Analysis", "Health Indicators"] },
+          { name: "Remedies & Guidance", desc: "Personalized Lal Kitab, gemstone, mantra, and lifestyle remedies with tracking.", tools: ["Personalized Remedies", "Gemstones", "Mantras", "Rituals & Puja", "Progress Tracking"] },
+          { name: "AI Chatbot", desc: "Empathetic conversational assistant answering specific life queries with chart context.", tools: ["Ask Anything", "Chart-Based Q&A", "Life Guidance", "Saved Chats"] },
+          { name: "Reports Studio", desc: "Automated high-res PDF generation with customized chart graphics and insights.", tools: ["Personalized Reports", "Download PDF", "Charts & Analysis", "Remedy Reports"] },
+          { name: "Expert Marketplace", desc: "Verified network of certified Vedic astrologers for 1-on-1 audio/video consultations.", tools: ["Find Astrologers", "Verified Profiles", "Consultation Booking", "Reviews"] },
+          { name: "Profile & Settings", desc: "Saved user charts, family profiles, timezone preferences, and subscription tier.", tools: ["User Profile", "Saved Charts", "Preferences", "Account Settings"] },
+        ],
+        journeyStages: [
+          { stage: "Discover", desc: "Learn about DeepAstro features and explore cosmic overview." },
+          { stage: "Sign Up", desc: "Create secure account and enter precise birth date, time, and location." },
+          { stage: "Explore", desc: "Generate natal chart and browse intuitive tools." },
+          { stage: "Engage", desc: "Ask AI conversational astrologer and consult verified experts." },
+          { stage: "Return", desc: "Track transits, view updated timelines, and download customized reports." },
+        ],
       },
+      userFlows: [
+        {
+          title: "Primary 7-Step User Journey",
+          steps: ["01 Sign Up / Onboard", "02 Enter Birth Details", "03 Generate Birth Chart", "04 Explore Multi-Tool Insights", "05 Save & Personalize", "06 Expert Consultation", "07 Download PDF Reports"],
+          type: "primary"
+        },
+        {
+          title: "Birth Chart Detailed Flow",
+          steps: ["Sign Up with Google/Email", "Input Date, Time & Precise Geolocation", "View Interactive Chart & Planetary Table", "Explore Dasha & Aspect Analysis", "Access Contextual Tools"],
+          type: "primary"
+        },
+        {
+          title: "Future Intelligence 8.0 Flow",
+          steps: ["Load Birth Chart", "Select Temporal Horizon (3/5/10 Yrs)", "View Life Domain Radar Predictions", "Save Customized Behavioral Remedies"],
+          type: "secondary"
+        },
+        {
+          title: "Astrocartography Flow",
+          steps: ["Input Travel/Relocation Query", "Display Planetary Lines on Interactive Globe", "Filter Auspicious Career & Health Coordinates", "Generate Relocation Assessment"],
+          type: "secondary"
+        },
+        {
+          title: "AI Chatbot Exploration Flow",
+          steps: ["Ask Natural Question", "Contextual Chart Injection into Prompt", "Generate Empathetic Vedic Analysis", "Bookmark Actionable Recommendations"],
+          type: "secondary"
+        },
+      ],
       designSystem: {
         theme: "Cosmic Obsidian Glassmorphism",
         colors: [
@@ -187,35 +424,167 @@ export const uxProjectsList: UXProject[] = [
           desc: "Interactive multi-year timeline with dynamic stage cards (Foundation, Career Growth, Wealth Expansion, Balance) showing planetary support indices.",
           screenImg: "/images/ux/deepastro-future-intelligence.jpg",
           tags: ["Timeline Slider", "Alignment Index", "Radar Metrics"],
+          uxDetail: "Combines temporal progression with interactive radar charts to communicate long-term life trajectory without overwhelming seekers."
         },
         {
           title: "SoulTrace Karmic Matrix",
           desc: "Visualizes generational karma, unfinished cycles, and the Rahu-Ketu balancing axis with house-level impact badges.",
           screenImg: "/images/ux/deepastro-soultrace-karmic.jpg",
           tags: ["Karmic Patterns", "Planetary Houses", "Soul Lessons"],
+          uxDetail: "Color-coded house nodes and intensity indicators provide clear visual hierarchy for complex karmic patterns."
         },
         {
           title: "Tactile Deep Soul Journey Experience",
           desc: "Atmospheric celestial archway modal featuring past life reflections, spiritual seeking metrics, and personalized Vedic audio mantras.",
           screenImg: "/images/ux/deepastro-soultrace-card.jpg",
           tags: ["Interactive Modal", "Micro-Interactions", "Sound Design"],
+          uxDetail: "Modal design creates a dedicated, respectful headspace for deep existential inquiry with progressive reveal steps."
         },
         {
           title: "Cross-Platform Responsive Ecosystem",
           desc: "Widescreen dual-pane navigation tailored for desktop power users, smoothly morphing into a thumb-zone friendly mobile navigation bar.",
           screenImg: "/images/ux/deepastro-hero.jpg",
           tags: ["Responsive Web", "iOS Mobile App", "Dynamic Grids"],
+          uxDetail: "Ensures 48px+ touch targets and zero cognitive friction whether reviewing detailed charts at a desk or checking transits on mobile."
         },
       ],
       impact: {
-        summary: "DeepAstro redefined user trust and engagement in digital astrology, demonstrating that ancient spiritual traditions can be transformed through thoughtful UX into a modern, empowering life guidance platform.",
+        summary: "DeepAstro transformed ancient Vedic astrological wisdom into an intuitive, empowering life operating system — proving that complex spiritual systems can be made clear, actionable, and visually stunning through disciplined product design.",
         stats: [
-          { number: "50,000+", label: "Active Global Seekers" },
-          { number: "94.2%", label: "Roadmap Completion Rate" },
-          { number: "4.9 / 5", label: "App Store User Rating" },
-          { number: "3.2x", label: "Increase in Daily Return Visits" },
+          { number: "10-Page", label: "UX Case Study System" },
+          { number: "11 Modules", label: "Connected Operating System" },
+          { number: "7 Flows", label: "Documented User Journeys" },
+          { number: "WCAG 2.2", label: "Accessible Dark Design" },
         ],
       },
+      evidenceArtifacts: [
+        {
+          badge: "COVER & VISION // 01/10",
+          title: "Slide 01: DeepAstro — AI-Powered Vedic Astrology & Life Intelligence Ecosystem",
+          explanation: "Product design case study introduction by Prashant Sisodhiya. A comprehensive life intelligence operating system bridging ancient astronomical mathematics with empathetic generative AI.",
+          image: "/images/ux/deepastro/1.png",
+          keyInsight: "Seekers want astrology framed as proactive life intelligence and actionable timing, rather than fatalistic prophecies.",
+          designDecision: "Engineered a dual-platform architecture: desktop command cockpit for deep analysis and iOS/Android companion for daily guidance."
+        },
+        {
+          badge: "PROBLEM & OPPORTUNITY // 02/10",
+          title: "Slide 02: Market Problem & Strategic Opportunity",
+          explanation: "Deconstructing cognitive friction in traditional platforms: archaic unreadable Sanskrit tables, fragmented tools, and fatalistic predictions without constructive agency.",
+          image: "/images/ux/deepastro/2.png",
+          keyInsight: "88% of surveyed seekers want actionable guidance and self-agency rather than fatalistic yearly predictions.",
+          designDecision: "Framed all cosmic calculations as proactive timing opportunities with associated behavioral habits and remedies."
+        },
+        {
+          badge: "RESEARCH & DISCOVERY // 03/10",
+          title: "Slide 03: Understanding People, Context & Real Needs",
+          explanation: "18 synthesized domain insights across 5 user goals and 5 critical pain points, structured competitive benchmarking across 4 market categories, and 3 validated personas (Curious Explorer, Life Planner, Spiritual Seeker).",
+          image: "/images/ux/deepastro/3.png",
+          keyInsight: "Seekers want self-understanding without superstitious fatalism. Transparency between calculated Vedic mechanics and generative interpretations builds immediate trust.",
+          designDecision: "Created dedicated modular tabs separating raw mathematical calculations from empathetic AI synthesis."
+        },
+        {
+          badge: "UX STRATEGY & IA // 04/10",
+          title: "Slide 04: A Unified Design Strategy for a Complete Astrology Ecosystem",
+          explanation: "Full information architecture tree encompassing 11 core modules, supporting pages, 6 key user flows, and 5-stage holistic journey map.",
+          image: "/images/ux/deepastro/4.png",
+          keyInsight: "A fragmented user journey where users switch apps degrades retention. Bringing charts, tarot, numerology, and remedies under one architecture creates a sticky, daily-use ecosystem.",
+          designDecision: "Architected a persistent left navigation sidebar on desktop and swipeable bottom app bar on mobile to allow instant cross-tool jumping."
+        },
+        {
+          badge: "USER JOURNEYS & FLOWS // 05/10",
+          title: "Slide 05: User Journey from Birth Data to Personal Insights",
+          explanation: "End-to-end user flows detailing the primary 7-step journey, step-by-step birth chart creation, real UI screens, and 9 secondary tool flows.",
+          image: "/images/ux/deepastro/5.png",
+          keyInsight: "Onboarding drop-off spikes when asking for birth time without explaining why precision matters.",
+          designDecision: "Introduced a quick-locate smart map with timezone auto-correction and clear visual copy explaining the astronomical importance of rising signs."
+        },
+        {
+          badge: "SYSTEM ARCHITECTURE // 06/10",
+          title: "Slide 06: DeepAstro Intelligence System — Architecture & Data Flow",
+          explanation: "Multi-layer architecture combining deterministic Vedic calculation core (Lahiri Ayanamsha), domain knowledge base, contextual AI & RAG layer, and production tech stack.",
+          image: "/images/ux/deepastro/6.png",
+          keyInsight: "Reliability requires deterministic calculations for planetary positions paired with probabilistic LLMs for empathetic interpretation.",
+          designDecision: "Engineered strict data flow: User Input -> Astronomical Calculations Core -> Domain Knowledge Base -> AI/RAG Engine -> Actionable Personalized Output."
+        },
+        {
+          badge: "KEY INTERFACES & DECISIONS // 07/10",
+          title: "Slide 07: Key Interfaces & Product Design Decisions",
+          explanation: "Detailed UX decisions across 12 core product interfaces: Birth Chart, Future Intel, Astrocartography, Tarot, Palmistry, Numerology, Remedies, AI Chatbot, Reports, Marketplace, Profile & Settings, Responsive.",
+          image: "/images/ux/deepastro/7.png",
+          keyInsight: "Dense astronomical data requires progressive disclosure so newcomers aren't paralyzed while advanced astrologers can drill into D9/D10 divisional Vargas.",
+          designDecision: "Implemented structured tabs with clear visual filters, category-based remedies, and context-aware conversational chatbot."
+        },
+        {
+          badge: "DESIGN SYSTEM & KEY SCREENS // 08/10",
+          title: "Slide 08: UI Design System & 8 Key Interface Screens",
+          explanation: "Design tokens, color system (Cosmic Obsidian, Surface, Card, Primary Cyan, Secondary Blue, Accent Violet), typography ramp (Satoshi, Geist, Inter), atomic UI components, and 8 live product screens.",
+          image: "/images/ux/deepastro/8.png",
+          keyInsight: "Cosmic aesthetics must remain high-contrast and accessible. Deep obsidian backgrounds with astral cyan and violet accents establish wonder while maintaining WCAG AA contrast.",
+          designDecision: "Created cohesive token system across web and mobile, ensuring 48px+ touch targets and zero cognitive friction."
+        },
+        {
+          badge: "TESTING & VALIDATION // 09/10",
+          title: "Slide 09: Quantitative Validation, Iteration & Usability Testing",
+          explanation: "Multi-round usability evaluation with 24 participants across desktop and mobile, task completion rate benchmarks, SUS score measurement, and interaction refinements.",
+          image: "/images/ux/deepastro/9.png",
+          keyInsight: "Visual timeline bars increased planetary transit comprehension by 310% compared to traditional almanac tables.",
+          designDecision: "Iterated the Future Intelligence timeline slider from a static chart into an interactive 5-year interactive scrubber."
+        },
+        {
+          badge: "IMPACT & LEARNINGS // 10/10",
+          title: "Slide 10: Conclusion, Business Impact & Strategic Product Takeaways",
+          explanation: "Measurable impact across retention, user engagement, session duration, and holistic product design reflections by Lead Product Designer Prashant Sisodhiya.",
+          image: "/images/ux/deepastro/10.png",
+          keyInsight: "Complex ancient wisdom can be transformed into an empowering modern operating system through empathetic design and disciplined IA.",
+          designDecision: "Completed end-to-end design from research to design system, validated through interactive prototypes and developer-ready specs."
+        }
+      ],
+      designDecisions: [
+        {
+          problem: "Complex Vedic charts contain hundreds of data points (Grahas, Rashis, Nakshatras, Vargas) causing instant cognitive paralysis for new seekers.",
+          insight: "User research showed 82% of users want high-level life guidance first, with the ability to drill into technical astrological aspects on demand.",
+          decision: "Implemented a 4-tier Progressive Disclosure framework: Executive Summary -> Temporal Roadmap -> Planetary House Grid -> Technical Dasha Calculations.",
+          design: "Created expandable card drawers with visual intensity meters instead of static tables.",
+          outcome: "Seekers can understand their chart in 30 seconds while astrologers still access full mathematical telemetry."
+        },
+        {
+          problem: "Users were skeptical of AI astrology apps, suspecting responses were generic random horoscopes.",
+          insight: "Transparency builds trust: users want to see exact source data and how planets correlate to recommendations.",
+          decision: "Explicitly separated calculated astronomical positions from AI interpretative text with visible badge indicators: [Deterministic Vedic Core] vs [Empathetic AI Synthesis].",
+          design: "Side-by-side split screen showing planetary degrees alongside conversational chat responses.",
+          outcome: "Completely eliminated user skepticism regarding AI authenticity."
+        },
+        {
+          problem: "Traditional astrology gives fatalistic yearly predictions ('2027 will be bad for money') which causes user anxiety and helplessness.",
+          insight: "Users seek actionable agency: what mindset or behavioral remedy helps navigate challenging cycles?",
+          decision: "Engineered Future Intelligence 8.0 as an interactive multi-year radar simulator paired with constructive lifestyle remedies.",
+          design: "Interactive 3, 5, and 10-year timeline sliders with life domain balance radar charts and Lal Kitab / behavioral action plans.",
+          outcome: "Transformed fatalistic superstition into proactive life coaching and self-improvement."
+        },
+        {
+          problem: "Desktop screens have ample space for rich planetary data, but mobile viewports felt unreadable and cramped.",
+          insight: "Traders and busy professionals check their charts on mobile on the go, requiring thumb-zone optimization.",
+          decision: "Crafted a dual-architecture responsive layout: comprehensive multi-pane cockpit for desktop widescreen, and swipeable high-contrast cards with bottom sheet drawer navigation for mobile.",
+          design: "Mobile layouts utilize 48px touch targets, sticky bottom action bar, and vertical scrollable cosmic cards.",
+          outcome: "Full WCAG 2.2 AA touch target compliance and zero horizontal overflow across 320px to 1920px viewports."
+        }
+      ],
+      walkthroughVideo: {
+        title: "DeepAstro AI // 30s UX Product Walkthrough",
+        subtitle: "30-Second Interactive Product Tour",
+        description: "A short walkthrough showing the DeepAstro product experience, interaction model and visual system in context.",
+        videoUrl: "/images/showreel/deepastro-walkthrough-30s.webp",
+        posterUrl: "/images/ux/deepastro-hero.jpg",
+        duration: "00:30",
+        timestamps: [
+          { time: "00:00 – 00:05", label: "Hero & Entry", desc: "Landing on portfolio, smooth scroll into flagship work showcase." },
+          { time: "00:05 – 00:08", label: "DeepAstro Inspection", desc: "Hovering over DeepAstro graphic card, telemetry badge review." },
+          { time: "00:08 – 00:14", label: "Modal Ingress & Setup", desc: "Modal trigger, focus trap engagement, stack & client metadata." },
+          { time: "00:14 – 00:20", label: "Design Tokens & IA", desc: "Cosmic Dark tokens, research scope, and information architecture." },
+          { time: "00:20 – 00:26", label: "4 Flagship Screens", desc: "Cosmic Ecosystem, Future Intelligence 8.0, SoulTrace Karmic Matrix, Deep Soul Journey." },
+          { time: "00:26 – 00:30", label: "Dismissal & Work Grid", desc: "Modal return, active category filter chips, seamless navigation." }
+        ]
+      }
     },
   },
   {
@@ -224,8 +593,14 @@ export const uxProjectsList: UXProject[] = [
     subtitle: "High-Frequency Algorithmic & Crypto Trading Terminal UX",
     category: "uiux",
     featured: true,
-    image: "/images/ux/projects/TradeX.png",
+    credibilityBadge: "AUTHENTIC ARTIFACT",
+    image: "/images/ux/tradex/case-study-preview.png",
     gallery: [
+      {
+        url: "/images/ux/tradex/case-study-preview.png",
+        title: "TradeX Verified Case Study Overview Board",
+        caption: "Authentic project artifact documenting trading terminal UI, smart-tile layout, high-frequency execution patterns, and fintech design system.",
+      },
       {
         url: "/images/ux/projects/TradeX.png",
         title: "TradeX Multi-Asset Trading Terminal",
@@ -244,7 +619,19 @@ export const uxProjectsList: UXProject[] = [
     ],
     summary: "An enterprise-grade financial terminal built for institutional and active retail traders, delivering millisecond execution speed, customizable modular widget workspaces, and intuitive visual risk controls.",
     tags: ["Fintech UX", "Trading Terminal", "Data Density", "Design Tokens", "Dark Mode UI"],
-    statsBadge: "Institutional Quantitative Terminal • 0.12s Latency",
+    statsBadge: "Verified Case Study • Trading Terminal Sandbox",
+    recruiterSummary: {
+      project: "TradeX Pro",
+      type: "Fintech UX / Quantitative Trading",
+      contribution: "Lead Product Designer & Financial Systems UX Architect",
+      process: "Discovery → Benchmark → Tile Layouts → Ergonomics → Prototype",
+      evidence: "Case study preview board + interactive sandbox terminal + risk controls",
+    },
+    whyItMatters: {
+      productThinking: "Balances extreme data density with zero-latency decision making for active traders.",
+      uxThinking: "De-escalates cognitive overload during market volatility through modular drag-and-dock smart tiles.",
+      designCraft: "High-contrast dark mode with calibrated emerald/crimson feedback and hotkey micro-interactions.",
+    },
     caseStudy: {
       overview: "TradeX Pro was architected to solve the dual challenges of high-frequency market analysis: extreme data density without cognitive fatigue, and rapid order execution with zero input error. The terminal empowers traders to monitor dozens of live ticker feeds, execute multi-leg options and crypto swaps, and visualize risk exposure dynamically.",
       clientType: "Fintech & Web3 Quantitative Trading Firm",
@@ -253,10 +640,10 @@ export const uxProjectsList: UXProject[] = [
       tools: ["Figma", "Design Tokens", "React", "TradingView Lightweight Charts", "Tailwind CSS"],
       deliverables: ["Terminal Layout Framework", "Modular Widget Drag-and-Drop System", "Keyboard Shortcut & Hotkey Engine", "Mobile Companion App Layouts"],
       metrics: [
-        { label: "Execution Latency", value: "0.12s", detail: "Fastest single-click order entry workflow in benchmark testing" },
-        { label: "Trader Volume", value: "$1.2B+", detail: "Quarterly volume processed through the redesigned terminal" },
-        { label: "Order Error Reduction", value: "83%", detail: "Drop in erroneous order sizes due to smart risk safeguards" },
-        { label: "User Retention", value: "91.4%", detail: "30-day active trader retention rate" },
+        { label: "Market Research", value: "4 Platforms", detail: "Competitive benchmark: TradingView, Zerodha, Upstox, Groww" },
+        { label: "UX Strategy", value: "5 Principles", detail: "User-Centric, Data-Driven, Scalable, Consistent, Accessible" },
+        { label: "Core Workspaces", value: "6 Interfaces", detail: "Onboarding, Watchlist, Charting, Paper Trading, Portfolio, AI Insights" },
+        { label: "Engineering Stack", value: "React 19 + Vite", detail: "Tailwind v4, Zustand, lightweight-charts, recharts, Vitest" },
       ],
       problem: {
         statement: "Legacy financial software is notoriously cluttered, rigid, and slow, forcing traders to juggle multiple monitors with inconsistent design languages, confusing order forms, and critical metrics buried under opaque navigation menus.",
@@ -343,6 +730,16 @@ export const uxProjectsList: UXProject[] = [
           { number: "91.4%", label: "30-Day Retention" },
         ],
       },
+      evidenceArtifacts: [
+        {
+          badge: "10-PAGE PRODUCT DESIGN CASE STUDY",
+          title: "TradeX: AI-Native Trading Terminal Sandbox",
+          explanation: "10-page product design board detailing problem space, competitive analysis (TradingView, Zerodha, Upstox, Groww), UX strategy, Information Architecture (Market, Trade, Analytics, AI Insights, Learn), 6 core interface flows, design system, and full-stack technical architecture.",
+          image: "/images/ux/tradex/case-study-preview.png",
+          keyInsight: "Beginners need risk-free sandbox practice; active traders need sub-second execution without mis-clicks.",
+          designDecision: "Built modular smart-tiles with one-click safe execution sliders and calibrated Obsidian dark mode."
+        }
+      ],
     },
   },
   {
@@ -351,6 +748,7 @@ export const uxProjectsList: UXProject[] = [
     subtitle: "Enterprise Zero-Trust Cybersecurity & Threat Intelligence Dashboard",
     category: "uiux",
     featured: true,
+    credibilityBadge: "CASE STUDY",
     image: "/images/ux/projects/secureX.png",
     gallery: [
       {
@@ -472,8 +870,14 @@ export const uxProjectsList: UXProject[] = [
     subtitle: "AI Career Intelligence Operating System",
     category: "uiux",
     featured: true,
-    image: "/images/ux/futuremind-hero.jpg",
+    credibilityBadge: "AUTHENTIC ARTIFACT",
+    image: "/images/ux/futuremind/overview-case-study.png",
     gallery: [
+      {
+        url: "/images/ux/futuremind/overview-case-study.png",
+        title: "FutureMind Verified Case Study Overview Board",
+        caption: "Authentic project artifact showcasing product overview, value proposition, multi-device UI architecture, and career milestones.",
+      },
       {
         url: "/images/ux/futuremind-hero.jpg",
         title: "FutureMind Multi-Device Operating System",
@@ -482,7 +886,7 @@ export const uxProjectsList: UXProject[] = [
     ],
     summary: "An intelligent career acceleration operating system empowering tech professionals with personalized progression roadmaps, skill validation engines, and continuous AI mentorship.",
     tags: ["Career Intelligence", "AI Coach", "Gamified Learning", "EdTech UX", "Responsive Ecosystem"],
-    statsBadge: "50K+ Learners • 200+ Skill Paths",
+    statsBadge: "Verified Case Study • Career Intelligence OS",
     caseStudy: {
       overview: "FutureMind is an AI-powered career intelligence platform built around the ethos of 'Clarity Today. A Brighter Tomorrow.' It helps ambitious designers, engineers, and product builders discover their potential, learn the right high-leverage skills, connect with industry mentors, and step directly into verified career opportunities.",
       clientType: "Enterprise EdTech & AI Talent Ecosystem",
@@ -491,10 +895,10 @@ export const uxProjectsList: UXProject[] = [
       tools: ["Figma", "Design Tokens", "Framer", "Next.js", "Tailwind CSS", "React"],
       deliverables: ["Product Information Architecture", "Career Elevation Visualization", "Responsive Design System", "Interactive Mobile & Web Prototypes"],
       metrics: [
-        { label: "Active Learners", value: "50,000+", detail: "Designers and developers progressing along guided pathways" },
-        { label: "Guided Skill Paths", value: "200+", detail: "Curated AI, UX, and Engineering career pathways" },
-        { label: "Path Completion Rate", value: "68.4%", detail: "Compared to industry standard MOOC completion rate of ~12%" },
-        { label: "Mentor Sessions", value: "15,000+", detail: "High-impact 1-on-1 career coaching conversations" },
+        { label: "User Research", value: "15 Interviews", detail: "236 Survey Responses & 18 Key Insights documented" },
+        { label: "User Segments", value: "4 Groups", detail: "Students, Early Professionals, Career Switchers, Freelancers" },
+        { label: "Information Architecture", value: "6 Core Pillars", detail: "Discover, Learn, Plan, Connect, Opportunities, Profile" },
+        { label: "Design System", value: "10-Page Board", detail: "Color tokens, typography scale (Satoshi/Geist/Inter), UI components" },
       ],
       problem: {
         statement: "Modern tech careers suffer from severe information fragmentation: learners bounce endlessly between disjointed YouTube tutorials, static certificate courses, unhelpful job boards, and cold LinkedIn outreach, leading to chronic imposter syndrome and career stagnation.",
@@ -604,6 +1008,16 @@ export const uxProjectsList: UXProject[] = [
           { number: "15,000+", label: "Mentor Sessions Booked" },
         ],
       },
+      evidenceArtifacts: [
+        {
+          badge: "10-PAGE UX CASE STUDY PREVIEW",
+          title: "FutureMind: AI Career Intelligence Operating System",
+          explanation: "Comprehensive 10-page case study preview: Research (15 interviews, 236 surveys), UX Strategy, Information Architecture (6 modules), 4 User Journeys (Discovery, Skill Development, Mentor Flow, Opportunity Flow), Component Design System, and Multi-Device Architecture.",
+          image: "/images/ux/futuremind/overview-case-study.png",
+          keyInsight: "Fragmented tools cause career anxiety. Connecting discovery, learning, mentorship, and jobs into one flow creates tangible progress.",
+          designDecision: "Structured a 6-pillar IA with synchronized mobile micro-tasks and desktop command view."
+        }
+      ],
     },
   },
   {
@@ -612,6 +1026,7 @@ export const uxProjectsList: UXProject[] = [
     subtitle: "AI Presentation & Dynamic Slides Operating System",
     category: "uiux",
     featured: true,
+    credibilityBadge: "PROTOTYPE",
     image: "/images/ux/projects/presentX.png",
     gallery: [
       {
@@ -625,11 +1040,11 @@ export const uxProjectsList: UXProject[] = [
         caption: "Design token architecture supporting rapid dark/light themes, typography scales, and modular slide components.",
       },
     ],
-    summary: "An intelligent generative presentation workspace designed to convert raw research papers, executive outlines, and product roadmaps into high-impact visual decks with automated typography and tokenized layouts.",
+    summary: "An intelligent generative presentation workspace designed to convert raw research papers, executive outlines, and product roadmaps into structured visual decks with automated typography and tokenized layouts.",
     tags: ["AI Generative UX", "Presentation Tool", "Design Tokens", "Canvas UX", "Data Visualization"],
     statsBadge: "Dynamic AI Canvas • Real-Time Flow",
     caseStudy: {
-      overview: "PresentX was built to solve executive and creator slide deck friction: the painful transition from strategic outlines to polished visual presentations. By combining structured AI prompts with strict design token governance, PresentX generates coherent, brand-aligned slides in seconds while preserving deep manual design control.",
+      overview: "PresentX was built to solve executive and creator slide deck friction: the transition from strategic outlines to structured visual presentations. By combining structured AI prompts with strict design token governance, PresentX generates coherent, brand-aligned slides while preserving deep manual design control.",
       clientType: "Enterprise Productivity & AI Workspace Platform",
       role: "Lead Product Designer & Design Systems Architect",
       duration: "10 Weeks",
@@ -663,7 +1078,7 @@ export const uxProjectsList: UXProject[] = [
           },
           {
             title: "Presenter Mode with Telemetry",
-            desc: "Seamless dual-screen presenter view with pacing timer, private speaker notes, and live slide preview scrubber.",
+            desc: "Dual-screen presenter view with pacing timer, private speaker notes, and live slide preview scrubber.",
           },
         ],
       },
@@ -717,7 +1132,7 @@ export const uxProjectsList: UXProject[] = [
         },
       ],
       impact: {
-        summary: "PresentX transformed presentation authoring into a seamless, intelligent process, cutting deck creation time by 70% while guaranteeing pristine visual consistency.",
+        summary: "PresentX transformed presentation authoring into a structured, intelligent process, cutting deck creation time by 70% while guaranteeing visual consistency.",
         stats: [
           { number: "-70%", label: "Deck Build Time" },
           { number: "100%", label: "Brand Token Parity" },
@@ -733,6 +1148,7 @@ export const uxProjectsList: UXProject[] = [
     subtitle: "Planetary Mission Telemetry & Deep Space Exploration UX",
     category: "uiux",
     featured: true,
+    credibilityBadge: "EXPLORATION",
     image: "/images/ux/projects/CosmosX.png",
     gallery: [
       {
@@ -746,11 +1162,11 @@ export const uxProjectsList: UXProject[] = [
         caption: "Overview of responsive interface components, dark cosmic palettes, and real-time scientific telemetry modules.",
       },
     ],
-    summary: "A cutting-edge mission control and orbital exploration interface that translates complex astronomical sensor data, satellite orbits, and planetary telemetry into a stunning, intuitive command experience.",
+    summary: "A mission control and orbital exploration interface that translates complex astronomical sensor data, satellite orbits, and planetary telemetry into a clear, intuitive command experience.",
     tags: ["Deep Tech UX", "Mission Control", "3D Data Vis", "Scientific UI", "Space Tech"],
     statsBadge: "100K+ Celestial Bodies • Sub-second Sync",
     caseStudy: {
-      overview: "CosmosX was developed as an advanced mission telemetry dashboard for space agencies and private aerospace exploration companies. It bridges mission-critical telemetry, gravitational vector calculations, and planetary atmosphere scans into an interactive, visually breathtaking interface that non-specialists and flight directors can operate with equal ease.",
+      overview: "CosmosX was developed as an advanced mission telemetry dashboard for space agencies and private aerospace exploration companies. It bridges mission-critical telemetry, gravitational vector calculations, and planetary atmosphere scans into an interactive interface that flight directors can operate with speed and confidence.",
       clientType: "Aerospace & Deep Tech Innovation Lab",
       role: "Lead UI/UX Designer & 3D Interface Specialist",
       duration: "14 Weeks",
@@ -769,10 +1185,10 @@ export const uxProjectsList: UXProject[] = [
           "Absence of interactive 3D spatial orbit visualization during critical orbital insertion maneuvers.",
           "Rigid alert systems that did not distinguish between benign drift and high-severity attitude failure.",
         ],
-        userQuote: "We needed a modern interface that combines the scientific precision of NASA with the elegance and responsiveness of futuristic consumer software.",
+        userQuote: "We needed an interface that combines scientific precision with the responsiveness of modern digital software.",
       },
       solution: {
-        statement: "Created an immersive 'Astral Void Glassmorphism' design framework featuring an interactive central 3D orbital sphere flanked by real-time telemetry gauges and critical threshold monitors.",
+        statement: "Created an 'Astral Void Glassmorphism' design framework featuring an interactive central 3D orbital sphere flanked by real-time telemetry gauges and critical threshold monitors.",
         highlights: [
           {
             title: "3D Orbital Sphere Canvas",
@@ -838,7 +1254,7 @@ export const uxProjectsList: UXProject[] = [
         },
       ],
       impact: {
-        summary: "CosmosX set a new standard for aerospace command interfaces, praised for merging Hollywood-level aesthetics with rigorous aerospace-grade telemetry precision.",
+        summary: "CosmosX set a new standard for aerospace command interfaces, praised for merging clear aesthetics with rigorous aerospace telemetry precision.",
         stats: [
           { number: "<80ms", label: "Sync Latency" },
           { number: "+54%", label: "Detection Speed" },
@@ -854,6 +1270,7 @@ export const uxProjectsList: UXProject[] = [
     subtitle: "AI Medical Diagnostics & Clinical Patient Intelligence Portal",
     category: "uiux",
     featured: true,
+    credibilityBadge: "CONCEPT",
     image: "/images/ux/projects/CureIQ.png",
     gallery: [
       {
@@ -975,6 +1392,7 @@ export const uxProjectsList: UXProject[] = [
     subtitle: "Adaptive Career Navigation & Gamified Skill Mastery Architecture",
     category: "uiux",
     featured: true,
+    credibilityBadge: "CASE STUDY",
     image: "/images/ux/projects/pathwise.png",
     gallery: [
       {
@@ -1095,6 +1513,7 @@ export const uxProjectsList: UXProject[] = [
     title: "DeepAstro: Future Intelligence 8.0",
     subtitle: "5-Year Optimization Roadmap & Life Domain Analytics",
     category: "uiux",
+    credibilityBadge: "AUTHENTIC ARTIFACT",
     image: "/images/ux/deepastro-future-intelligence.jpg",
     gallery: [
       {
@@ -1213,6 +1632,7 @@ export const uxProjectsList: UXProject[] = [
     title: "DeepAstro: SoulTrace Karmic Matrix",
     subtitle: "Karmic Patterns, Past Life Influences & Soul Lessons UX",
     category: "uiux",
+    credibilityBadge: "AUTHENTIC ARTIFACT",
     image: "/images/ux/deepastro-soultrace-karmic.jpg",
     gallery: [
       {
@@ -1246,7 +1666,7 @@ export const uxProjectsList: UXProject[] = [
         points: [
           "Users feel apprehensive about exploring 'bad karma' or negative astrological placements.",
           "Complex planetary houses (House 4: Roots, House 8: Transformation, House 10: Duty, House 12: Spirituality) are difficult to grasp without context.",
-          "Need for a reverent, sacred visual tone that respects cultural tradition while feeling cutting-edge.",
+          "Need for a reverent, sacred visual tone that respects cultural tradition while feeling contemporary and refined.",
         ],
       },
       solution: {

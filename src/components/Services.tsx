@@ -59,7 +59,7 @@ export default function Services() {
     {
       num: "01",
       title: "UI/UX DESIGN",
-      desc: "Designing intuitive, user-centered interfaces that provide seamless experiences and solve real problems.",
+      desc: "Designing structured, research-backed interfaces that clarify user workflows, reduce cognitive friction, and elevate product usability.",
       points: [
         "User Research & Wireframing",
         "Design Systems & Token Architecture",
@@ -71,8 +71,8 @@ export default function Services() {
       btnColor: "border-[#00F0FF]/30 text-[#00F0FF] hover:bg-[#00F0FF]/10 hover:border-[#00F0FF] shadow-[0_0_15px_rgba(0,240,255,0.1)]",
       glassStyle: "border-[#00F0FF]/30 hover:border-[#00F0FF] shadow-[0_10px_30px_rgba(0,0,0,0.4)]",
       badgeColor: "bg-[#00F0FF]/10 text-[#00F0FF]",
-      previewImg: "/images/ux/projects/TradeX.png",
-      previewBadge: "TradeX Terminal • Live UI/UX",
+      previewImg: "/images/ux/tradex/case-study-preview.png",
+      previewBadge: "TradeX Terminal • Authentic Artifact",
       previewSub: "Algorithmic & Financial Systems",
       cta: "EXPLORE UI/UX WORK",
       targetSection: "work",

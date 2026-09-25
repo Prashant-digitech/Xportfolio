@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Mail, Download, ExternalLink } from "lucide-react";
+import { Mail, Download, ExternalLink, ArrowRight } from "lucide-react";
 import { ProfileData } from "@/app/page";
 
 interface FooterProps {
@@ -286,8 +286,38 @@ export default function Footer({ profile }: FooterProps) {
       {/* Subtle Glowing Top Border Line */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#00F0FF] via-[#D4A017] via-[#9d4edd] to-transparent opacity-40 dark:opacity-60 shadow-[0_0_8px_rgba(0,240,255,0.3)] z-10" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center space-y-6 z-10">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center space-y-8 z-10">
         
+        {/* ── High-Impact Conversion CTA Banner (Req 47) ── */}
+        <div className="w-full max-w-4xl mx-auto text-center py-10 px-6 sm:px-10 rounded-3xl glass-card border border-gold/40 bg-gradient-to-b from-gold/10 via-black/20 to-black/40 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent" />
+          <span className="text-[10px] font-mono font-black uppercase tracking-[0.3em] text-[#B8941F] dark:text-gold block mb-2">
+            COLLABORATION &amp; OPPORTUNITIES
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-slate-900 dark:text-white uppercase">
+            Have an idea worth exploring?
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mt-2 max-w-lg mx-auto font-medium leading-relaxed">
+            Available for high-impact Product Design, UI/UX systems, and creative design engineering engagements worldwide.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-6">
+            <button
+              onClick={() => handleScrollTo("work")}
+              className="px-6 py-3 bg-gold text-black rounded-lg font-black uppercase tracking-wider text-xs flex items-center space-x-2 hover:bg-gold-light transition-all shadow-md cursor-pointer hover:scale-105"
+            >
+              <span>VIEW MY WORK</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => handleScrollTo("contact")}
+              className="px-6 py-3 border border-slate-300 dark:border-gold/40 hover:border-gold rounded-lg font-black uppercase tracking-wider text-xs flex items-center space-x-2 hover:bg-gold/10 text-slate-800 dark:text-white transition-all cursor-pointer hover:scale-105"
+            >
+              <Mail className="w-4 h-4 text-gold" />
+              <span>START A CONVERSATION</span>
+            </button>
+          </div>
+        </div>
+
         {/* Editorial Brand Name */}
         <div className="text-center">
           <span className="font-extrabold text-sm tracking-[0.25em] text-slate-900 dark:text-white uppercase">

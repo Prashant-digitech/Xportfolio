@@ -142,7 +142,7 @@ export default function About({ profile }: AboutProps) {
     { title: "CREATIVITY", desc: "I turn raw ideas into creative, high-converting digital solutions.", icon: <Lightbulb className="w-5 h-5 text-[#D4AF37]" /> },
     { title: "FOCUS", desc: "Obsessive attention to micro-interactions, layout rhythm, and clarity.", icon: <Target className="w-5 h-5 text-[#D4AF37]" /> },
     { title: "USER FIRST", desc: "Intuitive workflows designed to eliminate user friction and hesitation.", icon: <Users className="w-5 h-5 text-[#D4AF37]" /> },
-    { title: "STAY UPDATED", desc: "Constant mastery of next-gen design systems, AI tools, and frontend stacks.", icon: <RefreshCw className="w-5 h-5 text-[#D4AF37]" /> },
+    { title: "STAY UPDATED", desc: "Continuous refinement across modern design systems, AI tools, and frontend engineering stacks.", icon: <RefreshCw className="w-5 h-5 text-[#D4AF37]" /> },
     { title: "COLLABORATION", desc: "Crystal-clear cross-functional communication and transparent execution.", icon: <Handshake className="w-5 h-5 text-[#D4AF37]" /> },
   ];
 
