@@ -26,6 +26,7 @@ import FigmaLab from "@/components/FigmaLab";
 import CertificationVault from "@/components/CertificationVault";
 import ClientTrust from "@/components/ClientTrust";
 import ProjectShowcase from "@/components/ProjectShowcase";
+import CanvaPortfolioDeck from "@/components/CanvaPortfolioDeck";
 import AILab from "@/components/AILab";
 import ThankYouSign from "@/components/ThankYouSign";
 
@@ -126,6 +127,10 @@ export default function Home() {
 
               {/* 02: SELECTED WORK (Flagship DeepAstro & Second Flagship TradeX) */}
               <ProjectShowcase profile={profile} />
+              <SectionSeparator />
+
+              {/* 02.5: CANVA EXECUTIVE MASTER DECK (26-Page Presentation Deck) */}
+              <CanvaPortfolioDeck />
               <SectionSeparator />
 
               {/* 03: PROCESS & DESIGN SYSTEMS */}

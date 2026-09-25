@@ -349,6 +349,58 @@ VERIFICATION TICKET STATUS:
           </p>
         </div>
 
+        {/* FEATURED: 26-PAGE EXECUTIVE CANVA PRESENTATION DECK BANNER */}
+        <div className="mb-8 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-[#0F172A] via-[#1E1B4B] to-[#0F172A] border border-[#6366F1]/40 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-5">
+            <div className="relative w-28 sm:w-36 aspect-[16/9] rounded-xl overflow-hidden border border-[#6366F1]/50 shrink-0 shadow-lg">
+              <Image
+                src="/canva-deck/slide-01.png"
+                alt="26-Page Executive Canva Presentation Deck"
+                fill
+                className="object-cover"
+                sizes="144px"
+              />
+              <div className="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-black/80 font-mono text-[9px] text-[#F59E0B] font-bold">
+                26 PAGES
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="px-2 py-0.5 rounded bg-[#6366F1]/20 border border-[#6366F1]/40 text-[#818cf8] font-mono text-[10px] font-bold uppercase tracking-wider">
+                  CANVA EXECUTIVE DECK
+                </span>
+                <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">
+                  VERIFIED 16:9 MASTER
+                </span>
+              </div>
+              <h3 className="text-base sm:text-lg font-bold text-white">
+                Senior Product & UX Designer Portfolio Presentation (26 Pages)
+              </h3>
+              <p className="text-xs text-neutral-300 mt-1 max-w-2xl leading-relaxed">
+                Complete widescreen master presentation deck covering DeepAstro AI, TradeX Terminal, FutureMind, and Figma Lab. Engineered for Canva 1-click import and high-res PDF sharing.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 shrink-0 w-full lg:w-auto justify-end">
+            <a
+              href="/Prashant_Senior_Product_Designer_Portfolio_26Pages.pdf"
+              download="Prashant_Senior_Product_Designer_Portfolio_26Pages.pdf"
+              className="px-4 py-2 rounded-xl bg-[#6366F1] hover:bg-[#4F46E5] text-white font-semibold text-xs flex items-center gap-2 transition-all shadow-md cursor-pointer"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Download PDF (57 MB)</span>
+            </a>
+            <a
+              href="#canva-deck"
+              className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-xs flex items-center gap-1.5 transition-all cursor-pointer"
+            >
+              <span>Explore 26 Slides</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1: DEEPASTRO (Primary Flagship) */}
           <div className="group relative p-5 rounded-2xl glass-card border border-gold/40 hover:border-gold transition-all duration-300 flex flex-col justify-between shadow-lg hover:-translate-y-1">

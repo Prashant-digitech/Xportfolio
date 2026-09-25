@@ -439,13 +439,13 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       tags: ["Wedding Film", "Storytelling", "Color LUTs", "Cinematic Audio"]
     },
     { 
-      title: "Corporate Pitch Slide Deck", 
+      title: "Executive Master Deck (26 Pages)", 
       category: "ppt", 
-      description: "Corporate PowerPoint pitch deck design with executive summary layouts and tokenized spacing.", 
-      img: "/images/project_graphics_promo_poster.jpg", 
-      caseStudy: "View Deck", 
-      figmaUrl: "#work",
-      statsBadge: "Executive Slides"
+      description: "Complete 26-page widescreen (16:9) presentation deck designed in Canva and exported in high-res PDF. Covers DeepAstro, TradeX, FutureMind, and Figma Lab.", 
+      img: "/canva-deck/slide-01.png", 
+      caseStudy: "Explore 26 Slides", 
+      figmaUrl: "#canva-deck",
+      statsBadge: "CANVA DECK • 26 PAGES"
     }
   ];
 
@@ -546,6 +546,13 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                       <span>View 10-Slide Deck</span>
                     </button>
                   )}
+                  <a 
+                    href="#canva-deck"
+                    className="px-4 py-2.5 rounded-lg border border-[#6366F1]/50 bg-[#6366F1]/15 hover:bg-[#6366F1] hover:text-white text-[#818CF8] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Executive 26-Page Deck</span>
+                  </a>
                   <a 
                     href="#figma-lab"
                     className="btn-secondary"
