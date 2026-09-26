@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Moon, Sun, Laptop, Settings, User, Menu, X, Briefcase } from "lucide-react";
+import { Moon, Sun, Laptop, Settings, User, Menu, X, Briefcase, Upload } from "lucide-react";
 import { useTheme } from "next-themes";
 import { ProfileData } from "@/app/page";
 import QRCode from "qrcode";
@@ -12,9 +12,10 @@ interface NavbarProps {
   onUpdateProfile: (newProfile: ProfileData) => void;
   recruiterMode: boolean;
   onToggleRecruiterMode: (val: boolean) => void;
+  onOpenUpload?: () => void;
 }
 
-export default function Navbar({ profile, onUpdateProfile, recruiterMode, onToggleRecruiterMode }: NavbarProps) {
+export default function Navbar({ profile, onUpdateProfile, recruiterMode, onToggleRecruiterMode, onOpenUpload }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -238,6 +239,17 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
               <span className="hidden lg:inline">{recruiterMode ? "Recruiter Active" : "Recruiter Mode"}</span>
             </button>
 
+            {/* Intelligent Upload Engine Button */}
+            <button
+              onClick={onOpenUpload}
+              className="h-[44px] px-3.5 rounded-xl border-[1.5px] border-[#B8941F] dark:border-[#D4AF37] bg-white dark:bg-[#0F1118] text-[#111318] dark:text-white hover:bg-[#D4AF37] hover:text-black transition-all duration-200 cursor-pointer flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider shadow-sm group"
+              title="Asset Intelligence Studio (Upload Anything — Ctrl+U)"
+              aria-label="Upload Anything Engine"
+            >
+              <Upload className="w-4 h-4 text-[#B8941F] dark:text-[#D4AF37] group-hover:text-black transition-colors" />
+              <span className="hidden xl:inline">AI Studio</span>
+            </button>
+
             {/* Settings Gear (Section 32) */}
             <button 
               onClick={() => setSettingsOpen(true)}
@@ -386,6 +398,14 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
                 >
                   <Briefcase className="w-4 h-4" />
                   <span>{recruiterMode ? "Recruiter Mode Active" : "Enable Recruiter Mode"}</span>
+                </button>
+
+                <button
+                  onClick={() => { setMobileMenuOpen(false); onOpenUpload?.(); }}
+                  className="w-full max-w-[280px] py-3 rounded-xl border border-[#D4AF37] bg-[#D4AF37]/15 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition-all cursor-pointer"
+                >
+                  <Upload className="w-4 h-4" />
+                  <span>Asset Intelligence Studio</span>
                 </button>
                 <div className="flex space-x-4">
                   <button 

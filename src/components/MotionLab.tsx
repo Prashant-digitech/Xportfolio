@@ -173,7 +173,45 @@ export default function MotionLab() {
     },
   ];
 
-  const currentProject = motionProjects[activeProjectIdx];
+  const [dynamicVideos, setDynamicVideos] = useState<MotionProject[]>([]);
+
+  useEffect(() => {
+    fetch("/api/upload")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.success && data.categories?.videos?.length) {
+          interface UploadedVideoItem {
+            id: string;
+            title: string;
+            role?: string;
+            tools?: string[];
+            duration?: string;
+            description: string;
+            publicUrl: string;
+            statsBadge?: string;
+            tags?: string[];
+          }
+          const mapped: MotionProject[] = data.categories.videos.map((v: UploadedVideoItem) => ({
+            id: v.id,
+            title: v.title,
+            category: "Dynamic Video Showcase",
+            role: v.role || "Lead Video Editor & Motion Designer",
+            tools: v.tools || ["Premiere Pro", "After Effects"],
+            duration: v.duration || "00:34",
+            description: v.description,
+            poster: "/images/showreel/video-showreel.png",
+            videoUrl: v.publicUrl,
+            statsBadge: v.statsBadge || "New Upload • 4K Master",
+            highlights: v.tags || ["Dynamic Motion", "Color Graded", "Authentic Cut"],
+          }));
+          setDynamicVideos(mapped);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const allProjects = [...dynamicVideos, ...motionProjects];
+  const currentProject = allProjects[activeProjectIdx] || allProjects[0];
 
   const togglePlay = useCallback(() => {
     if (!videoRef.current) return;
@@ -383,13 +421,13 @@ export default function MotionLab() {
             <h3 className="text-xl sm:text-2xl font-black text-[#111318] dark:text-white uppercase tracking-wider">
               Selected Motion Portfolio
             </h3>
-            <span className="text-xs font-mono text-[#667085] dark:text-gray-400 font-bold" aria-label={`${motionProjects.length} motion projects`}>
-              {motionProjects.length} Motion Pieces
+            <span className="text-xs font-mono text-[#667085] dark:text-gray-400 font-bold" aria-label={`${allProjects.length} motion projects`}>
+              {allProjects.length} Motion Pieces
             </span>
           </div>
 
           <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {motionProjects.map((proj, idx) => (
+            {allProjects.map((proj, idx) => (
               <motion.article
                 key={proj.id}
                 initial="hidden"

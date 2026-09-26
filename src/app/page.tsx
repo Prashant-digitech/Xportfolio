@@ -29,6 +29,7 @@ import ProjectShowcase from "@/components/ProjectShowcase";
 import CanvaPortfolioDeck from "@/components/CanvaPortfolioDeck";
 import AILab from "@/components/AILab";
 import ThankYouSign from "@/components/ThankYouSign";
+import SmartUploadModal from "@/components/SmartUploadModal";
 
 export interface ProfileData {
   name: string;
@@ -62,6 +63,7 @@ export default function Home() {
   });
 
   const [recruiterMode, setRecruiterMode] = useState<boolean>(false);
+  const [uploadModalOpen, setUploadModalOpen] = useState<boolean>(false);
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
@@ -79,6 +81,26 @@ export default function Home() {
     if (savedMode) {
       setRecruiterMode(savedMode === "true");
     }
+
+    // Keyboard shortcut: Ctrl + U or Cmd + U opens Asset Intelligence Studio
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "u") {
+        e.preventDefault();
+        setUploadModalOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Electron IPC listener if running in desktop app
+    // @ts-expect-error window.electronAPI is injected via Electron preload
+    const unsubscribeElectron = typeof window !== "undefined" && window.electronAPI?.onTriggerUpload?.(() => {
+      setUploadModalOpen(true);
+    });
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      if (typeof unsubscribeElectron === "function") unsubscribeElectron();
+    };
   }, []);
 
   useEffect(() => {
@@ -113,6 +135,7 @@ export default function Home() {
           onUpdateProfile={updateProfile} 
           recruiterMode={recruiterMode}
           onToggleRecruiterMode={toggleRecruiterMode}
+          onOpenUpload={() => setUploadModalOpen(true)}
         />
 
         {/* Content sections */}
@@ -195,6 +218,12 @@ export default function Home() {
           profile={profile} 
           recruiterMode={recruiterMode}
           onToggleRecruiterMode={toggleRecruiterMode}
+        />
+
+        {/* Intelligent Asset Uploader Modal */}
+        <SmartUploadModal 
+          isOpen={uploadModalOpen} 
+          onClose={() => setUploadModalOpen(false)} 
         />
       </div>
     </>
