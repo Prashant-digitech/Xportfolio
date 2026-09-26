@@ -391,7 +391,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       caseStudy: "Launch Showreel", 
       figmaUrl: "#work",
       statsBadge: "4K Master • Speed Ramping",
-      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+      videoUrl: "/videos/video-showreel.mp4",
       tags: ["Premiere Pro", "After Effects", "Showreel", "Sound Design"]
     },
     { 
