@@ -27,6 +27,7 @@ import CertificationVault from "@/components/CertificationVault";
 import ClientTrust from "@/components/ClientTrust";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import CanvaPortfolioDeck from "@/components/CanvaPortfolioDeck";
+import ClientWebsites from "@/components/ClientWebsites";
 import AILab from "@/components/AILab";
 import ThankYouSign from "@/components/ThankYouSign";
 import SmartUploadModal from "@/components/SmartUploadModal";
@@ -150,6 +151,10 @@ export default function Home() {
 
               {/* 02: SELECTED WORK (Flagship DeepAstro & Second Flagship TradeX) */}
               <ProjectShowcase profile={profile} />
+              <SectionSeparator />
+
+              {/* 02.2: CLIENT WEBSITES & ENTERPRISE PRODUCTION (VS VERONIXX) */}
+              <ClientWebsites />
               <SectionSeparator />
 
               {/* 02.5: CANVA EXECUTIVE MASTER DECK (26-Page Presentation Deck) */}
