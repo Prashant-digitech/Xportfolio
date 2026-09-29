@@ -185,7 +185,7 @@ export default function AstroSageShowcase() {
                 </div>
                 <div>
                   <span className="block text-xl font-extrabold text-amber-600 dark:text-[#F5C84B]">91.4</span>
-                  <span className="text-[10px] font-mono uppercase text-[#334155] dark:text-[#94A3B8]">SUS Usability</span>
+                  <span className="text-[10px] font-mono uppercase text-[#334155] dark:text-[#94A3B8]">Target SUS Benchmark</span>
                 </div>
               </div>
 

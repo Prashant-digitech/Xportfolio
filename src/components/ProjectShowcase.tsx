@@ -140,7 +140,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       accent: "#38BDF8",
       spec: "06 • DEEP TECH UX • 3D ORBIT TELEMETRY • MISSION CONTROL",
       challenge: "Aerospace telemetry was siloed in monochrome text logs, slowing anomaly triage during critical orbital insertion windows.",
-      impact: "Achieved sub-80ms telemetry synchronization and a 54% acceleration in anomaly detection across aerospace simulation teams.",
+      impact: "Designed real-time 3D orbital trajectory simulation, sub-80ms telemetry concept, and accelerated anomaly triage workflows.",
       img: "/images/ux/projects/CosmosX.png",
       uxProjectId: "cosmosx",
     },
@@ -151,7 +151,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       accent: "#06B6D4",
       spec: "07 • HEALTHCARE UX • AI DIAGNOSTICS • WCAG 2.1 AA",
       challenge: "Clinicians face EHR documentation burnout while patients struggle to comprehend complex clinical lab results.",
-      impact: "Saved physicians 42 minutes per day in EHR charting and boosted patient medication adherence by 38%.",
+      impact: "Conceptual workflow designed to reduce EHR documentation burnout through progressive disclosure and empathetic patient translations.",
       img: "/images/ux/projects/CureIQ.png",
       uxProjectId: "cureiq",
     },
@@ -162,7 +162,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       accent: "#FF6B00",
       spec: "08 • AUTHENTIC 9-BOARD DECK • EDTECH UX • GAMIFIED ROADMAP",
       challenge: "Online courses suffer 88% drop-off because theoretical video playlists lack tangible milestone feedback.",
-      impact: "78.2% completion rate, 9 verified master deck boards, and 84% portfolio hiring placement rate.",
+      impact: "9 verified master deck boards, gamified mountain progression framework, and structured portfolio milestone pathways.",
       img: "/images/ux/pathwise/boards/page1.png",
       uxProjectId: "pathwise",
     },
@@ -273,10 +273,10 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "cosmosx",
-      statsBadge: "100K+ Bodies • 80ms Sync",
+      statsBadge: "Orbital Telemetry • Real-time Sync",
       role: "Deep Tech UX · 3D WebGL · Telemetry",
       year: "2026",
-      valueProposition: "Sub-80ms aerospace telemetry synchronization and 3D orbital trajectory simulation."
+      valueProposition: "Interactive 3D orbital trajectory simulation and aerospace sensor telemetry operations concept."
     },
     // 07: CUREIQ (Extended)
     { 
@@ -288,10 +288,10 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "cureiq",
-      statsBadge: "99.2% Accuracy • HIPAA",
+      statsBadge: "Clinical AI Concept • WCAG AA",
       role: "Healthcare UX · AI Diagnostics · WCAG AA",
       year: "2026",
-      valueProposition: "AI-assisted clinical diagnostics and empathetic patient health portal saving doctors 42m/day."
+      valueProposition: "Empathetic clinical intelligence interface concept designed to reduce physician documentation burden."
     },
     // 08: PATHWISE (Extended)
     { 
@@ -347,7 +347,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/images/graphics/photo manipulation.png", 
       caseStudy: "Inspect Artwork", 
       figmaUrl: "/photoshop",
-      statsBadge: "Matte Painting • Compositing"
+      statsBadge: "Matte Painting • Compositing",
+      role: "Digital Matte Painting · Compositing",
+      year: "2025"
     },
     { 
       title: "Imagination to Reality", 
@@ -356,7 +358,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/images/graphics/imagination to reality.png", 
       caseStudy: "Inspect Artwork", 
       figmaUrl: "/photoshop",
-      statsBadge: "Creative Visual Art"
+      statsBadge: "Creative Visual Art",
+      role: "Art Direction · Conceptual Art",
+      year: "2025"
     },
     { 
       title: "Cinematic Movie Poster", 
@@ -365,7 +369,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/images/graphics/movie poster.png", 
       caseStudy: "Inspect Poster", 
       figmaUrl: "/photoshop",
-      statsBadge: "Theatrical Print • High Res"
+      statsBadge: "Theatrical Print • High Res",
+      role: "Poster Design · Theatrical Keyart",
+      year: "2025"
     },
     { 
       title: "Brand Identity & Guidelines", 
@@ -374,7 +380,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/images/graphics/branding.png", 
       caseStudy: "View Brand Kit", 
       figmaUrl: "#work",
-      statsBadge: "Full Brand System"
+      statsBadge: "Full Brand System",
+      role: "Brand Identity · Guidelines",
+      year: "2025"
     },
     { 
       title: "Modern Brand Identity Collaterals", 
@@ -383,7 +391,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/images/graphics/branding2.png", 
       caseStudy: "View Collateral", 
       figmaUrl: "#work",
-      statsBadge: "Vector & Packaging"
+      statsBadge: "Vector & Packaging",
+      role: "Visual Design · Packaging Systems",
+      year: "2025"
     },
     { 
       title: "Editorial Magazine Cover", 
@@ -392,7 +402,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/images/graphics/magazine book cover.png", 
       caseStudy: "View Cover", 
       figmaUrl: "/photoshop",
-      statsBadge: "Editorial Typography"
+      statsBadge: "Editorial Typography",
+      role: "Editorial Design · Publication Layout",
+      year: "2025"
     },
     { 
       title: "Social Media Campaign Creatives", 
@@ -401,7 +413,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/images/graphics/social creatives.png", 
       caseStudy: "View Campaign", 
       figmaUrl: "#work",
-      statsBadge: "Ad Creatives • High CTR"
+      statsBadge: "Ad Creatives • High CTR",
+      role: "Social Media Design · Ad Creatives",
+      year: "2025"
     },
     { 
       title: "Commercial Marketing Flyer", 
@@ -410,7 +424,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/images/graphics/flyerdesign.png", 
       caseStudy: "View Flyer", 
       figmaUrl: "#work",
-      statsBadge: "Print Ready • CMYK"
+      statsBadge: "Print Ready • CMYK",
+      role: "Graphic Design · Print Collateral",
+      year: "2025"
     },
     { 
       title: "Luxury Event Invitation", 
@@ -419,7 +435,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/images/graphics/invitation card.png", 
       caseStudy: "View Invitation", 
       figmaUrl: "#work",
-      statsBadge: "Gold Foil Finish"
+      statsBadge: "Gold Foil Finish",
+      role: "Graphic Design · Bespoke Stationery",
+      year: "2025"
     },
     { 
       title: "Photoshop 21-Artwork Gallery", 
@@ -428,7 +446,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/photoshop/page1.png", 
       caseStudy: "Explore 21 Artworks", 
       figmaUrl: "/photoshop",
-      statsBadge: "21 Artworks • Digital Matte"
+      statsBadge: "21 Artworks • Digital Matte",
+      role: "Visual Design · Digital Art Vault",
+      year: "2025"
     },
 
     // Video Showreel & Commercials
@@ -441,7 +461,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       figmaUrl: "#work",
       statsBadge: "4K Master • Speed Ramping",
       videoUrl: "/videos/video-showreel.mp4",
-      tags: ["Premiere Pro", "After Effects", "Showreel", "Sound Design"]
+      tags: ["Premiere Pro", "After Effects", "Showreel", "Sound Design"],
+      role: "Video Editing · Motion Graphics",
+      year: "2025"
     },
     { 
       title: "Veronixx Web & POS Platform Preview", 
@@ -452,7 +474,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       figmaUrl: "#clients",
       statsBadge: "Full App Preview • Production",
       videoUrl: "/videos/veronixx-app-preview.mp4",
-      tags: ["Next.js", "Client App", "POS Billing", "Production"]
+      tags: ["Next.js", "Client App", "POS Billing", "Production"],
+      role: "Product Walkthrough · Screen Capture",
+      year: "2025"
     },
     { 
       title: "Travel Cinematic Video", 
@@ -463,7 +487,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       figmaUrl: "#work",
       statsBadge: "Color LUTs • Sound Sync",
       videoUrl: "/videos/video-showreel.mp4",
-      tags: ["Premiere Pro", "Color Grading", "Sound Design", "Rec.709"]
+      tags: ["Premiere Pro", "Color Grading", "Sound Design", "Rec.709"],
+      role: "Cinematography · Color Grading",
+      year: "2025"
     },
     { 
       title: "Fitness Commercial Promo", 
@@ -474,7 +500,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       figmaUrl: "#work",
       statsBadge: "High Energy • Speed Ramping",
       videoUrl: "/videos/video-showreel-preview.mp4",
-      tags: ["Commercial", "After Effects", "Rhythm Cut", "Sound FX"]
+      tags: ["Commercial", "After Effects", "Rhythm Cut", "Sound FX"],
+      role: "Commercial Video · Sound Design",
+      year: "2025"
     },
     { 
       title: "Product 3D Advertisement & Deck", 
@@ -485,7 +513,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       figmaUrl: "#work",
       statsBadge: "Motion Typography • 3D Tracking",
       videoUrl: "/videos/video-showreel.mp4",
-      tags: ["Product Ad", "Corporate Deck", "Commercial", "Kinetic Typography"]
+      tags: ["Product Ad", "Corporate Deck", "Commercial", "Kinetic Typography"],
+      role: "3D Motion · Kinetic Typography",
+      year: "2025"
     },
     { 
       title: "Luxury Wedding Highlights", 
@@ -496,7 +526,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       figmaUrl: "#work",
       statsBadge: "Emotional Narrative • Film Look",
       videoUrl: "/videos/video-showreel.mp4",
-      tags: ["Wedding Film", "Storytelling", "Color LUTs", "Cinematic Audio"]
+      tags: ["Wedding Film", "Storytelling", "Color LUTs", "Cinematic Audio"],
+      role: "Cinematic Storytelling · Video Editing",
+      year: "2025"
     },
     { 
       title: "Executive Master Deck (26 Pages)", 
@@ -505,7 +537,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       img: "/canva-deck/slide-01.png", 
       caseStudy: "Explore 26 Slides", 
       figmaUrl: "#canva-deck",
-      statsBadge: "CANVA DECK • 26 PAGES"
+      statsBadge: "CANVA DECK • 26 PAGES",
+      role: "Presentation Design · Canva Master",
+      year: "2026"
     }
   ];
 
@@ -826,7 +860,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
 
                     {/* Role & Year Specification */}
                     <div className="text-[10px] font-mono text-[#667085] dark:text-gray-400 mb-3 flex items-center justify-between border-t border-black/5 dark:border-white/5 pt-2.5">
-                      <span className="truncate pr-2">{p.role || "Product Design · UX · UI"}</span>
+                      <span className="truncate pr-2">{p.role || (p.category === "graphics" ? "Visual Design · Art Direction" : p.category === "video" ? "Motion Design · Video Editing" : p.category === "ppt" ? "Presentation Design · Decks" : "Product Design · UX · UI")}</span>
                       <span className="shrink-0 font-bold text-[#B8941F] dark:text-[#D4AF37]">{p.year || "2026"}</span>
                     </div>
                   </div>

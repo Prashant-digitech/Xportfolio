@@ -1254,12 +1254,12 @@ export const uxProjectsList: UXProject[] = [
       {
         url: "/case-studies/cosmosx/assets/boards/10-outcome.png",
         title: "Board 10 // Outcome, Metrics & Aerospace Scale",
-        caption: "Sub-80ms telemetry latency, +54% detection speed, and 100K+ tracked celestial bodies."
+        caption: "Sub-80ms target telemetry latency, anomaly detection prioritization, and multi-body celestial tracking visualization."
       }
     ],
     summary: "A mission control and orbital exploration interface that translates complex astronomical sensor data, satellite orbits, and planetary telemetry into a clear, intuitive command experience.",
     tags: ["Deep Tech UX", "Mission Control", "3D Data Vis", "Scientific UI", "Space Tech"],
-    statsBadge: "100K+ Celestial Bodies • Sub-second Sync",
+    statsBadge: "Orbital Telemetry • Real-time Sync",
     caseStudy: {
       overview: "CosmosX was developed as an advanced mission telemetry dashboard for space agencies and private aerospace exploration companies. It bridges mission-critical telemetry, gravitational vector calculations, and planetary atmosphere scans into an interactive interface that flight directors can operate with speed and confidence.",
       clientType: "Aerospace & Deep Tech Innovation Lab",
@@ -1268,10 +1268,10 @@ export const uxProjectsList: UXProject[] = [
       tools: ["Figma", "Three.js", "WebGL", "Framer Motion", "Tailwind CSS"],
       deliverables: ["Mission Control Panoramic UI", "Orbital Vector Visualization", "Sensor Telemetry Feed Design", "Alert & Anomalies Notification System"],
       metrics: [
-        { label: "Telemetry Teleport Time", value: "<80ms", detail: "Real-time update frequency for planetary sensor packets" },
-        { label: "Mission Operator Efficiency", value: "+54%", detail: "Increase in anomaly detection speed during flight simulations" },
-        { label: "Usability Score", value: "98/100", detail: "SUS score tested across 30 aerospace engineers" },
-        { label: "Celestial Mappings", value: "100K+", detail: "Live satellites, orbital paths, and planetary bodies mapped" },
+        { label: "Telemetry Target", value: "Sub-80ms", detail: "Target sync latency for simulated planetary sensor streaming packets" },
+        { label: "Operator Flow", value: "Anomaly Detection", detail: "Prioritizes critical orbital drift and telemetry warnings through color-coded urgency states" },
+        { label: "Spatial UX", value: "3D Viewport", detail: "Interactive WebGL celestial coordinate mapping with full orbital inclination angles" },
+        { label: "Scalability Spec", value: "Multi-Body", detail: "Designed to handle high-density constellation and orbital body visualizations" },
       ],
       problem: {
         statement: "Legacy aerospace mission software is text-heavy, monochrome, and fragmented across isolated terminals, making multi-system situational awareness slow and prone to missed telemetry warnings.",
@@ -1351,10 +1351,10 @@ export const uxProjectsList: UXProject[] = [
       impact: {
         summary: "CosmosX set a new standard for aerospace command interfaces, praised for merging clear aesthetics with rigorous aerospace telemetry precision.",
         stats: [
-          { number: "<80ms", label: "Sync Latency" },
-          { number: "+54%", label: "Detection Speed" },
-          { number: "98/100", label: "SUS Usability" },
-          { number: "100K+", label: "Bodies Tracked" },
+          { number: "Sub-80ms", label: "Sync Target" },
+          { number: "Prioritized", label: "Anomaly Flow" },
+          { number: "High", label: "Readability" },
+          { number: "Multi-Body", label: "Orbital Scale" },
         ],
       },
       evidenceArtifacts: [
@@ -1433,7 +1433,7 @@ export const uxProjectsList: UXProject[] = [
         {
           badge: "BOARD 10 • OUTCOME",
           title: "Mission Impact & Telemetry Scale",
-          explanation: "Validated sub-80ms synchronization, 100K+ tracked bodies, and universal acclaim for balancing high aesthetics with aerospace rigor.",
+          explanation: "Validated sub-80ms synchronization target, multi-body orbital mapping, and universal acclaim for balancing high aesthetics with aerospace rigor.",
           image: "/case-studies/cosmosx/assets/boards/10-outcome.png",
           keyInsight: "Modern product design principles can fundamentally transform legacy enterprise mission software.",
           designDecision: "Package the entire suite as an extensible modular design system for future deep space missions."
@@ -1463,7 +1463,7 @@ export const uxProjectsList: UXProject[] = [
     ],
     summary: "An empathetic clinical intelligence platform designed for healthcare professionals and patients, utilizing generative AI to analyze patient lab records, symptom progressions, and personalized treatment pathways.",
     tags: ["Healthcare UX", "HealthTech", "AI Diagnostics", "Empathetic Design", "Accessible UI"],
-    statsBadge: "99.2% Diagnostic Accuracy • HIPAA Compliant",
+    statsBadge: "Clinical AI Concept • WCAG AA Compliance",
     caseStudy: {
       overview: "CureIQ bridges the communication gap between complex clinical diagnosis and patient understanding. By augmenting physicians with instant AI-assisted differential diagnostic summaries, laboratory trend analyses, and automated treatment plans, it dramatically cuts doctor documentation burnout while empowering patients with understandable, compassionate care roadmaps.",
       clientType: "Healthcare AI & Clinical SaaS Enterprise",
@@ -1472,10 +1472,10 @@ export const uxProjectsList: UXProject[] = [
       tools: ["Figma", "Design Tokens", "React", "WCAG 2.1 AA Guidelines"],
       deliverables: ["Physician Clinical Dashboard", "Patient Mobile Journey App", "Lab Data Visualization Suite", "Treatment Pathway Tracker"],
       metrics: [
-        { label: "Chart Time Saved", value: "42 min/day", detail: "Reduction in clinician EHR documentation time per doctor" },
-        { label: "Patient Adherence", value: "+38%", detail: "Increase in medication and follow-up protocol compliance" },
-        { label: "Diagnostic Accuracy", value: "99.2%", detail: "AI differential diagnostic cross-reference accuracy" },
-        { label: "Accessibility Score", value: "100%", detail: "Full WCAG 2.1 AA contrast and screen-reader compliance" },
+        { label: "Documentation Flow", value: "Burden Reduction", detail: "Targeting significant reduction in physician EHR charting friction via progressive disclosure" },
+        { label: "Patient Care", value: "Plain-Language UX", detail: "Translates complex clinical lab values into patient-comprehensible health milestones" },
+        { label: "AI Diagnostic UX", value: "Differential Model", detail: "Structured clinical reference and biomarker cross-referencing interface concept" },
+        { label: "Accessibility Target", value: "WCAG 2.1 AA", detail: "Full high-contrast readability and screen-reader navigation standards" },
       ],
       problem: {
         statement: "Physicians face severe burnout from clunky, outdated Electronic Health Record (EHR) systems, spending more time entering data than looking at patients. Simultaneously, patients receive intimidating, jargon-heavy reports that induce fear and confusion.",
@@ -1553,12 +1553,12 @@ export const uxProjectsList: UXProject[] = [
         },
       ],
       impact: {
-        summary: "CureIQ revolutionized daily clinician workflows, slashing documentation hours and dramatically boosting patient trust and medication adherence.",
+        summary: "CureIQ bridges complex clinical diagnosis and patient clarity through clean progressive disclosure, intuitive biometrics charting, and accessible medical translation.",
         stats: [
-          { number: "42 min", label: "Daily Time Saved" },
-          { number: "+38%", label: "Adherence Boost" },
-          { number: "99.2%", label: "Accuracy Rate" },
-          { number: "100%", label: "WCAG AA Pass" },
+          { number: "Target", label: "Documentation Relief" },
+          { number: "High", label: "Care Clarity" },
+          { number: "Differential", label: "AI Diagnostic UX" },
+          { number: "WCAG AA", label: "Contrast Standard" },
         ],
       },
     },
