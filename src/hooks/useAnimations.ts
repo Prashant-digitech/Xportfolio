@@ -58,7 +58,7 @@ export function useTilt() {
 
 // Animated Numbers Count Up Hook
 export function useCountUp(target: number, duration: number = 1500) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(target);
   const [startCount, setStartCount] = useState(false);
   const observerRef = useRef<any>(null);
   const elementRef = useRef<HTMLDivElement | null>(null);
@@ -86,10 +86,11 @@ export function useCountUp(target: number, duration: number = 1500) {
 
   useEffect(() => {
     if (!startCount) return;
-    let start = 0;
+    let start = Math.max(1, Math.floor(target * 0.4));
+    setCount(start);
     const stepTime = 30;
-    const totalSteps = duration / stepTime;
-    const increment = target / totalSteps;
+    const totalSteps = Math.max(1, duration / stepTime);
+    const increment = (target - start) / totalSteps;
 
     const timer = setInterval(() => {
       start += increment;

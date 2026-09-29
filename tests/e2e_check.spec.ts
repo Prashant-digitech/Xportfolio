@@ -206,7 +206,12 @@ test.describe("Prashant Sisodhiya Portfolio E2E Verifications", () => {
   test("should switch color accents and maintain strict contrast standards in light and dark mode", async ({ page }) => {
     const htmlElement = page.locator("html");
 
-    // 1. Locate Color Accent Switcher in Navbar
+    // 1. Locate and open Color Accent Popover in Navbar
+    const popoverBtn = page.locator("button[aria-label='Accent Color Popover']").first();
+    if (await popoverBtn.isVisible()) {
+      await popoverBtn.click();
+      await page.waitForTimeout(300);
+    }
     const accentSwitcher = page.locator("div[role='radiogroup'][aria-label='Color Accent Switcher']");
     await expect(accentSwitcher).toBeVisible();
 
@@ -229,12 +234,12 @@ test.describe("Prashant Sisodhiya Portfolio E2E Verifications", () => {
     await expect(htmlElement).toHaveAttribute("data-accent", "violet");
 
     // 5. Switch to Light Mode and check high contrast
-    const themeBtn = page.locator("button[aria-label*='Switch to light mode'], button[aria-label*='Switch to dark mode']").first();
-    const isDarkNow = await htmlElement.evaluate((el) => el.classList.contains("dark"));
-    if (isDarkNow) {
-      await themeBtn.click();
-      await page.waitForTimeout(400);
-    }
+    const themeToggle = page.locator("button:has(svg.lucide-sun), button:has(svg.lucide-moon), button:has(svg.lucide-laptop)").first();
+    await themeToggle.click({ force: true });
+    await page.waitForTimeout(400);
+    const lightOption = page.locator("text=Light").first();
+    await lightOption.click();
+    await page.waitForTimeout(400);
     await expect(htmlElement).toHaveClass(/light/);
 
     // Verify light mode text color contrast on body (should be dark charcoal #0A0F1D)
@@ -246,7 +251,10 @@ test.describe("Prashant Sisodhiya Portfolio E2E Verifications", () => {
     expect(bodyColor).toContain("10, 15, 29");
 
     // 6. Switch back to Dark Mode and check high contrast
-    await themeBtn.click();
+    await themeToggle.click({ force: true });
+    await page.waitForTimeout(400);
+    const darkOption = page.locator("text=Dark").first();
+    await darkOption.click();
     await page.waitForTimeout(400);
     await expect(htmlElement).toHaveClass(/dark/);
 
@@ -258,4 +266,106 @@ test.describe("Prashant Sisodhiya Portfolio E2E Verifications", () => {
     // RGB for #F8FAFC is rgb(248, 250, 252)
     expect(darkBodyColor).toContain("248, 250, 252");
   });
+
+  test("should display AstroSage showcase and open 14-asset dedicated gallery modal with zero blank images", async ({ page }) => {
+    // Scroll to AstroSage section
+    const astrosageSection = page.locator("#astrosage");
+    await astrosageSection.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(600);
+
+    // Verify AstroSage showcase heading and cards are visible
+    await expect(astrosageSection.locator("text=ASTROSAGE // DEEPASTRO")).toBeVisible();
+    const heroImage = astrosageSection.locator("img[alt*='AstroSage']").first();
+    await expect(heroImage).toBeVisible();
+
+    // Verify natural dimensions > 0 (not broken or empty)
+    const naturalWidth = await heroImage.evaluate((img: HTMLImageElement) => img.naturalWidth);
+    expect(naturalWidth).toBeGreaterThan(0);
+
+    // Open dedicated AstroSage gallery modal
+    const openGalleryBtn = astrosageSection.locator("button:has-text('View AstroSage Gallery')").first();
+    await expect(openGalleryBtn).toBeVisible();
+    await openGalleryBtn.click();
+    await page.waitForTimeout(600);
+
+    // Verify dialog is visible
+    const galleryModal = page.locator("div[role='dialog'][aria-label='AstroSage Archive Visual Gallery']");
+    await expect(galleryModal).toBeVisible();
+
+    // Verify counter shows 01 / 14
+    await expect(galleryModal.locator("text=01 / 14")).toBeVisible();
+
+    // Next slide
+    const nextBtn = galleryModal.locator("button[aria-label='Next Slide']");
+    await expect(nextBtn).toBeVisible();
+    await nextBtn.click();
+    await page.waitForTimeout(400);
+    await expect(galleryModal.locator("text=02 / 14")).toBeVisible();
+
+    // Close modal
+    const closeBtn = galleryModal.locator("button[aria-label='Close modal']");
+    await expect(closeBtn).toBeVisible();
+    await closeBtn.click();
+    await page.waitForTimeout(400);
+    await expect(galleryModal).not.toBeVisible();
+  });
+
+  test("should toggle full 30-artwork archive in Visual Systems and collapse back", async ({ page }) => {
+    const visualSystems = page.locator("#visual-systems");
+    await visualSystems.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(600);
+
+    // Initially 6 curated items
+    const initialArticles = visualSystems.locator("article");
+    const initialCount = await initialArticles.count();
+    expect(initialCount).toBe(6);
+
+    // Click View Complete Graphics Gallery button
+    const expandBtn = visualSystems.locator("button:has-text('View Graphics Gallery')");
+    await expect(expandBtn).toBeVisible();
+    await expandBtn.click();
+    await page.waitForTimeout(600);
+
+    // Now all 30 artworks should be visible
+    const expandedArticles = visualSystems.locator("article");
+    const expandedCount = await expandedArticles.count();
+    expect(expandedCount).toBe(30);
+
+    // Collapse back to 6 items
+    const collapseBtn = visualSystems.locator("button:has-text('Collapse to Curated Preview')");
+    await expect(collapseBtn).toBeVisible();
+    await collapseBtn.click();
+    await page.waitForTimeout(600);
+
+    // Count is back to 6 (waiting for Framer Motion exit animation)
+    await expect(visualSystems.locator("article")).toHaveCount(6, { timeout: 7000 });
+  });
+
+  test("should maintain zero horizontal overflow on mobile viewport and support hamburger menu", async ({ page }) => {
+    // Set mobile viewport (iPhone 14 / Pro standard 390x844)
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("http://localhost:3000");
+    await page.waitForTimeout(1000);
+
+    // Verify horizontal overflow is zero across the page
+    const hasHorizontalOverflow = await page.evaluate(() => {
+      return document.documentElement.scrollWidth > window.innerWidth;
+    });
+    expect(hasHorizontalOverflow).toBe(false);
+
+    // Verify mobile hamburger menu toggle
+    const hamburgerBtn = page.locator("button[aria-label='Toggle Navigation Menu']");
+    await expect(hamburgerBtn).toBeVisible();
+    await hamburgerBtn.click();
+    await page.waitForTimeout(500);
+
+    // Verify mobile nav drawer items are visible
+    const mobileWorkLink = page.locator("nav[aria-label='Mobile Navigation Drawer'] :is(a, button):has-text('WORK')").first();
+    await expect(mobileWorkLink).toBeVisible();
+
+    // Close menu by clicking hamburger button again
+    await hamburgerBtn.click();
+    await page.waitForTimeout(500);
+  });
 });
+

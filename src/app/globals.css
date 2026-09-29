@@ -33,6 +33,12 @@
   }
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* ==========================================================================
    SEMANTIC THEME TOKENS (SECTIONS 07, 09, 15)
    Light: Warm Ivory (#FAFAF7), Crisp White Surfaces (#FFFFFF), Dark Typography (#111318)
@@ -43,6 +49,7 @@
 .light,
 html.light {
   --bg: #FAFAF7;
+
   --surface: #FFFFFF;
   --surface-secondary: #F1F5F9;
   --surface-elevated: #FFFFFF;

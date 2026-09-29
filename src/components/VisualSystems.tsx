@@ -55,6 +55,7 @@ export default function VisualSystems() {
   const [selectedItem, setSelectedItem] = useState<GraphicItem | null>(null);
   const [activeLogoStep, setActiveLogoStep] = useState<"concept" | "sketch" | "construction" | "final" | "application">("final");
   const [lightboxZoom, setLightboxZoom] = useState<number>(1);
+  const [showFullArchive, setShowFullArchive] = useState<boolean>(false);
 
   /* ─── Scroll-trigger refs ─────────────────────────────── */
   const sectionRef = useRef<HTMLElement>(null);
@@ -487,6 +488,8 @@ export default function VisualSystems() {
   const filteredWorks =
     activeTab === "all" ? graphicWorks : graphicWorks.filter((w) => w.category === activeTab);
 
+  const displayedWorks = showFullArchive ? filteredWorks : filteredWorks.slice(0, 6);
+
   /* ─── Accessibility & Modal Navigation ─────────────── */
   const closeModal = useCallback(() => {
     setSelectedItem(null);
@@ -757,7 +760,7 @@ export default function VisualSystems() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
           <AnimatePresence mode="popLayout">
-            {filteredWorks.map((item, idx) => (
+            {displayedWorks.map((item, idx) => (
               <motion.article
                 key={item.id}
                 layout
@@ -839,6 +842,44 @@ export default function VisualSystems() {
             ))}
           </AnimatePresence>
         </div>
+
+        {/* ── Gallery Expansion & Navigation CTAs (Section 19-22) ── */}
+        {!showFullArchive ? (
+          <div className="mt-12 p-8 rounded-2xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#2A3441] shadow-lg flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="text-center sm:text-left space-y-1">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#003882] dark:text-[#00E5FF]">
+                Curated Exhibition • Showing 6 of {graphicWorks.length} Masterworks
+              </span>
+              <h4 className="text-xl sm:text-2xl font-black text-[#0A0F1D] dark:text-[#F8FAFC] uppercase">
+                Explore The Complete Graphics Gallery
+              </h4>
+              <p className="text-xs text-[#1E293B] dark:text-[#CBD5E1] max-w-xl leading-relaxed">
+                Full collection includes 30 verified authentic artworks across luxury commercial advertising, surreal photo manipulation, and high-frequency retouching.
+              </p>
+            </div>
+            <button
+              onClick={() => setShowFullArchive(true)}
+              className="px-7 py-3.5 rounded-xl bg-[#003882] hover:bg-[#002D6E] text-white dark:bg-[#00E5FF] dark:hover:bg-[#00c8e0] dark:text-[#06070A] font-extrabold text-xs uppercase tracking-wider flex items-center space-x-2 shadow-md hover:scale-105 transition-all cursor-pointer shrink-0"
+            >
+              <span>View Graphics Gallery (30 Artworks)</span>
+              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+            </button>
+          </div>
+        ) : (
+          <div className="mt-12 flex justify-center">
+            <button
+              onClick={() => {
+                setShowFullArchive(false);
+                const el = document.getElementById("visual-systems");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="px-6 py-3.5 rounded-xl bg-white dark:bg-[#1A1F2B] border-2 border-gray-300 dark:border-[#2A3441] hover:border-[#003882] dark:hover:border-[#00E5FF] text-[#0A0F1D] dark:text-[#F8FAFC] font-extrabold text-xs uppercase tracking-wider flex items-center space-x-2 shadow-sm cursor-pointer transition-all"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Collapse to Curated Preview (6 Works)</span>
+            </button>
+          </div>
+        )}
 
         {/* ── Extended 21-Artwork Gallery Launch Banner ──────── */}
         <motion.div

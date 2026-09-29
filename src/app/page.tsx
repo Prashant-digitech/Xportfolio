@@ -28,6 +28,7 @@ import ClientTrust from "@/components/ClientTrust";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import CanvaPortfolioDeck from "@/components/CanvaPortfolioDeck";
 import ClientWebsites from "@/components/ClientWebsites";
+import AstroSageShowcase from "@/components/AstroSageShowcase";
 import AILab from "@/components/AILab";
 import ThankYouSign from "@/components/ThankYouSign";
 import SmartUploadModal from "@/components/SmartUploadModal";
@@ -140,7 +141,7 @@ export default function Home() {
         />
 
         {/* Content sections */}
-        <main id="main-content" tabIndex={-1} className="flex-grow focus:outline-none">
+        <main id="main-content" tabIndex={-1} className="flex-grow focus:outline-none w-full max-w-full overflow-x-clip">
           {recruiterMode ? (
             <RecruiterLayout profile={profile} />
           ) : (
@@ -149,19 +150,23 @@ export default function Home() {
               <Hero profile={profile} />
               <SectionSeparator />
 
-              {/* 02: SELECTED WORK (Flagship DeepAstro & Second Flagship TradeX) */}
+              {/* 02: SELECTED PRODUCT WORK */}
               <ProjectShowcase profile={profile} />
               <SectionSeparator />
 
-              {/* 02.2: CLIENT WEBSITES & ENTERPRISE PRODUCTION (VS VERONIXX) */}
-              <ClientWebsites />
+              {/* 03: VISUAL SYSTEMS & ART DIRECTION (Curated 6 Previews + View Complete 30 Gallery) */}
+              <VisualSystems />
               <SectionSeparator />
 
-              {/* 02.5: CANVA EXECUTIVE MASTER DECK (26-Page Presentation Deck) */}
-              <CanvaPortfolioDeck />
+              {/* 04: MOTION & FILM LAB */}
+              <MotionLab />
               <SectionSeparator />
 
-              {/* 03: PROCESS & DESIGN SYSTEMS */}
+              {/* 05: ASTROSAGE // DEEPASTRO SHOWCASE & GALLERY */}
+              <AstroSageShowcase />
+              <SectionSeparator />
+
+              {/* 06: PROCESS & DESIGN SYSTEMS */}
               <DesignProcess />
               <SectionSeparator />
               <BeforeAfter />
@@ -169,19 +174,17 @@ export default function Home() {
               <DesignSystemShowcase />
               <SectionSeparator />
 
-              {/* 04: FIGMA LAB — DESIGN PROCESS LAB (How I Work: Wireframes → Mid-Fi → System → Iterations → Prototype → Handoff) */}
+              {/* 07: FIGMA LAB — INTERACTIVE PROCESS LAB */}
               <FigmaLab />
               <SectionSeparator />
 
-              {/* 05: VISUAL SYSTEMS & ART DIRECTION */}
-              <VisualSystems />
+              {/* 08: CLIENT WEBSITES & EXECUTIVE DECK */}
+              <ClientWebsites />
+              <SectionSeparator />
+              <CanvaPortfolioDeck />
               <SectionSeparator />
 
-              {/* 06: MOTION / FILM LAB */}
-              <MotionLab />
-              <SectionSeparator />
-
-              {/* 07: MULTIDISCIPLINARY JOURNEY & CREDENTIALS */}
+              {/* 09: MULTIDISCIPLINARY JOURNEY & CREDENTIALS */}
               <About profile={profile} />
               <SectionSeparator />
               <CertificationVault />

@@ -344,7 +344,8 @@ export default function Hero({ profile }: HeroProps) {
 function StatCounter({ value, label, icon }: { value: string; label: string; icon: React.ReactNode }) {
   const targetNumber = parseInt(value) || 0;
   const suffix = value.replace(/[0-9]/g, ""); // get symbol like '+'
-  const { count, elementRef } = useCountUp(targetNumber, 1500);
+  const { count, elementRef } = useCountUp(targetNumber, 1200);
+  const displayValue = count > 0 ? count : targetNumber;
 
   return (
     <div ref={elementRef} className="flex flex-col md:flex-row items-center md:items-start md:space-x-4 space-y-2 md:space-y-0">
@@ -352,10 +353,10 @@ function StatCounter({ value, label, icon }: { value: string; label: string; ico
         {icon}
       </div>
       <div>
-        <span className="block text-3xl font-extrabold text-black dark:text-white tracking-tight">
-          {count}{suffix}
+        <span className="block text-3xl font-extrabold text-[#0A0F1D] dark:text-[#F8FAFC] tracking-tight">
+          {displayValue}{suffix}
         </span>
-        <span className="text-xs font-semibold text-gray-500 uppercase tracking-widest">{label}</span>
+        <span className="text-xs font-semibold text-[#334155] dark:text-[#94A3B8] uppercase tracking-widest">{label}</span>
       </div>
     </div>
   );

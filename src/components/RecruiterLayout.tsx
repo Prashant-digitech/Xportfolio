@@ -419,7 +419,7 @@ VERIFICATION TICKET STATUS:
                 className="w-full aspect-[16/10] rounded-xl relative overflow-hidden mb-4 border border-gold/25 group-hover:border-gold/60 cursor-pointer transition-colors"
               >
                 <Image
-                  src="/images/ux/deepastro/slide-01.png"
+                  src="/images/ux/deepastro/1.png"
                   alt="DeepAstro AI Life Intelligence Case Study"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"

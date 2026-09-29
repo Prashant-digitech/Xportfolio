@@ -74,10 +74,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${inter.variable} ${greatVibes.variable} h-full antialiased scroll-smooth`}
+      className={`${outfit.variable} ${inter.variable} ${greatVibes.variable} h-full antialiased scroll-smooth overflow-x-hidden max-w-full`}
       suppressHydrationWarning
     >
-      <body className="min-h-full bg-[#FAFAF7] dark:bg-[#06070A] text-[#111318] dark:text-[#F8FAFC] font-sans overflow-x-hidden selection:bg-[#00E5FF]/20 selection:text-white transition-colors duration-250">
+      <body className="min-h-full max-w-full bg-[#FAFAF7] dark:bg-[#06070A] text-[#111318] dark:text-[#F8FAFC] font-sans overflow-x-hidden selection:bg-[#00E5FF]/20 selection:text-white transition-colors duration-250">
         {/* WCAG AA Skip to Main Content Link */}
         <a
           href="#main-content"

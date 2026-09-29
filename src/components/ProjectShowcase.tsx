@@ -86,7 +86,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       spec: "01 • FLAGSHIP • UI/UX • AI LIFE PLATFORM • MULTI-DEVICE",
       challenge: "Traditional Vedic astrology is intimidating and hard to decipher, while modern horoscope apps deliver superficial, generic predictions without architectural depth or personalized context.",
       impact: "18 synthesized domain insights, 10-slide verified case-study boards, Cosmic Glassmorphism design system, and multi-tier interactive architecture.",
-      img: "/images/ux/deepastro/slide-01.png",
+      img: "/images/ux/deepastro/1.png",
       uxProjectId: "deepastro",
     },
     {
@@ -194,7 +194,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       title: "DeepAstro AI Life Platform", 
       category: "uiux", 
       description: "Comprehensive AI life intelligence system featuring cosmic dashboard, Kundli charts, and mobile companion app.", 
-      img: "/images/ux/deepastro/slide-01.png", 
+      img: "/images/ux/deepastro/1.png", 
       caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "deepastro",
