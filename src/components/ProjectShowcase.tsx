@@ -85,7 +85,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       accent: "#00F0FF",
       spec: "01 • FLAGSHIP • UI/UX • AI LIFE PLATFORM • MULTI-DEVICE",
       challenge: "Traditional Vedic astrology is intimidating and hard to decipher, while modern horoscope apps deliver superficial, generic predictions without architectural depth or personalized context.",
-      impact: "18 synthesized domain insights, 10-slide verified case-study boards, Cosmic Glassmorphism design system, and multi-tier interactive architecture.",
+      impact: "18 synthesized domain insights, 10-slide verified case-study boards, Target SUS Benchmark • 91.4, and Cosmic Glassmorphism design system.",
       img: "/images/ux/deepastro/1.png",
       uxProjectId: "deepastro",
     },
@@ -140,7 +140,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       accent: "#38BDF8",
       spec: "06 • DEEP TECH UX • 3D ORBIT TELEMETRY • MISSION CONTROL",
       challenge: "Aerospace telemetry was siloed in monochrome text logs, slowing anomaly triage during critical orbital insertion windows.",
-      impact: "Designed real-time 3D orbital trajectory simulation, sub-80ms telemetry concept, and accelerated anomaly triage workflows.",
+      impact: "Designed real-time 3D orbital trajectory simulation, Sub-80ms Sync Target, and accelerated anomaly triage workflows.",
       img: "/images/ux/projects/CosmosX.png",
       uxProjectId: "cosmosx",
     },
@@ -149,9 +149,9 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       title: "CureIQ Clinical Intelligence",
       desc: "AI-assisted clinical diagnostics and empathetic patient health portal. Features differential diagnosis summaries, longitudinal biomarker trendlines, and automated treatment protocols.",
       accent: "#06B6D4",
-      spec: "07 • HEALTHCARE UX • AI DIAGNOSTICS • WCAG 2.1 AA",
+      spec: "07 • HEALTHCARE UX • AI DIAGNOSTICS • WCAG AA COMPLIANCE",
       challenge: "Clinicians face EHR documentation burnout while patients struggle to comprehend complex clinical lab results.",
-      impact: "Conceptual workflow designed to reduce EHR documentation burnout through progressive disclosure and empathetic patient translations.",
+      impact: "Clinical AI Concept • WCAG AA Compliance designed to reduce EHR documentation burnout through progressive disclosure and empathetic patient translations.",
       img: "/images/ux/projects/CureIQ.png",
       uxProjectId: "cureiq",
     },
@@ -276,7 +276,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       statsBadge: "Orbital Telemetry • Real-time Sync",
       role: "Deep Tech UX · 3D WebGL · Telemetry",
       year: "2026",
-      valueProposition: "Interactive 3D orbital trajectory simulation and aerospace sensor telemetry operations concept."
+      valueProposition: "Interactive 3D orbital trajectory simulation and Sub-80ms Sync Target operations concept."
     },
     // 07: CUREIQ (Extended)
     { 
@@ -288,10 +288,10 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       caseStudy: "Explore Case Study", 
       figmaUrl: "#work",
       uxProjectId: "cureiq",
-      statsBadge: "Clinical AI Concept • WCAG AA",
+      statsBadge: "Clinical AI Concept • WCAG AA Compliance",
       role: "Healthcare UX · AI Diagnostics · WCAG AA",
       year: "2026",
-      valueProposition: "Empathetic clinical intelligence interface concept designed to reduce physician documentation burden."
+      valueProposition: "Clinical AI Concept • WCAG AA Compliance designed to reduce physician documentation burden and clarify patient care pathways."
     },
     // 08: PATHWISE (Extended)
     { 
@@ -802,7 +802,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                           </span>
                         )}
                         <span className="text-[#B8941F] dark:text-[#F5BA42] uppercase tracking-wider font-bold">
-                          {p.category.toUpperCase()} PRODUCT
+                          {p.category === "graphics" ? "VISUAL DESIGN" : p.category === "video" ? "MOTION PRODUCTION" : p.category === "ppt" ? "EXECUTIVE DECK" : p.category.toUpperCase() + " PRODUCT"}
                         </span>
                       </div>
                       {p.statsBadge && (
@@ -813,7 +813,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                     </div>
 
                     {/* Project Name */}
-                    <h4 className="font-black text-lg text-[#111318] dark:text-white uppercase tracking-wider mb-2 group-hover:text-[#B8941F] dark:group-hover:text-[#F5BA42] transition-colors leading-snug">
+                    <h4 className="font-black text-lg text-[#111318] dark:text-white tracking-wide mb-2 group-hover:text-[#B8941F] dark:group-hover:text-[#F5BA42] transition-colors leading-snug">
                       {p.title}
                     </h4>
 

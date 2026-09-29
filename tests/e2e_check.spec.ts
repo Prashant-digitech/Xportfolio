@@ -513,5 +513,98 @@ test.describe("Prashant Sisodhiya Portfolio E2E Verifications", () => {
     const telLink = contactSection.locator("a[href^='tel:']").first();
     await expect(telLink).toBeVisible();
   });
+
+  test("Test A — metric honesty: should assert corrected target language and absence of unverified empirical claims", async ({ page }) => {
+    // 1. Check AstroSage section specifically
+    const astrosageSection = page.locator("#astrosage");
+    await astrosageSection.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+
+    const astroText = await astrosageSection.innerText();
+    const astroHtml = await astrosageSection.innerHTML();
+
+    expect(astroText).toContain("Target SUS Benchmark");
+    expect(astroText).toContain("91.4");
+    expect(astroText).not.toContain("91.4 SUS Usability");
+    expect(astroHtml).not.toContain("91.4 SUS Usability");
+
+    // 2. Check Work section for CureIQ and CosmosX
+    const workSection = page.locator("#work");
+    await workSection.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+
+    const workText = await workSection.innerText();
+    const workHtml = await workSection.innerHTML();
+
+    // CureIQ Assertions
+    expect(workText).toContain("Clinical AI Concept");
+    expect(workText).toContain("WCAG AA Compliance");
+    expect(workText).not.toContain("99.2% Accuracy");
+    expect(workHtml).not.toContain("99.2% Accuracy");
+    expect(workText).not.toContain("42m/day");
+    expect(workHtml).not.toContain("42m/day");
+
+    // CosmosX Assertions
+    expect(workText).toContain("Sub-80ms Sync Target");
+    expect(workText).not.toContain("100K+ Bodies");
+    expect(workHtml).not.toContain("100K+ Bodies");
+    expect(workText.replace(/Sub-80ms Sync Target/g, "")).not.toContain("80ms Sync");
+    expect(workHtml.replace(/Sub-80ms Sync Target/g, "")).not.toContain("80ms Sync");
+  });
+
+  test("Test B — graphics metadata: should verify category-specific metadata on all graphics cards without generic UX fallback", async ({ page }) => {
+    const workSection = page.locator("#work");
+    await workSection.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+
+    // Switch to Graphics & Brand filter
+    const graphicsFilter = page.locator("#work button", { hasText: "Graphics & Brand" });
+    await expect(graphicsFilter).toBeVisible();
+    await graphicsFilter.click();
+    await page.waitForTimeout(600);
+
+    const workText = await workSection.innerText();
+
+    // Verify accurate disciplines
+    expect(workText).toContain("Digital Matte Painting · Compositing");
+    expect(workText).toContain("Art Direction · Conceptual Art");
+    expect(workText).toContain("Poster Design · Theatrical Keyart");
+    expect(workText).toContain("Brand Identity · Guidelines");
+    expect(workText).toContain("Visual Design · Packaging Systems");
+    expect(workText).toContain("Editorial Design · Publication Layout");
+    expect(workText).toContain("Social Media Design · Ad Creatives");
+    expect(workText).toContain("Graphic Design · Print Collateral");
+    expect(workText).toContain("Graphic Design · Bespoke Stationery");
+    expect(workText).toContain("Visual Design · Digital Art Vault");
+
+    // Ensure generic fallback does NOT appear on graphics cards
+    expect(workText).not.toContain("Product Design · UX · UI 2026");
+  });
+
+  test("Test C — production content parity: should verify inventory reconciliation and honest target specifications", async ({ page }) => {
+    const workSection = page.locator("#work");
+    await workSection.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+
+    const workText = await workSection.innerText();
+    const upperText = workText.toUpperCase();
+
+    // Reconciled inventory presence check
+    expect(upperText).toContain("DEEPASTRO");
+    expect(upperText).toContain("TRADEX");
+    expect(upperText).toContain("SECUREX");
+    expect(upperText).toContain("FUTUREMIND");
+    expect(upperText).toContain("PRESENTX");
+    expect(upperText).toContain("COSMOSX");
+    expect(upperText).toContain("CUREIQ");
+    expect(upperText).toContain("PATHWISE");
+    expect(upperText).toContain("DESIGNOS");
+    expect(upperText).toContain("SOUL JOURNEY");
+
+    // Verify honest target wording
+    expect(upperText).toContain("TARGET SUS BENCHMARK");
+    expect(workText).toContain("Clinical AI Concept • WCAG AA Compliance");
+    expect(workText).toContain("Orbital Telemetry • Real-time Sync");
+  });
 });
 

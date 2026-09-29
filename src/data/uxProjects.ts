@@ -731,10 +731,10 @@ export const uxProjectsList: UXProject[] = [
       impact: {
         summary: "Established TradeX Pro as an industry benchmark for crypto trading UX, achieving dramatic reductions in user error and record engagement metrics.",
         stats: [
-          { number: "$1.2B+", label: "Quarterly Volume" },
-          { number: "0.12s", label: "Execution Latency" },
-          { number: "83%", label: "Error Reduction" },
-          { number: "91.4%", label: "30-Day Retention" },
+          { number: "High-Volume", label: "Order Execution" },
+          { number: "Sub-Second", label: "Transaction Speed" },
+          { number: "Modular", label: "Smart-Tile Layout" },
+          { number: "Target", label: "Trader Retention" },
         ],
       },
       evidenceArtifacts: [
