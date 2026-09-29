@@ -16,10 +16,22 @@ import InAppCaseStudyViewer from "@/components/InAppCaseStudyViewer";
 interface UXCaseStudyModalProps {
   project: UXProject | null;
   onClose: () => void;
+  onPrevProject?: () => void;
+  onNextProject?: () => void;
+  prevProjectTitle?: string;
+  nextProjectTitle?: string;
   initialTab?: "overview" | "deck" | "htmlDeck" | "walkthrough" | "research" | "architecture" | "flows" | "system" | "gallery" | "decisions" | "impact";
 }
 
-export default function UXCaseStudyModal({ project, onClose, initialTab = "overview" }: UXCaseStudyModalProps) {
+export default function UXCaseStudyModal({ 
+  project, 
+  onClose, 
+  onPrevProject,
+  onNextProject,
+  prevProjectTitle,
+  nextProjectTitle,
+  initialTab = "overview" 
+}: UXCaseStudyModalProps) {
   const [activeTab, setActiveTab] = useState<string>(initialTab);
   const [activeImageIdx, setActiveImageIdx] = useState<number>(0);
   const [activeSlideIdx, setActiveSlideIdx] = useState<number>(0);
@@ -1640,35 +1652,57 @@ export default function UXCaseStudyModal({ project, onClose, initialTab = "overv
 
         </div>
 
-        {/* Modal Bottom Action Bar */}
-        <div className="flex-shrink-0 px-4 sm:px-8 py-4 border-t border-white/10 bg-[#080C18] flex flex-col sm:flex-row items-center justify-between gap-3 z-20">
-          <div className="flex items-center space-x-2 text-xs text-gray-400">
-            <span className="font-bold text-white">Lead Product Designer:</span>
-            <span>Prashant Sisodhiya</span>
-          </div>
+        {/* Continuous Case Study Navigation (Requirement 14: ← PREVIOUS PROJECT | BACK TO WORK | NEXT PROJECT →) */}
+        <div className="flex-shrink-0 px-4 sm:px-8 py-3.5 border-t border-[#2A3441] bg-[#111827] flex flex-col sm:flex-row items-center justify-between gap-3 z-20">
+          {onPrevProject ? (
+            <button
+              onClick={onPrevProject}
+              className="flex items-center space-x-2 text-xs font-bold text-gray-300 hover:text-white hover:bg-white/10 px-3.5 py-2 rounded-lg border border-[#2A3441] hover:border-[#00E5FF] transition-all w-full sm:w-auto justify-center cursor-pointer"
+              aria-label={`Go to previous project: ${prevProjectTitle || "Previous Project"}`}
+            >
+              <ChevronLeft className="w-4 h-4 text-[#00E5FF]" />
+              <span className="truncate max-w-[200px]">← {prevProjectTitle || "Previous Project"}</span>
+            </button>
+          ) : (
+            <div className="hidden sm:block w-28" />
+          )}
 
-          <div className="flex items-center space-x-3 w-full sm:w-auto">
+          <div className="flex items-center space-x-3 w-full sm:w-auto justify-center">
             {hasWalkthrough && activeTab !== "walkthrough" && (
               <button
                 onClick={() => setActiveTab("walkthrough")}
-                className="flex-1 sm:flex-none px-4 py-2 rounded-lg bg-gold/15 hover:bg-gold hover:text-black text-gold text-xs font-bold tracking-wider transition-colors border border-gold/30 text-center cursor-pointer"
+                className="px-3.5 py-2 rounded-lg bg-[#00E5FF]/10 hover:bg-[#00E5FF] hover:text-black text-[#00E5FF] text-xs font-bold tracking-wider transition-colors border border-[#00E5FF]/30 text-center cursor-pointer"
               >
-                Watch 30s Walkthrough
+                30s Tour
               </button>
             )}
             <button
               onClick={() => setActiveTab("gallery")}
-              className="flex-1 sm:flex-none px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 text-xs font-bold tracking-wider transition-colors border border-white/10 text-center cursor-pointer"
+              className="px-3.5 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 text-xs font-bold tracking-wider transition-colors border border-[#2A3441] text-center cursor-pointer"
             >
               Screens ({gallery.length})
             </button>
             <button
               onClick={onClose}
-              className="flex-1 sm:flex-none px-6 py-2 rounded-lg bg-gold hover:bg-gold-light text-black text-xs font-black tracking-wider uppercase transition-colors shadow-[0_0_15px_rgba(212,160,23,0.3)] text-center cursor-pointer"
+              className="px-6 py-2 rounded-lg bg-[#00E5FF] hover:bg-[#00B4D8] text-[#06070A] text-xs font-black tracking-wider uppercase transition-colors shadow-[0_0_15px_rgba(0,229,255,0.25)] text-center cursor-pointer"
+              aria-label="Back to Work Directory"
             >
-              Close Case Study
+              Back to Work
             </button>
           </div>
+
+          {onNextProject ? (
+            <button
+              onClick={onNextProject}
+              className="flex items-center space-x-2 text-xs font-bold text-gray-300 hover:text-white hover:bg-white/10 px-3.5 py-2 rounded-lg border border-[#2A3441] hover:border-[#00E5FF] transition-all w-full sm:w-auto justify-center cursor-pointer"
+              aria-label={`Go to next project: ${nextProjectTitle || "Next Project"}`}
+            >
+              <span className="truncate max-w-[200px]">{nextProjectTitle || "Next Project"} →</span>
+              <ChevronRight className="w-4 h-4 text-[#00E5FF]" />
+            </button>
+          ) : (
+            <div className="hidden sm:block w-28" />
+          )}
         </div>
 
       </motion.div>

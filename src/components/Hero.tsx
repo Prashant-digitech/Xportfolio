@@ -81,34 +81,34 @@ export default function Hero({ profile }: HeroProps) {
             animate="animate"
             className="lg:col-span-7 flex flex-col items-start space-y-6 z-10"
           >
-            {/* Eyebrow */}
-            <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#0F1118] border border-[#B8941F]/40 dark:border-[#D4AF37]/30 text-[#111318] dark:text-gray-300 text-xs font-bold tracking-wider uppercase shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-              <span>PRASHANT SISODHIYA</span>
+            {/* Eyebrow (Requirement 3 & 4) */}
+            <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#2A3441] text-[#111318] dark:text-[#F8FAFC] text-xs font-bold tracking-wider uppercase shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>PRASHANT SISODHIYA • SENIOR PRODUCT DESIGNER</span>
             </motion.div>
 
-            {/* Main Title */}
-            <motion.h1 variants={fadeInUp} className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] select-none">
-              <span className="block text-[#111318] dark:text-white">UI/UX &amp; AI</span>
-              <span className="block text-gradient-gold drop-shadow-[0_4px_12px_rgba(212,175,55,0.25)]">PRODUCT DESIGNER</span>
+            {/* Main Title (Requirement 3, 5, 6) */}
+            <motion.h1 variants={fadeInUp} className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.06] select-none">
+              <span className="block text-[#111318] dark:text-[#F8FAFC]">SENIOR PRODUCT &amp;</span>
+              <span className="block text-[#00E5FF] drop-shadow-[0_4px_16px_rgba(0,229,255,0.25)]">UX DESIGNER</span>
             </motion.h1>
 
             {/* Supporting Value Proposition */}
-            <motion.p variants={fadeInUp} className="text-[#374151] dark:text-[#D1D5DB] text-base sm:text-lg max-w-xl leading-relaxed font-medium">
-              Designing digital products, visual systems and intelligent experiences from strategy to final execution.
+            <motion.p variants={fadeInUp} className="text-[#4B5563] dark:text-[#94A3B8] text-base sm:text-lg max-w-xl leading-relaxed font-normal">
+              Designing digital products, complex design systems and intelligent experiences from strategic empathy to production-grade execution.
             </motion.p>
 
             {/* Credibility Strip Pill */}
-            <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono uppercase tracking-widest text-[#B8941F] dark:text-[#D4AF37]">
+            <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono uppercase tracking-widest text-[#00E5FF] dark:text-[#00E5FF]">
               <span>PRODUCT DESIGN</span>
               <span className="text-gray-400 dark:text-gray-600">•</span>
               <span>UI/UX</span>
               <span className="text-gray-400 dark:text-gray-600">•</span>
               <span>AI SYSTEMS</span>
               <span className="text-gray-400 dark:text-gray-600">•</span>
-              <span>VISUAL SYSTEMS</span>
+              <span>VISUAL CRAFT</span>
               <span className="text-gray-400 dark:text-gray-600">•</span>
-              <span>MOTION</span>
+              <span>MOTION &amp; FILM</span>
             </motion.div>
 
             {/* CTAs (Primary, Secondary, Tertiary) */}
@@ -119,7 +119,7 @@ export default function Hero({ profile }: HeroProps) {
                 onMouseLeave={hireBtn.handleMouseLeave}
                 style={hireBtn.style}
                 onClick={() => scrollToSection("work")}
-                className="btn-primary"
+                className="px-6 py-3 rounded-xl bg-[#00E5FF] hover:bg-[#00B4D8] text-[#06070A] font-extrabold text-xs uppercase tracking-wider flex items-center space-x-2 transition-all duration-200 shadow-[0_0_20px_rgba(0,229,255,0.3)] cursor-pointer"
               >
                 <span>View Selected Work</span>
                 <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
@@ -128,7 +128,7 @@ export default function Hero({ profile }: HeroProps) {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary"
+                className="px-6 py-3 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#2A3441] hover:border-[#00E5FF] text-[#111318] dark:text-[#F8FAFC] font-bold text-xs uppercase tracking-wider flex items-center space-x-2 transition-all duration-200 cursor-pointer"
               >
                 <span>Download Resume</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -139,7 +139,7 @@ export default function Hero({ profile }: HeroProps) {
                 onMouseLeave={aboutBtn.handleMouseLeave}
                 style={aboutBtn.style}
                 onClick={() => scrollToSection("contact")}
-                className="h-[46px] px-5 rounded-xl text-[#4B5563] dark:text-[#D1D5DB] hover:text-[#B8941F] dark:hover:text-[#D4AF37] font-semibold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center space-x-1.5"
+                className="h-[46px] px-5 rounded-xl text-[#4B5563] dark:text-[#94A3B8] hover:text-[#00E5FF] dark:hover:text-[#00E5FF] font-semibold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center space-x-1.5"
               >
                 <span>Contact Me</span>
               </button>

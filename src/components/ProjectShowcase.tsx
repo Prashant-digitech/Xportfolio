@@ -721,23 +721,23 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
             </p>
           </div>
 
-          {/* Filter Categories list */}
-          <div className="flex flex-wrap justify-center gap-2 mb-10 border-b border-black/10 dark:border-white/10 pb-6">
+          {/* Filter Categories list (Requirement 9) */}
+          <div className="flex flex-wrap justify-center gap-2 mb-10 border-b border-black/10 dark:border-[#2A3441] pb-6">
             {[
               { id: "all", label: "All Works" },
-              { id: "uiux", label: "UI/UX Design" },
+              { id: "uiux", label: "Product & UX" },
               { id: "mobile", label: "Mobile Apps" },
-              { id: "graphics", label: "Graphics Design" },
-              { id: "video", label: "Video Editing" },
-              { id: "ppt", label: "Presentations" }
+              { id: "graphics", label: "Graphics & Brand" },
+              { id: "video", label: "Motion & Film" },
+              { id: "ppt", label: "Executive Decks" }
             ].map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveFilter(cat.id)}
                 className={`px-4 py-2 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                   activeFilter === cat.id 
-                    ? "bg-[#D4AF37] text-black font-extrabold shadow-md scale-105" 
-                    : "bg-white dark:bg-[#0F1118] border border-[#D6B95A] dark:border-[rgba(212,175,55,0.35)] text-[#374151] dark:text-slate-300 hover:border-[#D4AF37] hover:text-[#111318] dark:hover:text-white"
+                    ? "bg-[#00E5FF] text-[#06070A] font-extrabold shadow-[0_0_15px_rgba(0,229,255,0.3)] scale-105" 
+                    : "bg-white dark:bg-[#1A1F2B] border border-gray-200 dark:border-[#2A3441] text-[#374151] dark:text-[#94A3B8] hover:border-[#00E5FF] hover:text-[#111318] dark:hover:text-[#F8FAFC]"
                 }`}
               >
                 {cat.label}
@@ -1041,14 +1041,25 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
 
       </div>
 
-      {/* Case Study Modal Triggered from Project Showcase */}
+      {/* Case Study Modal Triggered from Project Showcase with Continuous Browsing */}
       <AnimatePresence>
-        {selectedUXProject && (
-          <UXCaseStudyModal
-            project={selectedUXProject}
-            onClose={() => setSelectedUXProject(null)}
-          />
-        )}
+        {selectedUXProject && (() => {
+          const currentUXIdx = uxProjectsList.findIndex((p) => p.id === selectedUXProject.id);
+          const totalUX = uxProjectsList.length;
+          const prevUX = totalUX > 0 ? uxProjectsList[(currentUXIdx - 1 + totalUX) % totalUX] : undefined;
+          const nextUX = totalUX > 0 ? uxProjectsList[(currentUXIdx + 1) % totalUX] : undefined;
+          return (
+            <UXCaseStudyModal
+              project={selectedUXProject}
+              onClose={() => setSelectedUXProject(null)}
+              onPrevProject={prevUX ? () => setSelectedUXProject(prevUX) : undefined}
+              onNextProject={nextUX ? () => setSelectedUXProject(nextUX) : undefined}
+              prevProjectTitle={prevUX?.title}
+              nextProjectTitle={nextUX?.title}
+              initialTab={initialModalTab}
+            />
+          );
+        })()}
       </AnimatePresence>
 
       {/* In-App Interactive HTML Deck Fullscreen Reader */}

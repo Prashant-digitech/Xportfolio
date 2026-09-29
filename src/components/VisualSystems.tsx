@@ -574,7 +574,7 @@ export default function VisualSystems() {
     <section
       id="visual-systems"
       ref={sectionRef}
-      className="py-24 sm:py-32 relative bg-[#F7F8FA] dark:bg-[#07090E] transition-colors duration-300 font-sans"
+      className="py-24 sm:py-32 relative bg-[#06070A] border-t border-[#2A3441]/70 transition-colors duration-300 font-sans"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -585,18 +585,18 @@ export default function VisualSystems() {
           transition={{ duration: 0.55 }}
           className="mb-14 sm:mb-20 text-center max-w-3xl mx-auto space-y-4"
         >
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-xs font-mono font-bold tracking-widest text-[#B8941F] dark:text-[#D4AF37] uppercase">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-[#00E5FF]/30 bg-[#00E5FF]/10 text-xs font-mono font-bold tracking-widest text-[#00E5FF] uppercase">
             <Palette className="w-3.5 h-3.5" aria-hidden="true" />
-            <span>GRAPHICS WORK SHOWCASE • 30 MASTERWORKS</span>
+            <span>VISUAL SYSTEMS &amp; BRAND ARCHITECTURE • 30 WORKS</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#111318] dark:text-white">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#F8FAFC]">
             Visual Systems &amp;{" "}
-            <span className="text-[#B8941F] dark:text-[#D4AF37]">Art Direction</span>
+            <span className="text-[#00E5FF]">Art Direction</span>
           </h2>
 
-          <p className="text-sm sm:text-base text-[#4B5563] dark:text-gray-300 leading-relaxed">
-            Multi-disciplinary graphic design studio featuring 30 authentic projects: commercial product advertising, high-end beauty retouching, theatrical movie posters, and rigorous brand identity architecture.
+          <p className="text-sm sm:text-base text-[#94A3B8] leading-relaxed">
+            Multi-disciplinary graphic design showcase featuring 30 authentic projects: commercial product advertising, high-end beauty retouching, theatrical movie posters, and rigorous brand identity architecture.
           </p>
         </motion.div>
 
@@ -611,15 +611,15 @@ export default function VisualSystems() {
               initial={{ opacity: 0, y: 20 }}
               animate={matrixInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="p-4 sm:p-5 rounded-2xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-[#0B0F19]/80 backdrop-blur-sm hover:border-[#D4AF37] transition-all group shadow-sm hover:shadow-md"
+              className="p-4 sm:p-5 rounded-2xl border border-[#2A3441] bg-[#1A1F2B] hover:border-[#00E5FF]/60 transition-all group shadow-sm hover:shadow-md"
             >
-              <span className="font-mono text-xs font-bold text-[#B8941F] dark:text-[#D4AF37] block mb-1">
+              <span className="font-mono text-xs font-bold text-[#00E5FF] block mb-1">
                 {c.num}
               </span>
-              <p className="font-black text-xs sm:text-sm text-[#111318] dark:text-white uppercase tracking-wider group-hover:text-[#B8941F] dark:group-hover:text-[#D4AF37] transition-colors">
+              <p className="font-black text-xs sm:text-sm text-[#F8FAFC] uppercase tracking-wider group-hover:text-[#00E5FF] transition-colors">
                 {c.label}
               </p>
-              <p className="text-[10px] text-[#667085] dark:text-gray-400 mt-1 font-mono">
+              <p className="text-[10px] text-[#94A3B8] mt-1 font-mono">
                 {c.desc}
               </p>
             </motion.div>
@@ -632,18 +632,18 @@ export default function VisualSystems() {
           initial={{ opacity: 0, y: 28 }}
           animate={brandInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
           transition={{ duration: 0.6 }}
-          className="mb-20 sm:mb-28 rounded-3xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#0B0F19] p-6 sm:p-10 shadow-lg relative overflow-hidden"
+          className="mb-20 sm:mb-28 rounded-3xl border border-[#2A3441] bg-[#111827] p-6 sm:p-10 shadow-xl relative overflow-hidden"
         >
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-black/10 dark:border-white/10 mb-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-[#2A3441] mb-8">
             <div>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#B8941F] dark:text-[#D4AF37]">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#00E5FF]">
                 DECONSTRUCTED CASE STUDY
               </span>
-              <h3 className="text-xl sm:text-2xl font-black text-[#111318] dark:text-white uppercase">
+              <h3 className="text-xl sm:text-2xl font-black text-[#F8FAFC] uppercase">
                 Brand Identity: Ideation to Application
               </h3>
             </div>
-            <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#667085] dark:text-gray-300">
+            <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase bg-[#1A1F2B] border border-[#2A3441] text-[#94A3B8]">
               5-Step Systematic Method
             </span>
           </div>
@@ -718,10 +718,10 @@ export default function VisualSystems() {
         {/* ── Filter Tabs ──────────────────────────────────── */}
         <div className="flex flex-col sm:flex-row items-center justify-between border-b border-black/10 dark:border-white/10 pb-6 mb-10 gap-4">
           <div>
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#B8941F] dark:text-[#D4AF37]">
-              CREATIVE WORKS GALLERY
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#00E5FF]">
+              CREATIVE WORKS ARCHIVE
             </span>
-            <h3 className="text-xl sm:text-3xl font-black text-[#111318] dark:text-white uppercase tracking-wider">
+            <h3 className="text-xl sm:text-3xl font-black text-[#F8FAFC] uppercase tracking-wider">
               {filteredWorks.length} Verified Masterworks
             </h3>
           </div>
@@ -741,8 +741,8 @@ export default function VisualSystems() {
                 aria-pressed={activeTab === tab.id}
                 className={`px-4 py-2 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                   activeTab === tab.id
-                    ? "bg-[#D4AF37] text-black font-extrabold shadow-md scale-105"
-                    : "bg-white dark:bg-[#0B0F19] border border-black/10 dark:border-white/10 text-[#374151] dark:text-gray-300 hover:border-[#D4AF37]"
+                    ? "bg-[#00E5FF] text-black font-extrabold shadow-md scale-105"
+                    : "bg-[#1A1F2B] border border-[#2A3441] text-[#94A3B8] hover:border-[#00E5FF]"
                 }`}
               >
                 {tab.label}
@@ -766,11 +766,11 @@ export default function VisualSystems() {
                 exit={{ opacity: 0, scale: 0.94 }}
                 transition={{ duration: 0.28, delay: gridInView ? idx * 0.04 : 0 }}
                 onClick={() => setSelectedItem(item)}
-                className="group relative rounded-2xl border border-black/10 dark:border-white/10 bg-white/90 dark:bg-[#0B0F19]/90 hover:border-[#D4AF37] p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(212,175,55,0.18)]"
+                className="group relative rounded-2xl border border-[#2A3441] bg-[#1A1F2B] hover:border-[#00E5FF] p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,229,255,0.14)]"
               >
                 <div>
                   {/* Card Thumbnail Container */}
-                  <div className="relative aspect-[16/11] w-full rounded-xl overflow-hidden bg-[#0A0E17] border border-black/10 dark:border-white/10 mb-4 group/img">
+                  <div className="relative aspect-[16/11] w-full rounded-xl overflow-hidden bg-[#0A0E17] border border-[#2A3441] mb-4 group/img">
                     <Image
                       src={item.image}
                       alt={item.title}
@@ -783,13 +783,13 @@ export default function VisualSystems() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
 
                     {/* Corner Tag */}
-                    <div className="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md border border-[#D4AF37]/50 text-[9px] font-mono text-[#F5BA42] font-black uppercase tracking-wider shadow-md">
+                    <div className="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md border border-[#00E5FF]/40 text-[9px] font-mono text-[#00E5FF] font-bold uppercase tracking-wider shadow-md">
                       {item.badge}
                     </div>
 
                     {/* Hover Quick View Spotlight Button */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
-                      <div className="px-4 py-2 rounded-xl bg-black/80 border border-[#D4AF37] text-[#D4AF37] flex items-center space-x-2 shadow-2xl backdrop-blur-md transform scale-90 group-hover:scale-100 transition-transform">
+                      <div className="px-4 py-2 rounded-xl bg-black/80 border border-[#00E5FF] text-[#00E5FF] flex items-center space-x-2 shadow-2xl backdrop-blur-md transform scale-90 group-hover:scale-100 transition-transform">
                         <ZoomIn className="w-4 h-4 stroke-[2.5]" />
                         <span className="text-xs font-mono font-bold tracking-wider uppercase">
                           Inspect Project
@@ -799,38 +799,38 @@ export default function VisualSystems() {
                   </div>
 
                   {/* Category & Specs Line */}
-                  <div className="flex items-center justify-between text-[10px] font-mono text-[#B8941F] dark:text-[#F5BA42] font-bold uppercase tracking-wider mb-1.5">
+                  <div className="flex items-center justify-between text-[10px] font-mono text-[#00E5FF] font-bold uppercase tracking-wider mb-1.5">
                     <span>{item.category}</span>
-                    <span className="text-[#667085] dark:text-gray-400 font-normal">
+                    <span className="text-[#94A3B8] font-normal">
                       {item.specs.split("•")[0]?.trim()}
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h4 className="font-black text-base sm:text-lg text-[#111318] dark:text-white uppercase tracking-tight mb-2 group-hover:text-[#B8941F] dark:group-hover:text-[#F5BA42] transition-colors line-clamp-1">
+                  <h4 className="font-black text-base sm:text-lg text-[#F8FAFC] uppercase tracking-tight mb-2 group-hover:text-[#00E5FF] transition-colors line-clamp-1">
                     {item.title}
                   </h4>
 
                   {/* Description */}
-                  <p className="text-xs text-[#4B5563] dark:text-gray-300 leading-relaxed mb-4 line-clamp-2">
+                  <p className="text-xs text-[#94A3B8] leading-relaxed mb-4 line-clamp-2">
                     {item.description}
                   </p>
                 </div>
 
                 {/* Footer Badges & Inspect CTA */}
-                <div className="pt-3.5 border-t border-black/10 dark:border-white/10 flex items-center justify-between text-xs">
+                <div className="pt-3.5 border-t border-[#2A3441] flex items-center justify-between text-xs">
                   <div className="flex flex-wrap gap-1.5 max-w-[70%]">
                     {item.tools.slice(0, 3).map((t, i) => (
                       <span
                         key={i}
-                        className="px-2 py-0.5 rounded bg-black/5 dark:bg-white/5 text-[9px] font-mono text-[#667085] dark:text-gray-300"
+                        className="px-2 py-0.5 rounded bg-[#111827] border border-[#2A3441] text-[9px] font-mono text-[#94A3B8]"
                       >
                         {t}
                       </span>
                     ))}
                   </div>
 
-                  <div className="text-[#B8941F] dark:text-[#D4AF37] font-bold text-xs uppercase flex items-center space-x-1 group-hover:translate-x-1 transition-transform">
+                  <div className="text-[#00E5FF] font-bold text-xs uppercase flex items-center space-x-1 group-hover:translate-x-1 transition-transform">
                     <span>Inspect</span>
                     <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                   </div>
@@ -845,22 +845,22 @@ export default function VisualSystems() {
           initial={{ opacity: 0, y: 20 }}
           animate={gridInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
-          className="mt-16 p-8 rounded-3xl border border-[#D4AF37]/50 bg-gradient-to-r from-black/5 via-[#D4AF37]/5 to-black/5 dark:from-[#0F1118] dark:via-[#1A1810] dark:to-[#0F1118] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl"
+          className="mt-16 p-8 rounded-2xl border border-[#2A3441] bg-[#111827] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl"
         >
           <div className="space-y-1.5 text-center sm:text-left">
-            <span className="text-[10px] font-mono font-bold text-[#B8941F] dark:text-[#D4AF37] uppercase tracking-widest block">
+            <span className="text-[10px] font-mono font-bold text-[#00E5FF] uppercase tracking-widest block">
               EXTENDED MASTER VAULT
             </span>
-            <h4 className="text-xl sm:text-2xl font-black text-[#111318] dark:text-white uppercase">
+            <h4 className="text-xl sm:text-2xl font-black text-[#F8FAFC] uppercase">
               Photoshop 21-Artwork Dedicated Gallery
             </h4>
-            <p className="text-xs text-[#4B5563] dark:text-gray-300 max-w-xl leading-relaxed">
+            <p className="text-xs text-[#94A3B8] max-w-xl leading-relaxed">
               Explore the dedicated exhibition room featuring all 21 full-resolution matte paintings, surreal composites, and digital photo retouching studies.
             </p>
           </div>
           <a
             href="/photoshop"
-            className="btn-primary shrink-0 flex items-center space-x-2 shadow-lg hover:scale-105 transition-transform"
+            className="px-6 py-3 rounded-xl bg-[#00E5FF] text-black font-extrabold text-xs uppercase tracking-wider shrink-0 flex items-center space-x-2 shadow-lg hover:scale-105 transition-transform"
           >
             <span>Launch 21 Artworks Room</span>
             <ExternalLink className="w-4 h-4" aria-hidden="true" />

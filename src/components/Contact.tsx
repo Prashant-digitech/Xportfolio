@@ -69,39 +69,12 @@ export default function Contact({ profile }: ContactProps) {
   };
 
   return (
-    <section id="contact" className="relative py-24 bg-[#f8fafc] dark:bg-[#090A0E] border-t border-black/5 dark:border-white/5 text-[#0a1128] dark:text-white transition-colors duration-300">
+    <section id="contact" className="relative py-24 sm:py-32 bg-[#06070A] border-t border-[#2A3441]/70 text-[#F8FAFC] transition-colors duration-300">
       {/* Background gradients */}
-      <div className="absolute top-[20%] right-[10%] w-[300px] h-[300px] rounded-full bg-gold/5 blur-[120px] pointer-events-none animate-pulse-slow" />
-      <div className="absolute bottom-[20%] left-[10%] w-[350px] h-[350px] rounded-full bg-neon-blue/5 blur-[120px] pointer-events-none animate-pulse-slow" />
+      <div className="absolute top-[20%] right-[10%] w-[320px] h-[320px] rounded-full bg-[#00E5FF]/5 blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-[20%] left-[10%] w-[350px] h-[350px] rounded-full bg-[#3B82F6]/5 blur-[140px] pointer-events-none" />
 
-      {/* Gold Constellations Background Graphics (Left & Right) */}
-      <div className="absolute top-[15%] left-[-2%] w-[250px] h-[250px] pointer-events-none select-none opacity-30 hidden md:block">
-        <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
-          <line x1="10" y1="20" x2="30" y2="40" stroke="#D4A017" strokeWidth="0.5" />
-          <line x1="30" y1="40" x2="15" y2="80" stroke="#D4A017" strokeWidth="0.5" />
-          <line x1="30" y1="40" x2="60" y2="30" stroke="#D4A017" strokeWidth="0.5" />
-          <line x1="60" y1="30" x2="85" y2="55" stroke="#D4A017" strokeWidth="0.5" />
-          <circle cx="10" cy="20" r="1.5" fill="#D4A017" className="animate-pulse" />
-          <circle cx="30" cy="40" r="2.5" fill="#FFCC4D" />
-          <circle cx="15" cy="80" r="1.5" fill="#D4A017" />
-          <circle cx="60" cy="30" r="2" fill="#FFCC4D" className="animate-pulse" />
-          <circle cx="85" cy="55" r="1.5" fill="#D4A017" />
-        </svg>
-      </div>
-
-      <div className="absolute bottom-[10%] right-[-2%] w-[250px] h-[250px] pointer-events-none select-none opacity-30 hidden md:block">
-        <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
-          <line x1="80" y1="20" x2="60" y2="50" stroke="#D4A017" strokeWidth="0.5" />
-          <line x1="60" y1="50" x2="90" y2="80" stroke="#D4A017" strokeWidth="0.5" />
-          <line x1="60" y1="50" x2="35" y2="40" stroke="#D4A017" strokeWidth="0.5" />
-          <circle cx="80" cy="20" r="2" fill="#FFCC4D" />
-          <circle cx="60" cy="50" r="2.5" fill="#D4A017" className="animate-pulse" />
-          <circle cx="90" cy="80" r="1.5" fill="#FFCC4D" />
-          <circle cx="35" cy="40" r="2" fill="#D4A017" />
-        </svg>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Page title */}
         <motion.div 
@@ -111,18 +84,47 @@ export default function Contact({ profile }: ContactProps) {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col items-center text-center mb-16"
         >
-          <span className="text-xs font-bold uppercase tracking-[0.4em] text-[#D4AF37]">Get in touch</span>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#0a1128] dark:text-white">
-            LET&apos;S BUILD SOMETHING <span className="text-gradient-orange">MEANINGFUL</span>
+          <span className="text-xs font-mono font-bold uppercase tracking-[0.3em] text-[#00E5FF] px-3.5 py-1 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/20">
+            INITIATE ENGAGEMENT
+          </span>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight mt-4 text-[#F8FAFC] uppercase">
+            LET&apos;S BUILD SOMETHING <span className="text-[#00E5FF]">MEANINGFUL</span>
           </h2>
-          <div className="w-16 h-[2px] bg-[#FF6B00] mt-4 shadow-[0_0_8px_#FF6B00]" />
-          <p className="font-signature text-2xl text-gold-light mt-4 select-none">
-            I'd love to hear from you!
+          <div className="w-16 h-[2px] bg-[#00E5FF] mt-4 shadow-[0_0_12px_#00E5FF]" />
+          <p className="text-[#94A3B8] mt-4 max-w-xl text-sm sm:text-base leading-relaxed">
+            Available for Senior Product Design, UX strategy, Design Systems architecture, and end-to-end digital craft worldwide.
           </p>
+
+          {/* Quick Action Channels Strip (Req 26) */}
+          <div className="flex flex-wrap justify-center items-center gap-3 mt-8">
+            <a
+              href={`mailto:${profile.email}`}
+              className="px-5 py-2.5 rounded-xl bg-[#00E5FF] text-black font-extrabold uppercase text-xs tracking-wider flex items-center space-x-2 hover:bg-[#00c8e0] transition-all shadow-md cursor-pointer hover:scale-105"
+            >
+              <Mail className="w-4 h-4 text-black" />
+              <span>EMAIL ME</span>
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 rounded-xl bg-[#1A1F2B] border border-[#2A3441] text-[#F8FAFC] hover:border-[#00E5FF] font-bold uppercase text-xs tracking-wider flex items-center space-x-2 transition-all cursor-pointer hover:scale-105"
+            >
+              <span>LINKEDIN</span>
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 rounded-xl bg-[#1A1F2B] border border-[#2A3441] text-[#F8FAFC] hover:border-[#00E5FF] font-bold uppercase text-xs tracking-wider flex items-center space-x-2 transition-all cursor-pointer hover:scale-105"
+            >
+              <span>VIEW RESUME</span>
+            </a>
+          </div>
         </motion.div>
 
         {/* Form & Info split grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-24">
           
           {/* Left Panel: Contact info */}
           <motion.div 
@@ -132,50 +134,58 @@ export default function Contact({ profile }: ContactProps) {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 space-y-6"
           >
-            <div className="p-8 rounded-lg glass-card border border-[#D6D9DE] dark:border-gold/30 bg-white dark:bg-[#0F1118] shadow-lg space-y-6 text-[#111318] dark:text-white">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-[#667085] dark:text-gray-500 mb-6">Contact Info</h3>
-              <p className="text-xs text-[#4B5563] dark:text-gray-400 leading-relaxed">
-                Have a project in mind or want to discuss how I can help your brand grow? Feel free to reach out. I'm always open to new ideas and exciting opportunities.
+            <div className="p-8 rounded-2xl bg-[#1A1F2B] border border-[#2A3441] shadow-xl space-y-6 text-[#F8FAFC]">
+              <div className="flex items-center justify-between pb-4 border-b border-[#2A3441]">
+                <h3 className="text-xs font-mono font-bold uppercase tracking-[0.3em] text-[#00E5FF]">
+                  DIRECT CHANNELS
+                </h3>
+                <span className="text-[10px] font-mono text-emerald-400 flex items-center space-x-1">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
+                  <span>Available Q3/Q4</span>
+                </span>
+              </div>
+              <p className="text-xs text-[#94A3B8] leading-relaxed">
+                Have an ambitious product in mind or want to audit your application's UX friction? Reach out directly via email, phone, or the communication channel below.
               </p>
 
-              <div className="space-y-6 pt-4 border-t border-black/5 dark:border-white/5">
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-[#F4F1E8] dark:bg-[#0d0d0d] border border-gold/40 flex items-center justify-center text-gold shadow-sm">
-                    <Phone className="w-5 h-5" />
+              <div className="space-y-4 pt-2">
+                <div className="flex items-center space-x-4 p-3 rounded-xl bg-[#111827] border border-[#2A3441]">
+                  <div className="w-10 h-10 rounded-lg bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center text-[#00E5FF]">
+                    <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="block text-[10px] text-[#667085] dark:text-gray-500 uppercase tracking-widest">Phone</span>
-                    <a href={`tel:${profile.phone}`} className="font-bold text-[#111318] dark:text-gray-200 hover:text-gold transition-colors duration-200">{profile.phone}</a>
+                    <span className="block text-[10px] text-[#94A3B8] uppercase tracking-widest font-mono">Phone</span>
+                    <a href={`tel:${profile.phone}`} className="font-bold text-xs sm:text-sm text-[#F8FAFC] hover:text-[#00E5FF] transition-colors">{profile.phone}</a>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-[#F4F1E8] dark:bg-[#0d0d0d] border border-gold/40 flex items-center justify-center text-gold shadow-sm">
-                    <Mail className="w-5 h-5" />
+                <div className="flex items-center space-x-4 p-3 rounded-xl bg-[#111827] border border-[#2A3441]">
+                  <div className="w-10 h-10 rounded-lg bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center text-[#00E5FF]">
+                    <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="block text-[10px] text-[#667085] dark:text-gray-500 uppercase tracking-widest">Email</span>
-                    <a href={`mailto:${profile.email}`} className="font-bold text-[#111318] dark:text-gray-200 hover:text-gold transition-colors duration-200">{profile.email}</a>
+                    <span className="block text-[10px] text-[#94A3B8] uppercase tracking-widest font-mono">Email</span>
+                    <a href={`mailto:${profile.email}`} className="font-bold text-xs sm:text-sm text-[#F8FAFC] hover:text-[#00E5FF] transition-colors">{profile.email}</a>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-[#F4F1E8] dark:bg-[#0d0d0d] border border-gold/40 flex items-center justify-center text-gold shadow-sm">
-                    <MapPin className="w-5 h-5" />
+                <div className="flex items-center space-x-4 p-3 rounded-xl bg-[#111827] border border-[#2A3441]">
+                  <div className="w-10 h-10 rounded-lg bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center text-[#00E5FF]">
+                    <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="block text-[10px] text-[#667085] dark:text-gray-500 uppercase tracking-widest">Location</span>
-                    <span className="font-bold text-[#111318] dark:text-gray-200">{profile.location}</span>
+                    <span className="block text-[10px] text-[#94A3B8] uppercase tracking-widest font-mono">Location</span>
+                    <span className="font-bold text-xs sm:text-sm text-[#F8FAFC]">{profile.location}</span>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-[#F4F1E8] dark:bg-[#0d0d0d] border border-gold/40 flex items-center justify-center text-gold shadow-sm">
-                    <Clock className="w-5 h-5" />
+                <div className="flex items-center space-x-4 p-3 rounded-xl bg-[#111827] border border-[#2A3441]">
+                  <div className="w-10 h-10 rounded-lg bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center text-[#00E5FF]">
+                    <Clock className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="block text-[10px] text-[#667085] dark:text-gray-500 uppercase tracking-widest">Availability</span>
-                    <span className="font-bold text-[#111318] dark:text-gray-200">Mon – Sat : 9:00 AM – 8:00 PM</span>
+                    <span className="block text-[10px] text-[#94A3B8] uppercase tracking-widest font-mono">Response Window</span>
+                    <span className="font-bold text-xs sm:text-sm text-[#F8FAFC]">Mon – Sat : 9:00 AM – 8:00 PM IST (&lt; 24h)</span>
                   </div>
                 </div>
               </div>
@@ -190,34 +200,32 @@ export default function Contact({ profile }: ContactProps) {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7"
           >
-            <div className="p-8 rounded-lg glass-card border border-[#D6D9DE] dark:border-gold/30 bg-white dark:bg-[#0F1118] shadow-lg relative overflow-hidden text-[#111318] dark:text-white">
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-gold via-gold-light to-transparent" />
-              
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="w-8 h-8 rounded-full bg-gold/10 border border-gold/25 flex items-center justify-center text-gold">
+            <div className="p-8 rounded-2xl bg-[#1A1F2B] border border-[#2A3441] shadow-xl relative overflow-hidden text-[#F8FAFC]">
+              <div className="flex items-center space-x-3 mb-6 pb-4 border-b border-[#2A3441]">
+                <div className="w-9 h-9 rounded-lg bg-[#00E5FF]/10 border border-[#00E5FF]/25 flex items-center justify-center text-[#00E5FF]">
                   <Mail className="w-4.5 h-4.5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#111318] dark:text-white text-sm">SEND ME A MESSAGE</h3>
-                  <p className="text-[10px] text-[#667085] dark:text-gray-500">Fill out the form and I'll get back to you as soon as possible.</p>
+                  <h3 className="font-bold text-[#F8FAFC] text-sm uppercase">SEND ME A MESSAGE</h3>
+                  <p className="text-[10px] text-[#94A3B8]">Direct message inquiry pipeline with instant verification.</p>
                 </div>
               </div>
 
               {status === "success" ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center space-y-4 animate-scale-up">
-                  <CheckCircle2 className="w-16 h-16 text-gold animate-bounce" />
-                  <h4 className="text-xl font-bold text-[#111318] dark:text-white">Message Sent Successfully!</h4>
-                  <p className="text-xs text-[#4B5563] dark:text-gray-400 max-w-xs leading-relaxed">
-                    Thank you for writing. Prashant will respond to your email shortly.
+                  <CheckCircle2 className="w-16 h-16 text-[#00E5FF] animate-bounce" />
+                  <h4 className="text-xl font-bold text-[#F8FAFC]">Message Sent Successfully!</h4>
+                  <p className="text-xs text-[#94A3B8] max-w-xs leading-relaxed">
+                    Thank you for writing. Prashant will respond to your email promptly.
                   </p>
                 </div>
               ) : (
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[10px] text-[#374151] dark:text-gray-400 font-bold uppercase tracking-wider mb-1">Your Name</label>
+                      <label className="block text-[10px] text-[#94A3B8] font-mono font-bold uppercase tracking-wider mb-1.5">Your Name</label>
                       <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#D4A017]/80">
+                        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#00E5FF]/70">
                           <User className="w-4 h-4" />
                         </div>
                         <input
@@ -227,14 +235,14 @@ export default function Contact({ profile }: ContactProps) {
                           onChange={handleChange}
                           required
                           placeholder="Your Name"
-                          className="w-full bg-white dark:bg-[#050505] border border-[#D6D9DE] dark:border-gold/20 rounded pl-10 pr-4 py-2.5 text-xs text-[#111318] dark:text-white placeholder-[#667085] dark:placeholder-gray-600 focus:outline-none focus:border-gold transition-colors duration-300"
+                          className="w-full bg-[#111827] border border-[#2A3441] rounded-xl pl-10 pr-4 py-2.5 text-xs text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00E5FF] transition-colors duration-200"
                         />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-[10px] text-[#374151] dark:text-gray-400 font-bold uppercase tracking-wider mb-1">Your Email</label>
+                      <label className="block text-[10px] text-[#94A3B8] font-mono font-bold uppercase tracking-wider mb-1.5">Your Email</label>
                       <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#D4A017]/80">
+                        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#00E5FF]/70">
                           <Mail className="w-4 h-4" />
                         </div>
                         <input
@@ -243,16 +251,16 @@ export default function Contact({ profile }: ContactProps) {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          placeholder="Your Email"
-                          className="w-full bg-white dark:bg-[#050505] border border-[#D6D9DE] dark:border-gold/20 rounded pl-10 pr-4 py-2.5 text-xs text-[#111318] dark:text-white placeholder-[#667085] dark:placeholder-gray-600 focus:outline-none focus:border-gold transition-colors duration-300"
+                          placeholder="you@domain.com"
+                          className="w-full bg-[#111827] border border-[#2A3441] rounded-xl pl-10 pr-4 py-2.5 text-xs text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00E5FF] transition-colors duration-200"
                         />
                       </div>
                     </div>
                   </div>
                   <div>
-                    <label className="block text-[10px] text-[#374151] dark:text-gray-400 font-bold uppercase tracking-wider mb-1">Subject</label>
+                    <label className="block text-[10px] text-[#94A3B8] font-mono font-bold uppercase tracking-wider mb-1.5">Subject</label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#D4A017]/80">
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#00E5FF]/70">
                         <PenTool className="w-4 h-4" />
                       </div>
                       <input
@@ -260,15 +268,15 @@ export default function Contact({ profile }: ContactProps) {
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        placeholder="Subject"
-                        className="w-full bg-white dark:bg-[#050505] border border-[#D6D9DE] dark:border-gold/20 rounded pl-10 pr-4 py-2.5 text-xs text-[#111318] dark:text-white placeholder-[#667085] dark:placeholder-gray-600 focus:outline-none focus:border-gold transition-colors duration-300"
+                        placeholder="Project Discussion / UX Opportunity"
+                        className="w-full bg-[#111827] border border-[#2A3441] rounded-xl pl-10 pr-4 py-2.5 text-xs text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00E5FF] transition-colors duration-200"
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-[10px] text-[#374151] dark:text-gray-400 font-bold uppercase tracking-wider mb-1">Your Message</label>
+                    <label className="block text-[10px] text-[#94A3B8] font-mono font-bold uppercase tracking-wider mb-1.5">Your Message</label>
                     <div className="relative">
-                      <div className="absolute top-3 left-3 pointer-events-none text-[#D4A017]/80">
+                      <div className="absolute top-3 left-3.5 pointer-events-none text-[#00E5FF]/70">
                         <MessageSquare className="w-4 h-4" />
                       </div>
                       <textarea
@@ -277,8 +285,8 @@ export default function Contact({ profile }: ContactProps) {
                         onChange={handleChange}
                         required
                         rows={5}
-                        placeholder="Your Message"
-                        className="w-full bg-white dark:bg-[#050505] border border-[#D6D9DE] dark:border-gold/20 rounded pl-10 pr-4 py-2.5 text-xs text-[#111318] dark:text-white placeholder-[#667085] dark:placeholder-gray-600 focus:outline-none focus:border-gold transition-colors duration-300"
+                        placeholder="Tell me about your product, timeline, or design needs..."
+                        className="w-full bg-[#111827] border border-[#2A3441] rounded-xl pl-10 pr-4 py-2.5 text-xs text-[#F8FAFC] placeholder-[#94A3B8]/60 focus:outline-none focus:border-[#00E5FF] transition-colors duration-200"
                       />
                     </div>
                   </div>
@@ -289,10 +297,10 @@ export default function Contact({ profile }: ContactProps) {
                     style={submitBtn.style}
                     type="submit"
                     disabled={status === "sending"}
-                    className="w-full mt-4 py-3 bg-[#D4AF37] hover:bg-[#B8941F] text-black font-extrabold text-xs uppercase tracking-widest rounded shadow-md transition-all duration-300 hover:scale-[1.01] flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-50"
+                    className="w-full mt-4 py-3.5 bg-[#00E5FF] hover:bg-[#00c8e0] text-black font-extrabold text-xs uppercase tracking-widest rounded-xl shadow-lg transition-all duration-300 hover:scale-[1.01] flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-50"
                   >
-                    <span>{status === "sending" ? "SENDING MESSAGE..." : "SEND MESSAGE"}</span>
-                    <Send className="w-3.5 h-3.5 fill-black stroke-[3]" />
+                    <span>{status === "sending" ? "TRANSMITTING..." : "SEND MESSAGE"}</span>
+                    <Send className="w-3.5 h-3.5 fill-black stroke-[2.5]" />
                   </button>
                 </form>
               )}
@@ -307,24 +315,23 @@ export default function Contact({ profile }: ContactProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="p-8 rounded-lg glass-card border border-[#D6D9DE] dark:border-gold/15 bg-white dark:bg-gradient-to-br dark:from-[#0d0d0d]/80 dark:via-transparent dark:to-white/[0.01] shadow-lg relative overflow-hidden text-[#111318] dark:text-white"
+          className="p-8 rounded-2xl bg-[#1A1F2B] border border-[#2A3441] shadow-xl relative overflow-hidden text-[#F8FAFC]"
         >
-          {/* Rotated, glowing post-it note at top-right */}
-          <div className="absolute top-6 right-6 w-36 h-36 bg-[#F4F1E8] dark:bg-[#0d0d0d] border border-gold rounded p-4 shadow-md rotate-6 hidden md:flex flex-col justify-between hover:rotate-0 hover:scale-105 transition-all duration-300 select-none animate-float text-[#111318] dark:text-white">
-            <span className="text-[10px] text-gold font-bold tracking-widest">NOTE:</span>
-            <p className="font-signature text-sm text-[#B8941F] dark:text-gold-light leading-snug">
-              Let's create something amazing together! 😊
-            </p>
+          {/* Subtle note at top-right */}
+          <div className="absolute top-6 right-6 px-3.5 py-2 rounded-xl bg-[#111827] border border-[#2A3441] hidden md:flex items-center space-x-2 select-none">
+            <span className="w-2 h-2 rounded-full bg-[#00E5FF]" />
+            <span className="text-[11px] font-mono text-[#00E5FF] font-bold">
+              Looking Forward to Collaborating
+            </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             
-            {/* Left side card portrait with circular gold halo */}
+            {/* Left side card portrait with circular telemetry halo */}
             <div className="md:col-span-4 flex justify-center">
-              <div className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px]">
-                {/* Halo */}
-                <div className="absolute inset-0 rounded-full border border-gold shadow-[0_0_30px_rgba(212,160,23,0.4)] pointer-events-none animate-spin-slow" />
-                <div className="absolute inset-2 rounded-full overflow-hidden border border-white/10 bg-[#050505]">
+              <div className="relative w-[180px] h-[180px] sm:w-[200px] sm:h-[200px]">
+                <div className="absolute inset-0 rounded-full border border-[#00E5FF]/40 shadow-[0_0_24px_rgba(0,229,255,0.25)] pointer-events-none" />
+                <div className="absolute inset-2 rounded-full overflow-hidden border border-[#2A3441] bg-[#06070A]">
                   <Image
                     src="/images/portrait_thankyou.jpg"
                     alt="Prashant Thank You Portrait"
@@ -335,35 +342,23 @@ export default function Contact({ profile }: ContactProps) {
               </div>
             </div>
 
-            {/* Right side thank you content with signature and golden pen */}
-            <div className="md:col-span-8 space-y-4 relative pr-0 md:pr-40">
+            {/* Right side thank you content with signature */}
+            <div className="md:col-span-8 space-y-4 relative pr-0 md:pr-10">
+              <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-[#00E5FF]">
+                APPRECIATION &amp; CONNECTION
+              </span>
               
-              {/* Gold fountain pen watermark/graphic absolute on right */}
-              <div className="absolute right-0 bottom-0 opacity-15 w-24 h-48 pointer-events-none hidden lg:block rotate-12 animate-pulse-slow">
-                <svg viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M50 10V100L40 110L50 190L60 110L50 100" stroke="#D4A017" strokeWidth="2" />
-                  <path d="M50 100V160" stroke="#D4A017" strokeWidth="2" strokeDasharray="2 2" />
-                </svg>
-              </div>
-
-              {/* Title handwritten signature-style */}
-              <h3 className="font-signature text-5xl text-[#B8941F] dark:text-gold-light select-none drop-shadow-[0_2px_4px_rgba(212,160,23,0.1)]">
-                Thank You!
-              </h3>
-              
-              {/* Heading */}
-              <h4 className="font-extrabold text-xs tracking-[0.25em] text-[#111318] dark:text-white uppercase">
-                THANK YOU FOR VISITING I APPRECIATE YOUR TIME AND INTEREST.
+              <h4 className="font-black text-lg sm:text-xl tracking-tight text-[#F8FAFC] uppercase">
+                THANK YOU FOR EXPLORING MY PORTFOLIO
               </h4>
 
-              {/* Message */}
-              <p className="text-[#4B5563] dark:text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xl">
-                Thank you for visiting my portfolio. I truly appreciate your time and interest. Whether you have a project idea, collaboration opportunity, or simply want to connect, I would be delighted to hear from you. Let's create something extraordinary together.
+              <p className="text-[#94A3B8] text-xs sm:text-sm leading-relaxed max-w-xl">
+                I truly appreciate your time and consideration. Whether you are seeking a Senior UX Designer for a strategic initiative, a Design Systems leader, or an inventive multidisciplinary creative partner, I look forward to building high-converting, friction-free experiences together.
               </p>
 
-              {/* Gold handwritten signature */}
+              {/* Handwritten signature */}
               <div className="pt-2">
-                <span className="font-signature text-2xl text-[#B8941F] dark:text-gold-light select-none">
+                <span className="font-signature text-2xl text-[#00E5FF] select-none">
                   — {profile.name}
                 </span>
               </div>

@@ -177,28 +177,49 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
             </div>
           </div>
 
-          {/* Center: Desktop Navigation menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item) => (
+          {/* Center: Desktop Navigation menu (Requirement 15: Clean Editorial Navigation) */}
+          <div className="hidden lg:flex items-center space-x-7">
+            {[
+              { label: "Work", id: "work" },
+              { label: "Process", id: "process" },
+              { label: "Visual & Motion", id: "visual" },
+              { label: "About", id: "about" },
+              { label: "Contact", id: "contact" },
+            ].map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative font-semibold text-xs tracking-wider uppercase transition-all duration-200 hover:text-[#B8941F] dark:hover:text-[#D4AF37] cursor-pointer py-1 ${
+                className={`relative font-semibold text-xs tracking-wider uppercase transition-all duration-200 hover:text-[#00E5FF] cursor-pointer py-1 ${
                   activeSection === item.id
-                    ? "text-[#B8941F] dark:text-[#D4AF37] font-bold"
-                    : "text-[#111318] dark:text-[#E5E7EB]"
+                    ? "text-[#00E5FF] font-bold"
+                    : "text-[#374151] dark:text-[#E5E7EB]"
                 }`}
               >
                 {item.label}
                 {activeSection === item.id && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-gold-light to-gold shadow-[0_0_8px_#D4A017]" />
+                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#00E5FF] shadow-[0_0_8px_#00E5FF]" />
                 )}
               </button>
             ))}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-semibold uppercase tracking-wider text-[#374151] dark:text-[#E5E7EB] hover:text-[#00E5FF] transition-colors py-1"
+            >
+              Resume
+            </a>
           </div>
 
-          {/* Right: Quick actions (Theme, Recruiter Mode, Settings, Avatar) */}
+          {/* Right: Quick actions (Theme, Recruiter Mode, Settings, Avatar, CTA) */}
           <div className="hidden md:flex items-center space-x-3 relative">
+            {/* Primary CTA (Requirement 15) */}
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="hidden xl:flex items-center space-x-1.5 px-4 py-2.5 rounded-xl bg-[#00E5FF] hover:bg-[#00B4D8] text-[#06070A] text-xs font-black uppercase tracking-wider transition-all duration-200 shadow-[0_0_12px_rgba(0,229,255,0.25)] cursor-pointer"
+            >
+              <span>Let&apos;s Build</span>
+            </button>
             {/* Dedicated 1-Click Dark & Light Toggle Button (Sections 18, 19, 20) */}
             <button 
               onClick={() => setTheme(isDark ? "light" : "dark")}

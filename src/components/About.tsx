@@ -146,24 +146,80 @@ export default function About({ profile }: AboutProps) {
     { title: "COLLABORATION", desc: "Crystal-clear cross-functional communication and transparent execution.", icon: <Handshake className="w-5 h-5 text-[#D4AF37]" /> },
   ];
 
-  return (
-    <section id="about" className="relative py-24 bg-[#f8fafc] dark:bg-[#050814] border-t border-black/5 dark:border-white/5 text-[#0a1128] dark:text-white transition-colors duration-300">
-      {/* Background gradients */}
-      <div className="absolute top-[30%] right-[5%] w-[350px] h-[350px] rounded-full bg-[#FF6B00]/5 blur-[120px] pointer-events-none animate-pulse-slow" />
-      <div className="absolute bottom-[20%] left-[5%] w-[350px] h-[350px] rounded-full bg-[#00F0FF]/5 blur-[120px] pointer-events-none animate-pulse-slow" />
+  const evolutionSteps = [
+    { step: "01", discipline: "Graphic Design", context: "Visual hierarchy, composition & typography foundations" },
+    { step: "02", discipline: "Brand Identity", context: "Semiotics, brand systems, packaging & vector architecture" },
+    { step: "03", discipline: "Motion & VFX", context: "Kinetic timing, video editing, compositing & sound synchronization" },
+    { step: "04", discipline: "UI/UX Design", context: "Information architecture, wireframes, user testing & accessibility" },
+    { step: "05", discipline: "Product Systems", context: "Scalable Figma design tokens, auto-layout strictness & cross-platform consistency" },
+    { step: "06", discipline: "AI Product Design", context: "Agent workflows, telemetry dashboards & modern AI interface heuristics" },
+  ];
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+  return (
+    <section id="about" className="relative py-24 sm:py-32 bg-[#06070A] border-t border-[#2A3441]/70 text-[#F8FAFC] transition-colors duration-300">
+      {/* Background gradients */}
+      <div className="absolute top-[30%] right-[5%] w-[350px] h-[350px] rounded-full bg-[#00E5FF]/5 blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-[20%] left-[5%] w-[350px] h-[350px] rounded-full bg-[#3B82F6]/5 blur-[140px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Title */}
-        <div className="flex flex-col items-center text-center mb-12">
-          <span className="text-xs font-bold uppercase tracking-[0.4em] text-[#B8941F] dark:text-[#D4AF37]">Profile & Philosophy</span>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mt-2 text-[#0a1128] dark:text-white">
-            ABOUT <span className="text-gradient-orange">ME</span>
+        <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
+          <span className="text-xs font-mono font-bold uppercase tracking-[0.3em] text-[#00E5FF] px-3.5 py-1 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/20">
+            PROFILE &amp; PHILOSOPHY
+          </span>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight mt-4 text-[#F8FAFC] uppercase">
+            WHO I AM &amp; <span className="text-[#00E5FF]">HOW I THINK</span>
           </h2>
-          <div className="w-16 h-[2px] bg-[#FF6B00] mt-4 shadow-[0_0_8px_#FF6B00]" />
-          <p className="text-slate-600 dark:text-slate-300 mt-4 max-w-xl text-sm sm:text-base leading-relaxed">
-            Multidisciplinary UI/UX Designer, Creative Director & Mentor uniting aesthetic elegance with structural engineering precision.
+          <div className="w-16 h-[2px] bg-[#00E5FF] mt-4 shadow-[0_0_12px_#00E5FF]" />
+          <p className="text-[#94A3B8] mt-4 max-w-2xl text-sm sm:text-base leading-relaxed">
+            Senior Product &amp; UX Designer uniting aesthetic craftsmanship with structural engineering discipline. Master of Technology foundation bridging complex systems, user empathy, and production-grade delivery.
           </p>
+        </div>
+
+        {/* ── Multidisciplinary Evolution Flow (Req 23) ── */}
+        <div className="mb-16 p-6 sm:p-8 rounded-2xl bg-[#111827]/80 border border-[#2A3441] shadow-xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-[#2A3441]/70">
+            <div>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#00E5FF]">
+                CAREER TRAJECTORY &amp; DISCIPLINE PROGRESSION
+              </span>
+              <h3 className="text-base sm:text-lg font-black uppercase text-[#F8FAFC] mt-0.5">
+                Multidisciplinary Evolution
+              </h3>
+            </div>
+            <span className="text-[11px] font-mono text-[#94A3B8]">
+              Art Direction → Interaction → Product Engineering
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+            {evolutionSteps.map((ev, i) => (
+              <div 
+                key={ev.step} 
+                className="p-3.5 rounded-xl bg-[#1A1F2B] border border-[#2A3441] hover:border-[#00E5FF]/60 transition-all duration-300 group flex flex-col justify-between"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[10px] font-mono font-bold text-[#00E5FF]">
+                    {ev.step}
+                  </span>
+                  {i < evolutionSteps.length - 1 && (
+                    <span className="text-[10px] text-[#94A3B8] group-hover:text-[#00E5FF] transition-colors hidden lg:inline">
+                      →
+                    </span>
+                  )}
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold uppercase text-[#F8FAFC] group-hover:text-[#00E5FF] transition-colors">
+                    {ev.discipline}
+                  </h4>
+                  <p className="text-[10px] text-[#94A3B8] mt-1 line-clamp-2 leading-snug">
+                    {ev.context}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* INTERACTIVE QUICK-METRICS STRIP */}
@@ -554,22 +610,22 @@ function MetricCard({ metric }: { metric: { title: string; count: number; suffix
   return (
     <div 
       ref={elementRef}
-      className="p-4 sm:p-5 rounded-2xl glass-card dark-blue-gold-card border border-black/10 dark:border-white/10 hover:border-[#D4AF37]/50 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(212,175,55,0.12)]"
+      className="p-4 sm:p-5 rounded-2xl bg-[#1A1F2B] border border-[#2A3441] hover:border-[#00E5FF]/60 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(0,229,255,0.12)]"
     >
       <div className="flex items-center justify-between mb-3">
-        <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest font-bold">KPI</span>
-        <div className="p-1.5 rounded-lg bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 group-hover:scale-110 transition-transform">
+        <span className="text-[10px] font-mono text-[#94A3B8] uppercase tracking-widest font-bold">TELEMETRY</span>
+        <div className="p-1.5 rounded-lg bg-[#111827] border border-[#2A3441] group-hover:scale-110 transition-transform">
           {metric.icon}
         </div>
       </div>
       <div>
-        <div className="text-2xl sm:text-3xl font-black text-[#0a1128] dark:text-white tracking-tight">
+        <div className="text-2xl sm:text-3xl font-black text-[#F8FAFC] tracking-tight">
           {count}{metric.suffix}
         </div>
-        <div className="text-[11px] font-bold uppercase tracking-wider text-[#B8941F] dark:text-[#F5BA42] mt-0.5">
+        <div className="text-[11px] font-bold uppercase tracking-wider text-[#00E5FF] mt-0.5">
           {metric.title}
         </div>
-        <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
+        <div className="text-[10px] text-[#94A3B8] mt-1 line-clamp-1">
           {metric.detail}
         </div>
       </div>
@@ -587,12 +643,12 @@ function AchievementCounter({ rank, detail }: { rank: string; detail: string }) 
   const { count, elementRef } = useCountUp(num || 0, 1500);
 
   return (
-    <div ref={elementRef} className="p-6 rounded-2xl glass-card dark-blue-gold-card border border-black/10 dark:border-white/10 hover:border-[#D4AF37]/35 transition-all duration-300 flex flex-col justify-between group">
-      <span className="text-sm font-black uppercase text-[#B8941F] dark:text-[#F5BA42] tracking-widest font-mono">
+    <div ref={elementRef} className="p-6 rounded-2xl bg-[#1A1F2B] border border-[#2A3441] hover:border-[#00E5FF]/50 transition-all duration-300 flex flex-col justify-between group">
+      <span className="text-sm font-black uppercase text-[#00E5FF] tracking-widest font-mono">
         {num !== null ? `${prefix}${count}${suffix}` : rank}
       </span>
-      <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">{detail}</p>
-      <div className="w-8 h-[2px] bg-black/20 dark:bg-white/20 mt-4 group-hover:w-16 group-hover:bg-[#D4AF37] transition-all duration-300" />
+      <p className="text-xs text-[#94A3B8] mt-2 leading-relaxed">{detail}</p>
+      <div className="w-8 h-[2px] bg-[#2A3441] mt-4 group-hover:w-16 group-hover:bg-[#00E5FF] transition-all duration-300" />
     </div>
   );
 }

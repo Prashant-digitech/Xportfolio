@@ -140,7 +140,7 @@ export default function Home() {
         />
 
         {/* Content sections */}
-        <main className="flex-grow">
+        <main id="main-content" tabIndex={-1} className="flex-grow focus:outline-none">
           {recruiterMode ? (
             <RecruiterLayout profile={profile} />
           ) : (
