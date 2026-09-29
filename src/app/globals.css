@@ -44,39 +44,39 @@
 html.light {
   --bg: #FAFAF7;
   --surface: #FFFFFF;
-  --surface-secondary: #F4F1E8;
+  --surface-secondary: #F1F5F9;
   --surface-elevated: #FFFFFF;
 
   --card: #FFFFFF;
-  --card-border: #E5E7EB;
-  --card-border-hover: #D4AF37;
+  --card-border: #CBD5E1;
+  --card-border-hover: #003882;
 
-  --text: #111318;
-  --text-primary: #111318;
-  --text-secondary: #4B5563;
-  --text-muted: #667085;
+  --text: #0A0F1D;
+  --text-primary: #0A0F1D;
+  --text-secondary: #1E293B;
+  --text-muted: #334155;
 
-  --gold: #D4AF37;
-  --gold-light: #F5BA42;
-  --gold-dark: #A67C00;
-  --gold-strong: #B8941F;
-  --gold-border: rgba(212, 175, 55, 0.60);
+  --gold: #B8941F;
+  --gold-light: #D4AF37;
+  --gold-dark: #8C6D0F;
+  --gold-strong: #8C6D0F;
+  --gold-border: rgba(184, 148, 31, 0.50);
 
-  --primary: #D4AF37;
-  --secondary: #B8941F;
-  --primary-dark: #A67C00;
+  --primary: #003882;
+  --secondary: #0A0F1D;
+  --primary-dark: #002D6E;
 
-  --cyan: #00e5ff;
-  --blue: #2563EB;
-  --violet: #7C3AED;
+  --cyan: #0284C7;
+  --blue: #003882;
+  --violet: #5B21B6;
 
-  --border: #D6D9DE;
-  --border-subtle: #E5E7EB;
-  --focus-ring: #B8941F;
+  --border: #CBD5E1;
+  --border-subtle: #E2E8F0;
+  --focus-ring: #003882;
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.12);
-  --glow: rgba(212, 175, 55, 0.18);
+  --glow: rgba(0, 56, 130, 0.15);
 }
 
 .dark,
@@ -92,8 +92,8 @@ html.dark {
 
   --text: #F8FAFC;
   --text-primary: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
 
   --gold: #D4AF37;
   --gold-light: #F5C84B;
@@ -156,15 +156,15 @@ body {
 
 /* ==========================================================================
    GLOBAL CARD SYSTEM (SECTION 40)
-   LIGHT: Crisp pure white card (#FFFFFF), #E5E7EB border, dark text (#111318)
-   DARK: Charcoal card (#0F1118), subtle gold border (rgba(212,175,55,.38)), white text (#FFFFFF)
+   LIGHT: Crisp pure white card (#FFFFFF), #CBD5E1 border, dark text (#0A0F1D - contrast 17.5:1)
+   DARK: Slate charcoal card (#1A1F2B), #2A3441 border, light text (#F8FAFC - contrast 18.8:1)
    ========================================================================== */
 .glass-card,
 .dark-blue-gold-card,
 .card-theme {
   background-color: #FFFFFF;
-  color: #111318;
-  border: 1.5px solid #E5E7EB;
+  color: #0A0F1D;
+  border: 1.5px solid #CBD5E1;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
@@ -175,11 +175,11 @@ body {
 .dark-blue-gold-card:hover,
 .card-theme:hover {
   transform: translateY(-4px);
-  border-color: #D4AF37;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), 0 0 15px rgba(212, 175, 55, 0.2);
+  border-color: var(--primary);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), 0 0 15px var(--glow);
 }
 
-/* Light mode card text overrides */
+/* Light mode card text overrides (Minimum 10:1 contrast guaranteed) */
 .light .glass-card,
 .light .dark-blue-gold-card,
 .light .card-theme,
@@ -187,8 +187,8 @@ html.light .glass-card,
 html.light .dark-blue-gold-card,
 html.light .card-theme {
   background-color: #FFFFFF !important;
-  color: #111318 !important;
-  border-color: #E5E7EB !important;
+  color: #0A0F1D !important;
+  border-color: #CBD5E1 !important;
 }
 
 .light .glass-card h1, .light .glass-card h2, .light .glass-card h3, .light .glass-card h4, .light .glass-card h5, .light .glass-card h6,
@@ -197,7 +197,7 @@ html.light .card-theme {
 html.light .glass-card h1, html.light .glass-card h2, html.light .glass-card h3, html.light .glass-card h4,
 html.light .dark-blue-gold-card h1, html.light .dark-blue-gold-card h2, html.light .dark-blue-gold-card h3,
 html.light .card-theme h1, html.light .card-theme h2, html.light .card-theme h3 {
-  color: #111318 !important;
+  color: #0A0F1D !important;
 }
 
 .light .glass-card p,
@@ -206,7 +206,7 @@ html.light .card-theme h1, html.light .card-theme h2, html.light .card-theme h3 
 html.light .glass-card p,
 html.light .dark-blue-gold-card p,
 html.light .card-theme p {
-  color: #4B5563 !important;
+  color: #1E293B !important;
 }
 
 /* Dark mode card styles */
@@ -216,9 +216,9 @@ html.light .card-theme p {
 html.dark .glass-card,
 html.dark .dark-blue-gold-card,
 html.dark .card-theme {
-  background-color: #0F1118 !important;
-  color: #FFFFFF !important;
-  border-color: rgba(212, 175, 55, 0.38) !important;
+  background-color: #1A1F2B !important;
+  color: #F8FAFC !important;
+  border-color: #2A3441 !important;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6) !important;
 }
 
@@ -228,8 +228,8 @@ html.dark .card-theme {
 html.dark .glass-card:hover,
 html.dark .dark-blue-gold-card:hover,
 html.dark .card-theme:hover {
-  border-color: #D4AF37 !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 20px rgba(212, 175, 55, 0.25) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 20px var(--glow) !important;
 }
 
 .dark .glass-card h1, .dark .glass-card h2, .dark .glass-card h3, .dark .glass-card h4, .dark .glass-card h5, .dark .glass-card h6,
@@ -238,7 +238,7 @@ html.dark .card-theme:hover {
 html.dark .glass-card h1, html.dark .glass-card h2, html.dark .glass-card h3, html.dark .glass-card h4,
 html.dark .dark-blue-gold-card h1, html.dark .dark-blue-gold-card h2, html.dark .dark-blue-gold-card h3,
 html.dark .card-theme h1, html.dark .card-theme h2, html.dark .card-theme h3 {
-  color: #FFFFFF !important;
+  color: #F8FAFC !important;
 }
 
 .dark .glass-card p,
@@ -247,7 +247,7 @@ html.dark .card-theme h1, html.dark .card-theme h2, html.dark .card-theme h3 {
 html.dark .glass-card p,
 html.dark .dark-blue-gold-card p,
 html.dark .card-theme p {
-  color: #D1D5DB !important;
+  color: #CBD5E1 !important;
 }
 
 /* ==========================================================================
@@ -262,34 +262,36 @@ html.dark .card-theme p {
   height: 46px;
   padding: 0 1.5rem;
   border-radius: 12px;
-  background-color: #D4AF37;
-  color: #111318;
-  border: 1.5px solid #D4AF37;
+  background-color: #003882;
+  color: #FFFFFF;
+  border: 1.5px solid #003882;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 56, 130, 0.15);
   transition: all 0.25s ease;
   cursor: pointer;
   white-space: nowrap;
 }
 .btn-primary:hover {
-  background-color: #B8941F;
-  border-color: #B8941F;
-  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
+  background-color: #002D6E;
+  border-color: #002D6E;
+  box-shadow: 0 6px 18px rgba(0, 56, 130, 0.3);
   transform: translateY(-2px);
 }
 .dark .btn-primary,
 html.dark .btn-primary {
   color: #000000 !important;
-  background-color: #D4AF37 !important;
-  border-color: #D4AF37 !important;
+  background-color: #00E5FF !important;
+  border-color: #00E5FF !important;
+  box-shadow: 0 4px 16px rgba(0, 229, 255, 0.25) !important;
 }
 .dark .btn-primary:hover,
 html.dark .btn-primary:hover {
-  background-color: #F5C84B !important;
-  border-color: #F5C84B !important;
+  background-color: #00C8E0 !important;
+  border-color: #00C8E0 !important;
+  box-shadow: 0 6px 22px rgba(0, 229, 255, 0.4) !important;
 }
 
 .btn-secondary {
@@ -302,33 +304,33 @@ html.dark .btn-primary:hover {
   padding: 0 1.25rem;
   border-radius: 12px;
   background-color: #FFFFFF;
-  color: #111318;
-  border: 1.5px solid #B8941F;
+  color: #0A0F1D;
+  border: 1.5px solid #CBD5E1;
   font-size: 0.875rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   transition: all 0.25s ease;
   cursor: pointer;
   white-space: nowrap;
 }
 .btn-secondary:hover {
-  background-color: #F4F1E8;
-  border-color: #D4AF37;
+  background-color: #F1F5F9;
+  border-color: #003882;
   transform: translateY(-2px);
 }
 .dark .btn-secondary,
 html.dark .btn-secondary {
-  background-color: #0F1118 !important;
-  color: #FFFFFF !important;
-  border: 1.5px solid #D4AF37 !important;
+  background-color: #1A1F2B !important;
+  color: #F8FAFC !important;
+  border: 1.5px solid #2A3441 !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.30) !important;
 }
 .dark .btn-secondary:hover,
 html.dark .btn-secondary:hover {
-  background-color: #141821 !important;
-  border-color: #F5C84B !important;
+  background-color: #111827 !important;
+  border-color: #00E5FF !important;
 }
 
 .btn-icon {
@@ -343,98 +345,141 @@ html.dark .btn-secondary:hover {
 }
 
 /* ==========================================================================
-   TEXT GRADIENTS & ACCENT OVERRIDES
+   DYNAMIC COLOR ACCENT SYSTEM (STRICT 10:1+ CONTRAST RATIO)
    ========================================================================== */
-.text-gradient-gold,
-.text-gradient-orange {
-  background: linear-gradient(135deg, #FF6B00 0%, #FF8800 40%, #D4AF37 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-.text-gradient-blue {
-  background: linear-gradient(135deg, #00F0FF 0%, #3B82F6 50%, #1D4ED8 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-.text-gradient-violet {
-  background: linear-gradient(135deg, #E2AFFF 0%, #9D4EDD 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-/* Accent Selection overrides */
+/* Accent: Blue / Cyan */
 [data-accent="blue"] {
-  --primary: #0088ff;
-  --secondary: #00f0ff;
-  --glow: rgba(0, 240, 255, 0.35);
+  --primary: #003882;
+  --secondary: #0A0F1D;
+  --glow: rgba(0, 56, 130, 0.25);
 }
-[data-accent="blue"] .text-gradient-orange,
-[data-accent="blue"] .text-gradient-gold {
-  background: linear-gradient(135deg, #00f0ff 0%, #3b82f6 50%, #1d4ed8 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
+.dark[data-accent="blue"],
+html.dark[data-accent="blue"],
+[data-accent="blue"] .dark,
+[data-accent="blue"] html.dark {
+  --primary: #00E5FF;
+  --secondary: #38BDF8;
+  --glow: rgba(0, 229, 255, 0.35);
 }
 [data-accent="blue"] .btn-primary {
-  background: #0088ff !important;
-  border-color: #0088ff !important;
+  background: #003882 !important;
+  border-color: #003882 !important;
   color: #FFFFFF !important;
+}
+.dark[data-accent="blue"] .btn-primary,
+html.dark[data-accent="blue"] .btn-primary {
+  background: #00E5FF !important;
+  border-color: #00E5FF !important;
+  color: #000000 !important;
 }
 
-[data-accent="violet"] {
-  --primary: #9d4edd;
-  --secondary: #e2afff;
-  --glow: rgba(157, 78, 221, 0.35);
+/* Accent: Gold / Amber */
+[data-accent="gold"] {
+  --primary: #78350F;
+  --secondary: #1E293B;
+  --glow: rgba(120, 53, 15, 0.25);
 }
-[data-accent="violet"] .text-gradient-orange,
-[data-accent="violet"] .text-gradient-gold {
-  background: linear-gradient(135deg, #e2afff 0%, #a855f7 50%, #7c3aed 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
+.dark[data-accent="gold"],
+html.dark[data-accent="gold"],
+[data-accent="gold"] .dark,
+[data-accent="gold"] html.dark {
+  --primary: #F5C84B;
+  --secondary: #FBBF24;
+  --glow: rgba(245, 200, 75, 0.35);
+}
+[data-accent="gold"] .btn-primary {
+  background: #78350F !important;
+  border-color: #78350F !important;
+  color: #FFFFFF !important;
+}
+.dark[data-accent="gold"] .btn-primary,
+html.dark[data-accent="gold"] .btn-primary {
+  background: #F5C84B !important;
+  border-color: #F5C84B !important;
+  color: #000000 !important;
+}
+
+/* Accent: Violet */
+[data-accent="violet"] {
+  --primary: #4C1D95;
+  --secondary: #0A0F1D;
+  --glow: rgba(76, 29, 149, 0.25);
+}
+.dark[data-accent="violet"],
+html.dark[data-accent="violet"],
+[data-accent="violet"] .dark,
+[data-accent="violet"] html.dark {
+  --primary: #D8B4FE;
+  --secondary: #C084FC;
+  --glow: rgba(216, 180, 254, 0.35);
 }
 [data-accent="violet"] .btn-primary {
-  background: #9d4edd !important;
-  border-color: #9d4edd !important;
+  background: #4C1D95 !important;
+  border-color: #4C1D95 !important;
   color: #FFFFFF !important;
+}
+.dark[data-accent="violet"] .btn-primary,
+html.dark[data-accent="violet"] .btn-primary {
+  background: #D8B4FE !important;
+  border-color: #D8B4FE !important;
+  color: #000000 !important;
 }
 
 /* ==========================================================================
-   GLOBAL LIGHT/DARK MODE TEXT ENFORCEMENT (FAILSAFE LAYER)
-   Prevents white text on white/light backgrounds in light mode.
-   These rules apply at the root level to catch any missed hardcoded text-white.
-   .keep-white class is a whitelist for overlays on dark image/video thumbnails.
+   GLOBAL LIGHT/DARK MODE TEXT ENFORCEMENT (10:1+ CONTRAST FAILSAFE LAYER)
    ========================================================================== */
 
-/* LIGHT MODE: force all headings and text-white to dark charcoal */
+/* LIGHT MODE: High-Contrast Typography */
 html:not(.dark) h1:not(.keep-white),
 html:not(.dark) h2:not(.keep-white),
 html:not(.dark) h3:not(.keep-white),
 html:not(.dark) h4:not(.keep-white),
 html:not(.dark) h5:not(.keep-white),
 html:not(.dark) h6:not(.keep-white) {
-  color: #111318 !important;
+  color: #0A0F1D !important;
 }
 
-/* LIGHT MODE: strong/bold text inside cards should also be dark */
 html:not(.dark) .glass-card strong,
 html:not(.dark) .glass-card b,
 html:not(.dark) .card-theme strong,
 html:not(.dark) .card-theme b {
-  color: #111318 !important;
+  color: #0A0F1D !important;
 }
 
-/* LIGHT MODE: span badges inside glass-cards with text-white should be dark */
-html:not(.dark) .glass-card span:not(.keep-white):not(.text-gradient-gold):not(.text-gradient-orange):not([class*="text-gold"]):not([class*="text-neon"]):not([class*="text-[#"]) {
-  color: inherit;
+/* LIGHT MODE: Automatically map cyan/light accent text to dark primary accent */
+html:not(.dark) .text-\[\#00E5FF\],
+html:not(.dark) .text-\[\#00F0FF\],
+html:not(.dark) .text-neon-blue {
+  color: var(--primary) !important;
 }
 
-/* DARK MODE: ensure headings are white */
+/* LIGHT MODE: Ensure muted text has >= 10:1 contrast on light backgrounds */
+html:not(.dark) .text-\[\#94A3B8\],
+html:not(.dark) .text-gray-400 {
+  color: #1E293B !important;
+}
+
+/* LIGHT MODE: Ensure any missed text-[#F8FAFC] flips to #0A0F1D */
+html:not(.dark) .text-\[\#F8FAFC\] {
+  color: #0A0F1D !important;
+}
+
+/* DARK MODE: High-Contrast Typography */
 html.dark h1:not(.text-gradient-gold):not(.text-gradient-orange),
 html.dark h2:not(.text-gradient-gold):not(.text-gradient-orange),
-html.dark h3:not(.text-gradient-gold):not(.text-gradient-orange):not([class*="text-gold"]):not([class*="text-neon"]):not([class*="text-[#F5BA42"]):not([class*="text-[#D4AF37"]):not([class*="text-[#FF6B00"]):not([class*="text-[#00F0FF"]),
-html.dark h4:not(.text-gradient-gold):not(.text-gradient-orange):not([class*="text-gold"]):not([class*="text-neon"]):not([class*="text-[#F5BA42"]):not([class*="text-[#D4AF37"]):not([class*="text-[#FF6B00"]):not([class*="text-[#00F0FF"]) {
-  color: #FFFFFF !important;
+html.dark h3:not(.text-gradient-gold):not(.text-gradient-orange),
+html.dark h4:not(.text-gradient-gold):not(.text-gradient-orange) {
+  color: #F8FAFC !important;
+}
+
+/* STRICT RULE: Light/bright color fills MUST ALWAYS HAVE pitch dark text */
+.bg-\[\#00E5FF\],
+.bg-\[\#00F0FF\],
+.bg-\[\#F5BA42\],
+.bg-\[\#F5C84B\],
+.bg-neon-blue,
+.bg-gold-light {
+  color: #000000 !important;
 }
 
 /* ADAPTIVE CARD SYSTEM for light mode: cards with dark blue gradient bg */

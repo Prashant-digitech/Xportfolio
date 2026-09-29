@@ -189,15 +189,15 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative font-semibold text-xs tracking-wider uppercase transition-all duration-200 hover:text-[#00E5FF] cursor-pointer py-1 ${
+                className={`relative font-bold text-xs tracking-wider uppercase transition-all duration-200 hover:text-[#003882] dark:hover:text-[#00E5FF] cursor-pointer py-1 ${
                   activeSection === item.id
-                    ? "text-[#00E5FF] font-bold"
-                    : "text-[#374151] dark:text-[#E5E7EB]"
+                    ? "text-[#003882] dark:text-[#00E5FF] font-extrabold"
+                    : "text-[#0A0F1D] dark:text-[#E2E8F0]"
                 }`}
               >
                 {item.label}
                 {activeSection === item.id && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#00E5FF] shadow-[0_0_8px_#00E5FF]" />
+                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#003882] dark:bg-[#00E5FF] shadow-[0_0_8px_rgba(0,56,130,0.4)] dark:shadow-[0_0_8px_#00E5FF]" />
                 )}
               </button>
             ))}
@@ -205,7 +205,7 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-semibold uppercase tracking-wider text-[#374151] dark:text-[#E5E7EB] hover:text-[#00E5FF] transition-colors py-1"
+              className="text-xs font-bold uppercase tracking-wider text-[#0A0F1D] dark:text-[#E2E8F0] hover:text-[#003882] dark:hover:text-[#00E5FF] transition-colors py-1"
             >
               Resume
             </a>
@@ -216,10 +216,61 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
             {/* Primary CTA (Requirement 15) */}
             <button
               onClick={() => scrollToSection("contact")}
-              className="hidden xl:flex items-center space-x-1.5 px-4 py-2.5 rounded-xl bg-[#00E5FF] hover:bg-[#00B4D8] text-[#06070A] text-xs font-black uppercase tracking-wider transition-all duration-200 shadow-[0_0_12px_rgba(0,229,255,0.25)] cursor-pointer"
+              className="hidden xl:flex items-center space-x-1.5 px-4 py-2.5 rounded-xl bg-[#003882] hover:bg-[#002D6E] text-white dark:bg-[#00E5FF] dark:hover:bg-[#00c8e0] dark:text-[#06070A] text-xs font-extrabold uppercase tracking-wider transition-all duration-200 shadow-md cursor-pointer"
             >
               <span>Let&apos;s Build</span>
             </button>
+            {/* 1-Click Color Accent System Switcher */}
+            <div 
+              role="radiogroup" 
+              aria-label="Color Accent Switcher"
+              className="hidden lg:flex items-center space-x-1 p-1 h-[44px] rounded-xl border border-gray-300 dark:border-[#2A3441] bg-white dark:bg-[#1A1F2B] shadow-sm select-none"
+            >
+              {(["blue", "gold", "violet"] as const).map((acc) => {
+                const isSelected = (profile.accent || "gold") === acc;
+                const config = {
+                  blue: { 
+                    label: "Cyan", 
+                    dot: "bg-[#003882] dark:bg-[#00E5FF]", 
+                    activeClass: "bg-[#003882] text-white dark:bg-[#00E5FF] dark:text-[#06070A] shadow-sm font-extrabold" 
+                  },
+                  gold: { 
+                    label: "Gold", 
+                    dot: "bg-[#78350F] dark:bg-[#F5C84B]", 
+                    activeClass: "bg-[#78350F] text-white dark:bg-[#F5C84B] dark:text-[#06070A] shadow-sm font-extrabold" 
+                  },
+                  violet: { 
+                    label: "Violet", 
+                    dot: "bg-[#4C1D95] dark:bg-[#D8B4FE]", 
+                    activeClass: "bg-[#4C1D95] text-white dark:bg-[#D8B4FE] dark:text-[#06070A] shadow-sm font-extrabold" 
+                  },
+                }[acc];
+
+                return (
+                  <button
+                    key={acc}
+                    type="button"
+                    onClick={() => {
+                      onUpdateProfile({ ...profile, accent: acc });
+                      setEditForm((prev) => ({ ...prev, accent: acc }));
+                      document.documentElement.setAttribute("data-accent", acc);
+                    }}
+                    role="radio"
+                    aria-checked={isSelected}
+                    title={`Switch accent color to ${config.label}`}
+                    className={`h-[34px] px-2.5 rounded-lg text-[10px] uppercase font-bold tracking-wider flex items-center space-x-1.5 transition-all duration-200 cursor-pointer ${
+                      isSelected
+                        ? config.activeClass
+                        : "text-[#1E293B] dark:text-[#CBD5E1] hover:text-[#003882] dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5"
+                    }`}
+                  >
+                    <span className={`w-2 h-2 rounded-full ${config.dot}`} />
+                    <span className="hidden xl:inline">{config.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+
             {/* Dedicated 1-Click Dark & Light Toggle Button (Sections 18, 19, 20) */}
             <button 
               onClick={() => setTheme(isDark ? "light" : "dark")}
@@ -227,8 +278,8 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
               aria-pressed={isDark}
               className={`h-[44px] px-4 rounded-xl border-[1.5px] transition-all duration-200 cursor-pointer flex items-center space-x-2 text-xs font-bold uppercase tracking-wider select-none ${
                 isDark
-                  ? "bg-[#0F1118] border-[#D4AF37] text-white shadow-[0_4px_14px_rgba(0,0,0,0.30)] hover:border-[#F5C84B] hover:bg-[#141821]"
-                  : "bg-[#FFFFFF] border-[#B8941F] text-[#111318] shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:bg-[#F4F1E8] hover:border-[#D4AF37]"
+                  ? "bg-[#1A1F2B] border-[#2A3441] text-[#F8FAFC] shadow-[0_4px_14px_rgba(0,0,0,0.30)] hover:border-[#00E5FF] hover:bg-[#111827]"
+                  : "bg-white border-gray-300 text-[#0A0F1D] shadow-sm hover:border-[#003882] hover:bg-gray-50"
               }`}
               title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
             >
@@ -239,7 +290,7 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
                 </>
               ) : (
                 <>
-                  <Moon className="w-4 h-4 text-[#A67C00] shrink-0" />
+                  <Moon className="w-4 h-4 text-[#003882] shrink-0" />
                   <span>DARK</span>
                 </>
               )}
@@ -248,48 +299,48 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
             {/* Recruiter Mode Toggle (Section 31) */}
             <button
               onClick={() => onToggleRecruiterMode(!recruiterMode)}
-              className={`h-[44px] px-4 rounded-xl border-[1.5px] transition-all duration-200 cursor-pointer flex items-center space-x-2 text-xs font-bold uppercase tracking-wider ${
+              className={`h-[44px] px-3.5 rounded-xl border-[1.5px] transition-all duration-200 cursor-pointer flex items-center space-x-2 text-xs font-bold uppercase tracking-wider ${
                 recruiterMode
-                  ? "bg-[#D4AF37] text-black border-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.4)]"
-                  : "bg-white dark:bg-[#0F1118] text-[#111318] dark:text-white border-[#B8941F] dark:border-[#D4AF37] hover:bg-[#F4F1E8] dark:hover:bg-[#141821]"
+                  ? "bg-[#78350F] text-white dark:bg-[#F5C84B] dark:text-black border-[#78350F] dark:border-[#F5C84B] shadow-md"
+                  : "bg-white dark:bg-[#1A1F2B] text-[#0A0F1D] dark:text-[#F8FAFC] border-gray-300 dark:border-[#2A3441] hover:bg-gray-50 dark:hover:bg-[#111827] hover:border-[#003882] dark:hover:border-[#00E5FF]"
               }`}
               title="Toggle Recruiter Mode"
               aria-label="Toggle Recruiter Mode"
               aria-pressed={recruiterMode}
             >
-              <Briefcase className="w-4 h-4 text-[#B8941F] dark:text-[#D4AF37]" />
-              <span className="hidden lg:inline">{recruiterMode ? "Recruiter Active" : "Recruiter Mode"}</span>
+              <Briefcase className="w-4 h-4 text-[#003882] dark:text-[#00E5FF]" />
+              <span className="hidden lg:inline">{recruiterMode ? "Recruiter Active" : "Recruiter"}</span>
             </button>
 
             {/* Intelligent Upload Engine Button */}
             <button
               onClick={onOpenUpload}
-              className="h-[44px] px-3.5 rounded-xl border-[1.5px] border-[#B8941F] dark:border-[#D4AF37] bg-white dark:bg-[#0F1118] text-[#111318] dark:text-white hover:bg-[#D4AF37] hover:text-black transition-all duration-200 cursor-pointer flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider shadow-sm group"
+              className="h-[44px] px-3.5 rounded-xl border-[1.5px] border-gray-300 dark:border-[#2A3441] bg-white dark:bg-[#1A1F2B] text-[#0A0F1D] dark:text-[#F8FAFC] hover:border-[#003882] dark:hover:border-[#00E5FF] hover:text-[#003882] dark:hover:text-[#00E5FF] transition-all duration-200 cursor-pointer flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider shadow-sm group"
               title="Asset Intelligence Studio (Upload Anything — Ctrl+U)"
               aria-label="Upload Anything Engine"
             >
-              <Upload className="w-4 h-4 text-[#B8941F] dark:text-[#D4AF37] group-hover:text-black transition-colors" />
+              <Upload className="w-4 h-4 text-[#003882] dark:text-[#00E5FF] transition-colors" />
               <span className="hidden xl:inline">AI Studio</span>
             </button>
 
             {/* Settings Gear (Section 32) */}
             <button 
               onClick={() => setSettingsOpen(true)}
-              className="w-[44px] h-[44px] rounded-xl border-[1.5px] border-[#B8941F] dark:border-[#D4AF37] bg-white dark:bg-[#0F1118] text-[#111318] dark:text-white hover:text-gold hover:rotate-90 transition-all duration-300 flex items-center justify-center cursor-pointer shadow-sm"
+              className="w-[44px] h-[44px] rounded-xl border-[1.5px] border-gray-300 dark:border-[#2A3441] bg-white dark:bg-[#1A1F2B] text-[#0A0F1D] dark:text-[#F8FAFC] hover:border-[#003882] dark:hover:border-[#00E5FF] hover:text-[#003882] dark:hover:text-[#00E5FF] hover:rotate-90 transition-all duration-300 flex items-center justify-center cursor-pointer shadow-sm"
               title="Settings"
               aria-label="Settings"
             >
-              <Settings className="w-4.5 h-4.5 text-[#B8941F] dark:text-[#D4AF37]" />
+              <Settings className="w-4.5 h-4.5 text-[#003882] dark:text-[#00E5FF]" />
             </button>
             
             {/* Avatar Profile (Section 33) */}
             <button 
               onClick={() => setAvatarOpen(!avatarOpen)}
-              className="w-[44px] h-[44px] rounded-xl border-[1.5px] border-[#B8941F] dark:border-[#D4AF37] bg-white dark:bg-[#0F1118] flex items-center justify-center shadow-sm hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all duration-300 cursor-pointer overflow-hidden relative"
+              className="w-[44px] h-[44px] rounded-xl border-[1.5px] border-gray-300 dark:border-[#2A3441] bg-white dark:bg-[#1A1F2B] flex items-center justify-center shadow-sm hover:border-[#003882] dark:hover:border-[#00E5FF] transition-all duration-300 cursor-pointer overflow-hidden relative"
               title="Profile"
               aria-label="Profile Avatar"
             >
-              <User className="w-4.5 h-4.5 text-[#B8941F] dark:text-[#D4AF37]" />
+              <User className="w-4.5 h-4.5 text-[#003882] dark:text-[#00E5FF]" />
             </button>
 
             {/* Avatar Dropdown Card */}
@@ -395,18 +446,51 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
               <div className="flex bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl p-1.5 w-full max-w-[280px] justify-between items-center mt-4">
                 <button
                   onClick={() => setTheme("light")}
-                  className={`flex items-center justify-center space-x-1.5 flex-grow py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 ${!isDark ? "bg-[#D4AF37] text-black shadow-sm" : "text-gray-500"}`}
+                  className={`flex items-center justify-center space-x-1.5 flex-grow py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${!isDark ? "bg-[#003882] text-white dark:bg-[#00E5FF] dark:text-black shadow-sm font-extrabold" : "text-[#1E293B] dark:text-gray-400"}`}
                 >
                   <Sun className="w-4 h-4" />
                   <span>Light Mode</span>
                 </button>
                 <button
                   onClick={() => setTheme("dark")}
-                  className={`flex items-center justify-center space-x-1.5 flex-grow py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 ${isDark ? "bg-[#D4AF37] text-black shadow-sm" : "text-gray-500"}`}
+                  className={`flex items-center justify-center space-x-1.5 flex-grow py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${isDark ? "bg-[#003882] text-white dark:bg-[#00E5FF] dark:text-black shadow-sm font-extrabold" : "text-[#1E293B] dark:text-gray-400"}`}
                 >
                   <Moon className="w-4 h-4" />
                   <span>Dark Mode</span>
                 </button>
+              </div>
+
+              {/* Mobile Accent Selection Row */}
+              <div className="flex flex-col w-full max-w-[280px] mt-3 space-y-1.5">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1E293B] dark:text-gray-400 text-center">
+                  Color Accent System
+                </span>
+                <div className="flex bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl p-1 justify-between items-center">
+                  {(["blue", "gold", "violet"] as const).map((acc) => {
+                    const isSelected = (profile.accent || "gold") === acc;
+                    const config = {
+                      blue: { label: "Cyan", dot: "bg-[#003882] dark:bg-[#00E5FF]", active: "bg-[#003882] text-white dark:bg-[#00E5FF] dark:text-[#06070A]" },
+                      gold: { label: "Gold", dot: "bg-[#78350F] dark:bg-[#F5C84B]", active: "bg-[#78350F] text-white dark:bg-[#F5C84B] dark:text-[#06070A]" },
+                      violet: { label: "Violet", dot: "bg-[#4C1D95] dark:bg-[#D8B4FE]", active: "bg-[#4C1D95] text-white dark:bg-[#D8B4FE] dark:text-[#06070A]" },
+                    }[acc];
+                    return (
+                      <button
+                        key={acc}
+                        onClick={() => {
+                          onUpdateProfile({ ...profile, accent: acc });
+                          setEditForm((prev) => ({ ...prev, accent: acc }));
+                          document.documentElement.setAttribute("data-accent", acc);
+                        }}
+                        className={`flex-1 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-all cursor-pointer ${
+                          isSelected ? `${config.active} font-black shadow-sm` : "text-[#1E293B] dark:text-gray-400"
+                        }`}
+                      >
+                        <span className={`w-2 h-2 rounded-full ${config.dot}`} />
+                        <span>{config.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
 
               <div className="flex flex-col items-center space-y-4 pt-6 border-t border-black/10 dark:border-white/10 w-full justify-center">
@@ -414,31 +498,33 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
                   onClick={() => { onToggleRecruiterMode(!recruiterMode); setMobileMenuOpen(false); }}
                   className={`w-full max-w-[280px] py-3 rounded-xl border-[1.5px] text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center justify-center space-x-2 cursor-pointer ${
                     recruiterMode
-                      ? "bg-[#D4AF37] text-black border-[#D4AF37] shadow-md"
-                      : "bg-white dark:bg-[#0F1118] text-[#111318] dark:text-white border-[#B8941F] dark:border-[#D4AF37]"
+                      ? "bg-[#78350F] text-white dark:bg-[#F5C84B] dark:text-black border-[#78350F] dark:border-[#F5C84B] shadow-md"
+                      : "bg-white dark:bg-[#1A1F2B] text-[#0A0F1D] dark:text-[#F8FAFC] border-gray-300 dark:border-[#2A3441]"
                   }`}
                 >
-                  <Briefcase className="w-4 h-4" />
+                  <Briefcase className="w-4 h-4 text-[#003882] dark:text-[#00E5FF]" />
                   <span>{recruiterMode ? "Recruiter Mode Active" : "Enable Recruiter Mode"}</span>
                 </button>
 
                 <button
                   onClick={() => { setMobileMenuOpen(false); onOpenUpload?.(); }}
-                  className="w-full max-w-[280px] py-3 rounded-xl border border-[#D4AF37] bg-[#D4AF37]/15 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition-all cursor-pointer"
+                  className="w-full max-w-[280px] py-3 rounded-xl border border-gray-300 dark:border-[#2A3441] bg-white dark:bg-[#1A1F2B] text-[#0A0F1D] dark:text-[#F8FAFC] hover:border-[#003882] dark:hover:border-[#00E5FF] font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition-all cursor-pointer shadow-sm"
                 >
-                  <Upload className="w-4 h-4" />
+                  <Upload className="w-4 h-4 text-[#003882] dark:text-[#00E5FF]" />
                   <span>Asset Intelligence Studio</span>
                 </button>
                 <div className="flex space-x-4">
                   <button 
                     onClick={() => { setMobileMenuOpen(false); setSettingsOpen(true); }}
-                    className="p-3 bg-[#0d0d0d] rounded-full border border-white/10 text-gray-300"
+                    className="p-3 bg-white dark:bg-[#1A1F2B] rounded-full border border-gray-300 dark:border-[#2A3441] text-[#0A0F1D] dark:text-gray-300 shadow-sm cursor-pointer"
+                    title="Settings"
                   >
-                    <Settings className="w-6 h-6" />
+                    <Settings className="w-6 h-6 text-[#003882] dark:text-[#00E5FF]" />
                   </button>
                   <button 
                     onClick={() => { setMobileMenuOpen(false); setAvatarOpen(true); }}
-                    className="p-3 bg-[#0d0d0d] rounded-full border border-gold text-gold"
+                    className="p-3 bg-white dark:bg-[#1A1F2B] rounded-full border border-gray-300 dark:border-[#2A3441] text-[#003882] dark:text-[#00E5FF] shadow-sm cursor-pointer"
+                    title="Profile"
                   >
                     <User className="w-6 h-6" />
                   </button>
@@ -457,12 +543,12 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
         >
           {/* Drawer Container */}
           <div 
-            className="w-full max-w-sm h-full bg-white dark:bg-[#0d0d0d] border-l border-black/10 dark:border-gold/30 p-6 flex flex-col justify-between overflow-y-auto shadow-2xl transition-transform duration-300 animate-slide-in-right cursor-default text-black dark:text-white"
+            className="w-full max-w-sm h-full bg-[#FAFAF7] dark:bg-[#0d0d0d] border-l border-gray-300 dark:border-gold/30 p-6 flex flex-col justify-between overflow-y-auto shadow-2xl transition-transform duration-300 animate-slide-in-right cursor-default text-[#0A0F1D] dark:text-white"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
             <div className="flex justify-between items-center mb-6 border-b border-black/5 dark:border-white/5 pb-4">
-              <h3 className="text-lg font-black tracking-wider text-gradient-gold">SYSTEM SETTINGS</h3>
+              <h3 className="text-lg font-black tracking-wider text-[#003882] dark:text-gradient-gold">SYSTEM SETTINGS</h3>
               <button
                 onClick={() => setSettingsOpen(false)}
                 className="p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 cursor-pointer"
@@ -474,51 +560,56 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
             <form onSubmit={handleSaveSettings} className="space-y-4 flex-grow">
               {/* Name */}
               <div>
-                <label className="block text-[10px] text-gray-400 uppercase tracking-wider mb-1 font-bold">User Name</label>
+                <label className="block text-[10px] text-[#1E293B] dark:text-gray-400 uppercase tracking-wider mb-1 font-bold">User Name</label>
                 <input
                   type="text"
                   value={editForm.name}
                   onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
-                  className="w-full bg-gray-50 dark:bg-[#050505] border border-black/10 dark:border-gold/20 rounded px-3 py-2 text-xs text-black dark:text-white focus:outline-none focus:border-gold transition-colors duration-300"
+                  className="w-full bg-white dark:bg-[#050505] border border-gray-300 dark:border-gold/20 rounded px-3 py-2 text-xs text-[#0A0F1D] dark:text-white focus:outline-none focus:border-[#003882] dark:focus:border-gold transition-colors duration-300"
                 />
               </div>
 
               {/* Title */}
               <div>
-                <label className="block text-[10px] text-gray-400 uppercase tracking-wider mb-1 font-bold">Professional Title</label>
+                <label className="block text-[10px] text-[#1E293B] dark:text-gray-400 uppercase tracking-wider mb-1 font-bold">Professional Title</label>
                 <input
                   type="text"
                   value={editForm.title}
                   onChange={(e) => setEditForm({ ...editForm, title: e.target.value })}
-                  className="w-full bg-gray-50 dark:bg-[#050505] border border-black/10 dark:border-gold/20 rounded px-3 py-2 text-xs text-black dark:text-white focus:outline-none focus:border-gold transition-colors duration-300"
+                  className="w-full bg-white dark:bg-[#050505] border border-gray-300 dark:border-gold/20 rounded px-3 py-2 text-xs text-[#0A0F1D] dark:text-white focus:outline-none focus:border-[#003882] dark:focus:border-gold transition-colors duration-300"
                 />
               </div>
 
               {/* Accent Selection */}
               <div>
-                <label className="block text-[10px] text-gray-400 uppercase tracking-wider mb-2 font-bold">Color Accent System</label>
+                <label className="block text-[10px] text-[#1E293B] dark:text-gray-400 uppercase tracking-wider mb-2 font-bold">Color Accent System</label>
                 <div className="flex space-x-2">
-                  {(["gold", "blue", "violet"] as const).map((acc) => (
-                    <button
-                      type="button"
-                      key={acc}
-                      onClick={() => {
-                        setEditForm({ ...editForm, accent: acc });
-                        document.documentElement.setAttribute("data-accent", acc);
-                      }}
-                      className={`flex-1 py-1.5 rounded border text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-                        editForm.accent === acc
-                          ? acc === "gold"
-                            ? "bg-gold text-black border-gold shadow-[0_0_8px_#D4A017]"
-                            : acc === "blue"
-                            ? "bg-[#00F0FF] text-black border-[#00F0FF] shadow-[0_0_8px_#00F0FF]"
-                            : "bg-[#9d4edd] text-white border-[#9d4edd] shadow-[0_0_8px_#9d4edd]"
-                          : "bg-transparent text-gray-500 dark:text-gray-400 border-black/10 dark:border-white/10 hover:border-gold"
-                      }`}
-                    >
-                      {acc}
-                    </button>
-                  ))}
+                  {(["gold", "blue", "violet"] as const).map((acc) => {
+                    const isSelected = editForm.accent === acc;
+                    const config = {
+                      gold: { label: "Gold", active: "bg-[#78350F] text-white dark:bg-[#F5C84B] dark:text-[#06070A]" },
+                      blue: { label: "Cyan", active: "bg-[#003882] text-white dark:bg-[#00E5FF] dark:text-[#06070A]" },
+                      violet: { label: "Violet", active: "bg-[#4C1D95] text-white dark:bg-[#D8B4FE] dark:text-[#06070A]" },
+                    }[acc];
+                    return (
+                      <button
+                        type="button"
+                        key={acc}
+                        onClick={() => {
+                          setEditForm((prev) => ({ ...prev, accent: acc }));
+                          onUpdateProfile({ ...profile, ...editForm, accent: acc });
+                          document.documentElement.setAttribute("data-accent", acc);
+                        }}
+                        className={`flex-1 py-2 rounded-xl border text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                          isSelected
+                            ? `${config.active} font-black border-transparent shadow-md`
+                            : "bg-transparent text-[#1E293B] dark:text-gray-400 border-gray-300 dark:border-white/10 hover:border-[#003882] dark:hover:border-[#00E5FF]"
+                        }`}
+                      >
+                        {config.label}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 

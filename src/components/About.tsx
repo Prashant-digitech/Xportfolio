@@ -156,39 +156,39 @@ export default function About({ profile }: AboutProps) {
   ];
 
   return (
-    <section id="about" className="relative py-24 sm:py-32 bg-[#06070A] border-t border-[#2A3441]/70 text-[#F8FAFC] transition-colors duration-300">
+    <section id="about" className="relative py-24 sm:py-32 bg-[#FAFAF7] dark:bg-[#06070A] border-t border-gray-200 dark:border-[#2A3441]/70 text-[#0A0F1D] dark:text-[#F8FAFC] transition-colors duration-300">
       {/* Background gradients */}
-      <div className="absolute top-[30%] right-[5%] w-[350px] h-[350px] rounded-full bg-[#00E5FF]/5 blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-[20%] left-[5%] w-[350px] h-[350px] rounded-full bg-[#3B82F6]/5 blur-[140px] pointer-events-none" />
+      <div className="absolute top-[30%] right-[5%] w-[350px] h-[350px] rounded-full bg-[#003882]/5 dark:bg-[#00E5FF]/5 blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-[20%] left-[5%] w-[350px] h-[350px] rounded-full bg-[#003882]/5 dark:bg-[#3B82F6]/5 blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Title */}
         <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
-          <span className="text-xs font-mono font-bold uppercase tracking-[0.3em] text-[#00E5FF] px-3.5 py-1 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/20">
+          <span className="text-xs font-mono font-bold uppercase tracking-[0.3em] text-[#003882] dark:text-[#00E5FF] px-3.5 py-1 rounded-full bg-[#003882]/10 dark:bg-[#00E5FF]/10 border border-[#003882]/20 dark:border-[#00E5FF]/20">
             PROFILE &amp; PHILOSOPHY
           </span>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight mt-4 text-[#F8FAFC] uppercase">
-            WHO I AM &amp; <span className="text-[#00E5FF]">HOW I THINK</span>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight mt-4 text-[#0A0F1D] dark:text-[#F8FAFC] uppercase">
+            WHO I AM &amp; <span className="text-[#003882] dark:text-[#00E5FF]">HOW I THINK</span>
           </h2>
-          <div className="w-16 h-[2px] bg-[#00E5FF] mt-4 shadow-[0_0_12px_#00E5FF]" />
-          <p className="text-[#94A3B8] mt-4 max-w-2xl text-sm sm:text-base leading-relaxed">
+          <div className="w-16 h-[2px] bg-[#003882] dark:bg-[#00E5FF] mt-4 shadow-[0_0_12px_rgba(0,56,130,0.3)] dark:shadow-[0_0_12px_#00E5FF]" />
+          <p className="text-[#1E293B] dark:text-[#CBD5E1] mt-4 max-w-2xl text-sm sm:text-base leading-relaxed">
             Senior Product &amp; UX Designer uniting aesthetic craftsmanship with structural engineering discipline. Master of Technology foundation bridging complex systems, user empathy, and production-grade delivery.
           </p>
         </div>
 
         {/* ── Multidisciplinary Evolution Flow (Req 23) ── */}
-        <div className="mb-16 p-6 sm:p-8 rounded-2xl bg-[#111827]/80 border border-[#2A3441] shadow-xl">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-[#2A3441]/70">
+        <div className="mb-16 p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#111827]/80 border border-gray-200 dark:border-[#2A3441] shadow-xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-gray-200 dark:border-[#2A3441]/70">
             <div>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#00E5FF]">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#003882] dark:text-[#00E5FF]">
                 CAREER TRAJECTORY &amp; DISCIPLINE PROGRESSION
               </span>
-              <h3 className="text-base sm:text-lg font-black uppercase text-[#F8FAFC] mt-0.5">
+              <h3 className="text-base sm:text-lg font-black uppercase text-[#0A0F1D] dark:text-[#F8FAFC] mt-0.5">
                 Multidisciplinary Evolution
               </h3>
             </div>
-            <span className="text-[11px] font-mono text-[#94A3B8]">
+            <span className="text-[11px] font-mono text-[#1E293B] dark:text-[#CBD5E1]">
               Art Direction → Interaction → Product Engineering
             </span>
           </div>
@@ -197,23 +197,23 @@ export default function About({ profile }: AboutProps) {
             {evolutionSteps.map((ev, i) => (
               <div 
                 key={ev.step} 
-                className="p-3.5 rounded-xl bg-[#1A1F2B] border border-[#2A3441] hover:border-[#00E5FF]/60 transition-all duration-300 group flex flex-col justify-between"
+                className="p-3.5 rounded-xl bg-gray-50 dark:bg-[#1A1F2B] border border-gray-200 dark:border-[#2A3441] hover:border-[#003882] dark:hover:border-[#00E5FF]/60 transition-all duration-300 group flex flex-col justify-between"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-[10px] font-mono font-bold text-[#00E5FF]">
+                  <span className="text-[10px] font-mono font-bold text-[#003882] dark:text-[#00E5FF]">
                     {ev.step}
                   </span>
                   {i < evolutionSteps.length - 1 && (
-                    <span className="text-[10px] text-[#94A3B8] group-hover:text-[#00E5FF] transition-colors hidden lg:inline">
+                    <span className="text-[10px] text-[#1E293B] dark:text-[#CBD5E1] group-hover:text-[#003882] dark:group-hover:text-[#00E5FF] transition-colors hidden lg:inline">
                       →
                     </span>
                   )}
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold uppercase text-[#F8FAFC] group-hover:text-[#00E5FF] transition-colors">
+                  <h4 className="text-xs font-bold uppercase text-[#0A0F1D] dark:text-[#F8FAFC] group-hover:text-[#003882] dark:group-hover:text-[#00E5FF] transition-colors">
                     {ev.discipline}
                   </h4>
-                  <p className="text-[10px] text-[#94A3B8] mt-1 line-clamp-2 leading-snug">
+                  <p className="text-[10px] text-[#1E293B] dark:text-[#CBD5E1] mt-1 line-clamp-2 leading-snug">
                     {ev.context}
                   </p>
                 </div>
@@ -610,22 +610,22 @@ function MetricCard({ metric }: { metric: { title: string; count: number; suffix
   return (
     <div 
       ref={elementRef}
-      className="p-4 sm:p-5 rounded-2xl bg-[#1A1F2B] border border-[#2A3441] hover:border-[#00E5FF]/60 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(0,229,255,0.12)]"
+      className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#1A1F2B] border border-gray-200 dark:border-[#2A3441] hover:border-[#003882] dark:hover:border-[#00E5FF]/60 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(0,56,130,0.1)] dark:hover:shadow-[0_8px_25px_rgba(0,229,255,0.12)]"
     >
       <div className="flex items-center justify-between mb-3">
-        <span className="text-[10px] font-mono text-[#94A3B8] uppercase tracking-widest font-bold">TELEMETRY</span>
-        <div className="p-1.5 rounded-lg bg-[#111827] border border-[#2A3441] group-hover:scale-110 transition-transform">
+        <span className="text-[10px] font-mono text-[#1E293B] dark:text-[#94A3B8] uppercase tracking-widest font-bold">TELEMETRY</span>
+        <div className="p-1.5 rounded-lg bg-gray-100 dark:bg-[#111827] border border-gray-200 dark:border-[#2A3441] group-hover:scale-110 transition-transform">
           {metric.icon}
         </div>
       </div>
       <div>
-        <div className="text-2xl sm:text-3xl font-black text-[#F8FAFC] tracking-tight">
+        <div className="text-2xl sm:text-3xl font-black text-[#0A0F1D] dark:text-[#F8FAFC] tracking-tight">
           {count}{metric.suffix}
         </div>
-        <div className="text-[11px] font-bold uppercase tracking-wider text-[#00E5FF] mt-0.5">
+        <div className="text-[11px] font-bold uppercase tracking-wider text-[#003882] dark:text-[#00E5FF] mt-0.5">
           {metric.title}
         </div>
-        <div className="text-[10px] text-[#94A3B8] mt-1 line-clamp-1">
+        <div className="text-[10px] text-[#1E293B] dark:text-[#CBD5E1] mt-1 line-clamp-1">
           {metric.detail}
         </div>
       </div>
@@ -643,12 +643,12 @@ function AchievementCounter({ rank, detail }: { rank: string; detail: string }) 
   const { count, elementRef } = useCountUp(num || 0, 1500);
 
   return (
-    <div ref={elementRef} className="p-6 rounded-2xl bg-[#1A1F2B] border border-[#2A3441] hover:border-[#00E5FF]/50 transition-all duration-300 flex flex-col justify-between group">
-      <span className="text-sm font-black uppercase text-[#00E5FF] tracking-widest font-mono">
+    <div ref={elementRef} className="p-6 rounded-2xl bg-white dark:bg-[#1A1F2B] border border-gray-200 dark:border-[#2A3441] hover:border-[#003882] dark:hover:border-[#00E5FF]/50 transition-all duration-300 flex flex-col justify-between group shadow-sm">
+      <span className="text-sm font-black uppercase text-[#003882] dark:text-[#00E5FF] tracking-widest font-mono">
         {num !== null ? `${prefix}${count}${suffix}` : rank}
       </span>
-      <p className="text-xs text-[#94A3B8] mt-2 leading-relaxed">{detail}</p>
-      <div className="w-8 h-[2px] bg-[#2A3441] mt-4 group-hover:w-16 group-hover:bg-[#00E5FF] transition-all duration-300" />
+      <p className="text-xs text-[#1E293B] dark:text-[#CBD5E1] mt-2 leading-relaxed">{detail}</p>
+      <div className="w-8 h-[2px] bg-gray-300 dark:bg-[#2A3441] mt-4 group-hover:w-16 group-hover:bg-[#003882] dark:group-hover:bg-[#00E5FF] transition-all duration-300" />
     </div>
   );
 }

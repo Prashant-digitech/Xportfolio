@@ -289,25 +289,25 @@ export default function BirthChartCard({ ascendant, rashi, nakshatra }: any) {
   };
 
   return (
-    <section id="figma-lab" className="relative py-24 bg-[#05070E] text-white transition-colors duration-300 overflow-hidden">
+    <section id="figma-lab" className="relative py-24 bg-[#FAFAF7] dark:bg-[#05070E] text-[#0A0F1D] dark:text-white transition-colors duration-300 overflow-hidden">
       {/* Background ambient lighting */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-gold/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#00E5FF]/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#003882]/5 dark:bg-gold/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#003882]/5 dark:bg-[#00E5FF]/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* SECTION HEADER */}
         <div className="flex flex-col items-center text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/30 mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-gold" />
-            <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-gold">100% Genuine Work Evidence</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#003882]/10 dark:bg-gold/10 border border-[#003882]/30 dark:border-gold/30 mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-[#003882] dark:text-gold" />
+            <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-[#003882] dark:text-gold">100% Genuine Work Evidence</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
-            FIGMA <span className="text-gradient-gold">LAB</span>
+          <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#0A0F1D] dark:text-white">
+            FIGMA <span className="text-[#003882] dark:text-gradient-gold">LAB</span>
           </h2>
-          <div className="w-20 h-[2px] bg-gold mt-3 shadow-[0_0_12px_#D4A017]" />
-          <p className="text-gray-400 mt-4 max-w-2xl text-sm sm:text-base leading-relaxed">
-            Interactive Figma workspace emulation loaded with <span className="text-white font-bold">real, authentic project artifacts</span> from the DeepAstro project. Inspect genuine wireframes, design systems, iterative phases, and prototype noodle graphs directly from Figma.
+          <div className="w-20 h-[2px] bg-[#003882] dark:bg-gold mt-3 shadow-[0_0_12px_rgba(0,56,130,0.3)] dark:shadow-[0_0_12px_#D4A017]" />
+          <p className="text-[#1E293B] dark:text-gray-400 mt-4 max-w-2xl text-sm sm:text-base leading-relaxed">
+            Interactive Figma workspace emulation loaded with <span className="text-[#0A0F1D] dark:text-white font-bold">real, authentic project artifacts</span> from the DeepAstro project. Inspect genuine wireframes, design systems, iterative phases, and prototype noodle graphs directly from Figma.
           </p>
         </div>
 
@@ -320,10 +320,10 @@ export default function BirthChartCard({ ascendant, rashi, nakshatra }: any) {
               <button
                 key={stageKey}
                 onClick={() => setActiveStage(stageKey)}
-                className={`px-4 sm:px-5 py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center gap-2 ${
+                className={`px-4 sm:px-5 py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center gap-2 shadow-sm ${
                   isActive
-                    ? "bg-gradient-to-r from-gold to-gold-light text-black border-gold shadow-[0_0_20px_rgba(212,160,23,0.35)] scale-105 font-black"
-                    : "bg-[#090D1C] border-white/10 text-gray-400 hover:border-gold/50 hover:text-white hover:bg-[#0E152E]"
+                    ? "bg-[#003882] text-white dark:bg-gradient-to-r dark:from-gold dark:to-gold-light dark:text-black border-[#003882] dark:border-gold shadow-md scale-105 font-black"
+                    : "bg-white dark:bg-[#090D1C] border-gray-200 dark:border-white/10 text-[#1E293B] dark:text-gray-400 hover:border-[#003882] dark:hover:border-gold/50 hover:text-[#003882] dark:hover:text-white hover:bg-gray-50 dark:hover:bg-[#0E152E]"
                 }`}
               >
                 {stageKey === "wireframe" && <Layers className="w-3.5 h-3.5" />}

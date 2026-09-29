@@ -202,4 +202,60 @@ test.describe("Prashant Sisodhiya Portfolio E2E Verifications", () => {
     // Verify In-App Reader closed and returned back to the portfolio
     await expect(inAppViewer).not.toBeVisible();
   });
+
+  test("should switch color accents and maintain strict contrast standards in light and dark mode", async ({ page }) => {
+    const htmlElement = page.locator("html");
+
+    // 1. Locate Color Accent Switcher in Navbar
+    const accentSwitcher = page.locator("div[role='radiogroup'][aria-label='Color Accent Switcher']");
+    await expect(accentSwitcher).toBeVisible();
+
+    // 2. Click Cyan accent button
+    const cyanBtn = accentSwitcher.locator("button:has-text('Cyan')").first();
+    await cyanBtn.click();
+    await page.waitForTimeout(300);
+    await expect(htmlElement).toHaveAttribute("data-accent", "blue");
+
+    // 3. Click Gold accent button
+    const goldBtn = accentSwitcher.locator("button:has-text('Gold')").first();
+    await goldBtn.click();
+    await page.waitForTimeout(300);
+    await expect(htmlElement).toHaveAttribute("data-accent", "gold");
+
+    // 4. Click Violet accent button
+    const violetBtn = accentSwitcher.locator("button:has-text('Violet')").first();
+    await violetBtn.click();
+    await page.waitForTimeout(300);
+    await expect(htmlElement).toHaveAttribute("data-accent", "violet");
+
+    // 5. Switch to Light Mode and check high contrast
+    const themeBtn = page.locator("button[aria-label*='Switch to light mode'], button[aria-label*='Switch to dark mode']").first();
+    const isDarkNow = await htmlElement.evaluate((el) => el.classList.contains("dark"));
+    if (isDarkNow) {
+      await themeBtn.click();
+      await page.waitForTimeout(400);
+    }
+    await expect(htmlElement).toHaveClass(/light/);
+
+    // Verify light mode text color contrast on body (should be dark charcoal #0A0F1D)
+    const bodyColor = await page.evaluate(() => {
+      const style = window.getComputedStyle(document.body);
+      return style.color;
+    });
+    // RGB for #0A0F1D is rgb(10, 15, 29)
+    expect(bodyColor).toContain("10, 15, 29");
+
+    // 6. Switch back to Dark Mode and check high contrast
+    await themeBtn.click();
+    await page.waitForTimeout(400);
+    await expect(htmlElement).toHaveClass(/dark/);
+
+    // Verify dark mode text color on body (should be light slate #F8FAFC)
+    const darkBodyColor = await page.evaluate(() => {
+      const style = window.getComputedStyle(document.body);
+      return style.color;
+    });
+    // RGB for #F8FAFC is rgb(248, 250, 252)
+    expect(darkBodyColor).toContain("248, 250, 252");
+  });
 });

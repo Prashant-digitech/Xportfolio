@@ -722,7 +722,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
           </div>
 
           {/* Filter Categories list (Requirement 9) */}
-          <div className="flex flex-wrap justify-center gap-2 mb-10 border-b border-black/10 dark:border-[#2A3441] pb-6">
+          <div className="flex flex-wrap justify-center gap-2 mb-10 border-b border-gray-200 dark:border-[#2A3441] pb-6">
             {[
               { id: "all", label: "All Works" },
               { id: "uiux", label: "Product & UX" },
@@ -736,8 +736,8 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                 onClick={() => setActiveFilter(cat.id)}
                 className={`px-4 py-2 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                   activeFilter === cat.id 
-                    ? "bg-[#00E5FF] text-[#06070A] font-extrabold shadow-[0_0_15px_rgba(0,229,255,0.3)] scale-105" 
-                    : "bg-white dark:bg-[#1A1F2B] border border-gray-200 dark:border-[#2A3441] text-[#374151] dark:text-[#94A3B8] hover:border-[#00E5FF] hover:text-[#111318] dark:hover:text-[#F8FAFC]"
+                    ? "bg-[#003882] text-white dark:bg-[#00E5FF] dark:text-[#06070A] font-extrabold shadow-md scale-105" 
+                    : "bg-white dark:bg-[#1A1F2B] border border-gray-200 dark:border-[#2A3441] text-[#1E293B] dark:text-[#CBD5E1] hover:border-[#003882] dark:hover:border-[#00E5FF] hover:text-[#003882] dark:hover:text-[#F8FAFC]"
                 }`}
               >
                 {cat.label}

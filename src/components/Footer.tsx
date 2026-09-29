@@ -275,44 +275,44 @@ export default function Footer({ profile }: FooterProps) {
   };
 
   return (
-    <footer className="relative bg-[#06070A] border-t border-[#2A3441]/70 py-12 overflow-hidden transition-colors duration-300">
+    <footer className="relative bg-[#FAFAF7] dark:bg-[#06070A] border-t border-gray-200 dark:border-[#2A3441]/70 py-12 overflow-hidden transition-colors duration-300">
       
       {/* Canvas for Twinkling Stars strictly within the footer container */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-40"
+        className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-40 dark:opacity-40"
       />
 
       {/* Subtle Hairline Border */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#00E5FF]/40 via-[#3B82F6]/30 to-transparent z-10" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#003882]/30 dark:via-[#00E5FF]/40 via-[#3B82F6]/30 to-transparent z-10" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center space-y-8 z-10">
         
         {/* ── High-Impact Conversion CTA Banner (Req 47) ── */}
-        <div className="w-full max-w-4xl mx-auto text-center py-10 px-6 sm:px-10 rounded-2xl bg-[#1A1F2B] border border-[#2A3441] shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[#00E5FF] to-transparent" />
-          <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-[#00E5FF] block mb-2">
+        <div className="w-full max-w-4xl mx-auto text-center py-10 px-6 sm:px-10 rounded-2xl bg-white dark:bg-[#1A1F2B] border border-gray-200 dark:border-[#2A3441] shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[#003882] dark:via-[#00E5FF] to-transparent" />
+          <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-[#003882] dark:text-[#00E5FF] block mb-2">
             COLLABORATION &amp; OPPORTUNITIES
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-[#F8FAFC] uppercase">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-[#0A0F1D] dark:text-[#F8FAFC] uppercase">
             Have an ambitious product in mind?
           </h2>
-          <p className="text-xs sm:text-sm text-[#94A3B8] mt-2 max-w-lg mx-auto font-medium leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#1E293B] dark:text-[#CBD5E1] mt-2 max-w-lg mx-auto font-medium leading-relaxed">
             Available for Senior Product Design, UI/UX systems architecture, and multidisciplinary design engineering engagements worldwide.
           </p>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-6">
             <button
               onClick={() => handleScrollTo("work")}
-              className="px-6 py-3 bg-[#00E5FF] text-black rounded-xl font-extrabold uppercase tracking-wider text-xs flex items-center space-x-2 hover:bg-[#00c8e0] transition-all shadow-md cursor-pointer hover:scale-105"
+              className="px-6 py-3 bg-[#003882] hover:bg-[#002D6E] text-white dark:bg-[#00E5FF] dark:hover:bg-[#00c8e0] dark:text-black rounded-xl font-extrabold uppercase tracking-wider text-xs flex items-center space-x-2 transition-all shadow-md cursor-pointer hover:scale-105"
             >
               <span>EXPLORE SELECTED WORK</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <button
               onClick={() => handleScrollTo("contact")}
-              className="px-6 py-3 border border-[#2A3441] hover:border-[#00E5FF] rounded-xl font-bold uppercase tracking-wider text-xs flex items-center space-x-2 bg-[#111827] text-[#F8FAFC] transition-all cursor-pointer hover:scale-105"
+              className="px-6 py-3 border border-gray-200 dark:border-[#2A3441] hover:border-[#003882] dark:hover:border-[#00E5FF] rounded-xl font-bold uppercase tracking-wider text-xs flex items-center space-x-2 bg-gray-50 dark:bg-[#111827] text-[#0A0F1D] dark:text-[#F8FAFC] transition-all cursor-pointer hover:scale-105"
             >
-              <Mail className="w-4 h-4 text-[#00E5FF]" />
+              <Mail className="w-4 h-4 text-[#003882] dark:text-[#00E5FF]" />
               <span>START A CONVERSATION</span>
             </button>
           </div>
@@ -320,23 +320,23 @@ export default function Footer({ profile }: FooterProps) {
 
         {/* Editorial Brand Name */}
         <div className="text-center">
-          <span className="font-extrabold text-sm tracking-[0.25em] text-[#F8FAFC] uppercase">
+          <span className="font-extrabold text-sm tracking-[0.25em] text-[#0A0F1D] dark:text-[#F8FAFC] uppercase">
             PRASHANT SISODHIYA
           </span>
-          <span className="mx-2 text-[#00E5FF]">|</span>
-          <span className="text-xs font-mono text-[#00E5FF] tracking-wider uppercase">
+          <span className="mx-2 text-[#003882] dark:text-[#00E5FF]">|</span>
+          <span className="text-xs font-mono text-[#003882] dark:text-[#00E5FF] tracking-wider uppercase">
             SENIOR PRODUCT &amp; UX DESIGNER
           </span>
         </div>
 
         {/* Quick Navigation Links (Canonical Sequence) */}
-        <div className="flex flex-wrap justify-center gap-6 text-[10px] font-mono font-bold uppercase tracking-widest text-[#94A3B8]">
-          <button onClick={() => handleScrollTo("home")} className="hover:text-[#00E5FF] transition-colors cursor-pointer">Home</button>
-          <button onClick={() => handleScrollTo("work")} className="hover:text-[#00E5FF] transition-colors cursor-pointer">Selected Work</button>
-          <button onClick={() => handleScrollTo("process")} className="hover:text-[#00E5FF] transition-colors cursor-pointer">Process</button>
-          <button onClick={() => handleScrollTo("about")} className="hover:text-[#00E5FF] transition-colors cursor-pointer">About</button>
-          <button onClick={() => handleScrollTo("contact")} className="hover:text-[#00E5FF] transition-colors cursor-pointer">Contact</button>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-[#00E5FF] transition-colors cursor-pointer flex items-center space-x-1">
+        <div className="flex flex-wrap justify-center gap-6 text-[10px] font-mono font-bold uppercase tracking-widest text-[#1E293B] dark:text-[#CBD5E1]">
+          <button onClick={() => handleScrollTo("home")} className="hover:text-[#003882] dark:hover:text-[#00E5FF] transition-colors cursor-pointer">Home</button>
+          <button onClick={() => handleScrollTo("work")} className="hover:text-[#003882] dark:hover:text-[#00E5FF] transition-colors cursor-pointer">Selected Work</button>
+          <button onClick={() => handleScrollTo("process")} className="hover:text-[#003882] dark:hover:text-[#00E5FF] transition-colors cursor-pointer">Process</button>
+          <button onClick={() => handleScrollTo("about")} className="hover:text-[#003882] dark:hover:text-[#00E5FF] transition-colors cursor-pointer">About</button>
+          <button onClick={() => handleScrollTo("contact")} className="hover:text-[#003882] dark:hover:text-[#00E5FF] transition-colors cursor-pointer">Contact</button>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-[#003882] dark:hover:text-[#00E5FF] transition-colors cursor-pointer flex items-center space-x-1">
             <span>Resume (PDF)</span>
             <ExternalLink className="w-3 h-3" />
           </a>
@@ -351,7 +351,7 @@ export default function Footer({ profile }: FooterProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Visit Prashant's ${social.name} profile`}
-              className={`w-9 h-9 rounded-xl bg-[#1A1F2B] border border-[#2A3441] flex items-center justify-center text-[#94A3B8] hover:text-[#00E5FF] hover:border-[#00E5FF] transition-all duration-300 transform hover:scale-105`}
+              className="w-9 h-9 rounded-xl bg-white dark:bg-[#1A1F2B] border border-gray-200 dark:border-[#2A3441] flex items-center justify-center text-[#1E293B] dark:text-[#CBD5E1] hover:text-[#003882] dark:hover:text-[#00E5FF] hover:border-[#003882] dark:hover:border-[#00E5FF] transition-all duration-300 transform hover:scale-105 shadow-sm"
               title={social.name}
             >
               {social.icon}
@@ -360,7 +360,7 @@ export default function Footer({ profile }: FooterProps) {
         </div>
 
         {/* Dynamic Divider */}
-        <div className="w-full border-t border-[#2A3441]/60 pt-6 flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0 text-[10px] font-mono text-[#94A3B8]">
+        <div className="w-full border-t border-gray-200 dark:border-[#2A3441]/60 pt-6 flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0 text-[10px] font-mono text-[#1E293B] dark:text-[#94A3B8]">
           
           {/* Copyright */}
           <span>
@@ -369,7 +369,7 @@ export default function Footer({ profile }: FooterProps) {
 
           {/* Telemetry Tagline */}
           <div className="flex items-center space-x-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#003882] dark:bg-[#00E5FF] animate-pulse" />
             <span>Telemetry &amp; Human Centered Product Craft</span>
           </div>
 

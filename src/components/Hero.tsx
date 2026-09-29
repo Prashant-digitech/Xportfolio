@@ -82,24 +82,24 @@ export default function Hero({ profile }: HeroProps) {
             className="lg:col-span-7 flex flex-col items-start space-y-6 z-10"
           >
             {/* Eyebrow (Requirement 3 & 4) */}
-            <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#2A3441] text-[#111318] dark:text-[#F8FAFC] text-xs font-bold tracking-wider uppercase shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#111827] border border-gray-300 dark:border-[#2A3441] text-[#0A0F1D] dark:text-[#F8FAFC] text-xs font-bold tracking-wider uppercase shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>PRASHANT SISODHIYA • SENIOR PRODUCT DESIGNER</span>
             </motion.div>
 
             {/* Main Title (Requirement 3, 5, 6) */}
             <motion.h1 variants={fadeInUp} className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.06] select-none">
-              <span className="block text-[#111318] dark:text-[#F8FAFC]">SENIOR PRODUCT &amp;</span>
-              <span className="block text-[#00E5FF] drop-shadow-[0_4px_16px_rgba(0,229,255,0.25)]">UX DESIGNER</span>
+              <span className="block text-[#0A0F1D] dark:text-[#F8FAFC]">SENIOR PRODUCT &amp;</span>
+              <span className="block text-[#003882] dark:text-[#00E5FF] drop-shadow-sm dark:drop-shadow-[0_4px_16px_rgba(0,229,255,0.25)]">UX DESIGNER</span>
             </motion.h1>
 
             {/* Supporting Value Proposition */}
-            <motion.p variants={fadeInUp} className="text-[#4B5563] dark:text-[#94A3B8] text-base sm:text-lg max-w-xl leading-relaxed font-normal">
+            <motion.p variants={fadeInUp} className="text-[#1E293B] dark:text-[#CBD5E1] text-base sm:text-lg max-w-xl leading-relaxed font-normal">
               Designing digital products, complex design systems and intelligent experiences from strategic empathy to production-grade execution.
             </motion.p>
 
             {/* Credibility Strip Pill */}
-            <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono uppercase tracking-widest text-[#00E5FF] dark:text-[#00E5FF]">
+            <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono uppercase tracking-widest text-[#003882] dark:text-[#00E5FF] font-bold">
               <span>PRODUCT DESIGN</span>
               <span className="text-gray-400 dark:text-gray-600">•</span>
               <span>UI/UX</span>
@@ -119,7 +119,7 @@ export default function Hero({ profile }: HeroProps) {
                 onMouseLeave={hireBtn.handleMouseLeave}
                 style={hireBtn.style}
                 onClick={() => scrollToSection("work")}
-                className="px-6 py-3 rounded-xl bg-[#00E5FF] hover:bg-[#00B4D8] text-[#06070A] font-extrabold text-xs uppercase tracking-wider flex items-center space-x-2 transition-all duration-200 shadow-[0_0_20px_rgba(0,229,255,0.3)] cursor-pointer"
+                className="px-6 py-3 rounded-xl bg-[#003882] hover:bg-[#002D6E] text-white dark:bg-[#00E5FF] dark:hover:bg-[#00c8e0] dark:text-[#06070A] font-extrabold text-xs uppercase tracking-wider flex items-center space-x-2 transition-all duration-200 shadow-md cursor-pointer"
               >
                 <span>View Selected Work</span>
                 <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
@@ -128,7 +128,7 @@ export default function Hero({ profile }: HeroProps) {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 rounded-xl bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#2A3441] hover:border-[#00E5FF] text-[#111318] dark:text-[#F8FAFC] font-bold text-xs uppercase tracking-wider flex items-center space-x-2 transition-all duration-200 cursor-pointer"
+                className="px-6 py-3 rounded-xl bg-white dark:bg-[#1A1F2B] border-2 border-gray-300 dark:border-[#2A3441] hover:border-[#003882] dark:hover:border-[#00E5FF] text-[#0A0F1D] dark:text-[#F8FAFC] font-bold text-xs uppercase tracking-wider flex items-center space-x-2 transition-all duration-200 cursor-pointer shadow-sm"
               >
                 <span>Download Resume</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -139,7 +139,7 @@ export default function Hero({ profile }: HeroProps) {
                 onMouseLeave={aboutBtn.handleMouseLeave}
                 style={aboutBtn.style}
                 onClick={() => scrollToSection("contact")}
-                className="h-[46px] px-5 rounded-xl text-[#4B5563] dark:text-[#94A3B8] hover:text-[#00E5FF] dark:hover:text-[#00E5FF] font-semibold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center space-x-1.5"
+                className="h-[46px] px-5 rounded-xl text-[#1E293B] dark:text-[#CBD5E1] hover:text-[#003882] dark:hover:text-[#00E5FF] font-bold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center space-x-1.5"
               >
                 <span>Contact Me</span>
               </button>
@@ -244,36 +244,36 @@ export default function Hero({ profile }: HeroProps) {
           
           {/* Row 1: Core Disciplines */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-[#A1A8B5] mb-6">Core Disciplines</h3>
+            <h3 className="text-xs font-mono font-bold uppercase tracking-[0.3em] text-[#003882] dark:text-[#00E5FF] mb-6">Core Disciplines</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Card 1: Product Design */}
               <div 
                 onClick={() => scrollToSection("work")}
-                className="group p-6 rounded-lg glass-card border border-white/5 hover:border-neon-blue hover:shadow-[0_0_20px_rgba(0,240,255,0.15)] transition-all duration-300 cursor-pointer"
+                className="group p-6 rounded-2xl bg-white dark:bg-[#1A1F2B] border border-gray-200 dark:border-[#2A3441] hover:border-[#003882] dark:hover:border-[#00E5FF] shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
               >
                 <div className="flex items-center space-x-4 mb-3">
-                  <div className="w-10 h-10 rounded-md bg-[#00d4ff]/10 border border-[#00d4ff]/20 flex items-center justify-center text-neon-blue group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-[#00E5FF]/10 border border-blue-200 dark:border-[#00E5FF]/20 flex items-center justify-center text-[#003882] dark:text-[#00E5FF] group-hover:scale-110 transition-transform duration-300">
                     <Layers className="w-5 h-5" />
                   </div>
-                  <h4 className="font-bold tracking-wider text-black dark:text-white group-hover:text-neon-blue transition-colors duration-300">Product & UI/UX Design</h4>
+                  <h4 className="font-bold tracking-wider text-[#0A0F1D] dark:text-[#F8FAFC] group-hover:text-[#003882] dark:group-hover:text-[#00E5FF] transition-colors duration-300">Product &amp; UI/UX Design</h4>
                 </div>
-                <p className="text-xs text-slate-500 dark:text-[#A1A8B5] leading-relaxed">
-                  Architecting multi-platform SaaS products, responsive responsive layouts, and design systems grounded in user psychology.
+                <p className="text-xs text-[#1E293B] dark:text-[#CBD5E1] leading-relaxed">
+                  Architecting multi-platform SaaS products, responsive layouts, and design systems grounded in user psychology.
                 </p>
               </div>
 
               {/* Card 2: AI Interfaces */}
               <div 
                 onClick={() => scrollToSection("lab")}
-                className="group p-6 rounded-lg glass-card border border-white/5 hover:border-neon-violet hover:shadow-[0_0_20px_rgba(157,78,221,0.15)] transition-all duration-300 cursor-pointer"
+                className="group p-6 rounded-2xl bg-white dark:bg-[#1A1F2B] border border-gray-200 dark:border-[#2A3441] hover:border-[#5B21B6] dark:hover:border-[#9d4edd] shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
               >
                 <div className="flex items-center space-x-4 mb-3">
-                  <div className="w-10 h-10 rounded-md bg-[#9d4edd]/10 border border-[#9d4edd]/20 flex items-center justify-center text-neon-violet group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(157,78,221,0.2)]">
+                  <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-[#9d4edd]/10 border border-purple-200 dark:border-[#9d4edd]/20 flex items-center justify-center text-[#5B21B6] dark:text-[#9d4edd] group-hover:scale-110 transition-transform duration-300">
                     <Film className="w-5 h-5" />
                   </div>
-                  <h4 className="font-bold tracking-wider text-black dark:text-white group-hover:text-neon-violet transition-colors duration-300">AI Interfaces & Telemetry</h4>
+                  <h4 className="font-bold tracking-wider text-[#0A0F1D] dark:text-[#F8FAFC] group-hover:text-[#5B21B6] dark:group-hover:text-[#9d4edd] transition-colors duration-300">AI Interfaces &amp; Telemetry</h4>
                 </div>
-                <p className="text-xs text-slate-500 dark:text-[#A1A8B5] leading-relaxed">
+                <p className="text-xs text-[#1E293B] dark:text-[#CBD5E1] leading-relaxed">
                   Designing conversational agent states, multimodal telemetry, real-time prompt surfaces, and autonomous copilot experiences.
                 </p>
               </div>
@@ -281,15 +281,15 @@ export default function Hero({ profile }: HeroProps) {
               {/* Card 3: Visual Identity */}
               <div 
                 onClick={() => scrollToSection("work")}
-                className="group p-6 rounded-lg glass-card border border-white/5 hover:border-gold hover:shadow-[0_0_20px_rgba(212,160,23,0.15)] transition-all duration-300 cursor-pointer"
+                className="group p-6 rounded-2xl bg-white dark:bg-[#1A1F2B] border border-gray-200 dark:border-[#2A3441] hover:border-[#8C6D0F] dark:hover:border-gold shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
               >
                 <div className="flex items-center space-x-4 mb-3">
-                  <div className="w-10 h-10 rounded-md bg-[#D4A017]/10 border border-[#D4A017]/20 flex items-center justify-center text-gold group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(212,160,23,0.2)]">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-[#D4A017]/10 border border-amber-200 dark:border-[#D4A017]/20 flex items-center justify-center text-[#8C6D0F] dark:text-gold group-hover:scale-110 transition-transform duration-300">
                     <PenTool className="w-5 h-5" />
                   </div>
-                  <h4 className="font-bold tracking-wider text-black dark:text-white group-hover:text-gold transition-colors duration-300">Visual Identity & Motion</h4>
+                  <h4 className="font-bold tracking-wider text-[#0A0F1D] dark:text-[#F8FAFC] group-hover:text-[#8C6D0F] dark:group-hover:text-gold transition-colors duration-300">Visual Identity &amp; Motion</h4>
                 </div>
-                <p className="text-xs text-slate-500 dark:text-[#A1A8B5] leading-relaxed">
+                <p className="text-xs text-[#1E293B] dark:text-[#CBD5E1] leading-relaxed">
                   Delivering high-fidelity brand systems, micro-interactions, editorial typography, and cinematic motion graphics.
                 </p>
               </div>
@@ -297,7 +297,7 @@ export default function Hero({ profile }: HeroProps) {
           </div>
 
           {/* Row 2: Achievements Stats Panel */}
-          <div className="p-8 rounded-lg glass-card border border-white/5 bg-gradient-to-r from-white/[0.01] to-transparent">
+          <div className="p-8 rounded-2xl bg-white dark:bg-[#1A1F2B] border border-gray-200 dark:border-[#2A3441] shadow-sm">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
               {stats.map((stat, idx) => (
                 <StatCounter key={idx} value={stat.value} label={stat.label} icon={stat.icon} />
@@ -310,29 +310,29 @@ export default function Hero({ profile }: HeroProps) {
       </div>
 
       {/* Bottom Bar: Phone, Email, Location */}
-      <div className="border-t border-black/10 dark:border-white/10 mt-12 bg-[#F4F1E8]/90 dark:bg-[#090A0E]/80 py-4 w-full">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs text-[#4B5563] dark:text-[#D1D5DB] font-semibold">
+      <div className="border-t border-gray-200 dark:border-[#2A3441] mt-12 bg-white/90 dark:bg-[#06070A]/90 py-4 w-full">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs text-[#1E293B] dark:text-[#CBD5E1] font-semibold">
           <div className="flex flex-wrap justify-center items-center gap-6">
             <div className="flex items-center space-x-2">
-              <Phone className="w-4 h-4 text-[#B8941F] dark:text-gold" />
-              <a href={`tel:${profile.phone}`} className="hover:text-[#B8941F] dark:hover:text-gold transition-colors duration-200">{profile.phone}</a>
+              <Phone className="w-4 h-4 text-[#003882] dark:text-[#00E5FF]" />
+              <a href={`tel:${profile.phone}`} className="hover:text-[#003882] dark:hover:text-[#00E5FF] transition-colors duration-200">{profile.phone}</a>
             </div>
             <div className="flex items-center space-x-2">
-              <Mail className="w-4 h-4 text-[#B8941F] dark:text-gold" />
-              <a href={`mailto:${profile.email}`} className="hover:text-[#B8941F] dark:hover:text-gold transition-colors duration-200">{profile.email}</a>
+              <Mail className="w-4 h-4 text-[#003882] dark:text-[#00E5FF]" />
+              <a href={`mailto:${profile.email}`} className="hover:text-[#003882] dark:hover:text-[#00E5FF] transition-colors duration-200">{profile.email}</a>
             </div>
             <div className="flex items-center space-x-2">
-              <MapPin className="w-4 h-4 text-[#B8941F] dark:text-gold" />
+              <MapPin className="w-4 h-4 text-[#003882] dark:text-[#00E5FF]" />
               <span>{profile.location}</span>
             </div>
           </div>
           
           <button 
             onClick={() => scrollToSection("contact")}
-            className="flex items-center space-x-2 px-4 py-2 rounded-xl border border-[#B8941F] dark:border-gold/40 hover:bg-[#D4AF37] hover:text-black transition-all duration-200 text-[#111318] dark:text-gold-light cursor-pointer shadow-sm font-bold uppercase tracking-wider text-[11px]"
+            className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-[#003882] dark:bg-[#00E5FF] text-white dark:text-[#06070A] hover:bg-[#002D6E] dark:hover:bg-[#00c8e0] transition-all duration-200 cursor-pointer shadow-sm font-extrabold uppercase tracking-wider text-[11px]"
           >
-            <span>Let's Work Together</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <span>Let&apos;s Work Together</span>
+            <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
           </button>
         </div>
       </div>
