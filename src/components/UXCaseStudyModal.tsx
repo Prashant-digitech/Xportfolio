@@ -8,14 +8,15 @@ import {
   Layers, Compass, Search, Palette, Award, BarChart3, Maximize2, Minimize2,
   Share2, Eye, EyeOff, Target, ShieldCheck, Activity, Zap, Info, Play, Pause,
   Volume2, VolumeX, RotateCcw, GitBranch, Lightbulb, Video, ArrowRight,
-  ZoomIn, ZoomOut
+  ZoomIn, ZoomOut, ExternalLink, FileText
 } from "lucide-react";
 import { UXProject } from "@/data/uxProjects";
+import InAppCaseStudyViewer from "@/components/InAppCaseStudyViewer";
 
 interface UXCaseStudyModalProps {
   project: UXProject | null;
   onClose: () => void;
-  initialTab?: "overview" | "deck" | "walkthrough" | "research" | "architecture" | "flows" | "system" | "gallery" | "decisions" | "impact";
+  initialTab?: "overview" | "deck" | "htmlDeck" | "walkthrough" | "research" | "architecture" | "flows" | "system" | "gallery" | "decisions" | "impact";
 }
 
 export default function UXCaseStudyModal({ project, onClose, initialTab = "overview" }: UXCaseStudyModalProps) {
@@ -26,6 +27,7 @@ export default function UXCaseStudyModal({ project, onClose, initialTab = "overv
   const [expandedEvidenceImg, setExpandedEvidenceImg] = useState<{ url: string; title: string; badge: string; idx?: number } | null>(null);
   const [lightboxZoom, setLightboxZoom] = useState<number>(1);
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
+  const [inAppReaderOpen, setInAppReaderOpen] = useState<boolean>(false);
   
   // UX Lens state
   const [uxLensActive, setUxLensActive] = useState<boolean>(false);
@@ -52,6 +54,7 @@ export default function UXCaseStudyModal({ project, onClose, initialTab = "overv
       setIsVideoPlaying(false);
       setVideoCurrentTime(0);
       setActiveTimestampIdx(0);
+      setInAppReaderOpen(false);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -181,9 +184,11 @@ export default function UXCaseStudyModal({ project, onClose, initialTab = "overv
   const hasWalkthrough = Boolean(caseStudy.walkthroughVideo);
   const hasFlows = Boolean(caseStudy.userFlows && caseStudy.userFlows.length > 0);
   const hasDecisions = Boolean(caseStudy.designDecisions && caseStudy.designDecisions.length > 0);
+  const hasHtmlDeck = Boolean(project.htmlCaseStudyUrl);
 
   const tabs = [
     { id: "overview", label: "Overview & Scope", icon: <Compass className="w-4 h-4" /> },
+    ...(hasHtmlDeck ? [{ id: "htmlDeck", label: "Interactive HTML Deck", icon: <ExternalLink className="w-4 h-4 text-cyan-400" />, badge: "LIVE" }] : []),
     ...(hasDeck ? [{ id: "deck", label: "10-Slide Deck", icon: <Layers className="w-4 h-4" />, badge: `${caseStudy.evidenceArtifacts!.length}` }] : []),
     ...(hasWalkthrough ? [{ id: "walkthrough", label: "30s Walkthrough", icon: <Video className="w-4 h-4" />, badge: "TOUR" }] : []),
     { id: "research", label: "Research & Discovery", icon: <CheckCircle2 className="w-4 h-4" /> },
@@ -238,6 +243,32 @@ export default function UXCaseStudyModal({ project, onClose, initialTab = "overv
           </div>
 
           <div className="flex items-center space-x-2 flex-shrink-0">
+            {project.htmlCaseStudyUrl && (
+              <button
+                onClick={() => setInAppReaderOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/20 hover:bg-cyan-500 hover:text-black text-cyan-300 text-xs font-black uppercase tracking-wider transition-all border border-cyan-400/50 shadow-[0_0_15px_rgba(6,182,212,0.3)] cursor-pointer"
+                title="Launch in-app interactive HTML case study deck"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                <span className="hidden sm:inline">Launch In-App Deck</span>
+                <span className="sm:hidden">Deck</span>
+              </button>
+            )}
+
+            {project.pdfUrl && (
+              <a
+                href={project.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500 hover:text-black text-amber-300 text-xs font-black uppercase tracking-wider transition-all border border-amber-400/50 shadow-[0_0_15px_rgba(245,158,11,0.25)] cursor-pointer"
+                title="Open verified case study PDF"
+              >
+                <FileText className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Verified PDF</span>
+                <span className="sm:hidden">PDF</span>
+              </a>
+            )}
+
             {hasWalkthrough && (
               <button
                 onClick={() => setActiveTab("walkthrough")}
@@ -357,6 +388,38 @@ export default function UXCaseStudyModal({ project, onClose, initialTab = "overv
                       <p className="text-xs font-bold text-gold">{caseStudy.tools.slice(0, 3).join(", ")}</p>
                     </div>
                   </div>
+
+                  {/* Interactive HTML Case Study Banner */}
+                  {project.htmlCaseStudyUrl && (
+                    <div className="p-3.5 sm:p-4 rounded-xl bg-gradient-to-r from-cyan-950/70 via-slate-900 to-blue-950/70 border border-cyan-500/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-[0_0_25px_rgba(6,182,212,0.18)]">
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                          <span className="text-[11px] font-black uppercase tracking-wider text-cyan-300">Interactive Case Study Available</span>
+                        </div>
+                        <p className="text-xs text-gray-300">
+                          {project.htmlCaseStudyTitle || "Complete interactive presentation deck with responsive slides, design tokens, and telemetry."}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2 w-full sm:w-auto">
+                        <button
+                          onClick={() => setActiveTab("htmlDeck")}
+                          className="flex-1 sm:flex-none px-3.5 py-1.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-black text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer"
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                          <span>View Deck</span>
+                        </button>
+                        <button
+                          onClick={() => setInAppReaderOpen(true)}
+                          className="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 border border-white/20 cursor-pointer"
+                          title="Open dedicated in-app case study reader"
+                        >
+                          <Maximize2 className="w-3.5 h-3.5" />
+                          <span>In-App View</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Fast Action CTA strip */}
                   <div className="flex flex-wrap gap-2.5 pt-2">
@@ -546,6 +609,55 @@ export default function UXCaseStudyModal({ project, onClose, initialTab = "overv
                   </div>
                 </div>
               )}
+            </motion.div>
+          )}
+
+          {/* TAB: INTERACTIVE HTML DECK VIEWER */}
+          {activeTab === "htmlDeck" && project.htmlCaseStudyUrl && (
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 sm:p-4 rounded-xl bg-slate-900/90 border border-white/10 shadow-lg">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping" />
+                  <div>
+                    <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
+                      {project.htmlCaseStudyTitle || `${project.title} Interactive Case Study`}
+                    </h3>
+                    <p className="text-xs text-gray-400">Interactive standalone presentation deck • Responsive canvas & typography</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 w-full sm:w-auto">
+                  <button
+                    onClick={() => setInAppReaderOpen(true)}
+                    className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-cyan-500/20 hover:bg-cyan-500 hover:text-black text-cyan-300 text-xs font-bold border border-cyan-500/40 transition-all cursor-pointer shadow-sm"
+                    title="Open dedicated in-app presentation reader"
+                  >
+                    <Maximize2 className="w-3.5 h-3.5" />
+                    <span>Dedicated In-App Reader</span>
+                  </button>
+                  {project.pdfUrl && (
+                    <a
+                      href={project.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-amber-500/20 hover:bg-amber-500 hover:text-black text-amber-300 text-xs font-bold border border-amber-500/40 transition-all cursor-pointer shadow-sm"
+                    >
+                      <FileText className="w-3.5 h-3.5" />
+                      <span>Download PDF</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* Iframe Viewport Container */}
+              <div className="relative w-full h-[70vh] rounded-xl overflow-hidden border border-white/15 bg-black shadow-[0_0_40px_rgba(0,0,0,0.8)]">
+                <iframe
+                  src={project.htmlCaseStudyUrl}
+                  title={`${project.title} Interactive Case Study`}
+                  className="w-full h-full border-0 bg-black"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  loading="lazy"
+                />
+              </div>
             </motion.div>
           )}
 
@@ -1701,6 +1813,17 @@ export default function UXCaseStudyModal({ project, onClose, initialTab = "overv
           </div>
         )}
       </AnimatePresence>
+
+      {/* In-App Interactive HTML Deck Fullscreen Reader */}
+      {project?.htmlCaseStudyUrl && (
+        <InAppCaseStudyViewer
+          isOpen={inAppReaderOpen}
+          onClose={() => setInAppReaderOpen(false)}
+          caseStudyUrl={project.htmlCaseStudyUrl}
+          projectTitle={project.title}
+          subtitle={project.subtitle}
+        />
+      )}
 
     </div>
   );

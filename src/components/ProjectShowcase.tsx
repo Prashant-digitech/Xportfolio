@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { uxProjectsList, UXProject } from "@/data/uxProjects";
 import UXCaseStudyModal from "@/components/UXCaseStudyModal";
+import InAppCaseStudyViewer from "@/components/InAppCaseStudyViewer";
 
 interface ShowcaseProject {
   title: string;
@@ -40,6 +41,17 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
   const [showreelTab, setShowreelTab] = useState<"showreel" | "bts" | "motion">("showreel");
   const [selectedUXProject, setSelectedUXProject] = useState<UXProject | null>(null);
   const [initialModalTab, setInitialModalTab] = useState<"overview" | "deck" | "walkthrough" | "research" | "architecture" | "flows" | "system" | "gallery" | "decisions" | "impact">("overview");
+  const [inAppViewerState, setInAppViewerState] = useState<{
+    isOpen: boolean;
+    url: string;
+    title: string;
+    subtitle?: string;
+  }>({
+    isOpen: false,
+    url: "",
+    title: "",
+    subtitle: ""
+  });
   const [selectedVideoProject, setSelectedVideoProject] = useState<ShowcaseProject | null>(null);
   const [showreelModalOpen, setShowreelModalOpen] = useState<boolean>(false);
   const [isPlayingShowreel, setIsPlayingShowreel] = useState<boolean>(true);
@@ -142,6 +154,28 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       impact: "Saved physicians 42 minutes per day in EHR charting and boosted patient medication adherence by 38%.",
       img: "/images/ux/projects/CureIQ.png",
       uxProjectId: "cureiq",
+    },
+    {
+      id: "pathwise",
+      title: "PathWise AI Career Elevation Roadmap",
+      desc: "Adaptive career navigation and gamified skill mastery architecture featuring visual mountain elevation roadmaps, mentor critique drawers, and portfolio proof-of-work challenges.",
+      accent: "#FF6B00",
+      spec: "08 • AUTHENTIC 9-BOARD DECK • EDTECH UX • GAMIFIED ROADMAP",
+      challenge: "Online courses suffer 88% drop-off because theoretical video playlists lack tangible milestone feedback.",
+      impact: "78.2% completion rate, 9 verified master deck boards, and 84% portfolio hiring placement rate.",
+      img: "/images/ux/pathwise/boards/page1.png",
+      uxProjectId: "pathwise",
+    },
+    {
+      id: "designos",
+      title: "DesignOS Knowledge Operating System",
+      desc: "Interactive AI knowledge operating system featuring dynamic neural graph canvas, semantic telemetry, and cross-platform design tokens.",
+      accent: "#D4AF37",
+      spec: "09 • STANDALONE HTML DECK • AI KNOWLEDGE OS • NEURAL CANVAS",
+      challenge: "Enterprise product teams waste 25% of working hours searching through fragmented documentation silos.",
+      impact: "Cut context lookup times by 68%, 3.2x faster research synthesis, and 94.6% voluntary team adoption.",
+      img: "/images/ux/projects/Ux projects overview.png",
+      uxProjectId: "designos",
     },
   ];
 
@@ -264,19 +298,34 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       num: "08",
       title: "PathWise Skill Roadmap", 
       category: "uiux", 
-      description: "Gamified career elevation roadmap with verified portfolio challenges and senior mentorship reviews.", 
-      img: "/images/ux/projects/pathwise.png", 
+      description: "Gamified career elevation roadmap with verified portfolio challenges, 9 master deck boards, and senior mentorship reviews.", 
+      img: "/images/ux/pathwise/boards/page1.png", 
       caseStudy: "Explore Case Study", 
-      figmaUrl: "#work",
+      figmaUrl: "/case-studies/pathwise/index.html",
       uxProjectId: "pathwise",
-      statsBadge: "78% Completion • Gamified",
+      statsBadge: "9-Board Deck • Gamified",
       role: "Product Design · Gamified UX · Mentorship",
       year: "2026",
       valueProposition: "Gamified career roadmap with verified portfolio challenges and senior mentorship reviews."
     },
-    // Soul Journey Mobile
+    // 09: DESIGNOS (AI Knowledge OS)
     { 
       num: "09",
+      title: "DesignOS Knowledge OS", 
+      category: "uiux", 
+      description: "Interactive AI knowledge operating system featuring dynamic neural graph canvas, semantic telemetry, and cross-platform design tokens.", 
+      img: "/images/ux/projects/Ux projects overview.png", 
+      caseStudy: "Explore Interactive Deck", 
+      figmaUrl: "/case-studies/designos/index.html",
+      uxProjectId: "designos",
+      statsBadge: "HTML Case Study • AI Engine",
+      role: "Lead Product Designer & Systems Architect",
+      year: "2026",
+      valueProposition: "Interactive AI knowledge OS with neural canvas, design tokens, and real-time synthesis."
+    },
+    // Soul Journey Mobile
+    { 
+      num: "10",
       title: "Soul Journey Mobile Experience", 
       category: "mobile", 
       description: "Tactile mobile journey modal with atmospheric astral portal aesthetics and authentic Vedic chart calculations.", 
@@ -395,47 +444,58 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       tags: ["Premiere Pro", "After Effects", "Showreel", "Sound Design"]
     },
     { 
+      title: "Veronixx Web & POS Platform Preview", 
+      category: "video", 
+      description: "Full production platform walkthrough showcasing real-time inventory, offline POS billing, and automated GST receipt printing.", 
+      img: "/images/clients/veronixx/veronixx.png", 
+      caseStudy: "Watch App Preview", 
+      figmaUrl: "#clients",
+      statsBadge: "Full App Preview • Production",
+      videoUrl: "/videos/veronixx-app-preview.mp4",
+      tags: ["Next.js", "Client App", "POS Billing", "Production"]
+    },
+    { 
       title: "Travel Cinematic Video", 
       category: "video", 
       description: "Cinematic travel compilation featuring advanced color grading, match cuts, and atmospheric speed ramping elements.", 
-      img: "/images/project_video_travel_cinematic.jpg", 
+      img: "/images/showreel/travel cinematic video thumbnail.png", 
       caseStudy: "Watch Video", 
       figmaUrl: "#work",
       statsBadge: "Color LUTs • Sound Sync",
-      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+      videoUrl: "/videos/video-showreel.mp4",
       tags: ["Premiere Pro", "Color Grading", "Sound Design", "Rec.709"]
     },
     { 
       title: "Fitness Commercial Promo", 
       category: "video", 
       description: "High-energy commercial advertisement with synchronized sound design, rapid visual pacing, and kinetic transitions.", 
-      img: "/images/project_video_fitness_promo.jpg", 
+      img: "/images/graphics/video showreel.png", 
       caseStudy: "Watch Video", 
       figmaUrl: "#work",
       statsBadge: "High Energy • Speed Ramping",
-      videoUrl: "https://www.w3schools.com/html/movie.mp4",
+      videoUrl: "/videos/video-showreel-preview.mp4",
       tags: ["Commercial", "After Effects", "Rhythm Cut", "Sound FX"]
     },
     { 
-      title: "Product 3D Advertisement", 
+      title: "Product 3D Advertisement & Deck", 
       category: "video", 
-      description: "Commercial showcase for wireless audio hardware integrating motion typography overlays, detailed macros, and 3D space tracking.", 
-      img: "/images/project_video_product_ad.jpg", 
+      description: "Commercial showcase for corporate slide decks and hardware integrating motion typography overlays, detailed macros, and 3D space tracking.", 
+      img: "/images/showreel/corporate slide deck.png", 
       caseStudy: "Watch Video", 
       figmaUrl: "#work",
       statsBadge: "Motion Typography • 3D Tracking",
-      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-      tags: ["Product Ad", "3D Camera", "Commercial", "Kinetic Typography"]
+      videoUrl: "/videos/video-showreel.mp4",
+      tags: ["Product Ad", "Corporate Deck", "Commercial", "Kinetic Typography"]
     },
     { 
       title: "Luxury Wedding Highlights", 
       category: "video", 
       description: "Luxurious wedding highlight reel with emotional music synchronization, warm cinematic color tones, and film transitions.", 
-      img: "/images/project_video_wedding_highlights.jpg", 
+      img: "/images/showreel/travel cinematic video thumbnail.png", 
       caseStudy: "Watch Video", 
       figmaUrl: "#work",
       statsBadge: "Emotional Narrative • Film Look",
-      videoUrl: "https://www.w3schools.com/html/movie.mp4",
+      videoUrl: "/videos/video-showreel.mp4",
       tags: ["Wedding Film", "Storytelling", "Color LUTs", "Cinematic Audio"]
     },
     { 
@@ -537,6 +597,43 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                     <BookOpen className="w-3.5 h-3.5" />
                     <span>Read Complete Case Study</span>
                   </button>
+                  {(() => {
+                    const currentId = featuredProjects[activeCinemaIdx].uxProjectId;
+                    const uxProj = uxProjectsList.find(u => u.id === currentId);
+                    if (uxProj?.htmlCaseStudyUrl) {
+                      return (
+                        <button
+                          onClick={() => {
+                            setInAppViewerState({
+                              isOpen: true,
+                              url: uxProj.htmlCaseStudyUrl!,
+                              title: uxProj.title,
+                              subtitle: uxProj.subtitle
+                            });
+                          }}
+                          className="px-4 py-2.5 rounded-lg border border-cyan-400 bg-cyan-500/20 hover:bg-cyan-500 hover:text-black text-cyan-300 text-xs font-black uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-[0_0_15px_rgba(6,182,212,0.3)] cursor-pointer"
+                          title="Open interactive case study deck directly inside app"
+                        >
+                          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                          <span>Interactive HTML Deck</span>
+                        </button>
+                      );
+                    }
+                    if (uxProj?.pdfUrl) {
+                      return (
+                        <a
+                          href={uxProj.pdfUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-4 py-2.5 rounded-lg border border-amber-400 bg-amber-500/20 hover:bg-amber-500 hover:text-black text-amber-300 text-xs font-black uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-[0_0_15px_rgba(245,158,11,0.25)] cursor-pointer"
+                        >
+                          <FileText className="w-3.5 h-3.5" />
+                          <span>Verified PDF Case Study</span>
+                        </a>
+                      );
+                    }
+                    return null;
+                  })()}
                   {featuredProjects[activeCinemaIdx].id === "deepastro" && (
                     <button 
                       onClick={() => handleOpenCaseStudy("deepastro", "deck")}
@@ -751,13 +848,54 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                         <span>Watch Project</span>
                       </button>
                     ) : p.uxProjectId ? (
-                      <button
-                        onClick={() => handleOpenCaseStudy(p.uxProjectId)}
-                        className="w-full py-2.5 rounded-lg border border-[#D4AF37]/50 bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#B8941F] hover:text-black dark:text-[#F5BA42] dark:hover:text-black flex items-center justify-center space-x-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
-                      >
-                        <span>Explore Case Study</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
+                      <div className="space-y-1.5">
+                        <button
+                          onClick={() => handleOpenCaseStudy(p.uxProjectId)}
+                          className="w-full py-2.5 rounded-lg border border-[#D4AF37]/50 bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#B8941F] hover:text-black dark:text-[#F5BA42] dark:hover:text-black flex items-center justify-center space-x-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                        >
+                          <span>Explore Case Study</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </button>
+                        {(() => {
+                          const uxProj = uxProjectsList.find(u => u.id === p.uxProjectId);
+                          if (!uxProj) return null;
+                          if (!uxProj.htmlCaseStudyUrl && !uxProj.pdfUrl) return null;
+                          return (
+                            <div className="flex gap-1.5 pt-0.5">
+                              {uxProj.htmlCaseStudyUrl && (
+                                <button
+                                  onClick={() => {
+                                    setInAppViewerState({
+                                      isOpen: true,
+                                      url: uxProj.htmlCaseStudyUrl!,
+                                      title: uxProj.title,
+                                      subtitle: uxProj.subtitle
+                                    });
+                                  }}
+                                  className="flex-1 py-1 px-1.5 rounded-md border border-cyan-500/40 bg-cyan-950/40 hover:bg-cyan-900/60 text-cyan-300 text-[10px] font-bold uppercase tracking-wider flex items-center justify-center gap-1 transition-all cursor-pointer"
+                                  title="Open interactive HTML deck directly inside app"
+                                >
+                                  <Sparkles className="w-2.5 h-2.5 text-cyan-400" />
+                                  <span>HTML Deck</span>
+                                </button>
+                              )}
+                              {uxProj.pdfUrl && (
+                                <a
+                                  href={uxProj.pdfUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex-1 py-1 px-1.5 rounded-md border border-amber-500/40 bg-amber-950/40 hover:bg-amber-900/60 text-amber-300 text-[10px] font-bold uppercase tracking-wider flex items-center justify-center gap-1 transition-all"
+                                  title="Open verified PDF case study"
+                                >
+                                  <FileText className="w-2.5 h-2.5 text-amber-400" />
+                                  <span>PDF Spec</span>
+                                  <ExternalLink className="w-2.5 h-2.5 opacity-70" />
+                                </a>
+                              )}
+                            </div>
+                          );
+                        })()}
+                      </div>
                     ) : p.figmaUrl.startsWith("/") ? (
                       <a 
                         href={p.figmaUrl} 
@@ -912,6 +1050,15 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
           />
         )}
       </AnimatePresence>
+
+      {/* In-App Interactive HTML Deck Fullscreen Reader */}
+      <InAppCaseStudyViewer
+        isOpen={inAppViewerState.isOpen}
+        onClose={() => setInAppViewerState((prev) => ({ ...prev, isOpen: false }))}
+        caseStudyUrl={inAppViewerState.url}
+        projectTitle={inAppViewerState.title}
+        subtitle={inAppViewerState.subtitle}
+      />
 
       {/* Dedicated Interactive Video Showreel Player Lightbox */}
       <AnimatePresence>

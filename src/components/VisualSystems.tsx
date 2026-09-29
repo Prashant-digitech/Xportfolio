@@ -4,11 +4,13 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
-  Palette, X, ZoomIn,
-  ArrowRight, ExternalLink
+  Palette, X, ZoomIn, ZoomOut, RotateCcw,
+  ArrowRight, ArrowLeft, ExternalLink, Sparkles,
+  Layers, Maximize2, CheckCircle2, SlidersHorizontal,
+  ChevronLeft, ChevronRight
 } from "lucide-react";
 
-interface GraphicItem {
+export interface GraphicItem {
   id: string;
   title: string;
   category: "brand" | "graphic" | "compositing" | "editorial";
@@ -22,21 +24,6 @@ interface GraphicItem {
   construction?: string;
   application?: string;
 }
-
-/* ─── Animation Variants ──────────────────────────────────── */
-const fadeUp = {
-  hidden: { opacity: 0, y: 32 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-  }),
-};
-
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.93 },
-  show: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
-};
 
 /* ─── Focus Trap Hook ─────────────────────────────────────── */
 function useFocusTrap(active: boolean, containerRef: React.RefObject<HTMLElement | null>) {
@@ -64,9 +51,10 @@ function useFocusTrap(active: boolean, containerRef: React.RefObject<HTMLElement
 }
 
 export default function VisualSystems() {
-  const [activeTab, setActiveTab] = useState<"all" | "brand" | "graphic" | "compositing">("all");
+  const [activeTab, setActiveTab] = useState<"all" | "graphic" | "compositing" | "editorial" | "brand">("all");
   const [selectedItem, setSelectedItem] = useState<GraphicItem | null>(null);
   const [activeLogoStep, setActiveLogoStep] = useState<"concept" | "sketch" | "construction" | "final" | "application">("final");
+  const [lightboxZoom, setLightboxZoom] = useState<number>(1);
 
   /* ─── Scroll-trigger refs ─────────────────────────────── */
   const sectionRef = useRef<HTMLElement>(null);
@@ -80,23 +68,292 @@ export default function VisualSystems() {
   const brandInView = useInView(brandRef, { once: true, margin: "-60px" });
   const gridInView = useInView(gridRef, { once: true, margin: "-60px" });
 
-  /* ─── Accessibility: lock scroll & key handlers ───────── */
-  const closeModal = useCallback(() => setSelectedItem(null), []);
-
-  useEffect(() => {
-    if (!selectedItem) { document.body.style.overflow = ""; return; }
-    document.body.style.overflow = "hidden";
-    const handleKeyDown = (e: KeyboardEvent) => { if (e.key === "Escape") closeModal(); };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => { document.body.style.overflow = ""; window.removeEventListener("keydown", handleKeyDown); };
-  }, [selectedItem, closeModal]);
-
-  useFocusTrap(!!selectedItem, modalRef);
-
-  /* ─── Data ────────────────────────────────────────────── */
+  /* ─── Comprehensive 30-Artwork Vault ─────────────────── */
   const graphicWorks: GraphicItem[] = [
+    // 01: Belle Fragrance
     {
-      id: "photo-manipulation",
+      id: "belle-fragrance",
+      title: "Belle Luxury Fragrance Campaign",
+      category: "graphic",
+      badge: "Luxury Commercial Ad",
+      description: "Haute parfumerie advertising keyart featuring calibrated refractive glass reflections, floral dispersion particles, and luxury serif typography.",
+      image: "/images/graphics/my-work/ads beelle.png",
+      tools: ["Photoshop CC", "Camera Raw", "Frequency Separation", "Typography"],
+      specs: "4500×6000px • 300 DPI • Print & Billboard Ready",
+      concept: "Convey sensual luxury and ethereal floral weightlessness through translucent refractive glass rendering.",
+      construction: "Multi-point specular lighting passes, custom floral particle brushes, and micro-curve contrast grading.",
+      application: "Vogue magazine full-page spread, luxury boutique lightboxes, and digital brand launch.",
+    },
+    // 02: Performance Audio Ad
+    {
+      id: "audio-ad",
+      title: "Performance Audio Commercial Keyart",
+      category: "graphic",
+      badge: "Product Advertising",
+      description: "Commercial product advertising composite with dramatic rim lighting, sonic soundwave particle dynamics, and precision metallic reflections.",
+      image: "/images/graphics/my-work/ads.png",
+      tools: ["Photoshop", "Lightroom", "Volumetric Lighting"],
+      specs: "4K Master • 16-Bit Color Depth",
+      concept: "Synthesize acoustic acoustic power into kinetic visual waveforms wrapping the industrial product hardware.",
+      construction: "Bevel edge lighting, luminance dodging, and custom sonic particle velocity fields.",
+      application: "E-commerce hero product splash, consumer tech billboards, and global social campaign.",
+    },
+    // 03: Beauty Skin Retouching
+    {
+      id: "beauty-retouching",
+      title: "High-End Beauty & Skin Retouching",
+      category: "compositing",
+      badge: "Frequency Separation Master",
+      description: "Before/After high-end portrait retouching utilizing dual frequency separation, micro-dodge & burn texture preservation, and tonal balancing.",
+      image: "/images/graphics/my-work/before after.png",
+      tools: ["Photoshop CC", "Wacom Intuos", "Color Grading LUTs"],
+      specs: "Ultra-HD Portrait • Zero Texture Loss",
+      concept: "Flawless commercial beauty polish while strictly preserving organic skin micropore integrity.",
+      construction: "High/low frequency texture separation, selective color lookup grading, and iris luminosity enhancement.",
+      application: "Cosmetics packaging, international beauty lookbooks, and high-fashion editorial print.",
+    },
+    // 04: Camera Raw HDR
+    {
+      id: "camera-raw-hdr",
+      title: "Camera Raw HDR Dynamic Range Grading",
+      category: "compositing",
+      badge: "Camera Raw • HDR Grade",
+      description: "Advanced tone mapping and high-dynamic-range color science extraction preserving shadow fidelity, sky luminosity, and micro-contrast.",
+      image: "/images/graphics/my-work/camera raw.png",
+      tools: ["Adobe Camera Raw", "Photoshop", "Curve Mastering"],
+      specs: "6000×4000 RAW • ProPhoto RGB",
+      concept: "Maximal dynamic range extraction reproducing the human eye's natural multi-stop exposure perception.",
+      construction: "Exposure bracket blending, calibrated HSL split-toning, and dehaze volumetric balancing.",
+      application: "Cinematography stills, landscape fine art exhibitions, and commercial architectural print.",
+    },
+    // 05: Artisan Chocolate Splash
+    {
+      id: "chocolate-splash",
+      title: "Artisan Chocolate Splash Composite",
+      category: "graphic",
+      badge: "Commercial Food Composite",
+      description: "High-speed macro liquid splash compositing merging multiple fluid captures, cocoa powder dispersion, and mouth-watering specular highlights.",
+      image: "/images/graphics/my-work/chocolate ad.png",
+      tools: ["Photoshop", "Liquid Blending", "Multi-Pass Lighting"],
+      specs: "300 DPI CMYK Print Master",
+      concept: "Sensory decadence: capture the visceral moment molten chocolate collides with crispy roasted nuts.",
+      construction: "Multi-exposure liquid splash masking, gloss specular mapping, and depth-of-field feathering.",
+      application: "Packaging point-of-sale displays, confectionary retail billboards, and brand motion stills.",
+    },
+    // 06: Photo Colorization
+    {
+      id: "photo-colorization",
+      title: "Historical Archive Photo Colorization",
+      category: "compositing",
+      badge: "Historical Restoration",
+      description: "Full historical archival photo restoration and realistic multi-layer colorization grounded in period-accurate textile and skin tone research.",
+      image: "/images/graphics/my-work/colorize.png",
+      tools: ["Photoshop", "Luminance Masks", "Historical Palette Matching"],
+      specs: "Fine Art Archive Restoration • 48 Layers",
+      concept: "Breathe vivid life into vintage historical imagery while maintaining solemn archival integrity.",
+      construction: "Dust/scratch removal, base skin tone tinting, ambient specular balancing, and historical textile matching.",
+      application: "Museum historical curation, documentary book publications, and heritage archives.",
+    },
+    // 07: Denver Men Grooming
+    {
+      id: "denver-grooming",
+      title: "Denver Grooming Keyart Advertising",
+      category: "graphic",
+      badge: "Men Grooming Campaign",
+      description: "Theatrical masculine grooming advertising keyart featuring atmospheric chiaroscuro lighting, subtle smoke haze, and bold brand typography.",
+      image: "/images/graphics/my-work/denver ad.png",
+      tools: ["Photoshop", "Illustrator", "Matte Composite"],
+      specs: "Outdoor Billboard & Digital Display",
+      concept: "Rugged sophistication: bold magnetic brand presence tailored for modern discerning gentlemen.",
+      construction: "Chiaroscuro studio lighting keys, textured carbon backdrops, and foil embossed logo treatments.",
+      application: "Metro airport advertising panels, digital display ads, and point-of-sale retail stands.",
+    },
+    // 08: Double Exposure Art
+    {
+      id: "double-exposure-art",
+      title: "Surreal Double Exposure Fine Art",
+      category: "compositing",
+      badge: "Double Exposure Art",
+      description: "Poetic fine art composite seamlessly blending human silhouette portraiture with deep alpine forest landscape and celestial nebula gradients.",
+      image: "/images/graphics/my-work/double exposure.png",
+      tools: ["Photoshop CC", "Screen Blending", "Gradient Mapping"],
+      specs: "Gallery Exhibition Print • 300 DPI",
+      concept: "Visualizing the philosophical unity between human consciousness and primordial wilderness.",
+      construction: "Luma silhouette keying, screen transfer blend modes, and dual-tone gradient harmonization.",
+      application: "Fine art canvas gallery prints, indie album vinyl jackets, and conceptual design posters.",
+    },
+    // 09: Business Direct Response Flyer
+    {
+      id: "direct-response-flyer",
+      title: "Corporate Direct-Response Business Flyer",
+      category: "editorial",
+      badge: "Marketing Collateral",
+      description: "Structured commercial marketing collateral designed with clean geometric information hierarchy, conversion-driven typography, and brand tokens.",
+      image: "/images/graphics/my-work/flyer.png",
+      tools: ["InDesign", "Illustrator", "Photoshop"],
+      specs: "A5 Double-Sided • Print Ready CMYK",
+      concept: "Maximize sales conversion through rigorous Z-pattern visual flow and instant offer scanability.",
+      construction: "Modular card layouts, bleed/slug margin alignment, and high-visibility CTA callouts.",
+      application: "Corporate enterprise outreach, conference attendee packs, and direct-mail campaigns.",
+    },
+    // 10: Next-Gen Smartphone Keynote
+    {
+      id: "smartphone-keynote",
+      title: "Next-Gen Smartphone Keynote Ad",
+      category: "graphic",
+      badge: "Tech Hardware Campaign",
+      description: "Futuristic consumer electronics launch keyart featuring holographic optic flares, bevel light sweeps, and cinematic dark mode aesthetics.",
+      image: "/images/graphics/my-work/ipone-ad.png",
+      tools: ["Photoshop", "Optic Flares", "Vector Masking"],
+      specs: "Digital Keynote Master • Retina Verified",
+      concept: "Position consumer tech hardware as a futuristic monolith of speed, optical clarity, and power.",
+      construction: "Custom glass bevel lighting, lens dispersion aberrations, and titanium edge highlight passes.",
+      application: "Global flagship product launch, keynote hero slide, and flagship store window displays.",
+    },
+    // 11: Luxury Watch Keyart
+    {
+      id: "luxury-watch-keyart",
+      title: "Haute Horlogerie Luxury Timepiece Ad",
+      category: "graphic",
+      badge: "Luxury Watch Keyart",
+      description: "Premium horology macro composite highlighting tourbillon mechanical detailing, sapphire crystal reflections, and subtle gold specular sheen.",
+      image: "/images/graphics/my-work/luxuryad.png",
+      tools: ["Photoshop", "Macro Lighting", "Focus Stacking"],
+      specs: "Magazine Spread • 300 DPI Fine Art",
+      concept: "Celebrating micro-mechanical mastery through surgical lighting control and rich obsidian contrast.",
+      construction: "Focus stacked macro passes, crystal glare polarization, and micro gold leaf brushwork.",
+      application: "High-net-worth luxury magazines, international airport VIP lounge lightboxes, and collector catalog.",
+    },
+    // 12: Fashion Magazine Spread 1
+    {
+      id: "fashion-magazine-1",
+      title: "Fashion & Culture Editorial Spread v1",
+      category: "editorial",
+      badge: "Editorial Publication",
+      description: "High-fashion publication layout balancing experimental editorial typography, modular column grids, and bold photography art direction.",
+      image: "/images/graphics/my-work/magazine.png",
+      tools: ["InDesign", "Photoshop", "Typography Pairing"],
+      specs: "Newsstand A4 Spread • Spot Varnishing",
+      concept: "Harmonize avant-garde typography with dynamic negative space to elevate fashion storytelling.",
+      construction: "Strict baseline grid alignment, optical kerning pairs, and asymmetric photo placements.",
+      application: "International fashion bi-annual, digital tablet interactive magazine, and press portfolio.",
+    },
+    // 13: Architectural Magazine Spread 2
+    {
+      id: "architectural-magazine-2",
+      title: "Contemporary Architectural Journal v2",
+      category: "editorial",
+      badge: "Architectural Editorial",
+      description: "Minimalist architectural magazine double-page spread with generous negative space, refined serif body text, and structural grid rhythm.",
+      image: "/images/graphics/my-work/magazine2.png",
+      tools: ["InDesign", "Photoshop", "Grid Architecture"],
+      specs: "Double Page Spread • CMYK Offset",
+      concept: "Reflect modernist architectural restraint through disciplined typographic margins and quiet breathing space.",
+      construction: "Swiss typography grid, proportional column ratios, and subtle architectural line drawings.",
+      application: "Design biennial journal, university architecture library editions, and monograph spreads.",
+    },
+    // 14: Bioluminescent Glow
+    {
+      id: "bioluminescent-glow",
+      title: "Bioluminescent Nightscape Manipulation",
+      category: "compositing",
+      badge: "Bioluminescent FX",
+      description: "Enchanting night fantasy scene with hand-painted glowing neon flora, volumetric light shafts, and edge-illuminated mythical focal point.",
+      image: "/images/graphics/my-work/manipulation glow.png",
+      tools: ["Photoshop CC", "Digital Painting", "Color Dodge Modes"],
+      specs: "Ultra-HD Digital Artwork • 56 Layers",
+      concept: "Create an otherworldly nocturnal ecosystem where living plants emit natural radiant bioluminescence.",
+      construction: "Multi-layered color dodge glow channels, particle mist atmospheric scatter, and rim edge painting.",
+      application: "Fantasy game keyart, digital art collector editions, and immersive video game environment concept.",
+    },
+    // 15: Mythological Fantasy Matte Painting
+    {
+      id: "mythological-matte-painting",
+      title: "Mythological Fantasy Digital Matte Painting",
+      category: "compositing",
+      badge: "Epic Matte Art",
+      description: "Grand-scale panoramic matte painting combining ancient monumental ruins, cinematic atmospheric haze, scale-establishing characters, and turbulent skies.",
+      image: "/images/graphics/my-work/manipulation1.png",
+      tools: ["Photoshop", "Matte Painting", "Custom Brushes"],
+      specs: "Panoramic Master • 6000×3200px",
+      concept: "Convey awe-inspiring antiquity and colossal scale as lone explorers discover ancient titan ruins.",
+      construction: "Atmospheric depth cue aerial perspective, photo integration blending, and hand-painted rock textures.",
+      application: "Feature film visual effects backdrop, fantasy cinematic marketing, and concept art portfolio.",
+    },
+    // 16: Thriller Movie Poster 2
+    {
+      id: "thriller-poster-2",
+      title: "Psychological Thriller Theatrical Keyart",
+      category: "editorial",
+      badge: "Theatrical Movie Poster",
+      description: "High-tension psychological suspense film poster featuring shattered glass motif, low-key monochrome lighting with crimson accent typography.",
+      image: "/images/graphics/my-work/movie poster2.png",
+      tools: ["Photoshop", "Illustrator", "Billing Block Kerning"],
+      specs: "27×40 in Studio One-Sheet",
+      concept: "Induce psychological vertigo and visceral unease through fractured facial reflections and stark negative space.",
+      construction: "Fragmented glass refraction passes, high-contrast chiaroscuro shadows, and studio billing block hierarchy.",
+      application: "Cinema lobby lightboxes, film festival promotional posters, and Netflix/Prime streaming keyart.",
+    },
+    // 17: Cyberpunk Movie Poster 3
+    {
+      id: "cyberpunk-poster-3",
+      title: "Cyberpunk Sci-Fi Cinema Blockbuster",
+      category: "editorial",
+      badge: "Sci-Fi Movie Poster",
+      description: "Theatrical sci-fi keyart featuring neon holographic cityscapes, mechanized character compositing, chromatic aberration, and cinematic letterboxing.",
+      image: "/images/graphics/my-work/movie poster3.png",
+      tools: ["Photoshop CC", "Cinema 3D Passes", "Color Grading"],
+      specs: "Theatrical One-Sheet • IMAX Lightbox",
+      concept: "Futuristic dystopian adrenaline: immerse viewers in rain-slicked neon skyscrapers and cybernetic rebellion.",
+      construction: "Rain droplet displacement shaders, neon volumetric light blooming, and cinematic anamorphic flare passes.",
+      application: "IMAX theater one-sheet posters, comic-con hero banners, and promotional merchandise.",
+    },
+    // 18: Horror Movie Poster 4
+    {
+      id: "horror-poster-4",
+      title: "Grimdark Supernatural Horror Keyart",
+      category: "editorial",
+      badge: "Horror Theatrical Poster",
+      description: "Visceral dark fantasy horror poster layout combining decayed texture overlays, eerie fog silhouettes, and unsettling focal lighting.",
+      image: "/images/graphics/my-work/movie poster4.png",
+      tools: ["Photoshop", "Texture Blending", "Typography Kerning"],
+      specs: "Theatrical Cinema Release • 300 DPI",
+      concept: "Evoke ancient dread and haunting supernatural mystery through deep carbon shadows and suffocating fog.",
+      construction: "Distressed parchment texture overlays, volumetric fog blending, and weathered serif title typography.",
+      application: "Theatrical release poster, international film distributor collateral, and Halloween season keyart.",
+    },
+    // 19: Action Blockbuster Poster 5
+    {
+      id: "action-poster-5",
+      title: "Epic Action Adventure Theatrical Poster",
+      category: "editorial",
+      badge: "Action Movie Poster",
+      description: "Dynamic heroic block poster with explosive debris particles, sunset backlighting, heroic triangle composition, and embossed metallic title logo.",
+      image: "/images/graphics/my-work/movie poster5.png",
+      tools: ["Photoshop", "Particle Dynamics", "Title Design"],
+      specs: "27×40 Studio One-Sheet CMYK",
+      concept: "High-octane heroic triumph: capture explosive cinematic momentum with powerful golden-hour warmth.",
+      construction: "Multi-layered spark/debris emitters, dynamic rim lighting keys, and 3D metallic bevel typography.",
+      application: "Cinema display hoardings, billboard outdoor advertising, and Blu-ray collector steelbook.",
+    },
+    // 20: Athletic Sneaker Ad
+    {
+      id: "athletic-sneaker-ad",
+      title: "Athletic Sneaker Gravity-Defying Ad",
+      category: "graphic",
+      badge: "Performance Footwear Campaign",
+      description: "Zero-gravity sports footwear commercial visual featuring dynamic particle disintegration, shockwave rings, and high-velocity motion blur.",
+      image: "/images/graphics/my-work/shoe ad.png",
+      tools: ["Photoshop", "Action Particle FX", "Brand Identity"],
+      specs: "Omni-Channel Social & Billboard",
+      concept: "Visualize pure speed and weightless bounce through exploded kinetic debris and aerodynamic air rings.",
+      construction: "Exploding sole particle geometry, high-contrast rim glows, and kinetic typography velocity slants.",
+      application: "Global flagship sneaker drop, Instagram/TikTok paid video stills, and stadium billboard screens.",
+    },
+
+    // Cornerstone Projects 21-30
+    {
+      id: "surreal-photo-manipulation",
       title: "Surreal Atmospheric Compositing",
       category: "compositing",
       badge: "Matte Painting • Photoshop",
@@ -105,7 +362,6 @@ export default function VisualSystems() {
       tools: ["Photoshop CC", "Wacom Intuos", "Camera Raw"],
       specs: "6000×4000px • 300 DPI • 48 Layers",
       concept: "Synthesize solitary human contemplation against an infinite cosmic mountain landscape.",
-      sketch: "Rough spatial silhouette blocking establishing rule-of-thirds horizon line.",
       construction: "Multi-point light keying, frequency separation skin retouching, and shadow feathering.",
       application: "Exhibition print, high-resolution hero keyart, album packaging.",
     },
@@ -119,12 +375,11 @@ export default function VisualSystems() {
       tools: ["Photoshop", "Lightroom", "Color Lookup Tables"],
       specs: "Ultra-HD Print Master • 16-Bit ProPhoto",
       concept: "Visualizing the subconscious threshold where creative ideas crystallize into physical reality.",
-      sketch: "Thumbnail sketches testing atmospheric perspective and leading eye lines.",
       construction: "Precision mask clipping, luminance gradient mapping, and particle smoke overlays.",
       application: "Digital art showcase and agency promotional hero visual.",
     },
     {
-      id: "movie-poster",
+      id: "theatrical-movie-poster",
       title: "Theatrical Movie Poster Keyart",
       category: "editorial",
       badge: "Theatrical Print • High Res",
@@ -133,7 +388,6 @@ export default function VisualSystems() {
       tools: ["Photoshop", "Illustrator", "InDesign"],
       specs: "27×40 in One-Sheet • CMYK Offset Print",
       concept: "High-stakes heroic confrontation with high emotional contrast and visceral tension.",
-      sketch: "Traditional triangle keyart composition focusing focal energy on character eyes.",
       construction: "Custom typography kerning, distress texturing, and calibrated color grading.",
       application: "Cinema lobby lightboxes, outdoor billboards, and streaming thumbnail keyart.",
     },
@@ -147,7 +401,6 @@ export default function VisualSystems() {
       tools: ["Illustrator", "InDesign", "Figma"],
       specs: "Comprehensive Brand Guidelines PDF • Vector Master",
       concept: "Geometric precision meets trustworthy corporate authority with timeless elegance.",
-      sketch: "50+ logomark ideation thumbnails exploring abstract letterforms and golden ratio arcs.",
       construction: "Strict optical alignment, grid construction curves, and mathematical spacing tokens.",
       application: "Corporate stationery, signage, mobile app icons, and investor pitch decks.",
     },
@@ -161,7 +414,6 @@ export default function VisualSystems() {
       tools: ["Illustrator", "Photoshop 3D Mockup"],
       specs: "Vector SVG Master + 300 DPI CMYK Print",
       concept: "Tactile premium presentation conveying artisan craft and modern minimalism.",
-      sketch: "Die-cut box packaging prototypes and finish treatment callouts.",
       construction: "Spot UV varnish specifications and foil-stamping vector separation layers.",
       application: "Retail product packaging, corporate gift boxes, and brand touchpoints.",
     },
@@ -175,7 +427,6 @@ export default function VisualSystems() {
       tools: ["Photoshop", "InDesign", "Typography Pairing"],
       specs: "A4 Trim Size • Newsstand UV Coated",
       concept: "Sophisticated editorial gravitas blending fashion, architecture, and technology.",
-      sketch: "Editorial layout wireframes balancing barcode, masthead, and feature teasers.",
       construction: "Negative space balance allowing portrait hair to overlap the publication masthead.",
       application: "Print newsstand edition and tablet interactive e-magazine.",
     },
@@ -189,7 +440,6 @@ export default function VisualSystems() {
       tools: ["Photoshop", "Illustrator", "Figma"],
       specs: "1080×1080 & 1080×1920 • Retina Verified",
       concept: "Thumb-stopping social ads maximizing CTR while preserving strict brand aesthetic guidelines.",
-      sketch: "Layout wireframes testing headline eye-tracking zones and CTA placements.",
       construction: "Bold typography hierarchy with high-contrast accent gold badges.",
       application: "Paid social campaigns across Meta, LinkedIn, and Google Display Network.",
     },
@@ -203,7 +453,6 @@ export default function VisualSystems() {
       tools: ["Illustrator", "Photoshop", "Acrobat Preflight"],
       specs: "A5 Double-Sided • 3mm Bleed CMYK",
       concept: "Direct-response promotional piece balancing informational density with visual breathing room.",
-      sketch: "Z-pattern reading hierarchy layout sketched with pencil.",
       construction: "Bleed and safe margin compliance with embedded vector fonts.",
       application: "Direct-mail campaigns, conference handouts, and in-store displays.",
     },
@@ -217,7 +466,6 @@ export default function VisualSystems() {
       tools: ["Illustrator", "Photoshop Texturing"],
       specs: "5×7 in Custom Die-Cut • Metallic Foil Plate",
       concept: "Understated opulence for high-profile executive gala and exclusive brand launch.",
-      sketch: "Hand-lettered serif monogram sketches and border proportions.",
       construction: "Foil plate vector separation layers and blind deboss registration marks.",
       application: "VIP event invitations and collector keepsake cards.",
     },
@@ -231,7 +479,6 @@ export default function VisualSystems() {
       tools: ["PowerPoint", "Photoshop", "Illustrator"],
       specs: "16:9 Widescreen • 4K Master Deck",
       concept: "Elevate corporate investor pitch from dry spreadsheets to cinematic executive storytelling.",
-      sketch: "Storyline storyboard mapping problem statement to market ROI proof points.",
       construction: "Tokenized color hierarchy with dark charcoal backgrounds and gold emphasis points.",
       application: "Series A venture pitch decks and enterprise client proposals.",
     },
@@ -240,12 +487,58 @@ export default function VisualSystems() {
   const filteredWorks =
     activeTab === "all" ? graphicWorks : graphicWorks.filter((w) => w.category === activeTab);
 
+  /* ─── Accessibility & Modal Navigation ─────────────── */
+  const closeModal = useCallback(() => {
+    setSelectedItem(null);
+    setLightboxZoom(1);
+  }, []);
+
+  const currentIndex = selectedItem ? graphicWorks.findIndex((item) => item.id === selectedItem.id) : -1;
+
+  const handlePrev = useCallback(() => {
+    if (currentIndex <= 0) {
+      setSelectedItem(graphicWorks[graphicWorks.length - 1]);
+    } else {
+      setSelectedItem(graphicWorks[currentIndex - 1]);
+    }
+    setLightboxZoom(1);
+  }, [currentIndex, graphicWorks]);
+
+  const handleNext = useCallback(() => {
+    if (currentIndex >= graphicWorks.length - 1) {
+      setSelectedItem(graphicWorks[0]);
+    } else {
+      setSelectedItem(graphicWorks[currentIndex + 1]);
+    }
+    setLightboxZoom(1);
+  }, [currentIndex, graphicWorks]);
+
+  useEffect(() => {
+    if (!selectedItem) {
+      document.body.style.overflow = "";
+      return;
+    }
+    document.body.style.overflow = "hidden";
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedItem, closeModal, handlePrev, handleNext]);
+
+  useFocusTrap(!!selectedItem, modalRef);
+
   const capabilities = [
     { label: "BRAND", desc: "Identity & Guidelines", num: "01" },
-    { label: "GRAPHIC", desc: "Editorial & Print Keyart", num: "02" },
-    { label: "COMPOSITING", desc: "Matte Art & Photoshop", num: "03" },
-    { label: "UI SYSTEMS", desc: "Component Tokens", num: "04" },
-    { label: "AI VISUALS", desc: "Prompt & Diffusion Art", num: "05" },
+    { label: "ADVERTISING", desc: "Commercial & Splash Keyart", num: "02" },
+    { label: "COMPOSITING", desc: "Matte Art & Retouching", num: "03" },
+    { label: "EDITORIAL", desc: "Publication & Posters", num: "04" },
+    { label: "COLOR GRADING", desc: "Camera Raw & LUTs", num: "05" },
   ];
 
   const logoSteps = ["concept", "sketch", "construction", "final", "application"] as const;
@@ -268,157 +561,150 @@ export default function VisualSystems() {
     final: {
       title: "Master Identity Mark & Color Tokens",
       body: "The finalized brand emblem rendered in metallic gold and deep carbon black. Engineered to project prestige, clarity, and authority across light and dark backgrounds with zero optical distortion.",
-      bullets: ["Gold Accent: #D4AF37 (Warm Luxury Pantone 871 C)", "Charcoal Base: #090A0E (Ultra-dense digital black)"],
+      bullets: ["Color Tokens: Metallic Gold #D4AF37, Obsidian Carbon #0A0E17.", "Full vector SVG & EPS responsive lockups verified."],
     },
     application: {
-      title: "Multi-Touchpoint Collateral Deployment",
-      body: "Deploying the identity system across real-world collateral: foil-stamped business cards, embossed packaging boxes, digital mobile app icons, corporate signage, and executive stationery.",
-      bullets: ["100% vector consistency across print (CMYK) and digital (RGB).", "Exported to SVG, PDF, EPS, and resolution-independent assets."],
+      title: "Stationery, Packaging & Physical Print",
+      body: "Translating digital vector tokens to tactile physical brand artifacts. Specifications include 600 GSM duplexed cotton cardstock, blind deboss registration, and hot-stamped metallic gold foil.",
+      bullets: ["Hot-stamp metallic foil separation layers.", "Tested on matte black luxury gift packaging and letterheads."],
     },
   };
 
   return (
     <section
-      id="visual"
+      id="visual-systems"
       ref={sectionRef}
-      aria-label="Visual Systems and Art Direction"
-      className="relative py-24 bg-[#FAFAF7] dark:bg-[#090A0E] text-[#111318] dark:text-white transition-colors duration-250 overflow-hidden"
+      className="py-24 sm:py-32 relative bg-[#F7F8FA] dark:bg-[#07090E] transition-colors duration-300 font-sans"
     >
-      {/* Background Ambience */}
-      <div aria-hidden="true" className="absolute top-[15%] right-[-5%] w-[400px] h-[400px] rounded-full bg-[#B8941F]/5 dark:bg-[#D4AF37]/5 blur-[120px] pointer-events-none will-change-transform" />
-      <div aria-hidden="true" className="absolute bottom-[20%] left-[-5%] w-[350px] h-[350px] rounded-full bg-[#FF6B00]/5 blur-[120px] pointer-events-none will-change-transform" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* ── Section Header ──────────────────────────────── */}
+        {/* ── Section Header ───────────────────────────────── */}
         <motion.div
-          initial="hidden"
-          animate={sectionInView ? "show" : "hidden"}
-          variants={fadeUp}
-          custom={0}
-          className="flex flex-col items-center text-center mb-16"
+          initial={{ opacity: 0, y: 24 }}
+          animate={sectionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.55 }}
+          className="mb-14 sm:mb-20 text-center max-w-3xl mx-auto space-y-4"
         >
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#0F1118] border border-[#B8941F]/40 dark:border-[#D4AF37]/30 text-[#111318] dark:text-gray-300 text-xs font-bold tracking-wider uppercase shadow-sm mb-3">
-            <Palette className="w-3.5 h-3.5 text-[#B8941F] dark:text-[#D4AF37]" aria-hidden="true" />
-            <span>VISUAL SYSTEMS &amp; ART DIRECTION</span>
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-xs font-mono font-bold tracking-widest text-[#B8941F] dark:text-[#D4AF37] uppercase">
+            <Palette className="w-3.5 h-3.5" aria-hidden="true" />
+            <span>GRAPHICS WORK SHOWCASE • 30 MASTERWORKS</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#111318] dark:text-white">
-            VISUAL <span className="text-gradient-gold">CRAFT</span>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#111318] dark:text-white">
+            Visual Systems &amp;{" "}
+            <span className="text-[#B8941F] dark:text-[#D4AF37]">Art Direction</span>
           </h2>
 
-          <div aria-hidden="true" className="w-16 h-[2px] bg-[#D4AF37] mt-4 shadow-[0_0_8px_#D4A017]" />
-
-          <p className="text-[#374151] dark:text-[#D1D5DB] mt-4 max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed">
-            I don&apos;t only design interfaces — I understand visual communication. Across brand architecture, print typography, digital compositing, and art direction, each piece embodies rigor and narrative depth.
+          <p className="text-sm sm:text-base text-[#4B5563] dark:text-gray-300 leading-relaxed">
+            Multi-disciplinary graphic design studio featuring 30 authentic projects: commercial product advertising, high-end beauty retouching, theatrical movie posters, and rigorous brand identity architecture.
           </p>
         </motion.div>
 
-        {/* ── Visual Craft Capability Matrix ──────────────── */}
-        <div ref={matrixRef} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 mb-16">
-          {capabilities.map((pill, idx) => (
+        {/* ── Capabilities Matrix ──────────────────────────── */}
+        <div
+          ref={matrixRef}
+          className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 mb-16 sm:mb-24"
+        >
+          {capabilities.map((c, i) => (
             <motion.div
-              key={idx}
-              initial="hidden"
-              animate={matrixInView ? "show" : "hidden"}
-              variants={fadeUp}
-              custom={idx}
-              className="p-4 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#0F1118] text-center hover:border-[#D4AF37] hover:shadow-md transition-all duration-200 shadow-sm will-change-transform"
+              key={c.num}
+              initial={{ opacity: 0, y: 20 }}
+              animate={matrixInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.45, delay: i * 0.08 }}
+              className="p-4 sm:p-5 rounded-2xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-[#0B0F19]/80 backdrop-blur-sm hover:border-[#D4AF37] transition-all group shadow-sm hover:shadow-md"
             >
-              <span aria-hidden="true" className="font-mono text-[10px] text-[#B8941F] dark:text-[#D4AF37] font-bold block mb-1">
-                // {pill.num}
+              <span className="font-mono text-xs font-bold text-[#B8941F] dark:text-[#D4AF37] block mb-1">
+                {c.num}
               </span>
-              <h4 className="font-black text-xs sm:text-sm tracking-wider text-[#111318] dark:text-white uppercase">
-                {pill.label}
-              </h4>
-              <p className="text-[10px] text-[#667085] dark:text-gray-400 mt-1 font-medium">
-                {pill.desc}
+              <p className="font-black text-xs sm:text-sm text-[#111318] dark:text-white uppercase tracking-wider group-hover:text-[#B8941F] dark:group-hover:text-[#D4AF37] transition-colors">
+                {c.label}
+              </p>
+              <p className="text-[10px] text-[#667085] dark:text-gray-400 mt-1 font-mono">
+                {c.desc}
               </p>
             </motion.div>
           ))}
         </div>
 
-        {/* ── Brand Construction Matrix ────────────────────── */}
+        {/* ── Brand Identity Case Study ────────────────────── */}
         <motion.div
           ref={brandRef}
-          initial="hidden"
-          animate={brandInView ? "show" : "hidden"}
-          variants={scaleIn}
-          className="mb-20 p-6 sm:p-8 rounded-2xl border-[1.5px] border-[#D4AF37]/50 bg-white dark:bg-[#0F1118] shadow-xl relative overflow-hidden"
+          initial={{ opacity: 0, y: 28 }}
+          animate={brandInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+          transition={{ duration: 0.6 }}
+          className="mb-20 sm:mb-28 rounded-3xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#0B0F19] p-6 sm:p-10 shadow-lg relative overflow-hidden"
         >
-          <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-black/10 dark:border-white/10 pb-6 mb-8 gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-black/10 dark:border-white/10 mb-8">
             <div>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#B8941F] dark:text-[#D4AF37] block mb-1">
-                CURATED LOGO &amp; IDENTITY SYSTEM
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#B8941F] dark:text-[#D4AF37]">
+                DECONSTRUCTED CASE STUDY
               </span>
-              <h3 className="text-xl sm:text-2xl font-black text-[#111318] dark:text-white uppercase tracking-wide">
-                Geometric Brand Construction Matrix
+              <h3 className="text-xl sm:text-2xl font-black text-[#111318] dark:text-white uppercase">
+                Brand Identity: Ideation to Application
               </h3>
-              <p className="text-xs text-[#4B5563] dark:text-gray-400 mt-1">
-                Demonstrating rigorous craft progression: from initial creative concept through vector grid geometry and real-world collateral deployment.
-              </p>
             </div>
-
-            {/* Stepper Tabs */}
-            <div
-              role="tablist"
-              aria-label="Logo design process steps"
-              className="flex flex-wrap items-center gap-1.5 bg-black/5 dark:bg-black/30 p-1.5 rounded-xl border border-black/5 dark:border-white/5 self-start md:self-auto"
-            >
-              {logoSteps.map((step) => (
-                <button
-                  key={step}
-                  role="tab"
-                  aria-selected={activeLogoStep === step}
-                  onClick={() => setActiveLogoStep(step)}
-                  className={`px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D4AF37] ${
-                    activeLogoStep === step
-                      ? "bg-[#D4AF37] text-black shadow-sm font-extrabold"
-                      : "text-[#4B5563] dark:text-gray-400 hover:text-black dark:hover:text-white"
-                  }`}
-                >
-                  {step}
-                </button>
-              ))}
-            </div>
+            <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#667085] dark:text-gray-300">
+              5-Step Systematic Method
+            </span>
           </div>
 
+          {/* Stepper Tabs */}
+          <div className="flex flex-wrap gap-2 mb-8" role="tablist">
+            {logoSteps.map((step, idx) => (
+              <button
+                key={step}
+                role="tab"
+                aria-selected={activeLogoStep === step}
+                onClick={() => setActiveLogoStep(step)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                  activeLogoStep === step
+                    ? "bg-[#D4AF37] text-black shadow-md scale-105"
+                    : "bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#374151] dark:text-gray-300 hover:border-[#D4AF37]"
+                }`}
+              >
+                {`0${idx + 1}. ${step}`}
+              </button>
+            ))}
+          </div>
+
+          {/* Step Details & Visual */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Narrative */}
             <div className="lg:col-span-5 space-y-4">
-              <span className="px-2.5 py-1 rounded bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[10px] font-mono font-bold text-[#B8941F] dark:text-[#D4AF37] uppercase">
-                Phase: {activeLogoStep.toUpperCase()}
-              </span>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeLogoStep}
-                  initial={{ opacity: 0, x: -10 }}
+                  initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 10 }}
+                  exit={{ opacity: 0, x: 16 }}
                   transition={{ duration: 0.25 }}
                   className="space-y-3"
                 >
-                  <h4 className="text-lg font-black text-[#111318] dark:text-white">{stepContent[activeLogoStep].title}</h4>
-                  <p className="text-xs text-[#374151] dark:text-gray-300 leading-relaxed">{stepContent[activeLogoStep].body}</p>
+                  <h4 className="text-lg font-black text-[#111318] dark:text-white">
+                    {stepContent[activeLogoStep].title}
+                  </h4>
+                  <p className="text-xs text-[#374151] dark:text-gray-300 leading-relaxed">
+                    {stepContent[activeLogoStep].body}
+                  </p>
                   <ul className="text-xs space-y-1.5 text-[#4B5563] dark:text-gray-400 list-disc list-inside">
-                    {stepContent[activeLogoStep].bullets.map((b, i) => <li key={i}>{b}</li>)}
+                    {stepContent[activeLogoStep].bullets.map((b, i) => (
+                      <li key={i}>{b}</li>
+                    ))}
                   </ul>
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            {/* Right Visual */}
             <div className="lg:col-span-7">
-              <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden border border-black/10 dark:border-white/10 shadow-lg group bg-[#0A0E17] will-change-transform">
+              <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 shadow-lg group bg-[#0A0E17]">
                 <Image
                   src={activeLogoStep === "application" ? "/images/graphics/branding2.png" : "/images/graphics/branding.png"}
                   alt={`Brand design — ${activeLogoStep} phase`}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105 will-change-transform"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 55vw"
                 />
-                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-50" />
-                <div aria-hidden="true" className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs text-white">
                   <span className="font-mono text-[10px] text-[#F5BA42] font-bold">
                     SYSTEM SPEC: LOGO_{activeLogoStep.toUpperCase()}_v2.4
                   </span>
@@ -433,28 +719,30 @@ export default function VisualSystems() {
         <div className="flex flex-col sm:flex-row items-center justify-between border-b border-black/10 dark:border-white/10 pb-6 mb-10 gap-4">
           <div>
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#B8941F] dark:text-[#D4AF37]">
-              EDITORIAL &amp; PRINT GRID
+              CREATIVE WORKS GALLERY
             </span>
-            <h3 className="text-xl sm:text-2xl font-black text-[#111318] dark:text-white uppercase tracking-wider">
-              Selected Graphic Works
+            <h3 className="text-xl sm:text-3xl font-black text-[#111318] dark:text-white uppercase tracking-wider">
+              {filteredWorks.length} Verified Masterworks
             </h3>
           </div>
 
+          {/* Filter Pills */}
           <div role="group" aria-label="Filter graphic works by category" className="flex flex-wrap gap-2">
             {([
-              { id: "all", label: "All Works" },
-              { id: "compositing", label: "Compositing" },
-              { id: "editorial", label: "Editorial & Posters" },
+              { id: "all", label: `All (${graphicWorks.length})` },
+              { id: "graphic", label: "Commercial & Ads" },
+              { id: "compositing", label: "Compositing & Retouching" },
+              { id: "editorial", label: "Posters & Editorial" },
               { id: "brand", label: "Brand Systems" },
             ] as const).map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as typeof activeTab)}
                 aria-pressed={activeTab === tab.id}
-                className={`px-4 py-2 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D4AF37] ${
+                className={`px-4 py-2 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                   activeTab === tab.id
                     ? "bg-[#D4AF37] text-black font-extrabold shadow-md scale-105"
-                    : "bg-white dark:bg-[#0F1118] border border-[#D6B95A] dark:border-white/10 text-[#374151] dark:text-gray-300 hover:border-[#D4AF37]"
+                    : "bg-white dark:bg-[#0B0F19] border border-black/10 dark:border-white/10 text-[#374151] dark:text-gray-300 hover:border-[#D4AF37]"
                 }`}
               >
                 {tab.label}
@@ -463,181 +751,319 @@ export default function VisualSystems() {
           </div>
         </div>
 
-        {/* ── Editorial Grid ───────────────────────────────── */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* ── Proper Card-Like System Grid with Hover Effects ── */}
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+        >
           <AnimatePresence mode="popLayout">
             {filteredWorks.map((item, idx) => (
               <motion.article
                 key={item.id}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.94 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.25, delay: gridInView ? idx * 0.05 : 0 }}
-                className="group p-5 rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#0F1118] hover:border-[#D4AF37] hover:shadow-xl transition-all duration-300 flex flex-col justify-between will-change-transform"
+                exit={{ opacity: 0, scale: 0.94 }}
+                transition={{ duration: 0.28, delay: gridInView ? idx * 0.04 : 0 }}
+                onClick={() => setSelectedItem(item)}
+                className="group relative rounded-2xl border border-black/10 dark:border-white/10 bg-white/90 dark:bg-[#0B0F19]/90 hover:border-[#D4AF37] p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(212,175,55,0.18)]"
               >
                 <div>
-                  {/* Visual */}
-                  <div
-                    onClick={() => setSelectedItem(item)}
-                    role="button"
-                    tabIndex={0}
-                    aria-label={`Inspect ${item.title} in detail`}
-                    onKeyDown={(e) => e.key === "Enter" && setSelectedItem(item)}
-                    className="relative aspect-[16/11] w-full rounded-xl overflow-hidden bg-[#0A0E17] border border-black/10 dark:border-white/10 mb-4 cursor-pointer group/img focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D4AF37]"
-                  >
+                  {/* Card Thumbnail Container */}
+                  <div className="relative aspect-[16/11] w-full rounded-xl overflow-hidden bg-[#0A0E17] border border-black/10 dark:border-white/10 mb-4 group/img">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover/img:scale-105 will-change-transform"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-108"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover/img:opacity-30 transition-opacity" />
-                    <div aria-hidden="true" className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md border border-[#D4AF37]/40 text-[9px] font-mono text-[#F5BA42] font-bold">
+
+                    {/* Gradient Vignette */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+
+                    {/* Corner Tag */}
+                    <div className="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md border border-[#D4AF37]/50 text-[9px] font-mono text-[#F5BA42] font-black uppercase tracking-wider shadow-md">
                       {item.badge}
                     </div>
-                    <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity pointer-events-none">
-                      <div className="w-10 h-10 rounded-full bg-black/70 border border-[#D4AF37] text-[#D4AF37] flex items-center justify-center shadow-lg backdrop-blur-sm">
-                        <ZoomIn className="w-4 h-4" />
+
+                    {/* Hover Quick View Spotlight Button */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                      <div className="px-4 py-2 rounded-xl bg-black/80 border border-[#D4AF37] text-[#D4AF37] flex items-center space-x-2 shadow-2xl backdrop-blur-md transform scale-90 group-hover:scale-100 transition-transform">
+                        <ZoomIn className="w-4 h-4 stroke-[2.5]" />
+                        <span className="text-xs font-mono font-bold tracking-wider uppercase">
+                          Inspect Project
+                        </span>
                       </div>
                     </div>
                   </div>
 
-                  <span className="text-[10px] font-mono text-[#B8941F] dark:text-[#F5BA42] uppercase tracking-wider block mb-1 font-bold">
-                    {item.category.toUpperCase()} • {item.specs}
-                  </span>
-                  <h4 className="font-extrabold text-base text-[#111318] dark:text-white uppercase tracking-wider mb-2 group-hover:text-[#B8941F] dark:group-hover:text-[#F5BA42] transition-colors">
+                  {/* Category & Specs Line */}
+                  <div className="flex items-center justify-between text-[10px] font-mono text-[#B8941F] dark:text-[#F5BA42] font-bold uppercase tracking-wider mb-1.5">
+                    <span>{item.category}</span>
+                    <span className="text-[#667085] dark:text-gray-400 font-normal">
+                      {item.specs.split("•")[0]?.trim()}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h4 className="font-black text-base sm:text-lg text-[#111318] dark:text-white uppercase tracking-tight mb-2 group-hover:text-[#B8941F] dark:group-hover:text-[#F5BA42] transition-colors line-clamp-1">
                     {item.title}
                   </h4>
-                  <p className="text-xs text-[#4B5563] dark:text-gray-300 leading-relaxed mb-4">
+
+                  {/* Description */}
+                  <p className="text-xs text-[#4B5563] dark:text-gray-300 leading-relaxed mb-4 line-clamp-2">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-black/10 dark:border-white/10 flex items-center justify-between text-xs">
-                  <div className="flex flex-wrap gap-1.5">
-                    {item.tools.map((t, i) => (
-                      <span key={i} className="px-2 py-0.5 rounded bg-black/5 dark:bg-white/5 text-[9px] font-mono text-[#667085] dark:text-gray-400">
+                {/* Footer Badges & Inspect CTA */}
+                <div className="pt-3.5 border-t border-black/10 dark:border-white/10 flex items-center justify-between text-xs">
+                  <div className="flex flex-wrap gap-1.5 max-w-[70%]">
+                    {item.tools.slice(0, 3).map((t, i) => (
+                      <span
+                        key={i}
+                        className="px-2 py-0.5 rounded bg-black/5 dark:bg-white/5 text-[9px] font-mono text-[#667085] dark:text-gray-300"
+                      >
                         {t}
                       </span>
                     ))}
                   </div>
-                  <button
-                    onClick={() => setSelectedItem(item)}
-                    aria-label={`Inspect ${item.title}`}
-                    className="text-[#B8941F] dark:text-[#D4AF37] hover:underline font-bold text-xs uppercase flex items-center space-x-1 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D4AF37] rounded"
-                  >
+
+                  <div className="text-[#B8941F] dark:text-[#D4AF37] font-bold text-xs uppercase flex items-center space-x-1 group-hover:translate-x-1 transition-transform">
                     <span>Inspect</span>
-                    <ArrowRight className="w-3 h-3" aria-hidden="true" />
-                  </button>
+                    <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                  </div>
                 </div>
               </motion.article>
             ))}
           </AnimatePresence>
         </div>
 
-        {/* ── Extended Gallery CTA ─────────────────────────── */}
+        {/* ── Extended 21-Artwork Gallery Launch Banner ──────── */}
         <motion.div
-          initial="hidden"
-          animate={gridInView ? "show" : "hidden"}
-          variants={fadeUp}
-          custom={3}
-          className="mt-16 p-8 rounded-2xl border border-[#D4AF37]/40 bg-gradient-to-r from-black/5 via-gold/5 to-black/5 dark:from-[#0F1118] dark:via-[#1A1810] dark:to-[#0F1118] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md"
+          initial={{ opacity: 0, y: 20 }}
+          animate={gridInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5 }}
+          className="mt-16 p-8 rounded-3xl border border-[#D4AF37]/50 bg-gradient-to-r from-black/5 via-[#D4AF37]/5 to-black/5 dark:from-[#0F1118] dark:via-[#1A1810] dark:to-[#0F1118] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl"
         >
           <div className="space-y-1.5 text-center sm:text-left">
             <span className="text-[10px] font-mono font-bold text-[#B8941F] dark:text-[#D4AF37] uppercase tracking-widest block">
-              EXTENDED DIGITAL VAULT
+              EXTENDED MASTER VAULT
             </span>
-            <h4 className="text-xl font-black text-[#111318] dark:text-white uppercase">
+            <h4 className="text-xl sm:text-2xl font-black text-[#111318] dark:text-white uppercase">
               Photoshop 21-Artwork Dedicated Gallery
             </h4>
             <p className="text-xs text-[#4B5563] dark:text-gray-300 max-w-xl leading-relaxed">
-              Explore all 21 full-resolution matte paintings, surreal compositions, and digital photo retouching studies.
+              Explore the dedicated exhibition room featuring all 21 full-resolution matte paintings, surreal composites, and digital photo retouching studies.
             </p>
           </div>
           <a
             href="/photoshop"
-            className="btn-primary shrink-0 flex items-center space-x-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D4AF37]"
+            className="btn-primary shrink-0 flex items-center space-x-2 shadow-lg hover:scale-105 transition-transform"
           >
-            <span>Launch 21 Artworks Gallery</span>
+            <span>Launch 21 Artworks Room</span>
             <ExternalLink className="w-4 h-4" aria-hidden="true" />
           </a>
         </motion.div>
 
       </div>
 
-      {/* ── Lightbox Modal ────────────────────────────────── */}
+      {/* ── Overlay Modal with Scale Transition ─────────────── */}
       <AnimatePresence>
         {selectedItem && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-md"
+            className="fixed inset-0 z-[150] flex items-center justify-center p-3 sm:p-6 md:p-8 bg-black/92 backdrop-blur-xl"
             role="dialog"
             aria-modal="true"
             aria-label={`Artwork detail: ${selectedItem.title}`}
-            onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}
+            onClick={(e) => {
+              if (e.target === e.currentTarget) closeModal();
+            }}
           >
+            {/* Modal Box with Scale Transition */}
             <motion.div
               ref={modalRef}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.22 }}
-              className="relative max-w-5xl w-full max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-[#0F1118] border border-[#D4AF37]/50 shadow-2xl p-6 sm:p-8 text-[#111318] dark:text-white"
+              initial={{ opacity: 0, scale: 0.88, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.88, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 320 }}
+              className="relative max-w-5xl w-full max-h-[94vh] overflow-y-auto rounded-3xl bg-[#090D16] border border-[#D4AF37]/50 shadow-[0_0_80px_rgba(0,0,0,0.9)] p-5 sm:p-8 text-white z-10 font-sans"
             >
-              <button
-                onClick={closeModal}
-                className="absolute top-4 right-4 p-2 rounded-full bg-black/10 dark:bg-white/10 hover:bg-[#D4AF37] hover:text-black transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D4AF37]"
-                aria-label="Close detail view"
-              >
-                <X className="w-5 h-5" aria-hidden="true" />
-              </button>
+              {/* Header Bar */}
+              <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/10">
+                <div className="flex items-center space-x-3">
+                  <span className="px-2.5 py-1 rounded bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[10px] font-mono font-bold text-[#F5BA42] uppercase">
+                    ARTWORK {currentIndex + 1} OF {graphicWorks.length}
+                  </span>
+                  <span className="hidden sm:inline-block text-xs font-mono text-gray-400">
+                    Use ← → Arrow Keys to Browse
+                  </span>
+                </div>
 
+                <div className="flex items-center space-x-2">
+                  {/* Prev Artwork */}
+                  <button
+                    onClick={handlePrev}
+                    className="p-2 rounded-xl bg-white/5 hover:bg-[#D4AF37] hover:text-black border border-white/10 transition-colors cursor-pointer"
+                    title="Previous Artwork (Left Arrow)"
+                    aria-label="Previous artwork"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+
+                  {/* Next Artwork */}
+                  <button
+                    onClick={handleNext}
+                    className="p-2 rounded-xl bg-white/5 hover:bg-[#D4AF37] hover:text-black border border-white/10 transition-colors cursor-pointer"
+                    title="Next Artwork (Right Arrow)"
+                    aria-label="Next artwork"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+
+                  {/* Close Button */}
+                  <button
+                    onClick={closeModal}
+                    className="p-2 rounded-xl bg-white/10 hover:bg-red-500/20 hover:text-red-400 border border-white/10 transition-colors cursor-pointer ml-2"
+                    title="Close (Esc)"
+                    aria-label="Close detail view"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Main Content Layout */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                <div className="lg:col-span-7">
-                  <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-[#0A0E17]">
+                {/* Left: High-Res Visual Viewport */}
+                <div className="lg:col-span-7 flex flex-col items-center">
+                  <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden border border-white/10 bg-[#06080F] group shadow-inner">
                     <Image
                       src={selectedItem.image}
                       alt={selectedItem.title}
                       fill
-                      className="object-contain"
+                      className="object-contain transition-transform duration-300"
+                      style={{ transform: `scale(${lightboxZoom})` }}
                       sizes="(max-width: 1024px) 100vw, 60vw"
                     />
+
+                    {/* Floating Zoom Controls */}
+                    <div className="absolute bottom-3 right-3 flex items-center space-x-1.5 p-1 rounded-xl bg-black/80 backdrop-blur-md border border-white/15">
+                      <button
+                        onClick={() => setLightboxZoom((prev) => Math.min(prev + 0.25, 2.5))}
+                        className="p-1.5 hover:text-[#D4AF37] transition-colors cursor-pointer"
+                        title="Zoom In"
+                        aria-label="Zoom in"
+                      >
+                        <ZoomIn className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        onClick={() => setLightboxZoom((prev) => Math.max(prev - 0.25, 1))}
+                        className="p-1.5 hover:text-[#D4AF37] transition-colors cursor-pointer"
+                        title="Zoom Out"
+                        aria-label="Zoom out"
+                      >
+                        <ZoomOut className="w-3.5 h-3.5" />
+                      </button>
+                      {lightboxZoom > 1 && (
+                        <button
+                          onClick={() => setLightboxZoom(1)}
+                          className="p-1.5 hover:text-[#D4AF37] transition-colors cursor-pointer"
+                          title="Reset Zoom"
+                          aria-label="Reset zoom"
+                        >
+                          <RotateCcw className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+                    </div>
                   </div>
+
+                  <a
+                    href={selectedItem.image}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 text-xs font-mono text-[#D4AF37] hover:underline flex items-center space-x-1"
+                  >
+                    <span>Open Raw Full-Resolution Image</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
                 </div>
 
+                {/* Right: Detailed Project Documentation */}
                 <div className="lg:col-span-5 space-y-4">
-                  <span className="px-2.5 py-1 rounded bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[10px] font-mono font-bold text-[#B8941F] dark:text-[#D4AF37] uppercase">
-                    {selectedItem.badge}
-                  </span>
-                  <h3 className="text-2xl font-black text-[#111318] dark:text-white uppercase">
-                    {selectedItem.title}
-                  </h3>
-                  <p className="text-xs text-[#4B5563] dark:text-gray-300 leading-relaxed">
+                  <div>
+                    <span className="px-2.5 py-1 rounded-md bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[10px] font-mono font-bold text-[#F5BA42] uppercase tracking-wider">
+                      {selectedItem.badge}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-black text-white uppercase mt-2.5">
+                      {selectedItem.title}
+                    </h3>
+                  </div>
+
+                  <p className="text-xs text-gray-300 leading-relaxed">
                     {selectedItem.description}
                   </p>
 
-                  <div className="border-t border-black/10 dark:border-white/10 pt-4 space-y-2 text-xs">
+                  <div className="border-t border-white/10 pt-4 space-y-3 text-xs">
+                    {selectedItem.concept && (
+                      <div>
+                        <span className="font-mono text-[10px] text-gray-400 uppercase font-bold block">
+                          Conceptual Intent:
+                        </span>
+                        <p className="text-gray-200 mt-0.5 leading-relaxed">
+                          {selectedItem.concept}
+                        </p>
+                      </div>
+                    )}
+
+                    {selectedItem.construction && (
+                      <div>
+                        <span className="font-mono text-[10px] text-gray-400 uppercase font-bold block">
+                          Craft &amp; Layer Architecture:
+                        </span>
+                        <p className="text-gray-200 mt-0.5 leading-relaxed">
+                          {selectedItem.construction}
+                        </p>
+                      </div>
+                    )}
+
                     <div>
-                      <span className="font-mono text-[10px] text-[#667085] dark:text-gray-400 uppercase block font-bold">Concept &amp; Intent:</span>
-                      <p className="text-slate-800 dark:text-slate-200 mt-0.5">{selectedItem.concept}</p>
+                      <span className="font-mono text-[10px] text-gray-400 uppercase font-bold block">
+                        Technical Deliverable Specs:
+                      </span>
+                      <p className="text-[#D4AF37] font-mono mt-0.5 font-bold">
+                        {selectedItem.specs}
+                      </p>
                     </div>
-                    <div>
-                      <span className="font-mono text-[10px] text-[#667085] dark:text-gray-400 uppercase block font-bold">Craft &amp; Construction:</span>
-                      <p className="text-slate-800 dark:text-slate-200 mt-0.5">{selectedItem.construction}</p>
-                    </div>
-                    <div>
-                      <span className="font-mono text-[10px] text-[#667085] dark:text-gray-400 uppercase block font-bold">Technical Specs:</span>
-                      <p className="text-[#B8941F] dark:text-[#D4AF37] font-mono mt-0.5">{selectedItem.specs}</p>
-                    </div>
+
+                    {selectedItem.application && (
+                      <div>
+                        <span className="font-mono text-[10px] text-gray-400 uppercase font-bold block">
+                          Commercial Applications:
+                        </span>
+                        <p className="text-gray-200 mt-0.5 leading-relaxed">
+                          {selectedItem.application}
+                        </p>
+                      </div>
+                    )}
                   </div>
 
-                  <div className="pt-4 border-t border-black/10 dark:border-white/10 flex flex-wrap gap-2">
-                    {selectedItem.tools.map((t, i) => (
-                      <span key={i} className="px-2.5 py-1 rounded-md bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[10px] font-mono font-bold">
-                        {t}
-                      </span>
-                    ))}
+                  {/* Software & Skills Pills */}
+                  <div className="pt-4 border-t border-white/10">
+                    <span className="font-mono text-[10px] text-gray-400 uppercase font-bold block mb-2">
+                      Tools &amp; Pipeline:
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {selectedItem.tools.map((t, i) => (
+                        <span
+                          key={i}
+                          className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] font-mono text-gray-300 font-bold"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

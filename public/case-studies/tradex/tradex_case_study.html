@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TradeX — Product Design Case Study | Prashant Sisodhiya</title>
+<meta name="description" content="12-page interactive TradeX product design case study by Prashant Sisodhiya.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+
+:root{
+  --bg:#f6faf8; --surface:#ffffff; --surface2:#eef6f2; --ink:#0b1713;
+  --muted:#5e7068; --line:#d9e7e1; --green:#0ca85b; --green2:#14d878;
+  --mint:#dff8eb; --red:#e95b65; --gold:#c99426; --shadow:0 24px 70px rgba(15,55,40,.12);
+  --radius:24px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif}
+button{font:inherit}
+.sitebar{position:fixed;z-index:50;top:0;left:0;right:0;height:70px;background:rgba(246,250,248,.86);backdrop-filter:blur(18px);border-bottom:1px solid rgba(217,231,225,.85);display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.03em}
+.brand-mark{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#0b1713,#14d878);display:grid;place-items:center;color:white;font-weight:800}
+.top-actions{display:flex;align-items:center;gap:10px}
+.pill,.iconbtn{border:1px solid var(--line);background:white;color:var(--ink);border-radius:999px;padding:9px 14px;cursor:pointer}
+.iconbtn{width:40px;height:40px;padding:0}
+.progress{position:fixed;z-index:51;top:69px;left:0;height:3px;background:var(--green2);width:0}
+
+.deck{padding-top:70px}
+.page{min-height:100vh;display:grid;place-items:center;padding:70px 4vw;position:relative;scroll-margin-top:70px}
+.page-inner{width:min(1440px,100%);min-height:760px;background:var(--surface);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);overflow:hidden;position:relative}
+.page-inner:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 88% 8%,rgba(20,216,120,.10),transparent 30%),radial-gradient(circle at 4% 90%,rgba(12,168,91,.07),transparent 25%)}
+.page-head{position:relative;display:flex;justify-content:space-between;align-items:flex-start;padding:30px 38px 0}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--green)}
+.page-no{font-family:Manrope;font-size:13px;color:var(--muted)}
+.content{position:relative;padding:28px 38px 38px}
+h1,h2,h3{font-family:Manrope,sans-serif;letter-spacing:-.045em;margin:0}
+h1{font-size:clamp(46px,6vw,92px);line-height:.95}
+h2{font-size:clamp(32px,4vw,58px);line-height:1}
+h3{font-size:20px}
+.lead{font-size:18px;line-height:1.7;color:var(--muted);max-width:720px}
+.small{font-size:12px;color:var(--muted);line-height:1.55}
+.accent{color:var(--green)}
+.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:26px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:18px;padding:20px}
+.card.soft{background:var(--surface2)}
+.card.dark{background:#0d1714;color:white;border-color:#20372e}
+.card.dark .small{color:#a8b8b0}
+.tag{display:inline-flex;align-items:center;gap:7px;border:1px solid #cfe6dc;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:700;color:#167a4c;background:#f4fffa}
+.hero-img{width:100%;display:block;border-radius:18px;border:1px solid var(--line);box-shadow:0 18px 50px rgba(20,70,50,.13)}
+.img-frame{background:#f0f7f3;border:1px solid var(--line);border-radius:22px;padding:12px}
+.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{padding:16px;border:1px solid var(--line);border-radius:16px;background:#fbfefd}
+.stat b{display:block;font:800 25px Manrope;margin-bottom:4px}
+.stat span{font-size:11px;color:var(--muted)}
+.stepbar{display:flex;gap:0;margin:25px 0}
+.step{flex:1;padding:13px 12px;border-top:3px solid var(--line);font-size:12px;font-weight:800;color:var(--muted)}
+.step.on{border-color:var(--green);color:var(--ink)}
+.quote{border-left:4px solid var(--green);padding:12px 18px;color:#28463a;background:#f1faf5;border-radius:0 12px 12px 0}
+.list{display:grid;gap:10px;margin-top:14px}
+.item{display:flex;gap:12px;align-items:flex-start}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--green);margin-top:7px;flex:none}
+.chiprow{display:flex;flex-wrap:wrap;gap:8px}
+.footer{position:absolute;left:38px;right:38px;bottom:20px;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#7b8c84}
+.cover .page-inner{background:linear-gradient(135deg,#ffffff 0%,#f5fbf8 60%,#e9f8f1 100%)}
+.cover-layout{min-height:760px;display:grid;grid-template-columns:.75fr 1.25fr;gap:20px;padding:45px 44px 42px;position:relative}
+.cover-copy{display:flex;flex-direction:column;justify-content:center;padding:20px}
+.logo-word{font:800 clamp(70px,9vw,150px)/.82 Manrope;letter-spacing:-.09em}
+.logo-word span{color:var(--green)}
+.cover-sub{font-size:18px;letter-spacing:.3em;text-transform:uppercase;margin:20px 0;color:#38564b}
+.cover-promise{font:700 28px/1.2 Manrope;max-width:500px;margin:20px 0}
+.cover-img{display:flex;align-items:center}
+.cover-img img{width:100%;max-height:680px;object-fit:cover;object-position:center;border-radius:24px;box-shadow:0 35px 90px rgba(10,90,50,.20)}
+.badges{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.index{padding:45px 44px}
+.index-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px}
+.index-card{display:flex;gap:18px;align-items:center;padding:20px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,#fff,#f7fcf9);cursor:pointer;transition:.25s}
+.index-card:hover{transform:translateY(-3px);box-shadow:0 16px 30px rgba(20,90,55,.10);border-color:#a9d7c2}
+.index-num{font:800 28px Manrope;color:var(--green);min-width:44px}
+.index-card b{display:block;margin-bottom:4px}
+.mock-app{border:1px solid #cfe1d9;border-radius:18px;overflow:hidden;background:#f8fcfa;box-shadow:0 18px 40px rgba(20,80,55,.12)}
+.mock-top{height:48px;border-bottom:1px solid #d7e6df;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:white}
+.mock-body{display:grid;grid-template-columns:180px 1fr;min-height:370px}
+.mock-side{background:#f0f7f3;border-right:1px solid #d7e6df;padding:14px}
+.mock-side div{padding:10px;border-radius:9px;font-size:11px;color:#4e655b}
+.mock-side .sel{background:#dff8eb;color:#087544;font-weight:800}
+.mock-main{padding:16px;display:grid;grid-template-columns:1.2fr .8fr;gap:12px}
+.chart-card,.watch-card{border:1px solid #d7e6df;border-radius:14px;background:white;padding:14px}
+.chart{height:190px;position:relative;overflow:hidden;background:linear-gradient(#fff,#f6fbf8);border-radius:10px}
+.chart svg{width:100%;height:100%}
+.mini-row{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:12px}
+.mini{border:1px solid #d7e6df;border-radius:11px;padding:10px}
+.mini b{font-size:12px}.mini span{display:block;font-size:10px;color:#72847c}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;align-items:center;margin-top:25px}
+.flowbox{padding:15px 10px;border:1px solid #b9d9ca;border-radius:14px;background:#f5fcf8;text-align:center;font-size:11px;font-weight:700}
+.arrow{color:var(--green);font-weight:900;text-align:center}
+.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:25px}
+.titem{padding-top:16px;border-top:3px solid var(--green)}
+.titem b{font-size:13px}.titem p{font-size:11px;color:var(--muted);line-height:1.5}
+.ia{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:12px;align-items:center;margin-top:22px}
+.ia-col{display:grid;gap:9px}
+.ia-box{padding:12px;border:1px solid var(--line);border-radius:12px;background:white;font-size:11px}
+.ia-box strong{display:block;font-size:12px;margin-bottom:3px}
+.arrowbig{font:800 28px Manrope;color:var(--green);text-align:center}
+.wire-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.wire{background:#f4f7f5;border:1px solid #ccdcd5;border-radius:14px;padding:12px;min-height:270px}
+.wire .bar{height:13px;background:#dce9e3;border-radius:5px;margin-bottom:10px}
+.wire .block{height:38px;background:white;border:1px solid #d7e3de;border-radius:7px;margin:8px 0}
+.wire .block.sm{height:20px}
+.wire .block.green{background:#dff8eb;border-color:#b9e7cf}
+.system{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px}
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:14px}
+.sw{height:72px;border-radius:12px;border:1px solid #d5e1dc;padding:8px;display:flex;align-items:end;font-size:10px;font-weight:700}
+.sw.g1{background:#0ca85b;color:#fff}.sw.g2{background:#14d878;color:#062c1b}.sw.dk{background:#0d1714;color:#fff}.sw.wh{background:#fff}
+.component-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.comp{border:1px solid var(--line);border-radius:12px;padding:12px;background:white}
+.comp .btn{display:inline-block;background:#0ca85b;color:#fff;border-radius:8px;padding:8px 12px;font-size:10px}
+.comp .input{height:32px;border:1px solid #cfded8;border-radius:8px;margin-top:8px;padding:8px;color:#9aa9a3;font-size:10px}
+.outcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.future{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.future .card{min-height:130px}
+.navhint{position:fixed;bottom:18px;right:20px;z-index:40;display:flex;gap:8px}
+.navhint button{border:1px solid var(--line);background:white;border-radius:12px;width:42px;height:42px;cursor:pointer;box-shadow:0 8px 20px rgba(20,60,45,.10)}
+@media(max-width:900px){
+  .sitebar{padding:0 14px}.page{padding:35px 12px}.page-inner{min-height:auto}.grid2,.system,.outcome-grid,.cover-layout{grid-template-columns:1fr}.grid3,.statrow,.timeline,.wire-grid,.future{grid-template-columns:1fr 1fr}.index-grid{grid-template-columns:1fr}.mock-body{grid-template-columns:1fr}.mock-side{display:none}.mock-main{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.ia{grid-template-columns:1fr}.footer{position:static;margin-top:25px;padding:0 38px 25px}.cover-layout{padding:35px 25px}.cover-img img{max-height:430px}.content,.page-head{padding-left:25px;padding-right:25px}
+}
+@media(max-width:560px){
+  .grid3,.statrow,.timeline,.wire-grid,.future,.component-grid{grid-template-columns:1fr}.logo-word{font-size:70px}.top-actions .pill{display:none}
+}
+@media print{
+  .sitebar,.navhint,.progress{display:none!important}.deck{padding:0}.page{padding:0;min-height:auto;page-break-after:always}.page-inner{box-shadow:none;border-radius:0;min-height:210mm;width:297mm}.page-inner{transform-origin:top left}
+}
+</style>
+</head>
+<body>
+<header class="sitebar">
+  <div class="brand"><div class="brand-mark">X</div><span>TradeX</span><span style="font-size:11px;color:var(--muted)">/ CASE STUDY</span></div>
+  <div class="top-actions">
+    <button class="pill" id="themeBtn">Light / Calm</button>
+    <button class="iconbtn" id="prevBtn" aria-label="Previous page">←</button>
+    <button class="iconbtn" id="nextBtn" aria-label="Next page">→</button>
+  </div>
+</header>
+<div class="progress" id="progress"></div>
+
+<main class="deck">
+
+<section class="page cover" id="p1">
+<div class="page-inner">
+  <div class="cover-layout">
+    <div class="cover-copy">
+      <div class="kicker">PRASHANT SISODHIYA · PRODUCT DESIGN CASE STUDY</div>
+      <div class="logo-word">Trade<span>X</span></div>
+      <div class="cover-sub">AI-NATIVE TRADING TERMINAL</div>
+      <div class="cover-promise">Smarter analysis.<br><span class="accent">Confident decisions.</span></div>
+      <p class="lead">A product design exploration for an AI-native paper-trading terminal that brings market monitoring, watchlists, technical analysis, portfolio intelligence and AI-assisted insights into one focused workspace.</p>
+      <div class="badges"><span class="tag">Product Design</span><span class="tag">UX / UI</span><span class="tag">FinTech</span><span class="tag">AI Experience</span></div>
+      <div style="margin-top:30px" class="small"><b>CASE STUDY</b><br>TradeX Pro X · Web/Desktop-first trading terminal<br>Role: Product / UI/UX Design · Visual system · Interaction design</div>
+    </div>
+    <div class="cover-img"><img src="assets/tradex-cover.png" alt="TradeX case study cover"></div>
+  </div>
+  <div class="footer"><span>TRADEX · PRODUCT DESIGN</span><span>01 / 12</span><span>PRASHANT SISODHIYA</span></div>
+</div>
+</section>
+
+<section class="page" id="p2">
+<div class="page-inner">
+  <div class="page-head"><div><div class="kicker">02 · INDEX</div><h2>Case study map</h2></div><div class="page-no">02 / 12</div></div>
+  <div class="index content">
+    <p class="lead">A 12-page story that moves from context and constraints to product architecture, interface evolution and the implemented experience.</p>
+    <div class="index-grid">
+      <div class="index-card" data-target="p3"><div class="index-num">03</div><div><b>Overview</b><span class="small">What TradeX is, my role and the product surface.</span></div></div>
+      <div class="index-card" data-target="p4"><div class="index-num">04</div><div><b>The challenge</b><span class="small">Why a trading workspace needs clarity before complexity.</span></div></div>
+      <div class="index-card" data-target="p5"><div class="index-num">05</div><div><b>Research & discovery</b><span class="small">Documented product requirements, constraints and evidence.</span></div></div>
+      <div class="index-card" data-target="p6"><div class="index-num">06</div><div><b>Users & needs</b><span class="small">Representative archetypes, clearly separated from research claims.</span></div></div>
+      <div class="index-card" data-target="p7"><div class="index-num">07</div><div><b>Problem definition</b><span class="small">From fragmented tasks to a focused terminal model.</span></div></div>
+      <div class="index-card" data-target="p8"><div class="index-num">08</div><div><b>Ideation & solution</b><span class="small">Exploring the dashboard, AI assistant and trading workflow.</span></div></div>
+      <div class="index-card" data-target="p9"><div class="index-num">09</div><div><b>Flows & information architecture</b><span class="small">How the product organizes markets, watchlists and portfolio work.</span></div></div>
+      <div class="index-card" data-target="p10"><div class="index-num">10</div><div><b>Wireframes & evolution</b><span class="small">Structure first, visual polish second.</span></div></div>
+      <div class="index-card" data-target="p11"><div class="index-num">11</div><div><b>UI system</b><span class="small">Brand, components, data visualization and responsive patterns.</span></div></div>
+      <div class="index-card" data-target="p12"><div class="index-num">12</div><div><b>Outcome & future</b><span class="small">What was built, what is documented and what remains to validate.</span></div></div>
+    </div>
+  </div>
+  <div class="footer"><span>TRADEX · CONTENT MAP</span><span>02 / 12</span><span>SCROLL / USE ARROWS</span></div>
+</div>
+</section>
+
+<section class="page" id="p3">
+<div class="page-inner">
+  <div class="page-head"><div><div class="kicker">03 · OVERVIEW</div><h2>One terminal. Many decisions.</h2></div><div class="page-no">03 / 12</div></div>
+  <div class="content grid2">
+    <div>
+      <p class="lead">TradeX is an AI-native trading terminal concept and paper-trading sandbox designed around a concentrated market workspace rather than a collection of disconnected tools.</p>
+      <div class="statrow" style="margin:25px 0">
+        <div class="stat"><b>01</b><span>Core terminal</span></div>
+        <div class="stat"><b>05+</b><span>Primary product areas</span></div>
+        <div class="stat"><b>AI</b><span>Assisted analysis</span></div>
+        <div class="stat"><b>Web</b><span>Desktop-first</span></div>
+      </div>
+      <div class="card soft">
+        <h3>My role</h3>
+        <div class="list">
+          <div class="item"><span class="dot"></span><span>Product / UI/UX design and interaction structure.</span></div>
+          <div class="item"><span class="dot"></span><span>Information architecture, dashboard composition and design-system thinking.</span></div>
+          <div class="item"><span class="dot"></span><span>Visual direction for the TradeX brand and trading workspace.</span></div>
+          <div class="item"><span class="dot"></span><span>Prototype-oriented product thinking and implementation collaboration.</span></div>
+        </div>
+      </div>
+      <div class="chiprow" style="margin-top:18px">
+        <span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS</span><span class="tag">Vite</span><span class="tag">Zustand</span><span class="tag">TradingView Lightweight Charts</span><span class="tag">Recharts</span>
+      </div>
+    </div>
+    <div class="img-frame"><img class="hero-img" src="assets/tradex-desktop-wireframe.png" alt="TradeX desktop interface showing watchlist, chart and AI Copilot"></div>
+  </div>
+  <div class="footer"><span>CONTEXT → PRODUCT SURFACE</span><span>03 / 12</span><span>TRADEX</span></div>
+</div>
+</section>
+
+<section class="page" id="p4">
+<div class="page-inner">
+  <div class="page-head"><div><div class="kicker">04 · THE CHALLENGE</div><h2>Reduce the cognitive load.</h2></div><div class="page-no">04 / 12</div></div>
+  <div class="content">
+    <p class="lead">The design challenge was not simply to show more market information. It was to organize a high-density trading environment so that the most important context remains visible while deeper analysis stays one interaction away.</p>
+    <div class="stepbar">
+      <div class="step on">01 · MARKET DISCOVERY</div><div class="step on">02 · WATCHLIST</div><div class="step on">03 · ANALYSIS</div><div class="step on">04 · PORTFOLIO</div><div class="step on">05 · ACTION</div>
+    </div>
+    <div class="grid3">
+      <div class="card"><span class="tag">Challenge 01</span><h3 style="margin-top:14px">Information density</h3><p class="small">Charts, symbols, indicators, positions and news can compete for attention. The interface needs a clear visual hierarchy.</p></div>
+      <div class="card"><span class="tag">Challenge 02</span><h3 style="margin-top:14px">Context switching</h3><p class="small">Moving between market discovery, a specific asset, portfolio analysis and an AI assistant can fragment the task.</p></div>
+      <div class="card"><span class="tag">Challenge 03</span><h3 style="margin-top:14px">Trust in AI assistance</h3><p class="small">AI guidance must be presented as an analytical aid, not as a guaranteed prediction or financial recommendation.</p></div>
+    </div>
+    <div class="card dark" style="margin-top:18px">
+      <div class="kicker" style="color:#53f3a0">DESIGN OPPORTUNITY</div>
+      <h3 style="font-size:30px;margin-top:8px">Create a single workspace where market context, analysis and portfolio state can be understood without losing the user's place.</h3>
+    </div>
+  </div>
+  <div class="footer"><span>PROBLEM → OPPORTUNITY</span><span>04 / 12</span><span>CLARITY BEFORE COMPLEXITY</span></div>
+</div>
+</section>
+
+<section class="page" id="p5">
+<div class="page-inner">
+  <div class="page-head"><div><div class="kicker">05 · RESEARCH & DISCOVERY</div><h2>Start with what the product must do.</h2></div><div class="page-no">05 / 12</div></div>
+  <div class="content grid2">
+    <div>
+      <div class="card soft">
+        <h3>Evidence used in this case study</h3>
+        <div class="list">
+          <div class="item"><span class="dot"></span><span>Documented product architecture and implementation notes.</span></div>
+          <div class="item"><span class="dot"></span><span>Existing TradeX UI / UX case-study artifacts and wireframes.</span></div>
+          <div class="item"><span class="dot"></span><span>Defined terminal features: watchlist, portfolio, analytics and AI-assisted analysis.</span></div>
+          <div class="item"><span class="dot"></span><span>Technical stack and interaction requirements from the project.</span></div>
+        </div>
+      </div>
+      <div class="quote" style="margin-top:16px"><b>Evidence rule:</b> no invented participant counts, survey percentages, testimonials or business outcomes are presented as research findings.</div>
+    </div>
+    <div>
+      <h3>Discovery questions</h3>
+      <div class="grid3" style="grid-template-columns:1fr 1fr">
+        <div class="card"><b>What comes first?</b><p class="small">Market discovery → watchlist → asset analysis.</p></div>
+        <div class="card"><b>What stays visible?</b><p class="small">Selected asset, key chart context and actionable controls.</p></div>
+        <div class="card"><b>Where does AI help?</b><p class="small">Summarization, signal exploration and contextual assistance.</p></div>
+        <div class="card"><b>How does state persist?</b><p class="small">Watchlists, portfolio state and user session are treated as product state.</p></div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Product principle</h3>
+        <p class="lead" style="font-size:16px">Progressively disclose complexity: give the user a strong overview, then allow deeper analysis when it becomes relevant.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>DISCOVERY → REQUIREMENTS</span><span>05 / 12</span><span>FACTS FIRST</span></div>
+</div>
+</section>
+
+<section class="page" id="p6">
+<div class="page-inner">
+  <div class="page-head"><div><div class="kicker">06 · USERS & NEEDS</div><h2>Design for different trading mindsets.</h2></div><div class="page-no">06 / 12</div></div>
+  <div class="content">
+    <p class="lead">The following are <b>representative design archetypes</b> derived from the product requirements. They are not presented as interview participants or measured research personas.</p>
+    <div class="grid3" style="margin-top:24px">
+      <div class="card">
+        <span class="tag">Archetype 01</span><h3 style="margin-top:14px">The Scanner</h3>
+        <p class="small">Wants a fast way to monitor a shortlist of symbols and notice movement without opening every detail.</p>
+        <div class="chiprow"><span class="tag">Watchlist</span><span class="tag">Movers</span><span class="tag">Alerts</span></div>
+      </div>
+      <div class="card">
+        <span class="tag">Archetype 02</span><h3 style="margin-top:14px">The Analyst</h3>
+        <p class="small">Needs chart context, indicators and structured evidence before making a paper-trading decision.</p>
+        <div class="chiprow"><span class="tag">Charts</span><span class="tag">Indicators</span><span class="tag">Analytics</span></div>
+      </div>
+      <div class="card">
+        <span class="tag">Archetype 03</span><h3 style="margin-top:14px">The Learner</h3>
+        <p class="small">Needs understandable explanations and a safe environment to explore strategies without confusing certainty with prediction.</p>
+        <div class="chiprow"><span class="tag">Learn</span><span class="tag">AI assist</span><span class="tag">Paper trade</span></div>
+      </div>
+    </div>
+    <div class="card dark" style="margin-top:18px">
+      <div class="kicker" style="color:#53f3a0">SHARED NEEDS</div>
+      <div class="grid3" style="margin-top:14px">
+        <div><b>CLARITY</b><div class="small">Know what the current screen is telling me.</div></div>
+        <div><b>CONTROL</b><div class="small">Keep important market and portfolio state accessible.</div></div>
+        <div><b>CONTEXT</b><div class="small">Understand why an insight appears before acting on it.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>USERS → NEEDS</span><span>06 / 12</span><span>ARCHETYPES, NOT FAKE RESEARCH</span></div>
+</div>
+</section>
+
+<section class="page" id="p7">
+<div class="page-inner">
+  <div class="page-head"><div><div class="kicker">07 · PROBLEM DEFINITION</div><h2>Turn a terminal into a decision workspace.</h2></div><div class="page-no">07 / 12</div></div>
+  <div class="content">
+    <div class="grid2">
+      <div class="card soft">
+        <div class="kicker">PROBLEM STATEMENTS</div>
+        <div class="list">
+          <div class="item"><span class="dot"></span><div><b>Too much context, too little hierarchy.</b><div class="small">High-density trading information needs a stronger visual order.</div></div></div>
+          <div class="item"><span class="dot"></span><div><b>Analysis is separated from action.</b><div class="small">The transition from chart interpretation to paper-trading should feel deliberate.</div></div></div>
+          <div class="item"><span class="dot"></span><div><b>AI needs context, not just a chat box.</b><div class="small">The assistant should understand the selected asset and surface relevant analysis.</div></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="kicker">DESIGN GOAL</div>
+        <h3 style="font-size:30px;margin-top:10px">Make the next useful action obvious without hiding the depth that advanced users need.</h3>
+        <div class="flow">
+          <div class="flowbox">DISCOVER</div><div class="arrow">→</div><div class="flowbox">UNDERSTAND</div><div class="arrow">→</div><div class="flowbox">SIMULATE</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid3" style="margin-top:18px">
+      <div class="card"><b>Hierarchy</b><p class="small">Primary market context first; secondary tools stay accessible.</p></div>
+      <div class="card"><b>Continuity</b><p class="small">Keep the selected asset and user state visible across related actions.</p></div>
+      <div class="card"><b>Explainability</b><p class="small">AI assistance is contextual and should be understood as analysis support.</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>PROBLEM → DESIGN PRINCIPLES</span><span>07 / 12</span><span>CLARITY · CONTINUITY · CONTEXT</span></div>
+</div>
+</section>
+
+<section class="page" id="p8">
+<div class="page-inner">
+  <div class="page-head"><div><div class="kicker">08 · IDEATION & SOLUTION</div><h2>One system, multiple ways to think.</h2></div><div class="page-no">08 / 12</div></div>
+  <div class="content">
+    <div class="grid2">
+      <div>
+        <p class="lead">The solution direction combines a focused terminal layout with modular tools so the experience can support scanning, analysis, portfolio review and AI-assisted exploration without turning every screen into a control panel.</p>
+        <div class="timeline">
+          <div class="titem"><b>01 · MARKET</b><p>Find a symbol and understand its current context.</p></div>
+          <div class="titem"><b>02 · WATCHLIST</b><p>Keep a compact shortlist visible.</p></div>
+          <div class="titem"><b>03 · CHART</b><p>Inspect price action and indicators.</p></div>
+          <div class="titem"><b>04 · AI</b><p>Ask for contextual analytical assistance.</p></div>
+          <div class="titem"><b>05 · PORTFOLIO</b><p>Review simulated positions and analytics.</p></div>
+        </div>
+      </div>
+      <div class="mock-app">
+        <div class="mock-top"><b>TradeX</b><span class="small">AI Copilot · Active</span></div>
+        <div class="mock-body">
+          <div class="mock-side"><div class="sel">Markets</div><div>Watchlist</div><div>Portfolio</div><div>Analytics</div><div>AI Advisor</div><div>Learn</div></div>
+          <div class="mock-main">
+            <div class="chart-card">
+              <div class="mini-row"><div class="mini"><b>NIFTY 50</b><span>Market overview</span></div><div class="mini"><b>Portfolio</b><span>Simulated state</span></div><div class="mini"><b>AI</b><span>Contextual assist</span></div></div>
+              <div class="chart">
+                <svg viewBox="0 0 500 190" preserveAspectRatio="none">
+                  <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#14d878" stop-opacity=".25"/><stop offset="1" stop-color="#14d878" stop-opacity="0"/></linearGradient></defs>
+                  <path d="M0 155 C45 142 55 165 95 130 S150 125 180 102 S230 118 260 85 S315 108 350 63 S420 95 500 38 L500 190 L0 190Z" fill="url(#g)"/>
+                  <path d="M0 155 C45 142 55 165 95 130 S150 125 180 102 S230 118 260 85 S315 108 350 63 S420 95 500 38" fill="none" stroke="#0ca85b" stroke-width="3"/>
+                </svg>
+              </div>
+            </div>
+            <div class="watch-card"><b>AI Copilot</b><p class="small">Selected asset context can inform the assistant experience.</p><div class="card soft" style="margin-top:10px;padding:12px"><b>Review signal</b><p class="small">Explain the pattern and surface supporting context.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>IDEATION → SOLUTION DIRECTION</span><span>08 / 12</span><span>MODULAR, NOT FRAGMENTED</span></div>
+</div>
+</section>
+
+<section class="page" id="p9">
+<div class="page-inner">
+  <div class="page-head"><div><div class="kicker">09 · FLOWS & INFORMATION ARCHITECTURE</div><h2>Organize the terminal around intent.</h2></div><div class="page-no">09 / 12</div></div>
+  <div class="content">
+    <div class="ia">
+      <div class="ia-col">
+        <div class="ia-box"><strong>MARKETS</strong>Discover symbols, sectors and market views.</div>
+        <div class="ia-box"><strong>WATCHLIST</strong>Maintain a focused shortlist.</div>
+        <div class="ia-box"><strong>NEWS / SENTIMENT</strong>Review supporting context.</div>
+      </div>
+      <div class="arrowbig">→</div>
+      <div class="ia-col">
+        <div class="ia-box"><strong>ASSET WORKSPACE</strong>Chart + indicators + AI context.</div>
+        <div class="ia-box"><strong>PORTFOLIO</strong>Positions, P&L and allocation views.</div>
+        <div class="ia-box"><strong>ANALYTICS</strong>Portfolio and performance exploration.</div>
+      </div>
+    </div>
+    <div class="card soft" style="margin-top:20px">
+      <div class="kicker">REPRESENTATIVE USER FLOW</div>
+      <div class="flow">
+        <div class="flowbox">OPEN TERMINAL</div><div class="arrow">→</div><div class="flowbox">SELECT WATCHLIST</div><div class="arrow">→</div><div class="flowbox">OPEN ASSET</div>
+      </div>
+      <div class="flow">
+        <div class="flowbox">INSPECT CHART</div><div class="arrow">→</div><div class="flowbox">ASK AI / REVIEW SIGNAL</div><div class="arrow">→</div><div class="flowbox">PAPER-TRADE / SAVE</div>
+      </div>
+    </div>
+    <div class="grid3" style="margin-top:18px">
+      <div class="card"><b>State</b><p class="small">Selected symbols and portfolio state should persist predictably.</p></div>
+      <div class="card"><b>Navigation</b><p class="small">Primary product areas remain visible instead of hiding the terminal structure.</p></div>
+      <div class="card"><b>Progressive depth</b><p class="small">Overview → asset → chart → AI → action.</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>IA → USER FLOW</span><span>09 / 12</span><span>INTENT-DRIVEN NAVIGATION</span></div>
+</div>
+</section>
+
+<section class="page" id="p10">
+<div class="page-inner">
+  <div class="page-head"><div><div class="kicker">10 · WIREFRAMES & EVOLUTION</div><h2>Structure before polish.</h2></div><div class="page-no">10 / 12</div></div>
+  <div class="content">
+    <div class="grid2">
+      <div>
+        <p class="lead">The wireframing phase focuses on the placement and relationship of the watchlist, chart workspace and AI assistant before visual treatment is applied.</p>
+        <div class="stepbar">
+          <div class="step on">EXPLORE</div><div class="step on">STRUCTURE</div><div class="step on">REFINE</div><div class="step">VALIDATE</div>
+        </div>
+        <div class="card soft">
+          <h3>Design decisions</h3>
+          <div class="list">
+            <div class="item"><span class="dot"></span><span>Keep watchlist persistent while the main workspace changes.</span></div>
+            <div class="item"><span class="dot"></span><span>Give the chart the dominant visual area because it is the analytical surface.</span></div>
+            <div class="item"><span class="dot"></span><span>Use a dedicated AI panel rather than turning the whole product into a chat interface.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="wire-grid">
+        <div class="wire"><div class="bar"></div><div class="block"></div><div class="block"></div><div class="block sm"></div><div class="block sm"></div></div>
+        <div class="wire"><div class="bar"></div><div class="block green"></div><div class="block"></div><div class="block"></div><div class="block sm"></div></div>
+        <div class="wire"><div class="bar"></div><div class="block"></div><div class="block green"></div><div class="block sm"></div><div class="block sm"></div></div>
+      </div>
+    </div>
+    <div class="img-frame" style="margin-top:18px"><img class="hero-img" src="assets/tradex-desktop-wireframe.png" alt="TradeX wireframe-to-interface reference"></div>
+  </div>
+  <div class="footer"><span>WIREFRAMES → VISUAL EVOLUTION</span><span>10 / 12</span><span>STRUCTURE FIRST</span></div>
+</div>
+</section>
+
+<section class="page" id="p11">
+<div class="page-inner">
+  <div class="page-head"><div><div class="kicker">11 · UI SYSTEM</div><h2>A system for high-density finance UI.</h2></div><div class="page-no">11 / 12</div></div>
+  <div class="content system">
+    <div>
+      <img class="hero-img" src="assets/tradex-brand-system.png" alt="TradeX Pro X brand identity system">
+      <p class="small" style="margin-top:10px">Existing TradeX brand-system reference: logo variants, color palette, typography, grid and applications.</p>
+    </div>
+    <div>
+      <div class="card soft">
+        <div class="kicker">LIGHT CASE-STUDY PRESENTATION THEME</div>
+        <h3 style="margin-top:8px">Clean white surfaces + disciplined green accents.</h3>
+        <div class="swatches">
+          <div class="sw g1">#0CA85B</div><div class="sw g2">#14D878</div><div class="sw dk">#0D1714</div><div class="sw wh">#FFFFFF</div>
+        </div>
+      </div>
+      <div class="component-grid" style="margin-top:14px">
+        <div class="comp"><b>Primary CTA</b><div class="btn" style="margin-top:8px">Analyze</div></div>
+        <div class="comp"><b>Input</b><div class="input">Search symbols…</div></div>
+        <div class="comp"><b>State</b><div class="tag" style="margin-top:8px">AI assisted</div></div>
+        <div class="comp"><b>Chart</b><div style="height:45px;margin-top:8px"><svg viewBox="0 0 160 45" width="100%" height="45"><path d="M0 38 C20 25 25 40 45 27 S70 35 92 14 S120 24 160 5" fill="none" stroke="#0ca85b" stroke-width="3"/></svg></div></div>
+        <div class="comp"><b>Card</b><div class="card soft" style="padding:8px;margin-top:8px;font-size:10px">Portfolio summary</div></div>
+        <div class="comp"><b>Badge</b><div style="margin-top:8px"><span class="tag">+2.4%</span></div></div>
+      </div>
+      <div class="card dark" style="margin-top:14px"><b>Accessibility intent</b><p class="small">Readable hierarchy, visible states, sufficient contrast, non-color-only status cues and clear action labels.</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>UI SYSTEM → COMPONENTS</span><span>11 / 12</span><span>CONSISTENCY AT SCALE</span></div>
+</div>
+</section>
+
+<section class="page" id="p12">
+<div class="page-inner">
+  <div class="page-head"><div><div class="kicker">12 · OUTCOME & FUTURE</div><h2>What was designed — and what comes next.</h2></div><div class="page-no">12 / 12</div></div>
+  <div class="content">
+    <div class="outcome-grid">
+      <div class="card soft">
+        <div class="kicker">DOCUMENTED PRODUCT OUTPUT</div>
+        <h3 style="margin-top:10px">A coherent trading-terminal experience</h3>
+        <div class="list">
+          <div class="item"><span class="dot"></span><span>Watchlist-centered market exploration.</span></div>
+          <div class="item"><span class="dot"></span><span>Chart workspace for technical analysis.</span></div>
+          <div class="item"><span class="dot"></span><span>Portfolio and analytics surfaces.</span></div>
+          <div class="item"><span class="dot"></span><span>AI-assisted analysis as a contextual product surface.</span></div>
+          <div class="item"><span class="dot"></span><span>React + TypeScript product architecture with reusable UI patterns.</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="kicker">VALIDATION STATUS</div>
+        <h3 style="margin-top:10px">Do not manufacture results.</h3>
+        <p class="small">This case study intentionally avoids invented user-growth, conversion, satisfaction or trading-performance metrics. Quantitative validation should be added only when measured evidence exists.</p>
+        <div class="quote" style="margin-top:14px"><b>Next validation:</b> usability testing, task completion, comprehension of AI explanations and interaction efficiency.</div>
+      </div>
+    </div>
+    <div style="margin-top:18px">
+      <div class="kicker">FUTURE WORK · CLEARLY LABELLED</div>
+      <div class="future" style="margin-top:12px">
+        <div class="card"><b>Live-data integration</b><p class="small">Connect verified market-data providers where required.</p></div>
+        <div class="card"><b>Broker integrations</b><p class="small">Explore broker APIs for a production trading workflow, with appropriate safeguards.</p></div>
+        <div class="card"><b>AI evaluation</b><p class="small">Measure grounding, explanation quality and usefulness of AI-assisted analysis.</p></div>
+      </div>
+    </div>
+    <div class="card dark" style="margin-top:18px;text-align:center;padding:28px">
+      <div class="kicker" style="color:#53f3a0">TRADEX</div>
+      <h3 style="font-size:34px;margin-top:7px">Designing complex financial tools so the next useful decision feels closer.</h3>
+      <p class="small" style="max-width:760px;margin:10px auto 0">Prashant Sisodhiya · Product Designer · UI/UX · AI Product Design</p>
+    </div>
+  </div>
+  <div class="footer"><span>OUTCOME → FUTURE VALIDATION</span><span>12 / 12</span><span>TRADEX · END</span></div>
+</div>
+</section>
+
+</main>
+
+<div class="navhint"><button id="homeBtn" title="First page">⌂</button><button id="upBtn" title="Previous">↑</button><button id="downBtn" title="Next">↓</button></div>
+
+<script>
+const pages=[...document.querySelectorAll('.page')];
+const progress=document.getElementById('progress');
+const pageIndex=()=>Math.round(window.scrollY / Math.max(1,window.innerHeight));
+function go(n){
+  n=Math.max(0,Math.min(pages.length-1,n));
+  pages[n].scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.getElementById('nextBtn').onclick=()=>go(pageIndex()+1);
+document.getElementById('prevBtn').onclick=()=>go(pageIndex()-1);
+document.getElementById('downBtn').onclick=()=>go(pageIndex()+1);
+document.getElementById('upBtn').onclick=()=>go(pageIndex()-1);
+document.getElementById('homeBtn').onclick=()=>go(0);
+document.querySelectorAll('.index-card').forEach(c=>c.addEventListener('click',()=>document.getElementById(c.dataset.target).scrollIntoView({behavior:'smooth'})));
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','ArrowDown','PageDown'].includes(e.key)){e.preventDefault();go(pageIndex()+1)}
+  if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(pageIndex()-1)}
+  if(e.key==='Home'){e.preventDefault();go(0)}
+  if(e.key==='End'){e.preventDefault();go(pages.length-1)}
+});
+function updateProgress(){
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  progress.style.width=(max>0?(window.scrollY/max)*100:0)+'%';
+}
+window.addEventListener('scroll',updateProgress,{passive:true}); updateProgress();
+
+let calm=true;
+document.getElementById('themeBtn').onclick=()=>{
+  calm=!calm;
+  if(!calm){
+    document.documentElement.style.setProperty('--bg','#07110d');
+    document.documentElement.style.setProperty('--surface','#0d1714');
+    document.documentElement.style.setProperty('--surface2','#12231c');
+    document.documentElement.style.setProperty('--ink','#f4fff9');
+    document.documentElement.style.setProperty('--muted','#9bb0a6');
+    document.documentElement.style.setProperty('--line','#254138');
+    document.getElementById('themeBtn').textContent='Dark / Studio';
+  }else{
+    location.reload();
+  }
+};
+</script>
+</body>
+</html>

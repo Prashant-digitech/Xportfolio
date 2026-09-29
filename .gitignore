@@ -48,5 +48,7 @@ make.env
 make.txt
 _
 scripts/
+public/docs/
+public/certifications/
 
 .vercel

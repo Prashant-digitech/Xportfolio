@@ -38,6 +38,46 @@ interface GraphicAsset {
 
 const GRAPHIC_ASSETS: GraphicAsset[] = [
   {
+    id: "veronixx-master",
+    title: "Veronixx Master Brand & Architectural Suite",
+    category: "Master Brand System",
+    description:
+      "Comprehensive corporate brand architectural system engineered for the Veronixx digital storefront with high-contrast typography and product hierarchy.",
+    image: "/images/clients/veronixx/veronixx.png",
+    badge: "Master Brand Suite",
+    dimensions: "Hi-Res Master",
+  },
+  {
+    id: "veronixx-pipes",
+    title: "CPVC & Industrial Plumbing Solutions",
+    category: "Product Catalog",
+    description:
+      "High-impact marketing collateral highlighting industrial CPVC pipes, heavy-duty fittings, pressure tolerances, and installation schematics.",
+    image: "/images/clients/veronixx/1.png",
+    badge: "Industrial Catalog",
+    dimensions: "Print Master",
+  },
+  {
+    id: "veronixx-sanitary",
+    title: "Luxury Sanitaryware & Ceramic Fittings",
+    category: "Retail Collateral",
+    description:
+      "Showroom promotional flyer detailing designer basins, faucets, wall-hung water closets, and premium bathroom hardware.",
+    image: "/images/clients/veronixx/2.png",
+    badge: "Retail Marketing",
+    dimensions: "Vector & Print",
+  },
+  {
+    id: "veronixx-electrical",
+    title: "Modular Electrical & Switchgear Systems",
+    category: "Hardware Collateral",
+    description:
+      "Modern electrical fixture promotional asset featuring modular switches, fire-retardant wiring, and commercial distribution boards.",
+    image: "/images/clients/veronixx/4.png",
+    badge: "Electrical Systems",
+    dimensions: "A4 Marketing",
+  },
+  {
     id: "web-banner",
     title: "Storefront Web Banner & Hero Interface",
     category: "Digital UI & E-Commerce",
@@ -48,26 +88,6 @@ const GRAPHIC_ASSETS: GraphicAsset[] = [
     dimensions: "1920 × 1080",
   },
   {
-    id: "brand-identity",
-    title: "Brand Identity & Corporate Typography",
-    category: "Brand Architecture",
-    description:
-      "Comprehensive corporate brand system featuring modern geometric monogram logo, high-end packaging hierarchy, and dual-tone corporate palette.",
-    image: "/images/clients/veronixx/veronixx-brand-identity.png",
-    badge: "Brand Design System",
-    dimensions: "Vector • Hi-Res",
-  },
-  {
-    id: "retail-pamphlet",
-    title: "Retail Marketing Pamphlet & Catalog",
-    category: "Print & Collateral",
-    description:
-      "High-conversion multi-fold marketing flyer showcasing sanitaryware, CPVC pipes, electrical fittings, and grand showroom opening promotions.",
-    image: "/images/clients/veronixx/veronixx-pamphlet.png",
-    badge: "Print Marketing",
-    dimensions: "A4 Print Master",
-  },
-  {
     id: "thermal-receipt",
     title: "Automated GST Invoicing & Thermal Receipt",
     category: "Hardware & POS Engine",
@@ -76,16 +96,6 @@ const GRAPHIC_ASSETS: GraphicAsset[] = [
     image: "/images/clients/veronixx/veronixx-receipt-color.png",
     badge: "ESC/POS Thermal Engine",
     dimensions: "80mm Thermal Slip",
-  },
-  {
-    id: "business-card",
-    title: "Executive Business Card Design",
-    category: "Corporate Collateral",
-    description:
-      "Matte finish corporate visiting card designed with gold foil stamping accents, QR digital contact vCard, and sleek industrial aesthetics.",
-    image: "/images/clients/veronixx/veronixx-business-card.jpg",
-    badge: "Executive Stationery",
-    dimensions: "3.5\" × 2.0\"",
   },
 ];
 
@@ -121,6 +131,7 @@ export default function ClientWebsites() {
   const [isMuted, setIsMuted] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(32);
+  const [selectedVideoCut, setSelectedVideoCut] = useState<"app" | "commercial">("app");
   const [selectedGraphic, setSelectedGraphic] = useState<GraphicAsset | null>(null);
   const [activeGraphicTab, setActiveGraphicTab] = useState<string>("all");
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -345,24 +356,54 @@ export default function ClientWebsites() {
 
           {/* Video Showcase Section */}
           <div className="mb-12">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
               <div className="flex items-center gap-2">
                 <ShoppingBag className="w-5 h-5 text-[#D4AF37]" />
                 <h4 className="text-lg sm:text-xl font-bold text-[#0B0F19] dark:text-white">
-                  Commercial Showcase Video (Authentic Client Cut)
+                  {selectedVideoCut === "app" ? "Full Production App & POS Walkthrough (Master)" : "Commercial Showcase Video (Client Cut)"}
                 </h4>
               </div>
-              <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/25">
-                32s Full HD Walkthrough
-              </span>
+              <div className="flex items-center gap-2">
+                <div className="flex p-1 rounded-lg bg-black/10 dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs">
+                  <button
+                    onClick={() => {
+                      setSelectedVideoCut("app");
+                      setIsPlaying(false);
+                      setCurrentTime(0);
+                    }}
+                    className={`px-3 py-1 rounded-md font-bold transition-all cursor-pointer ${
+                      selectedVideoCut === "app"
+                        ? "bg-[#D4AF37] text-black shadow-sm"
+                        : "text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white"
+                    }`}
+                  >
+                    App Preview (1080p)
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSelectedVideoCut("commercial");
+                      setIsPlaying(false);
+                      setCurrentTime(0);
+                    }}
+                    className={`px-3 py-1 rounded-md font-bold transition-all cursor-pointer ${
+                      selectedVideoCut === "commercial"
+                        ? "bg-[#D4AF37] text-black shadow-sm"
+                        : "text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white"
+                    }`}
+                  >
+                    Commercial Cut (32s)
+                  </button>
+                </div>
+              </div>
             </div>
 
             {/* Interactive Video Container */}
             <div className="relative rounded-2xl overflow-hidden bg-black border border-[#D6D9DE] dark:border-[rgba(212,175,55,0.35)] shadow-2xl group">
               <video
+                key={selectedVideoCut}
                 ref={videoRef}
-                src="/videos/veronixx-client-showcase.mp4"
-                poster="/images/clients/veronixx/veronixx-web-banner.png"
+                src={selectedVideoCut === "app" ? "/videos/veronixx-app-preview.mp4" : "/videos/veronixx-client-showcase.mp4"}
+                poster={selectedVideoCut === "app" ? "/images/clients/veronixx/veronixx.png" : "/images/clients/veronixx/veronixx-web-banner.png"}
                 playsInline
                 loop
                 muted={isMuted}

@@ -1,0 +1,132 @@
+[
+  {
+    "page": 1,
+    "title": "overview",
+    "assets": [
+      {
+        "type": "case-study-board",
+        "src": "assets/boards/01-overview.png",
+        "original": "1.png",
+        "alt": "CosmosX case study board 1: overview",
+        "status": "SOURCE"
+      }
+    ]
+  },
+  {
+    "page": 2,
+    "title": "problem",
+    "assets": [
+      {
+        "type": "case-study-board",
+        "src": "assets/boards/02-problem.png",
+        "original": "page2.png",
+        "alt": "CosmosX case study board 2: problem",
+        "status": "SOURCE"
+      }
+    ]
+  },
+  {
+    "page": 3,
+    "title": "research",
+    "assets": [
+      {
+        "type": "case-study-board",
+        "src": "assets/boards/03-research.png",
+        "original": "page3.png",
+        "alt": "CosmosX case study board 3: research",
+        "status": "SOURCE"
+      }
+    ]
+  },
+  {
+    "page": 4,
+    "title": "users",
+    "assets": [
+      {
+        "type": "case-study-board",
+        "src": "assets/boards/04-users.png",
+        "original": "4.png",
+        "alt": "CosmosX case study board 4: users",
+        "status": "SOURCE"
+      }
+    ]
+  },
+  {
+    "page": 5,
+    "title": "ia-flows",
+    "assets": [
+      {
+        "type": "case-study-board",
+        "src": "assets/boards/05-ia-flows.png",
+        "original": "5.png",
+        "alt": "CosmosX case study board 5: ia-flows",
+        "status": "SOURCE"
+      }
+    ]
+  },
+  {
+    "page": 6,
+    "title": "wireframes",
+    "assets": [
+      {
+        "type": "case-study-board",
+        "src": "assets/boards/06-wireframes.png",
+        "original": "6.png",
+        "alt": "CosmosX case study board 6: wireframes",
+        "status": "SOURCE"
+      }
+    ]
+  },
+  {
+    "page": 7,
+    "title": "features",
+    "assets": [
+      {
+        "type": "case-study-board",
+        "src": "assets/boards/07-features.png",
+        "original": "page7.png",
+        "alt": "CosmosX case study board 7: features",
+        "status": "SOURCE"
+      }
+    ]
+  },
+  {
+    "page": 8,
+    "title": "prototype-testing",
+    "assets": [
+      {
+        "type": "case-study-board",
+        "src": "assets/boards/08-prototype-testing.png",
+        "original": "8.png",
+        "alt": "CosmosX case study board 8: prototype-testing",
+        "status": "SOURCE"
+      }
+    ]
+  },
+  {
+    "page": 9,
+    "title": "design-system",
+    "assets": [
+      {
+        "type": "case-study-board",
+        "src": "assets/boards/09-design-system.png",
+        "original": "9.png",
+        "alt": "CosmosX case study board 9: design-system",
+        "status": "SOURCE"
+      }
+    ]
+  },
+  {
+    "page": 10,
+    "title": "outcome",
+    "assets": [
+      {
+        "type": "case-study-board",
+        "src": "assets/boards/10-outcome.png",
+        "original": "10e.png",
+        "alt": "CosmosX case study board 10: outcome",
+        "status": "SOURCE"
+      }
+    ]
+  }
+]

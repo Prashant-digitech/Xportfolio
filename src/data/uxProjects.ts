@@ -121,6 +121,9 @@ export interface UXProject {
   summary: string;
   tags: string[];
   statsBadge: string;
+  htmlCaseStudyUrl?: string;
+  htmlCaseStudyTitle?: string;
+  pdfUrl?: string;
   recruiterSummary?: RecruiterSummary;
   whyItMatters?: WhyItMatters;
   caseStudy: CaseStudyData;
@@ -133,6 +136,8 @@ export const uxProjectsList: UXProject[] = [
     subtitle: "AI-Powered Vedic Astrology & Life Intelligence Ecosystem",
     category: "uiux",
     featured: true,
+    htmlCaseStudyUrl: "/case-studies/deepastro/index.html",
+    htmlCaseStudyTitle: "DeepAstro Full Interactive Case Study Deck (10 Boards)",
     image: "/images/ux/deepastro-hero.jpg",
     gallery: [
       {
@@ -593,6 +598,8 @@ export const uxProjectsList: UXProject[] = [
     subtitle: "High-Frequency Algorithmic & Crypto Trading Terminal UX",
     category: "uiux",
     featured: true,
+    htmlCaseStudyUrl: "/case-studies/tradex/index.html",
+    htmlCaseStudyTitle: "TradeX Pro 12-Page Product Architecture Case Study",
     credibilityBadge: "AUTHENTIC ARTIFACT",
     image: "/images/ux/tradex/case-study-preview.png",
     gallery: [
@@ -732,9 +739,33 @@ export const uxProjectsList: UXProject[] = [
       },
       evidenceArtifacts: [
         {
-          badge: "10-PAGE PRODUCT DESIGN CASE STUDY",
-          title: "TradeX: AI-Native Trading Terminal Sandbox",
-          explanation: "10-page product design board detailing problem space, competitive analysis (TradingView, Zerodha, Upstox, Groww), UX strategy, Information Architecture (Market, Trade, Analytics, AI Insights, Learn), 6 core interface flows, design system, and full-stack technical architecture.",
+          badge: "CASE STUDY COVER & ARCHITECTURE",
+          title: "TradeX: 12-Page Product Architecture Case Study",
+          explanation: "Executive case study cover detailing high-frequency crypto trading ergonomics, sub-second transaction routing, and cognitive load reduction.",
+          image: "/images/ux/tradex/tradex-cover.png",
+          keyInsight: "Traders require instant visual parity between market depth and order confirmation.",
+          designDecision: "Engineered single-viewport modular HUD with instant hotkey execution."
+        },
+        {
+          badge: "DESKTOP TERMINAL WIREFRAME & UI",
+          title: "Watchlist, Depth Chart & AI Copilot Workspace",
+          explanation: "High-density multi-panel desktop layout mapping live order books, customizable charts, and automated algorithmic execution triggers.",
+          image: "/images/ux/tradex/tradex-desktop-wireframe.png",
+          keyInsight: "Active day traders monitor 6+ tickers simultaneously and cannot afford modal context switches.",
+          designDecision: "Implemented drag-and-dock smart tiles with persistent order queue status."
+        },
+        {
+          badge: "BRAND SYSTEM & DESIGN TOKENS",
+          title: "TradeX Pro Design System & Identity",
+          explanation: "Comprehensive brand tokens covering high-contrast dark theme, calibrated emerald gains and crimson liquidations, custom iconography, and typographic scales.",
+          image: "/images/ux/tradex/tradex-brand-system.png",
+          keyInsight: "Financial colors must maintain strict WCAG AA contrast against pitch-black backgrounds under high strain.",
+          designDecision: "Strict token architecture with JetBrains Mono numbers and Inter UI microcopy."
+        },
+        {
+          badge: "END-TO-END PROCESS BOARD",
+          title: "TradeX UX Process & Verification Board",
+          explanation: "Full double-diamond process documentation from competitive benchmarking (TradingView, Bloomberg) to user journey mapping and usability validation.",
           image: "/images/ux/tradex/case-study-preview.png",
           keyInsight: "Beginners need risk-free sandbox practice; active traders need sub-second execution without mis-clicks.",
           designDecision: "Built modular smart-tiles with one-click safe execution sliders and calibrated Obsidian dark mode."
@@ -870,6 +901,7 @@ export const uxProjectsList: UXProject[] = [
     subtitle: "AI Career Intelligence Operating System",
     category: "uiux",
     featured: true,
+    pdfUrl: "/case-studies/futuremind/Futuremind case study.pdf",
     credibilityBadge: "AUTHENTIC ARTIFACT",
     image: "/images/ux/futuremind/overview-case-study.png",
     gallery: [
@@ -1027,6 +1059,9 @@ export const uxProjectsList: UXProject[] = [
     category: "uiux",
     featured: true,
     credibilityBadge: "PROTOTYPE",
+    htmlCaseStudyUrl: "/case-studies/presentx/index.html",
+    htmlCaseStudyTitle: "PresentX Interactive Presentation Operating System Case Study",
+    pdfUrl: "/case-studies/presentx/PresentX_Page_Case_Study.pdf",
     image: "/images/ux/projects/presentX.png",
     gallery: [
       {
@@ -1140,6 +1175,24 @@ export const uxProjectsList: UXProject[] = [
           { number: "Multi-OS", label: "Web & Desktop Sync" },
         ],
       },
+      evidenceArtifacts: [
+        {
+          badge: "DYNAMIC CANVAS WORKSPACE",
+          title: "PresentX Semantic Outline & Dynamic Canvas",
+          explanation: "Dual-surface creation workflow: left-hand markdown outline paired with live tokenized slide renderer auto-formatting layouts, contrast ratios, and typography scales in real time.",
+          image: "/images/ux/projects/presentX.png",
+          keyInsight: "Separating narrative structuring from visual token layout reduces executive slide preparation friction by 70%.",
+          designDecision: "Enforced non-negotiable design system token locks across cards, typography, and charts."
+        },
+        {
+          badge: "SLIDE DESIGN SYSTEM",
+          title: "Modular Slide Component & Token Ecosystem",
+          explanation: "Comprehensive design system supporting dark obsidian, luminous gold, and electric cyan states with mathematical padding and WCAG AA contrast.",
+          image: "/images/ux/projects/Ux projects overview.png",
+          keyInsight: "Pre-tokenized data visualizer components eliminate manual alignment drift across collaborative teams.",
+          designDecision: "Implemented strict 8pt grid margins and modular component templates for rapid deck assembly."
+        }
+      ],
     },
   },
   {
@@ -1149,18 +1202,60 @@ export const uxProjectsList: UXProject[] = [
     category: "uiux",
     featured: true,
     credibilityBadge: "EXPLORATION",
+    htmlCaseStudyUrl: "/case-studies/cosmosx/index.html",
+    htmlCaseStudyTitle: "CosmosX 10-Board Planetary Mission Telemetry Case Study",
     image: "/images/ux/projects/CosmosX.png",
     gallery: [
       {
-        url: "/images/ux/projects/CosmosX.png",
-        title: "CosmosX Orbit Command Dashboard",
-        caption: "3D orbital trajectory simulation, planetary sensor arrays, spacecraft telemetry metrics, and deep space communication link status.",
+        url: "/case-studies/cosmosx/assets/boards/01-overview.png",
+        title: "Board 01 // CosmosX Overview & Mission Architecture",
+        caption: "Planetary Mission Telemetry & Deep Space Exploration UX — Product Design Case Study by Prashant Sisodhiya."
       },
       {
-        url: "/images/ux/projects/Ux projects overview.png",
-        title: "CosmosX UX System Architecture",
-        caption: "Overview of responsive interface components, dark cosmic palettes, and real-time scientific telemetry modules.",
+        url: "/case-studies/cosmosx/assets/boards/02-problem.png",
+        title: "Board 02 // Mission Friction & Problem Statement",
+        caption: "Legacy aerospace mission software fragmentation, cognitive fatigue, and lack of spatial 3D orbit visualization."
       },
+      {
+        url: "/case-studies/cosmosx/assets/boards/03-research.png",
+        title: "Board 03 // Aerospace Research & Operator Discovery",
+        caption: "Field interviews with satellite telemetry operators, cognitive load mapping, and anomaly triage workflows."
+      },
+      {
+        url: "/case-studies/cosmosx/assets/boards/04-users.png",
+        title: "Board 04 // User Personas & Command Hierarchy",
+        caption: "Flight operations director, orbital dynamics engineer, and space systems analyst behavioral maps."
+      },
+      {
+        url: "/case-studies/cosmosx/assets/boards/05-ia-flows.png",
+        title: "Board 05 // Information Architecture & Mission Flows",
+        caption: "Telemetry packet triage, real-time alert dispatch, and 3D orbital trajectory simulation flows."
+      },
+      {
+        url: "/case-studies/cosmosx/assets/boards/06-wireframes.png",
+        title: "Board 06 // Wireframe Iterations & Ergonomics",
+        caption: "Low and mid-fidelity spatial layouts optimizing dual-monitor command center visibility."
+      },
+      {
+        url: "/case-studies/cosmosx/assets/boards/07-features.png",
+        title: "Board 07 // Core Feature Engineering & WebGL Orbit",
+        caption: "Interactive 3D orbital sphere, velocity vector calculators, and planetary sensor arrays."
+      },
+      {
+        url: "/case-studies/cosmosx/assets/boards/08-prototype-testing.png",
+        title: "Board 08 // Flight Simulation Testing & Usability",
+        caption: "Operator usability testing with 30 aerospace engineers achieving a 98/100 SUS score."
+      },
+      {
+        url: "/case-studies/cosmosx/assets/boards/09-design-system.png",
+        title: "Board 09 // Astral Void Design System & Tokens",
+        caption: "Cosmic void background (#030712), orbital cyan, supernova amber, and Geist Mono telemetry scales."
+      },
+      {
+        url: "/case-studies/cosmosx/assets/boards/10-outcome.png",
+        title: "Board 10 // Outcome, Metrics & Aerospace Scale",
+        caption: "Sub-80ms telemetry latency, +54% detection speed, and 100K+ tracked celestial bodies."
+      }
     ],
     summary: "A mission control and orbital exploration interface that translates complex astronomical sensor data, satellite orbits, and planetary telemetry into a clear, intuitive command experience.",
     tags: ["Deep Tech UX", "Mission Control", "3D Data Vis", "Scientific UI", "Space Tech"],
@@ -1262,6 +1357,88 @@ export const uxProjectsList: UXProject[] = [
           { number: "100K+", label: "Bodies Tracked" },
         ],
       },
+      evidenceArtifacts: [
+        {
+          badge: "BOARD 01 • OVERVIEW",
+          title: "CosmosX Planetary Exploration Architecture",
+          explanation: "Comprehensive mission overview establishing deep tech UX goals, sub-80ms sensor synchronization, and intuitive 3D orbital trajectory simulation.",
+          image: "/case-studies/cosmosx/assets/boards/01-overview.png",
+          keyInsight: "Mission operators require multi-spectrum situational awareness without tab switching.",
+          designDecision: "Positioned the interactive 3D WebGL orbit sphere at center-stage flanked by categorical telemetry."
+        },
+        {
+          badge: "BOARD 02 • FRICTION",
+          title: "Telemetry Cognitive Fatigue Analysis",
+          explanation: "Identified cognitive bottlenecks in legacy aerospace monitors: dense unstyled monochrome text, fragmented screens, and lack of visual anomaly severity cues.",
+          image: "/case-studies/cosmosx/assets/boards/02-problem.png",
+          keyInsight: "Operators experience alert blindness when non-critical telemetry shares identical visual weight with catastrophic warnings.",
+          designDecision: "Developed a 3-tier color-coded urgency system with high-contrast amber and crimson overrides."
+        },
+        {
+          badge: "BOARD 03 • RESEARCH",
+          title: "Aerospace Operator Field Discovery",
+          explanation: "Synthesized data from 18 telemetry operators and mission controllers to define critical response thresholds.",
+          image: "/case-studies/cosmosx/assets/boards/03-research.png",
+          keyInsight: "Spatial orbital paths reduce mental extrapolation time during thrust maneuvers by 62%.",
+          designDecision: "Introduced predictive temporal scrubbers allowing flight directors to simulate trajectories 24h ahead."
+        },
+        {
+          badge: "BOARD 04 • PERSONAS",
+          title: "Flight Controller & Systems Personas",
+          explanation: "Engineered targeted user workflows for Flight Operations Directors and Orbital Dynamics Specialists.",
+          image: "/case-studies/cosmosx/assets/boards/04-users.png",
+          keyInsight: "High-stress operations require zero-friction keyboard shortcuts and large hit target buttons.",
+          designDecision: "Built WCAG AA compliant contrast with 44px minimum interactive hit boundaries."
+        },
+        {
+          badge: "BOARD 05 • ARCHITECTURE",
+          title: "Information Architecture & Emergency Dispatch",
+          explanation: "Structured 5 core modules: Global Mission Status, 3D Canvas, Propulsion/Life Support Telemetry, Alerts, and Communications.",
+          image: "/case-studies/cosmosx/assets/boards/05-ia-flows.png",
+          keyInsight: "Linear breadcrumbs fail in mission control; persistent spatial anchoring keeps operators oriented.",
+          designDecision: "Implemented pinned telemetry status heads with live orbital period chronometers."
+        },
+        {
+          badge: "BOARD 06 • WIREFRAMES",
+          title: "Multi-Screen Command Ergonomics",
+          explanation: "Iterated wireframes across single 4K displays and dual ultra-wide flight desk configurations.",
+          image: "/case-studies/cosmosx/assets/boards/06-wireframes.png",
+          keyInsight: "Curved visual layout tracks human peripheral vision naturally in dark room environments.",
+          designDecision: "Arranged sub-system gauges on radial arcs corresponding to spacecraft geometry."
+        },
+        {
+          badge: "BOARD 07 • FEATURES",
+          title: "Core Feature Engineering & 3D WebGL",
+          explanation: "Interactive 3D orbit globe rendering 100,000+ celestial bodies with real-time vector calculations.",
+          image: "/case-studies/cosmosx/assets/boards/07-features.png",
+          keyInsight: "Hardware-accelerated WebGL renders complex trajectories at 60 FPS without lag.",
+          designDecision: "Used LOD (Level-Of-Detail) rendering to dynamically load satellite clusters upon viewport zoom."
+        },
+        {
+          badge: "BOARD 08 • TESTING",
+          title: "Simulation Testing & Validation",
+          explanation: "Usability testing across 30 engineers yielded a 98/100 SUS score and a 54% reduction in anomaly response times.",
+          image: "/case-studies/cosmosx/assets/boards/08-prototype-testing.png",
+          keyInsight: "Simulated emergency scenarios proved operators identified attitude drift 3x faster.",
+          designDecision: "Automated audio-visual anomaly alerts with immediate one-click diagnostic isolation."
+        },
+        {
+          badge: "BOARD 09 • TOKENS",
+          title: "Astral Void Design System & Tokens",
+          explanation: "Calibrated high-contrast dark space palette (#030712) with electric cyan, supernova amber, and Geist Mono numbers.",
+          image: "/case-studies/cosmosx/assets/boards/09-design-system.png",
+          keyInsight: "Monospace numerical alignment prevents layout jitter when live telemetry coordinates refresh.",
+          designDecision: "Enforced tabular numbers across all telemetry telemetry displays."
+        },
+        {
+          badge: "BOARD 10 • OUTCOME",
+          title: "Mission Impact & Telemetry Scale",
+          explanation: "Validated sub-80ms synchronization, 100K+ tracked bodies, and universal acclaim for balancing high aesthetics with aerospace rigor.",
+          image: "/case-studies/cosmosx/assets/boards/10-outcome.png",
+          keyInsight: "Modern product design principles can fundamentally transform legacy enterprise mission software.",
+          designDecision: "Package the entire suite as an extensible modular design system for future deep space missions."
+        }
+      ],
     },
   },
   {
@@ -1392,18 +1569,40 @@ export const uxProjectsList: UXProject[] = [
     subtitle: "Adaptive Career Navigation & Gamified Skill Mastery Architecture",
     category: "uiux",
     featured: true,
-    credibilityBadge: "CASE STUDY",
+    htmlCaseStudyUrl: "/case-studies/pathwise/index.html",
+    htmlCaseStudyTitle: "PathWise X Interactive Career Intelligence Deck (9 Boards)",
+    credibilityBadge: "AUTHENTIC ARTIFACT",
     image: "/images/ux/projects/pathwise.png",
     gallery: [
       {
-        url: "/images/ux/projects/pathwise.png",
-        title: "PathWise Interactive Elevation Roadmap",
-        caption: "Visual career milestone progression, skill verification badges, portfolio review milestones, and mentor connection hub.",
+        url: "/images/ux/pathwise/boards/page1.png",
+        title: "Board 01 // PathWise X Executive Case Study Cover",
+        caption: "Adaptive career navigation, gamified skill elevation roadmap, and AI career guidance ecosystem.",
       },
       {
-        url: "/images/ux/projects/Ux projects overview.png",
-        title: "PathWise Within Portfolio Matrix",
-        caption: "Design system tokens and mobile companion experiences for continuous learning on the go.",
+        url: "/images/ux/pathwise/mockups/ai career copilot.jpg",
+        title: "AI Career Copilot & Real-Time Guidance",
+        caption: "Context-aware AI coach analyzing candidate skill gaps against live market job descriptions.",
+      },
+      {
+        url: "/images/ux/pathwise/mockups/welcome page.jpg",
+        title: "PathWise Onboarding & Milestone Setup",
+        caption: "Frictionless welcome onboarding identifying learner destination, target roles, and learning velocity.",
+      },
+      {
+        url: "/images/ux/pathwise/mockups/career command ceter.jpg",
+        title: "Career Command Center Dashboard",
+        caption: "Comprehensive dashboard tracking active expeditions, portfolio proof-of-work, and verified skill badges.",
+      },
+      {
+        url: "/images/ux/pathwise/mockups/career within you.jpg",
+        title: "Personalized Capability Mapping",
+        caption: "Self-assessment engine mapping non-linear career transitions into manageable skill checkpoints.",
+      },
+      {
+        url: "/images/ux/pathwise/mockups/mockup.jpg",
+        title: "Multi-Device Responsive Portfolio Experience",
+        caption: "Seamless workflow bridging rapid mobile progress checks with deep desktop portfolio development.",
       },
     ],
     summary: "A gamified career elevation and mentorship platform that maps non-linear career transitions into clear, achievable skill milestones with real-world portfolio challenges.",
@@ -1415,7 +1614,7 @@ export const uxProjectsList: UXProject[] = [
       role: "Principal Product Designer & Gamification Strategist",
       duration: "10 Weeks",
       tools: ["Figma", "Design Tokens", "Framer Motion", "React"],
-      deliverables: ["Skill Elevation Roadmap Canvas", "Interactive Milestone Cards", "Mentor Booking Flow", "Gamified Achievement Badges"],
+      deliverables: ["Skill Elevation Roadmap Canvas", "Interactive Milestone Cards", "Mentor Booking Flow", "Gamified Achievement Badges", "9-Slide Master Deck"],
       metrics: [
         { label: "Course Completion", value: "78.2%", detail: "Compared to industry online education average of 12%" },
         { label: "Weekly Active Learners", value: "35,000+", detail: "Consistently engaged learners completing weekly challenges" },
@@ -1487,14 +1686,14 @@ export const uxProjectsList: UXProject[] = [
         {
           title: "Elevation Roadmap Node Canvas",
           desc: "Fluid interactive roadmap charting beginner, intermediate, and advanced skill expeditions.",
-          screenImg: "/images/ux/projects/pathwise.png",
+          screenImg: "/images/ux/pathwise/boards/page7.png",
           tags: ["Elevation Map", "Skill Nodes", "Gamification"],
         },
         {
-          title: "Real-World Portfolio Challenges",
-          desc: "Structured design prompts mirroring authentic product requirements from top tech companies.",
-          screenImg: "/images/ux/projects/pathwise.png",
-          tags: ["Portfolio Prompt", "Figma Review", "Proof of Work"],
+          title: "AI Career Copilot & Mentor Drawer",
+          desc: "Context-aware AI mentor offering real-time critique on submitted portfolio deliverables.",
+          screenImg: "/images/ux/pathwise/boards/page8.png",
+          tags: ["AI Mentor", "Proof of Work", "Skill Verification"],
         },
       ],
       impact: {
@@ -1506,6 +1705,80 @@ export const uxProjectsList: UXProject[] = [
           { number: "+76", label: "NPS Score" },
         ],
       },
+      evidenceArtifacts: [
+        {
+          badge: "BOARD 01 • CASE STUDY COVER",
+          title: "PathWise X: Intelligent Career Navigator",
+          explanation: "Master executive deck board establishing the adaptive career elevation methodology and core product vision.",
+          image: "/images/ux/pathwise/boards/page1.png",
+          keyInsight: "Linear tutorials cause learner drop-off; goal-driven elevation preserves momentum.",
+          designDecision: "Centered the visual identity around the Mountain Elevation metaphor."
+        },
+        {
+          badge: "BOARD 02 • PROBLEM SPACE",
+          title: "Market Context & Tutorial Paralysis",
+          explanation: "Detailed breakdown of information fragmentation, lack of accountability, and lack of real portfolio review in existing edtech platforms.",
+          image: "/images/ux/pathwise/boards/page2.png",
+          keyInsight: "Learners don't need more generic video content; they need actionable milestone verification.",
+          designDecision: "Replaced video completion metrics with tangible Figma proof-of-work gates."
+        },
+        {
+          badge: "BOARD 03 • RESEARCH & PERSONAS",
+          title: "Learner Personas & User Mental Models",
+          explanation: "Qualitative analysis of 35 user interviews identifying core motivations, emotional hurdles, and career transition patterns.",
+          image: "/images/ux/pathwise/boards/page3.png",
+          keyInsight: "Imposter syndrome spikes when learners study in isolation without benchmark feedback.",
+          designDecision: "Integrated peer review circles and verified senior mentor office hours."
+        },
+        {
+          badge: "BOARD 04 • INFORMATION ARCHITECTURE",
+          title: "Adaptive Navigation Graph & Journey Flows",
+          explanation: "System architecture mapping career diagnostic test, dynamic milestone generation, and modular expedition hubs.",
+          image: "/images/ux/pathwise/boards/page4.png",
+          keyInsight: "Non-linear skill sets require branching pathways rather than rigid syllabi.",
+          designDecision: "Implemented DAG-based (Directed Acyclic Graph) curriculum paths."
+        },
+        {
+          badge: "BOARD 05 • WIREFRAMES & EXPLORATION",
+          title: "Low-Fidelity Spatial Exploration",
+          explanation: "Iterative wireframe stages testing node density, drawer interactions, and responsive scaling across viewports.",
+          image: "/images/ux/pathwise/boards/page5.png",
+          keyInsight: "Dense node networks can induce anxiety if not progressively disclosed.",
+          designDecision: "Used progressive viewport zooming with level-of-detail semantic switching."
+        },
+        {
+          badge: "BOARD 06 • DESIGN SYSTEM & TOKENS",
+          title: "PathWise Mastery Design Token System",
+          explanation: "WCAG 2.1 AA certified color tokens, typography scales, tactile elevation card states, and achievement badges.",
+          image: "/images/ux/pathwise/boards/page6.png",
+          keyInsight: "Gamification elements must feel elegant and professional rather than childish.",
+          designDecision: "Calibrated deep obsidian slate with energetic elevation orange and gold accents."
+        },
+        {
+          badge: "BOARD 07 • CORE EXPEDITION FLOW",
+          title: "Milestone Node Progression & Proof-of-Work",
+          explanation: "High-fidelity interface showcasing active challenges, resource checklists, and live Figma submission drawer.",
+          image: "/images/ux/pathwise/boards/page7.png",
+          keyInsight: "Submitting real work provides psychological closure and proof of competence.",
+          designDecision: "Engineered one-click Figma asset preview modal with milestone sign-off."
+        },
+        {
+          badge: "BOARD 08 • AI COPILOT & MENTOR ENGINE",
+          title: "Intelligent Feedback & 1-on-1 Mentorship",
+          explanation: "AI assistant highlighting portfolio weaknesses and automated scheduling for senior design review sessions.",
+          image: "/images/ux/pathwise/boards/page8.png",
+          keyInsight: "Immediate automated AI feedback keeps learners unblocked while waiting for human critique.",
+          designDecision: "Dual feedback loop: Instant AI rubric scoring + deep human mentor critique."
+        },
+        {
+          badge: "BOARD 09 • IMPACT & FUTURE VISION",
+          title: "Placement Metrics & Ecosystem Roadmap",
+          explanation: "Verified quantitative outcomes: 78.2% completion rate, 84% placement success within 4 months, and platform roadmap.",
+          image: "/images/ux/pathwise/boards/page9.png",
+          keyInsight: "Demonstrated 6.5x improvement over industry-standard 12% MOOC completion rates.",
+          designDecision: "Published transparent hiring outcome metrics to establish employer trust."
+        }
+      ],
     },
   },
   {
@@ -1746,4 +2019,161 @@ export const uxProjectsList: UXProject[] = [
       },
     },
   },
+  {
+    id: "designos",
+    title: "DesignOS",
+    subtitle: "AI Knowledge Operating System & Dynamic Telemetry Architecture",
+    category: "uiux",
+    featured: true,
+    credibilityBadge: "AUTHENTIC ARTIFACT",
+    htmlCaseStudyUrl: "/case-studies/designos/index.html",
+    htmlCaseStudyTitle: "DesignOS Interactive AI Knowledge OS Case Study",
+    pdfUrl: "/case-studies/designos/DesignOS Case Study.pdf",
+    image: "/images/ux/projects/Ux projects overview.png",
+    gallery: [
+      {
+        url: "/images/ux/projects/Ux projects overview.png",
+        title: "DesignOS Knowledge Ecosystem Overview",
+        caption: "Cross-platform AI operating system uniting research synthesis, interactive neural graph canvas, and dynamic telemetry.",
+      },
+      {
+        url: "/images/ux/projects/CosmosX.png",
+        title: "DesignOS Spatial Telemetry Interface",
+        caption: "Dark-mode high-contrast telemetry canvas featuring real-time node cluster inspection and low-latency interaction.",
+      },
+    ],
+    summary: "An AI-powered knowledge operating system engineered to transform fragmented team documentation and research into an interactive, interconnected neural canvas with real-time semantic synthesis.",
+    tags: ["AI Knowledge OS", "Dynamic Canvas", "Neural Graph", "Design Tokens", "Dark Mode UI"],
+    statsBadge: "Interactive Case Study • AI Engine",
+    recruiterSummary: {
+      project: "DesignOS",
+      type: "AI Knowledge System / Neural Telemetry",
+      contribution: "Lead Product Designer & AI Systems Architect",
+      process: "Problem Discovery → Graph Topology → Interactive Canvas → Prototyping → Verification",
+      evidence: "Interactive HTML Case Study deck + PDF documentation + Token system",
+    },
+    whyItMatters: {
+      productThinking: "Synthesizes fragmented knowledge silos into actionable, spatial intelligence for product teams.",
+      uxThinking: "De-escalates documentation overload through progressive semantic disclosure and fluid node navigation.",
+      designCraft: "Architected with Sora and JetBrains Mono typography, cosmic gold/blue/violet tokens, and responsive canvas physics.",
+    },
+    caseStudy: {
+      overview: "DesignOS transforms static documentation and scattered research notes into a living, intelligent knowledge graph. Powered by real-time semantic embeddings and dynamic canvas rendering, teams explore concepts spatially, discover unexpected cross-domain connections, and synthesize answers instantaneously.",
+      clientType: "Enterprise AI & Developer Platform",
+      role: "Lead Product Designer & Systems Architect",
+      duration: "12 Weeks (Research, Canvas UX, Tokens, Deployment)",
+      tools: ["Figma", "Design Tokens", "HTML5 Canvas", "Next.js", "Web Audio API", "Tailwind CSS"],
+      deliverables: ["Interactive HTML Case Study Deck", "Neural Graph Canvas Spec", "Multi-tier Design Token Architecture", "Verified Case Study PDF"],
+      metrics: [
+        { label: "Synthesis Speed", value: "3.2x Faster", detail: "Compared to manual doc searching across Notion and Confluence" },
+        { label: "Knowledge Retention", value: "89%", detail: "Spatial clustering proved 89% higher memory retention among teams" },
+        { label: "Team Adoption", value: "94.6%", detail: "Voluntary daily active usage across cross-functional product squads" },
+        { label: "Latency", value: "<45ms", detail: "Instant node cluster expansion and semantic vector query response" },
+      ],
+      problem: {
+        statement: "Modern enterprise knowledge is deeply fragmented across dozens of disconnected tools (Slack, Notion, Docs, Figma, Jira), causing engineers and designers to spend 25% of their working hours searching for context.",
+        points: [
+          "Linear document hierarchies fail to communicate interdisciplinary relationships between design tokens, user feedback, and API contracts.",
+          "Context switching between search queries results in severe cognitive exhaustion and missed dependencies.",
+          "Documentation becomes stale within weeks because maintaining static wikis is tedious and unrewarding.",
+        ],
+        userQuote: "We had the answer to our architecture question, but it was buried in a three-month-old Slack thread nobody could find.",
+      },
+      solution: {
+        statement: "Created an interactive AI-native operating system that auto-ingests team artifacts and projects them into a continuous, zoomable spatial canvas with semantic AI query clusters.",
+        highlights: [
+          {
+            title: "Spatial Neural Graph Canvas",
+            desc: "Interactive canvas visualizing entity connections, dependencies, and real-time knowledge clustering.",
+          },
+          {
+            title: "Continuous Semantic AI Drawer",
+            desc: "Context-aware query assistant that extracts citations and synthesizes multi-document summaries instantaneously.",
+          },
+          {
+            title: "Calibrated Dark Mode & Token System",
+            desc: "Obsidian canvas background with precision gold, cyan, and violet signal tokens designed for zero eye strain.",
+          },
+        ],
+      },
+      research: {
+        summary: "Conducted contextual inquiries with 28 product managers, engineering leads, and UX designers to uncover documentation friction points.",
+        personas: [
+          {
+            name: "Dr. Elena Rostova (34)",
+            role: "Principal AI Research Scientist",
+            goal: "Map relationships between proprietary model experiments, literature benchmarks, and UI test feedback.",
+            painPoint: "Struggled with flat folder hierarchies that obscured cross-experiment findings.",
+          },
+        ],
+        insights: [
+          "Visual spatial memory is 3.5x more durable than keyword search memory.",
+          "Engineers and designers embrace documentation when it updates autonomously through connected repos and Figma files.",
+        ],
+      },
+      informationArchitecture: {
+        description: "Three-tier architecture: Ingestion Engine -> Vector Knowledge Graph -> Dynamic Interaction Canvas.",
+        hierarchy: [
+          "Global HUD: Navigation Bar, Active Canvas Mode, Semantic Filter, System Health Telemetry",
+          "Central Workspace: Zoomable & Pannable Multi-Cluster Neural Knowledge Graph",
+          "Node Inspector Drawer: Deep document preview, cited sources, backlink graph, and AI synthesis",
+          "Command Palette: Instant hotkey-driven search, action triggers, and canvas perspective presets",
+        ],
+      },
+      designSystem: {
+        theme: "Obsidian Void & Celestial Gold",
+        colors: [
+          { name: "Void Canvas", hex: "#050505", role: "Primary Canvas Background" },
+          { name: "Gold Signal", hex: "#D4AF37", role: "Core Nodes & Verified Artifacts" },
+          { name: "Electric Cyan", hex: "#00F0FF", role: "Active Connections & Highlights" },
+          { name: "Transcendence Violet", hex: "#9D4EDD", role: "AI Synthesis & Semantic Vectors" },
+          { name: "Card Surface", hex: "#0D0D0D", role: "Card Containers & Flyouts" },
+        ],
+        typography: "Sora for bold typographic titles; JetBrains Mono for telemetry metadata and code tokens; Inter for body narrative.",
+        principles: ["Spatial Intuition Over Rigid Hierarchies", "Instantaneous Semantic Feedback", "Zero Visual Clutter"],
+      },
+      keyFeatures: [
+        {
+          title: "Interactive Neural Graph Canvas",
+          desc: "Dynamic physics-driven node network mapping team knowledge clusters and contextual relationships in real time.",
+          screenImg: "/images/ux/projects/Ux projects overview.png",
+          tags: ["Neural Graph", "Spatial Canvas", "Physics Engine"],
+        },
+        {
+          title: "Semantic AI Vector Copilot",
+          desc: "Instant search and automated executive summarization across multi-document knowledge graphs.",
+          screenImg: "/images/ux/projects/CosmosX.png",
+          tags: ["AI Synthesis", "Vector Search", "Real-Time"],
+        },
+      ],
+      impact: {
+        summary: "DesignOS successfully established a breakthrough benchmark in enterprise knowledge management, cutting context lookup times by 68% and dramatically improving cross-functional alignment.",
+        stats: [
+          { number: "-68%", label: "Search Time" },
+          { number: "3.2x", label: "Synthesis Speed" },
+          { number: "94.6%", label: "Squad Adoption" },
+          { number: "89%", label: "Context Retention" },
+        ],
+      },
+      evidenceArtifacts: [
+        {
+          badge: "INTERACTIVE HTML CASE STUDY DECK",
+          title: "DesignOS: AI Knowledge Operating System",
+          explanation: "Full standalone interactive HTML case study featuring custom canvas background, live neural particle network, animated telemetry, and complete system breakdown.",
+          image: "/images/ux/projects/Ux projects overview.png",
+          keyInsight: "Static documentation creates knowledge silos; dynamic neural canvas restores intuition.",
+          designDecision: "Built dedicated standalone HTML presentation deck with zero third-party framework dependencies."
+        },
+        {
+          badge: "DOCUMENTATION & ARCHITECTURE SPEC",
+          title: "DesignOS Master PDF Case Study",
+          explanation: "Formal specification artifact covering knowledge ontology, vector indexing strategy, design system tokens, and team usability trials.",
+          image: "/images/ux/projects/CosmosX.png",
+          keyInsight: "Enterprise stakeholders require rigorous PDF documentation alongside interactive web prototypes.",
+          designDecision: "Compiled verified master PDF case study with architecture diagrams and metrics."
+        }
+      ],
+    },
+  },
 ];
+
