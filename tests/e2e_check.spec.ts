@@ -367,5 +367,151 @@ test.describe("Prashant Sisodhiya Portfolio E2E Verifications", () => {
     await hamburgerBtn.click();
     await page.waitForTimeout(500);
   });
+
+  test("should test desktop navbar pill navigation to anchor sections smoothly", async ({ page }) => {
+    // 1. Click WORK pill
+    const workPill = page.locator("nav button:has-text('WORK')").first();
+    await expect(workPill).toBeVisible();
+    await workPill.click();
+    await page.waitForTimeout(800);
+    const workSection = page.locator("#work");
+    await expect(workSection).toBeInViewport();
+
+    // 2. Click PROCESS pill
+    const processPill = page.locator("nav button:has-text('PROCESS')").first();
+    await expect(processPill).toBeVisible();
+    await processPill.click();
+    await page.waitForTimeout(800);
+    const processSection = page.locator("#process");
+    await expect(processSection).toBeInViewport();
+
+    // 3. Click ABOUT pill
+    const aboutPill = page.locator("nav button:has-text('ABOUT')").first();
+    await expect(aboutPill).toBeVisible();
+    await aboutPill.click();
+    await page.waitForTimeout(800);
+    const aboutSection = page.locator("#about");
+    await expect(aboutSection).toBeInViewport();
+
+    // 4. Click CONTACT pill
+    const contactPill = page.locator("nav button:has-text('CONTACT')").first();
+    await expect(contactPill).toBeVisible();
+    await contactPill.click();
+    await page.waitForTimeout(800);
+    const contactSection = page.locator("#contact");
+    await expect(contactSection).toBeInViewport();
+
+    // 5. Verify RESUME link has valid href and opens in new tab
+    const resumeLink = page.locator("nav a:has-text('RESUME')").first();
+    await expect(resumeLink).toBeVisible();
+    await expect(resumeLink).toHaveAttribute("href", "/resume.pdf");
+    await expect(resumeLink).toHaveAttribute("target", "_blank");
+  });
+
+  test("should test project showcase pill filters and update displayed projects accordingly", async ({ page }) => {
+    const workSection = page.locator("#work");
+    await workSection.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(600);
+
+    // Initial project cards count
+    const initialCardCount = await workSection.locator(".glass-card").count();
+    expect(initialCardCount).toBeGreaterThan(0);
+
+    // 1. Filter by Product & UX
+    const uiuxFilter = workSection.locator("button:has-text('Product & UX')").first();
+    await expect(uiuxFilter).toBeVisible();
+    await uiuxFilter.click();
+    await page.waitForTimeout(500);
+    const uiuxCount = await workSection.locator(".glass-card").count();
+    expect(uiuxCount).toBeGreaterThan(0);
+
+    // 2. Filter by Mobile Apps
+    const mobileFilter = workSection.locator("button:has-text('Mobile Apps')").first();
+    await expect(mobileFilter).toBeVisible();
+    await mobileFilter.click();
+    await page.waitForTimeout(500);
+    const mobileCount = await workSection.locator(".glass-card").count();
+    expect(mobileCount).toBeGreaterThan(0);
+
+    // 3. Filter by Graphics & Brand
+    const graphicsFilter = workSection.locator("button:has-text('Graphics & Brand')").first();
+    await expect(graphicsFilter).toBeVisible();
+    await graphicsFilter.click();
+    await page.waitForTimeout(500);
+    const graphicsCount = await workSection.locator(".glass-card").count();
+    expect(graphicsCount).toBeGreaterThan(0);
+
+    // 4. Restore All Works
+    const allFilter = workSection.locator("button:has-text('All Works')").first();
+    await expect(allFilter).toBeVisible();
+    await allFilter.click();
+    await page.waitForTimeout(500);
+    const restoredCount = await workSection.locator(".glass-card").count();
+    expect(restoredCount).toBe(initialCardCount);
+  });
+
+  test("should execute full end-to-end recruiter journey seamlessly", async ({ page }) => {
+    // 1. Start at Home & Click View Selected Work
+    const viewWorkCTA = page.locator("button:has-text('View Selected Work')").first();
+    await expect(viewWorkCTA).toBeVisible();
+    await viewWorkCTA.click();
+    await page.waitForTimeout(700);
+    await expect(page.locator("#work")).toBeInViewport();
+
+    // 2. Open DeepAstro Interactive HTML Deck & return with Back to Portfolio
+    const htmlDeckBtn = page.locator("button:has-text('Interactive HTML Deck')").first();
+    await expect(htmlDeckBtn).toBeVisible();
+    await htmlDeckBtn.click();
+    await page.waitForTimeout(800);
+    const inAppViewer = page.locator("div[role='dialog'][aria-label*='In-App Case Study Reader']");
+    await expect(inAppViewer).toBeVisible();
+    const backBtn = inAppViewer.locator("button[aria-label='Back to Portfolio']");
+    await expect(backBtn).toBeVisible();
+    await backBtn.click();
+    await page.waitForTimeout(500);
+    await expect(inAppViewer).not.toBeVisible();
+
+    // 3. Scroll to Visual Systems & Open Artwork Lightbox
+    const visualSystems = page.locator("#visual-systems");
+    await visualSystems.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+    const firstArtwork = visualSystems.locator("article").first();
+    await firstArtwork.click();
+    await page.waitForTimeout(500);
+    const artworkModal = page.locator("div[role='dialog'][aria-label*='Artwork detail']");
+    await expect(artworkModal).toBeVisible();
+    // Press Escape to close
+    await page.keyboard.press("Escape");
+    await page.waitForTimeout(400);
+    await expect(artworkModal).not.toBeVisible();
+
+    // 4. AstroSage Showcase -> Open 14-Asset Gallery -> Next Slide -> Close with Escape
+    const astrosageSection = page.locator("#astrosage");
+    await astrosageSection.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+    const openAstroGalleryBtn = astrosageSection.locator("button:has-text('View AstroSage Gallery')").first();
+    await openAstroGalleryBtn.click();
+    await page.waitForTimeout(500);
+    const astroModal = page.locator("div[role='dialog'][aria-label='AstroSage Archive Visual Gallery']");
+    await expect(astroModal).toBeVisible();
+    await expect(astroModal.locator("text=01 / 14")).toBeVisible();
+    // Navigate with Right arrow key
+    await page.keyboard.press("ArrowRight");
+    await page.waitForTimeout(400);
+    await expect(astroModal.locator("text=02 / 14")).toBeVisible();
+    // Close with Escape key
+    await page.keyboard.press("Escape");
+    await page.waitForTimeout(400);
+    await expect(astroModal).not.toBeVisible();
+
+    // 5. Contact Section validation
+    const contactSection = page.locator("#contact");
+    await contactSection.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+    const emailLink = contactSection.locator("a[href^='mailto:']").first();
+    await expect(emailLink).toBeVisible();
+    const telLink = contactSection.locator("a[href^='tel:']").first();
+    await expect(telLink).toBeVisible();
+  });
 });
 
