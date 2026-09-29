@@ -1,0 +1,369 @@
+{
+  "timestamp": "2026-09-29T18:58:19.487Z",
+  "targetUrl": "https://xportfolio-sigma.vercel.app/",
+  "httpStatus": 200,
+  "finalUrl": "https://xportfolio-sigma.vercel.app/",
+  "pageTitle": "Prashant Sisodhiya — Senior Product & UX Designer",
+  "consoleErrors": [],
+  "networkErrors": [],
+  "stringAudit": {
+    "FORBIDDEN_91_4_SUS_Usability": {
+      "targetString": "91.4 SUS Usability",
+      "forbidden": true,
+      "presentInText": false,
+      "presentInHtml": false,
+      "status": "PASS"
+    },
+    "FORBIDDEN_99_2_Accuracy": {
+      "targetString": "99.2% Accuracy",
+      "forbidden": true,
+      "presentInText": false,
+      "presentInHtml": false,
+      "status": "PASS"
+    },
+    "FORBIDDEN_42m_day": {
+      "targetString": "42m/day",
+      "forbidden": true,
+      "presentInText": false,
+      "presentInHtml": false,
+      "status": "PASS"
+    },
+    "FORBIDDEN_100K_Bodies": {
+      "targetString": "100K+ Bodies",
+      "forbidden": true,
+      "presentInText": false,
+      "presentInHtml": false,
+      "status": "PASS"
+    },
+    "FORBIDDEN_80ms_Sync_Standalone": {
+      "targetString": "80ms Sync",
+      "forbidden": true,
+      "presentInText": false,
+      "presentInHtml": false,
+      "status": "PASS"
+    },
+    "FORBIDDEN_Product_Design_UX_UI_2026": {
+      "targetString": "Product Design · UX · UI 2026",
+      "forbidden": true,
+      "presentInText": false,
+      "presentInHtml": false,
+      "status": "PASS"
+    },
+    "REQUIRED_Target_SUS_Benchmark": {
+      "targetString": "Target SUS Benchmark",
+      "forbidden": false,
+      "presentInText": true,
+      "presentInHtml": true,
+      "status": "PASS"
+    },
+    "REQUIRED_91_4": {
+      "targetString": "91.4",
+      "forbidden": false,
+      "presentInText": true,
+      "presentInHtml": true,
+      "status": "PASS"
+    },
+    "REQUIRED_Target_SUS_Benchmark_91_4": {
+      "targetString": "Target SUS Benchmark • 91.4",
+      "forbidden": false,
+      "presentInText": true,
+      "presentInHtml": true,
+      "status": "PASS"
+    },
+    "REQUIRED_Clinical_AI_Concept": {
+      "targetString": "Clinical AI Concept",
+      "forbidden": false,
+      "presentInText": true,
+      "presentInHtml": true,
+      "status": "PASS"
+    },
+    "REQUIRED_WCAG_AA_Compliance": {
+      "targetString": "WCAG AA Compliance",
+      "forbidden": false,
+      "presentInText": true,
+      "presentInHtml": true,
+      "status": "PASS"
+    },
+    "REQUIRED_Clinical_AI_Concept_WCAG_AA_Compliance": {
+      "targetString": "Clinical AI Concept • WCAG AA Compliance",
+      "forbidden": false,
+      "presentInText": true,
+      "presentInHtml": true,
+      "status": "PASS"
+    },
+    "REQUIRED_Sub_80ms_Sync_Target": {
+      "targetString": "Sub-80ms Sync Target",
+      "forbidden": false,
+      "presentInText": true,
+      "presentInHtml": true,
+      "status": "PASS"
+    },
+    "REQUIRED_Orbital_Telemetry_Real_time_Sync": {
+      "targetString": "Orbital Telemetry • Real-time Sync",
+      "forbidden": false,
+      "presentInText": true,
+      "presentInHtml": true,
+      "status": "PASS"
+    }
+  },
+  "graphicsCards": [
+    {
+      "artwork": "Surreal Photo Manipulation",
+      "expectedRole": "Digital Matte Painting · Compositing",
+      "verifiedPresent": true,
+      "status": "PASS"
+    },
+    {
+      "artwork": "Imagination to Reality",
+      "expectedRole": "Art Direction · Conceptual Art",
+      "verifiedPresent": true,
+      "status": "PASS"
+    },
+    {
+      "artwork": "Cinematic Movie Poster",
+      "expectedRole": "Poster Design · Theatrical Keyart",
+      "verifiedPresent": true,
+      "status": "PASS"
+    },
+    {
+      "artwork": "Brand Identity & Guidelines",
+      "expectedRole": "Brand Identity · Guidelines",
+      "verifiedPresent": true,
+      "status": "PASS"
+    },
+    {
+      "artwork": "Modern Brand Identity Collaterals",
+      "expectedRole": "Visual Design · Packaging Systems",
+      "verifiedPresent": true,
+      "status": "PASS"
+    },
+    {
+      "artwork": "Editorial Magazine Cover",
+      "expectedRole": "Editorial Design · Publication Layout",
+      "verifiedPresent": true,
+      "status": "PASS"
+    },
+    {
+      "artwork": "Social Media Campaign Creatives",
+      "expectedRole": "Social Media Design · Ad Creatives",
+      "verifiedPresent": true,
+      "status": "PASS"
+    },
+    {
+      "artwork": "Commercial Marketing Flyer",
+      "expectedRole": "Graphic Design · Print Collateral",
+      "verifiedPresent": true,
+      "status": "PASS"
+    },
+    {
+      "artwork": "Luxury Event Invitation",
+      "expectedRole": "Graphic Design · Bespoke Stationery",
+      "verifiedPresent": true,
+      "status": "PASS"
+    },
+    {
+      "artwork": "Photoshop 21-Artwork Gallery",
+      "expectedRole": "Visual Design · Digital Art Vault",
+      "verifiedPresent": true,
+      "status": "PASS"
+    }
+  ],
+  "responsiveMatrix": [
+    {
+      "device": "320px Small Mobile",
+      "width": 320,
+      "height": 568,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "360px Android",
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "375px iPhone SE",
+      "width": 375,
+      "height": 667,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "390px iPhone 12/13/14",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "412px Pixel 7",
+      "width": 412,
+      "height": 915,
+      "scrollWidth": 412,
+      "innerWidth": 412,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "430px iPhone 14 Pro Max",
+      "width": 430,
+      "height": 932,
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "600px Small Tablet",
+      "width": 600,
+      "height": 960,
+      "scrollWidth": 600,
+      "innerWidth": 600,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "768px iPad Mini",
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "820px iPad Air",
+      "width": 820,
+      "height": 1180,
+      "scrollWidth": 820,
+      "innerWidth": 820,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "1024px iPad Landscape",
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024,
+      "innerWidth": 1024,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "1280px Laptop 13\"",
+      "width": 1280,
+      "height": 800,
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "1366px HD Display",
+      "width": 1366,
+      "height": 768,
+      "scrollWidth": 1366,
+      "innerWidth": 1366,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "1440px MacBook Pro",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "1600px Widescreen",
+      "width": 1600,
+      "height": 900,
+      "scrollWidth": 1600,
+      "innerWidth": 1600,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "1920px Full HD",
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "innerWidth": 1920,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "2560px QHD 2K",
+      "width": 2560,
+      "height": 1440,
+      "scrollWidth": 2560,
+      "innerWidth": 2560,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "3440px Ultrawide 21:9",
+      "width": 3440,
+      "height": 1440,
+      "scrollWidth": 3440,
+      "innerWidth": 3440,
+      "overflowPx": 0,
+      "status": "PASS"
+    }
+  ],
+  "recruiterJourney": [
+    {
+      "step": "1. Click View Selected Work",
+      "status": "PASS"
+    },
+    {
+      "step": "2. Open DeepAstro In-App Case Study Reader",
+      "status": "PASS"
+    },
+    {
+      "step": "3. Back to Portfolio button closes reader",
+      "status": "PASS"
+    },
+    {
+      "step": "4. Open Visual Systems Artwork Lightbox",
+      "status": "PASS"
+    },
+    {
+      "step": "5. Close Artwork Lightbox via Escape",
+      "status": "PASS"
+    },
+    {
+      "step": "6. Open AstroSage 14-Asset Gallery Modal",
+      "status": "PASS"
+    },
+    {
+      "step": "7. Navigate to Slide 02 / 14 via ArrowRight",
+      "status": "PASS"
+    },
+    {
+      "step": "8. Close AstroSage Gallery via Escape",
+      "status": "PASS"
+    },
+    {
+      "step": "9. Contact email link is visible and functional",
+      "status": "PASS"
+    },
+    {
+      "step": "10. Contact phone link is visible and functional",
+      "status": "PASS"
+    }
+  ],
+  "overallVerdict": "PASS"
+}
