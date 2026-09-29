@@ -764,10 +764,10 @@ export default function VisualSystems() {
               <motion.article
                 key={item.id}
                 layout
-                initial={{ opacity: 0, scale: 0.94 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.94 }}
-                transition={{ duration: 0.28, delay: gridInView ? idx * 0.04 : 0 }}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
                 onClick={() => setSelectedItem(item)}
                 className="group relative rounded-2xl border border-gray-200 dark:border-[#2A3441] bg-white dark:bg-[#1A1F2B] hover:border-[#003882] dark:hover:border-[#00E5FF] p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,56,130,0.1)] dark:hover:shadow-[0_20px_50px_rgba(0,229,255,0.14)]"
               >

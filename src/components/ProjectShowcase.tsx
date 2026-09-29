@@ -845,7 +845,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                         className="w-full py-2.5 rounded-lg border border-[#D4AF37]/50 bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#B8941F] hover:text-black dark:text-[#F5BA42] dark:hover:text-black flex items-center justify-center space-x-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
                       >
                         <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>Watch Project</span>
+                        <span>EXPLORE PROJECT →</span>
                       </button>
                     ) : p.uxProjectId ? (
                       <div className="space-y-1.5">
@@ -853,8 +853,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                           onClick={() => handleOpenCaseStudy(p.uxProjectId)}
                           className="w-full py-2.5 rounded-lg border border-[#D4AF37]/50 bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#B8941F] hover:text-black dark:text-[#F5BA42] dark:hover:text-black flex items-center justify-center space-x-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
                         >
-                          <span>Explore Case Study</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
+                          <span>VIEW CASE STUDY →</span>
                         </button>
                         {(() => {
                           const uxProj = uxProjectsList.find(u => u.id === p.uxProjectId);
@@ -901,7 +900,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                         href={p.figmaUrl} 
                         className="w-full py-2.5 rounded-lg border border-[#D4AF37]/50 bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#B8941F] hover:text-black dark:text-[#F5BA42] dark:hover:text-black flex items-center justify-center space-x-2 text-xs font-bold uppercase tracking-wider transition-colors"
                       >
-                        <span>{p.caseStudy || "Explore Gallery"}</span>
+                        <span>{p.category === "graphics" ? "VIEW GALLERY →" : "EXPLORE PROJECT →"}</span>
                         <ExternalLink className="w-3.5 h-3.5" />
                       </a>
                     ) : (
@@ -909,7 +908,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                         href={p.figmaUrl} 
                         className="w-full py-2.5 rounded-lg border border-[#D4AF37]/50 bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#B8941F] hover:text-black dark:text-[#F5BA42] dark:hover:text-black flex items-center justify-center space-x-2 text-xs font-bold uppercase tracking-wider transition-colors"
                       >
-                        <span>{p.caseStudy}</span>
+                        <span>{p.category === "graphics" ? "VIEW GALLERY →" : "EXPLORE PROJECT →"}</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </a>
                     )}

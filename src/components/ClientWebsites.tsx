@@ -259,8 +259,8 @@ export default function ClientWebsites() {
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   Live in Production
                 </span>
-                <span className="px-3 py-1 rounded-md text-xs font-semibold tracking-wider text-[#666] dark:text-[#AAA] bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10">
-                  Client Project // Retails & Commerce
+                <span className="px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider text-[#003882] dark:text-[#00E5FF] bg-[#003882]/10 dark:bg-[#00E5FF]/10 border border-[#003882]/20 dark:border-[#00E5FF]/30">
+                  CLIENT WORK // RETAIL &amp; COMMERCE
                 </span>
                 <span className="px-3 py-1 rounded-md text-xs font-semibold tracking-wider text-[#D4AF37] bg-[#D4AF37]/10 border border-[#D4AF37]/30">
                   Dual Web + Desktop POS Stack
