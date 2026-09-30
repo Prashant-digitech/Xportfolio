@@ -24,7 +24,9 @@ import {
   ArrowUpRight,
   Code2,
   ShoppingBag,
+  FileText,
 } from "lucide-react";
+import InAppCaseStudyViewer from "@/components/InAppCaseStudyViewer";
 
 interface GraphicAsset {
   id: string;
@@ -134,6 +136,7 @@ export default function ClientWebsites() {
   const [selectedVideoCut, setSelectedVideoCut] = useState<"app" | "commercial">("app");
   const [selectedGraphic, setSelectedGraphic] = useState<GraphicAsset | null>(null);
   const [activeGraphicTab, setActiveGraphicTab] = useState<string>("all");
+  const [caseStudyOpen, setCaseStudyOpen] = useState<boolean>(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const togglePlay = () => {
@@ -235,13 +238,21 @@ export default function ClientWebsites() {
             </p>
           </div>
 
-          {/* Quick CTA to live site */}
-          <div className="mt-6 md:mt-0 flex-shrink-0">
+          {/* Quick CTA to live site & interactive case study */}
+          <div className="mt-6 md:mt-0 flex-shrink-0 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={() => setCaseStudyOpen(true)}
+              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-bold text-sm tracking-wide text-black bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#AA7C11] shadow-[0_4px_20px_rgba(212,175,55,0.35)] hover:shadow-[0_6px_28px_rgba(212,175,55,0.55)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] cursor-pointer"
+            >
+              <FileText className="w-4 h-4" />
+              <span>Interactive Case Study</span>
+            </button>
             <a
               href="https://veronixx.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-sm tracking-wide text-black bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#AA7C11] shadow-[0_4px_20px_rgba(212,175,55,0.35)] hover:shadow-[0_6px_28px_rgba(212,175,55,0.55)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-bold text-sm tracking-wide text-[#0A0F1D] dark:text-[#E2E8F0] border border-black/15 dark:border-white/15 hover:border-[#D4AF37] hover:text-[#D4AF37] bg-white/50 dark:bg-white/5 transition-all transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none"
             >
               <span>Visit Live Platform</span>
               <ExternalLink className="w-4 h-4" />
@@ -304,6 +315,27 @@ export default function ClientWebsites() {
                 coupled with an offline-first desktop POS billing engine with instant ESC/POS thermal printing
                 and automated multi-tier GST ledger accounting.
               </p>
+
+              {/* Case Study Actions */}
+              <div className="mt-5 flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setCaseStudyOpen(true)}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-black bg-[#D4AF37] hover:bg-[#F3E5AB] shadow-[0_2px_12px_rgba(212,175,55,0.3)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>Launch In-App Case Study</span>
+                </button>
+                <a
+                  href="/case-studies/veronixx/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl font-bold text-xs tracking-wider text-[#0A0F1D] dark:text-[#E2E8F0] border border-black/15 dark:border-white/15 hover:border-[#D4AF37] hover:text-[#D4AF37] bg-black/5 dark:bg-white/5 transition-all"
+                >
+                  <span>Full Screen Reader</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
 
               {/* Technologies */}
               <div className="mt-6 flex flex-wrap gap-2">
@@ -695,6 +727,15 @@ export default function ClientWebsites() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* In-App Case Study Reader for VS Veronixx */}
+      <InAppCaseStudyViewer
+        isOpen={caseStudyOpen}
+        onClose={() => setCaseStudyOpen(false)}
+        caseStudyUrl="/case-studies/veronixx/index.html"
+        projectTitle="VS VERONIXX — Client Case Study"
+        subtitle="Storefront, POS & AI Concierge · Real-world Vadodara Retail Architecture"
+      />
     </section>
   );
 }

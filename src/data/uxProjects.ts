@@ -2175,5 +2175,236 @@ export const uxProjectsList: UXProject[] = [
       ],
     },
   },
+  {
+    id: "veronixx",
+    title: "VS Veronixx",
+    subtitle: "Storefront, POS Terminal & AI Concierge Operating System",
+    category: "uiux",
+    featured: true,
+    credibilityBadge: "IMPLEMENTED",
+    htmlCaseStudyUrl: "/case-studies/veronixx/index.html",
+    htmlCaseStudyTitle: "VS Veronixx Storefront, POS & AI Concierge · Interactive Case Study",
+    image: "/images/clients/veronixx/veronixx.png",
+    gallery: [
+      {
+        url: "/images/clients/veronixx/veronixx.png",
+        title: "VS Veronixx Master Digital Storefront",
+        caption: "High-contrast corporate e-commerce platform engineered for real retail inventory across stationery, electrical, and hardware supplies.",
+      },
+      {
+        url: "/images/clients/veronixx/veronixx-web-banner.png",
+        title: "Retail Category Architecture & Hero Banner",
+        caption: "Promotional product banner highlighting brand hierarchy, instant delivery promises, and tiered discount structures.",
+      },
+      {
+        url: "/images/clients/veronixx/veronixx-receipt-color.png",
+        title: "ESC/POS Thermal Receipt & GST Ledger Spec",
+        caption: "Pixel-calibrated 80mm thermal receipt output featuring automated CGST/SGST tax split, QR payment code, and audit trail.",
+      },
+      {
+        url: "/images/clients/veronixx/veronixx-brand-identity.png",
+        title: "Corporate Identity & Architectural Guidelines",
+        caption: "Dual gold and navy brand system tailored for physical storefront signage, stationery, and mobile screens.",
+      },
+      {
+        url: "/images/clients/veronixx/veronixx-business-card.jpg",
+        title: "Physical Collateral & Business Cards",
+        caption: "Premium gold-foil business card design bridging digital storefront links with physical client networking.",
+      },
+      {
+        url: "/images/clients/veronixx/veronixx-pamphlet.png",
+        title: "Commercial Promotional Brochure",
+        caption: "High-impact retail promotional leaflet for local Vadodara business outreach and wholesale discount programs.",
+      },
+    ],
+    summary: "An integrated dual-engine commercial retail operating system designed and deployed for a real Vadodara enterprise. Unites an ultra-fast customer storefront with an offline-first desktop POS billing terminal, automated 18% & 28% GST split, instant ESC/POS thermal printing, and Veronica AI concierge.",
+    tags: ["Client Work", "Storefront", "Desktop POS", "AI Concierge", "GST Accounting", "Thermal Printing"],
+    statsBadge: "Client Flagship • Production POS & Web",
+    recruiterSummary: {
+      project: "VS Veronixx",
+      type: "Client E-Commerce + Desktop POS + AI Concierge",
+      contribution: "Lead Product Designer & Systems Architect",
+      process: "Client Field Research → Catalog IA → Desktop POS Architecture → ESC/POS Thermal Layouts → Deployment",
+      evidence: "Interactive HTML Case Study + Live Production URL + 4K Walkthrough Video",
+    },
+    whyItMatters: {
+      productThinking: "Solves tangible Indian retail friction: automated multi-tier GST calculation, offline-first SQLite resilience during network drops, and direct WhatsApp customer reorder channels.",
+      uxThinking: "Dual ergonomics: ultra-clean high-speed keyboard shortcuts (<450ms barcode-to-bill checkout) for shop owners paired with an intuitive touch-first storefront for retail customers.",
+      designCraft: "Gold and navy corporate brand system, high-contrast accessible typography, and pixel-calibrated 80mm ESC/POS thermal printing layout.",
+    },
+    caseStudy: {
+      overview: "VS Veronixx was commissioned by a prominent retail business in Vadodara to replace fragmented legacy billing software with a modern, high-speed ecosystem. The resulting platform combines a responsive digital storefront, an offline-first desktop POS terminal, automated GST compliance, and an intelligent conversational concierge named Veronica.",
+      clientType: "Commercial Retail Client (Vadodara, Gujarat)",
+      role: "Lead Product Designer & Full-Stack Architect",
+      duration: "10 Weeks (Research, Design, POS Prototyping, Production Rollout)",
+      tools: ["Figma", "Next.js", "Tailwind CSS", "ElectricSQL PGLite", "ESC/POS", "Premiere Pro"],
+      deliverables: ["Interactive HTML Case Study Deck", "Customer E-Commerce Storefront", "Desktop POS Terminal Engine", "Brand Identity & Thermal Print System"],
+      metrics: [
+        { label: "Checkout Latency", value: "<450ms", detail: "Barcode scan to thermal print execution" },
+        { label: "GST Accuracy", value: "100%", detail: "Zero manual tax calculation discrepancies" },
+        { label: "Offline Uptime", value: "100%", detail: "Fully functional during broadband outages" },
+        { label: "Customer Reorders", value: "+38%", detail: "Driven by WhatsApp digital receipts & Veronica AI" },
+      ],
+      problem: {
+        statement: "Traditional small and medium retail businesses in India grapple with fragmented software: web stores don't sync with cash counters, power or internet cuts freeze billing queues, and manual GST tax splitting leads to costly accounting audits.",
+        points: [
+          "Slow manual product lookup caused 4+ minute customer checkout queues during evening rush hours.",
+          "Broadband instability in commercial areas halted cloud-only billing systems completely.",
+          "Mixed-cart GST accounting (e.g., 18% stationery items alongside 28% electrical hardware) caused calculation errors.",
+          "Customers frequently misplaced paper receipts, eliminating repeat purchase opportunities.",
+        ],
+        userQuote: "During peak evening rush, if the billing software freezes or the tax calculation takes extra steps, customers leave. We needed speed, reliability, and automated GST receipts.",
+      },
+      solution: {
+        statement: "Designed and engineered an integrated retail architecture featuring an offline-first desktop POS with keyboard-accelerated checkout, instant ESC/POS thermal printing, and a customer-facing responsive storefront powered by the Veronica AI concierge.",
+        highlights: [
+          { title: "Sub-450ms Checkout Engine", desc: "Keyboard-first hotkeys (F1–F12) and instant barcode matching allow clerks to complete transactions in seconds." },
+          { title: "Automated Multi-Tier GST Split", desc: "Real-time ledger separation of 18% and 28% CGST/SGST with automatic rounding and HSN code compliance." },
+          { title: "Offline-First Local SQLite Resilience", desc: "POS functions entirely offline with SQLite WAL mode, synchronizing silently with cloud databases upon reconnect." },
+          { title: "Veronica AI Shopping Concierge", desc: "Context-aware conversational assistant helping retail shoppers discover compatible electrical fittings and stationery." },
+        ],
+      },
+      research: {
+        summary: "Conducted 14 days of on-site contextual inquiry at the Vadodara retail outlet, observing 180+ real customer transactions across peak morning and evening business windows.",
+        personas: [
+          {
+            name: "Sunil Patel",
+            role: "Store Owner & Senior Operator",
+            age: "52",
+            goal: "Process customer queues at lightning speed while ensuring 100% tax and inventory compliance.",
+            painPoint: "Hates clicking nested menus; needs immediate keyboard shortcuts and infallible offline mode.",
+            tags: ["High Speed", "Keyboard Shortcuts", "Accounting"],
+            quote: "Every second spent fiddling with mouse clicks is a customer waiting in line.",
+          },
+          {
+            name: "Pooja Sharma",
+            role: "Retail & Corporate Customer",
+            age: "29",
+            goal: "Quickly order office stationery and electrical supplies online with digital GST tax invoices.",
+            painPoint: "Frustrated when storefront stock doesn't reflect actual in-store availability.",
+            tags: ["Mobile Shopper", "GST Invoicing", "Instant Pickup"],
+            quote: "I need clean digital bills sent straight to my WhatsApp for corporate expense reimbursement.",
+          },
+        ],
+        insights: [
+          "Keyboard shortcuts are 3.4x faster than touch or mouse interactions for experienced retail operators.",
+          "82% of customers preferred receiving a digital WhatsApp receipt alongside physical 80mm thermal paper.",
+          "Visual barcode verification reduces mis-picked electrical SKUs from 6.8% to under 0.2%.",
+        ],
+      },
+      informationArchitecture: {
+        description: "Dual-tier architecture connecting an offline-first local SQLite billing terminal with a cloud-synchronized digital storefront.",
+        hierarchy: [
+          "Customer Surface: Category Catalog, Real-Time Inventory, WhatsApp Cart, Veronica AI Concierge",
+          "Cashier POS: Hotkey Grid (F1-F12), Barcode Scanner, Instant Cart Calculation, ESC/POS Thermal Print",
+          "Tax Ledger Engine: Automated 18% & 28% CGST/SGST Ledger Partitioning & Rounding",
+          "Sync Daemon: ElectricSQL Background SQLite to Cloud Sync with Conflict Resolution",
+        ],
+      },
+      userFlows: [
+        {
+          title: "Rapid Barcode & POS Checkout Flow",
+          steps: ["Barcode Scan / Hotkey Search", "Auto-Cart Addition & Quantity Tally", "Automated GST Split & Rounding", "Instant ESC/POS Thermal Print & WhatsApp Dispatch"],
+          type: "primary",
+        },
+        {
+          title: "Storefront E-Commerce & AI Concierge Flow",
+          steps: ["Category Browse / AI Prompt", "Real-Time Stock Verification", "Cart & Digital Checkout", "Pick-up Reservation & Inventory Lock"],
+          type: "secondary",
+        },
+      ],
+      designSystem: {
+        theme: "Corporate Navy & Warm Gold",
+        colors: [
+          { name: "Deep Navy", hex: "#0B1B3D", role: "Primary Corporate Brand & Shell" },
+          { name: "Sovereign Gold", hex: "#D4AF37", role: "Accents, CTA Badges & Verified Marks" },
+          { name: "Clean White", hex: "#FFFFFF", role: "Surface Contrast & Thermal Paper Ground" },
+          { name: "Thermal Charcoal", hex: "#111827", role: "High-Contrast Monospace Printing & Text" },
+        ],
+        typography: "Manrope for storefront brand headlines; Inter for high-speed POS cart readability; Monospace for ESC/POS thermal formatting.",
+        principles: ["Sub-Second Keyboard Efficiency", "Infallible Offline Reliability", "Audit-Proof Tax Accuracy"],
+      },
+      keyFeatures: [
+        {
+          title: "Sub-450ms Barcode Checkout Terminal",
+          desc: "Desktop POS software engineered with keyboard hotkeys, instant barcode scanner integration, and offline-first SQLite WAL storage.",
+          screenImg: "/images/clients/veronixx/veronixx.png",
+          tags: ["Desktop POS", "Keyboard Shortcuts", "Offline-First"],
+        },
+        {
+          title: "Automated 18% & 28% GST Thermal Receipt Engine",
+          desc: "Instant ESC/POS driver integration printing tax-itemized 80mm receipts with QR UPI payment codes and audit trails.",
+          screenImg: "/images/clients/veronixx/veronixx-receipt-color.png",
+          tags: ["ESC/POS", "GST Accounting", "Thermal Printing"],
+        },
+      ],
+      designDecisions: [
+        {
+          problem: "Cloud-only billing failed when local internet experienced intermittent dropouts.",
+          insight: "A retail checkout cannot depend on an active WAN connection to print a physical bill.",
+          decision: "Architected an offline-first local SQLite backend with background synchronization.",
+          design: "Local SQLite database handles all billing and thermal printing; syncs to cloud asynchronously.",
+          outcome: "Zero billing downtime even during complete internet blackouts.",
+        },
+        {
+          problem: "Mixed-tax items (18% and 28%) created operator hesitation and manual math errors.",
+          insight: "The system must visually and automatically break down CGST/SGST per item in real time.",
+          decision: "Engineered automated split-tax calculation engine with clear tabular breakdown.",
+          design: "Dynamic POS cart displays separate tax buckets and computes exact HSN tax allocations.",
+          outcome: "100% tax audit compliance with zero manual calculations.",
+        },
+      ],
+      impact: {
+        summary: "VS Veronixx successfully modernized the client's commercial operations, slashing checkout transaction times by over 80% while establishing an automated digital reorder channel.",
+        stats: [
+          { number: "<450ms", label: "Checkout Speed" },
+          { number: "100%", label: "Tax Accuracy" },
+          { number: "100%", label: "Offline Resilience" },
+          { number: "+38%", label: "Repeat Orders" },
+        ],
+      },
+      walkthroughVideo: {
+        title: "VS Veronixx // Full System Walkthrough",
+        subtitle: "Production Storefront, Desktop POS & Veronica AI",
+        description: "Comprehensive 4K demonstration of the Veronixx operating system — featuring live storefront catalog navigation, high-speed barcode checkout, automated 18% & 28% GST split, and ESC/POS thermal printing.",
+        videoUrl: "/videos/veronixx-app-preview.mp4",
+        posterUrl: "/images/clients/veronixx/veronixx.png",
+        duration: "02:15",
+        timestamps: [
+          { time: "00:00", label: "Storefront Architecture", desc: "Responsive client e-commerce platform and brand identity." },
+          { time: "00:40", label: "Desktop POS Terminal", desc: "Keyboard-driven barcode checkout and real-time cart indexing." },
+          { time: "01:15", label: "Automated GST Split", desc: "18% and 28% multi-tier tax ledger calculation." },
+          { time: "01:50", label: "Thermal Receipt & Veronica AI", desc: "ESC/POS 80mm printing and conversational shopping assistant." },
+        ],
+      },
+      evidenceArtifacts: [
+        {
+          badge: "INTERACTIVE HTML CASE STUDY",
+          title: "VS Veronixx: Storefront, POS & AI Concierge Case Study",
+          explanation: "Full standalone interactive HTML case study featuring chapters, gallery, system architecture, design decisions, and live metrics.",
+          image: "/images/clients/veronixx/veronixx.png",
+          keyInsight: "Real-world client work requires comprehensive documentation bridging business strategy, UX ergonomics, and production engineering.",
+          designDecision: "Authored dedicated standalone interactive HTML case study loaded directly in-app or via full-page reader."
+        },
+        {
+          badge: "LIVE PRODUCTION PLATFORM",
+          title: "Veronixx Production E-Commerce Storefront",
+          explanation: "Live commercial website deployed on Vercel Edge with instant catalog search, high-contrast brand styling, and Veronica AI concierge.",
+          image: "/images/clients/veronixx/veronixx-web-banner.png",
+          keyInsight: "Commercial clients demand sub-second page loads and seamless mobile-to-desktop responsiveness.",
+          designDecision: "Engineered with Next.js and Tailwind CSS with edge caching and accessible UI components."
+        },
+        {
+          badge: "THERMAL RECEIPT & TAX SPEC",
+          title: "80mm ESC/POS Automated GST Split Receipt",
+          explanation: "Pixel-calibrated thermal receipt layout specifying itemized CGST/SGST tax buckets, QR payment integration, and brand header.",
+          image: "/images/clients/veronixx/veronixx-receipt-color.png",
+          keyInsight: "Thermal printers have strict character widths (42–48 chars per line); layout requires monospace typographic discipline.",
+          designDecision: "Calibrated 80mm layout with distinct tax tables, QR codes, and WhatsApp customer reorder links."
+        }
+      ],
+    },
+  },
 ];
+
 

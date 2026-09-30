@@ -27,6 +27,7 @@ import CertificationVault from "@/components/CertificationVault";
 import ClientTrust from "@/components/ClientTrust";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import CanvaPortfolioDeck from "@/components/CanvaPortfolioDeck";
+import DesignEvolution from "@/components/DesignEvolution";
 import ClientWebsites from "@/components/ClientWebsites";
 import AstroSageShowcase from "@/components/AstroSageShowcase";
 import AILab from "@/components/AILab";
@@ -182,6 +183,10 @@ export default function Home() {
               <ClientWebsites />
               <SectionSeparator />
               <CanvaPortfolioDeck />
+              <SectionSeparator />
+
+              {/* 08-B: DESIGN EVOLUTION — 2020 → 2024 → 2026 & 21-ARTWORK CAROUSEL */}
+              <DesignEvolution />
               <SectionSeparator />
 
               {/* 09: MULTIDISCIPLINARY JOURNEY & CREDENTIALS */}

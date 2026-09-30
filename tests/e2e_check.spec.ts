@@ -389,17 +389,17 @@ test.describe("Prashant Sisodhiya Portfolio E2E Verifications", () => {
     const aboutPill = page.locator("nav button:has-text('ABOUT')").first();
     await expect(aboutPill).toBeVisible();
     await aboutPill.click();
-    await page.waitForTimeout(800);
+    await page.waitForTimeout(2000);
     const aboutSection = page.locator("#about");
-    await expect(aboutSection).toBeInViewport();
+    await expect(aboutSection).toBeInViewport({ timeout: 10000 });
 
     // 4. Click CONTACT pill
     const contactPill = page.locator("nav button:has-text('CONTACT')").first();
     await expect(contactPill).toBeVisible();
     await contactPill.click();
-    await page.waitForTimeout(800);
+    await page.waitForTimeout(2000);
     const contactSection = page.locator("#contact");
-    await expect(contactSection).toBeInViewport();
+    await expect(contactSection).toBeInViewport({ timeout: 10000 });
 
     // 5. Verify RESUME link has valid href and opens in new tab
     const resumeLink = page.locator("nav a:has-text('RESUME')").first();

@@ -39,6 +39,10 @@ body {
   overflow-x: hidden;
 }
 
+section[id] {
+  scroll-margin-top: 80px;
+}
+
 /* ==========================================================================
    SEMANTIC THEME TOKENS (SECTIONS 07, 09, 15)
    Light: Warm Ivory (#FAFAF7), Crisp White Surfaces (#FFFFFF), Dark Typography (#111318)

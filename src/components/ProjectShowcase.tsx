@@ -323,9 +323,24 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       year: "2026",
       valueProposition: "Interactive AI knowledge OS with neural canvas, design tokens, and real-time synthesis."
     },
-    // Soul Journey Mobile
+    // 10: VS VERONIXX (Client Production Flagship)
     { 
       num: "10",
+      title: "VS Veronixx Storefront & POS", 
+      category: "uiux", 
+      description: "Dual-engine commercial retail operating ecosystem: e-commerce storefront, offline-first desktop POS, automated GST thermal receipts, and Veronica AI concierge.", 
+      img: "/images/clients/veronixx/veronixx.png", 
+      caseStudy: "Explore Interactive Case Study", 
+      figmaUrl: "/case-studies/veronixx/index.html",
+      uxProjectId: "veronixx",
+      statsBadge: "Client Flagship • Production POS & Web",
+      role: "Lead Product Designer & Systems Architect",
+      year: "2026",
+      valueProposition: "Real-world client retail ecosystem uniting responsive web commerce, offline-first SQLite POS billing, and AI customer concierge."
+    },
+    // 11: Soul Journey Mobile
+    { 
+      num: "11",
       title: "Soul Journey Mobile Experience", 
       category: "mobile", 
       description: "Tactile mobile journey modal with atmospheric astral portal aesthetics and authentic Vedic chart calculations.", 
@@ -471,7 +486,8 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       description: "Full production platform walkthrough showcasing real-time inventory, offline POS billing, and automated GST receipt printing.", 
       img: "/images/clients/veronixx/veronixx.png", 
       caseStudy: "Watch App Preview", 
-      figmaUrl: "#clients",
+      figmaUrl: "/case-studies/veronixx/index.html",
+      uxProjectId: "veronixx",
       statsBadge: "Full App Preview • Production",
       videoUrl: "/videos/veronixx-app-preview.mp4",
       tags: ["Next.js", "Client App", "POS Billing", "Production"],

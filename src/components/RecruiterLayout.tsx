@@ -321,6 +321,15 @@ VERIFICATION TICKET STATUS:
             <span>Download Official CV (PDF)</span>
           </a>
           <a 
+            href="/Prashant_Senior_Product_Designer_Portfolio_26Pages.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-5 py-2.5 border border-[#D4AF37]/50 hover:border-[#D4AF37] rounded font-black uppercase tracking-wider text-[11px] flex items-center space-x-2 bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 text-[#B8941F] dark:text-[#D4AF37] transition-colors duration-300 cursor-pointer shadow-[0_0_12px_rgba(212,175,55,0.18)]"
+          >
+            <FileText className="w-3.5 h-3.5 text-[#D4AF37]" />
+            <span>26-Page Master Deck (PDF)</span>
+          </a>
+          <a 
             href={`mailto:${profile.email}`}
             className="px-5 py-2.5 border border-black/15 dark:border-gold/30 hover:border-gold rounded font-black uppercase tracking-wider text-[11px] flex items-center space-x-2 hover:bg-gold/5 transition-colors duration-300 cursor-pointer"
           >

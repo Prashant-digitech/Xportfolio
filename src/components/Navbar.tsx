@@ -25,6 +25,7 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
   const [accentPopoverOpen, setAccentPopoverOpen] = useState(false);
   const accentPopoverRef = useRef<HTMLDivElement>(null);
   const themeDropdownRef = useRef<HTMLDivElement>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [qrUrl, setQrUrl] = useState("");
@@ -109,7 +110,7 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      const sections = ["home", "work", "websites", "canva-deck", "process", "visual", "motion", "about", "lab", "contact"];
+      const sections = ["home", "work", "visual", "motion", "lab", "process", "websites", "canva-deck", "evolution", "about", "contact"];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -132,30 +133,35 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
   const menuItems = [
     { label: "Home", id: "home" },
     { label: "Work", id: "work" },
-    { label: "Websites", id: "websites" },
-    { label: "Deck", id: "canva-deck" },
-    { label: "Process", id: "process" },
     { label: "Visual", id: "visual" },
     { label: "Motion", id: "motion" },
-    { label: "About", id: "about" },
     { label: "Lab", id: "lab" },
+    { label: "Process", id: "process" },
+    { label: "Websites", id: "websites" },
+    { label: "Deck", id: "canva-deck" },
+    { label: "Evolution", id: "evolution" },
+    { label: "About", id: "about" },
     { label: "Contact", id: "contact" },
   ];
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
+      element.scrollIntoView({
         behavior: "smooth",
+        block: "start",
       });
+      // Settle adjustment in case of lazy image expansion
+      scrollTimeoutRef.current = setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 750);
     }
   };
 
