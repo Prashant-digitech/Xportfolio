@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { Moon, Sun, Laptop, Settings, User, Menu, X, Briefcase, Upload, ChevronDown, Check } from "lucide-react";
+import { Moon, Sun, Laptop, Settings, User, Menu, X, Briefcase, Upload, ChevronDown, Check, Search, Command } from "lucide-react";
 import { useTheme } from "next-themes";
 import { ProfileData } from "@/app/page";
 import QRCode from "qrcode";
@@ -13,9 +13,10 @@ interface NavbarProps {
   recruiterMode: boolean;
   onToggleRecruiterMode: (val: boolean) => void;
   onOpenUpload?: () => void;
+  onOpenCommandPalette?: () => void;
 }
 
-export default function Navbar({ profile, onUpdateProfile, recruiterMode, onToggleRecruiterMode, onOpenUpload }: NavbarProps) {
+export default function Navbar({ profile, onUpdateProfile, recruiterMode, onToggleRecruiterMode, onOpenUpload, onOpenCommandPalette }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -202,11 +203,13 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
           </div>
 
           {/* Center: Desktop Navigation Pills (Sections 09 & 10) */}
-          <div className="hidden lg:flex items-center space-x-2">
+          <div className="hidden lg:flex items-center space-x-1.5">
             {[
               { label: "WORK", id: "work" },
-              { label: "ABOUT", id: "about" },
+              { label: "GRAPHICS", id: "creative-gallery" },
+              { label: "MOTION", id: "motion-lab" },
               { label: "PROCESS", id: "process" },
+              { label: "ABOUT", id: "about" },
               { label: "RESUME", id: "resume", href: "/resume.pdf" },
               { label: "CONTACT", id: "contact" },
             ].map((item) => (
@@ -216,7 +219,7 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="h-[38px] px-4 rounded-full border border-gray-200 dark:border-[#2A3441] text-[#0A0F1D] dark:text-[#E2E8F0] hover:text-[#003882] dark:hover:text-[#00E5FF] hover:border-[#003882]/40 dark:hover:border-[#00E5FF]/40 text-xs font-bold uppercase tracking-wider flex items-center transition-all duration-200 font-sans"
+                  className="h-[38px] px-3.5 rounded-full border border-gray-200 dark:border-[#2A3441] text-[#0A0F1D] dark:text-[#E2E8F0] hover:text-[#003882] dark:hover:text-[#00E5FF] hover:border-[#003882]/40 dark:hover:border-[#00E5FF]/40 text-xs font-bold uppercase tracking-wider flex items-center transition-all duration-200 font-sans"
                 >
                   {item.label}
                 </a>
@@ -224,7 +227,7 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`h-[38px] px-4 rounded-full border text-xs uppercase tracking-wider flex items-center transition-all duration-200 cursor-pointer font-sans ${
+                  className={`h-[38px] px-3.5 rounded-full border text-xs uppercase tracking-wider flex items-center transition-all duration-200 cursor-pointer font-sans ${
                     activeSection === item.id
                       ? "border-[#003882] dark:border-[#00E5FF] bg-[#003882]/10 dark:bg-[#00E5FF]/10 text-[#003882] dark:text-[#00E5FF] font-extrabold shadow-[0_0_12px_rgba(0,229,255,0.2)]"
                       : "border-gray-200 dark:border-[#2A3441] text-[#0A0F1D] dark:text-[#E2E8F0] hover:text-[#003882] dark:hover:text-[#00E5FF] hover:border-gray-300 dark:hover:border-gray-500 font-semibold"
@@ -237,7 +240,18 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
           </div>
 
           {/* Far Right: Theme, Accent, Utilities (Sections 09, 13, 14) */}
-          <div className="hidden md:flex items-center space-x-2.5 relative">
+          <div className="hidden md:flex items-center space-x-2 relative">
+            {/* 0. Command Palette ⌘K Trigger */}
+            <button
+              onClick={onOpenCommandPalette}
+              className="h-[38px] px-3 rounded-full border border-gray-200 dark:border-[#2A3441] bg-white dark:bg-[#1A1F2B] text-[#0A0F1D] dark:text-[#F8FAFC] hover:border-[#003882] dark:hover:border-[#00E5FF] hover:text-[#003882] dark:hover:text-[#00E5FF] text-xs font-bold flex items-center space-x-1.5 transition-all shadow-sm cursor-pointer"
+              title="Global Search & Command Palette (⌘K / Ctrl+K)"
+              aria-label="Search and Command Palette"
+            >
+              <Search className="w-3.5 h-3.5 text-[#003882] dark:text-[#00E5FF]" />
+              <span className="hidden xl:inline">SEARCH</span>
+              <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-gray-100 dark:bg-white/10 text-[9px] font-mono text-gray-500 dark:text-gray-400">⌘K</kbd>
+            </button>
             {/* 1. Theme Control Pill with Dropdown (Sections 14 & test 2) */}
             <div className="relative" ref={themeDropdownRef}>
               <button 
@@ -489,11 +503,24 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
         {/* Mobile Drawer menu */}
         {mobileMenuOpen && (
           <nav aria-label="Mobile Navigation Drawer" className="md:hidden fixed inset-0 top-[72px] bg-[#FAFAF7]/98 dark:bg-[#090A0E]/98 backdrop-blur-xl border-t border-black/10 dark:border-white/10 z-40 transition-all duration-300 animate-fade-in overflow-y-auto">
-            <div className="flex flex-col space-y-4 p-8 h-full justify-start items-center">
+            <div className="flex flex-col space-y-3.5 p-6 h-full justify-start items-center">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenCommandPalette?.();
+                }}
+                className="w-full max-w-[280px] min-h-[44px] flex items-center justify-center space-x-2 font-bold text-xs uppercase tracking-wider rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/40 text-[#003882] dark:text-[#00E5FF] shadow-sm"
+              >
+                <Search className="w-4 h-4" />
+                <span>Search Portfolio (⌘K)</span>
+              </button>
+
               {[
                 { label: "WORK", id: "work" },
-                { label: "ABOUT", id: "about" },
+                { label: "GRAPHICS", id: "creative-gallery" },
+                { label: "MOTION", id: "motion-lab" },
                 { label: "PROCESS", id: "process" },
+                { label: "ABOUT", id: "about" },
                 { label: "RESUME", id: "resume", href: "/resume.pdf" },
                 { label: "CONTACT", id: "contact" },
               ].map((item) => (
@@ -504,7 +531,7 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="w-full max-w-[280px] min-h-[48px] flex items-center justify-center font-bold text-sm uppercase tracking-wider rounded-full border border-gray-200 dark:border-[#2A3441] text-[#0A0F1D] dark:text-[#E2E8F0] hover:text-[#003882] dark:hover:text-[#00E5FF] transition-all duration-200"
+                    className="w-full max-w-[280px] min-h-[44px] flex items-center justify-center font-bold text-xs uppercase tracking-wider rounded-full border border-gray-200 dark:border-[#2A3441] text-[#0A0F1D] dark:text-[#E2E8F0] hover:text-[#003882] dark:hover:text-[#00E5FF] transition-all duration-200"
                   >
                     {item.label}
                   </a>
@@ -512,7 +539,7 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className={`w-full max-w-[280px] min-h-[48px] flex items-center justify-center font-bold text-sm uppercase tracking-wider rounded-full border transition-all duration-200 cursor-pointer ${
+                    className={`w-full max-w-[280px] min-h-[44px] flex items-center justify-center font-bold text-xs uppercase tracking-wider rounded-full border transition-all duration-200 cursor-pointer ${
                       activeSection === item.id 
                         ? "border-[#003882] dark:border-[#00E5FF] bg-[#003882]/10 dark:bg-[#00E5FF]/10 text-[#003882] dark:text-[#00E5FF] font-extrabold shadow-[0_0_12px_rgba(0,229,255,0.2)]" 
                         : "border-gray-200 dark:border-[#2A3441] text-[#0A0F1D] dark:text-[#E2E8F0] hover:text-[#003882] dark:hover:text-[#00E5FF]"

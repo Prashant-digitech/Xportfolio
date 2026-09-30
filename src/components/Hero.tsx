@@ -19,16 +19,16 @@ export default function Hero({ profile }: HeroProps) {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
+      element.scrollIntoView({
         behavior: "smooth",
+        block: "start",
       });
+      setTimeout(() => {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 350);
     }
   };
 
@@ -82,37 +82,40 @@ export default function Hero({ profile }: HeroProps) {
             animate="animate"
             className="lg:col-span-7 flex flex-col items-start space-y-6 z-10"
           >
-            {/* Eyebrow (Requirement 3 & 4) */}
+            {/* Eyebrow (Section 02 & 06) */}
             <motion.div variants={fadeInUp} className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#111827] border border-gray-300 dark:border-[#2A3441] text-[#0A0F1D] dark:text-[#F8FAFC] text-xs font-bold tracking-wider uppercase shadow-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>PRASHANT SISODHIYA • SENIOR PRODUCT DESIGNER</span>
+              <span>PRASHANT SISODHIYA • CREATIVE INTELLIGENCE OPERATING SYSTEM</span>
             </motion.div>
 
-            {/* Main Title (Requirement 3, 5, 6) */}
+            {/* Main Title (Section 06) */}
             <motion.h1 variants={fadeInUp} className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.06] select-none">
               <span className="block text-[#0A0F1D] dark:text-[#F8FAFC]">SENIOR PRODUCT &amp;</span>
               <span className="block text-[#003882] dark:text-[#00E5FF] drop-shadow-sm dark:drop-shadow-[0_4px_16px_rgba(0,229,255,0.25)]">UX DESIGNER</span>
             </motion.h1>
 
-            {/* Supporting Value Proposition */}
-            <motion.p variants={fadeInUp} className="text-[#1E293B] dark:text-[#CBD5E1] text-base sm:text-lg max-w-xl leading-relaxed font-normal">
-              Designing digital products, complex design systems and intelligent experiences from strategic empathy to production-grade execution.
-            </motion.p>
+            {/* Primary Statement (Section 06) */}
+            <motion.div variants={fadeInUp} className="space-y-2">
+              <p className="text-lg sm:text-xl font-bold text-[#0A0F1D] dark:text-[#F8FAFC] leading-snug">
+                &ldquo;Designing intelligent products, visual systems and cinematic experiences.&rdquo;
+              </p>
+              <p className="text-[#1E293B] dark:text-[#CBD5E1] text-sm sm:text-base max-w-xl leading-relaxed font-normal">
+                Bridging complex product architecture, mathematical visual craft, and cinematic motion design from strategic empathy to production-grade execution.
+              </p>
+            </motion.div>
 
             {/* Credibility Strip Pill */}
             <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono uppercase tracking-widest text-[#003882] dark:text-[#00E5FF] font-bold">
               <span>PRODUCT DESIGN</span>
               <span className="text-gray-400 dark:text-gray-600">•</span>
-              <span>UI/UX</span>
+              <span>VISUAL DESIGNER</span>
               <span className="text-gray-400 dark:text-gray-600">•</span>
-              <span>AI SYSTEMS</span>
+              <span>MOTION / VFX ARTIST</span>
               <span className="text-gray-400 dark:text-gray-600">•</span>
-              <span>VISUAL CRAFT</span>
-              <span className="text-gray-400 dark:text-gray-600">•</span>
-              <span>MOTION &amp; FILM</span>
+              <span>AI PRODUCT DESIGNER</span>
             </motion.div>
 
-            {/* CTAs (Primary, Secondary, Tertiary) */}
+            {/* CTAs (Section 06: [EXPLORE WORK], [CONTACT], [VIEW RESUME]) */}
             <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-4 pt-3">
               <button
                 ref={hireBtn.ref}
@@ -122,28 +125,29 @@ export default function Hero({ profile }: HeroProps) {
                 onClick={() => scrollToSection("work")}
                 className="px-6 py-3 rounded-xl bg-[#003882] hover:bg-[#002D6E] text-white dark:bg-[#00E5FF] dark:hover:bg-[#00c8e0] dark:text-[#06070A] font-extrabold text-xs uppercase tracking-wider flex items-center space-x-2 transition-all duration-200 shadow-md cursor-pointer"
               >
-                <span>View Selected Work</span>
+                <span>EXPLORE WORK</span>
+                <span className="text-[10px] font-mono opacity-80 font-bold">• VIEW SELECTED WORK</span>
                 <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
               </button>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 rounded-xl bg-white dark:bg-[#1A1F2B] border-2 border-gray-300 dark:border-[#2A3441] hover:border-[#003882] dark:hover:border-[#00E5FF] text-[#0A0F1D] dark:text-[#F8FAFC] font-bold text-xs uppercase tracking-wider flex items-center space-x-2 transition-all duration-200 cursor-pointer shadow-sm"
-              >
-                <span>Download Resume</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
               <button
                 ref={aboutBtn.ref}
                 onMouseMove={aboutBtn.handleMouseMove}
                 onMouseLeave={aboutBtn.handleMouseLeave}
                 style={aboutBtn.style}
                 onClick={() => scrollToSection("contact")}
+                className="px-6 py-3 rounded-xl bg-white dark:bg-[#1A1F2B] border-2 border-gray-300 dark:border-[#2A3441] hover:border-[#003882] dark:hover:border-[#00E5FF] text-[#0A0F1D] dark:text-[#F8FAFC] font-bold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-sm flex items-center space-x-1.5"
+              >
+                <span>CONTACT</span>
+              </button>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="h-[46px] px-5 rounded-xl text-[#1E293B] dark:text-[#CBD5E1] hover:text-[#003882] dark:hover:text-[#00E5FF] font-bold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center space-x-1.5"
               >
-                <span>Contact Me</span>
-              </button>
+                <span>VIEW RESUME</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
             </motion.div>
           </motion.div>
 

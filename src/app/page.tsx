@@ -33,6 +33,8 @@ import AstroSageShowcase from "@/components/AstroSageShowcase";
 import AILab from "@/components/AILab";
 import ThankYouSign from "@/components/ThankYouSign";
 import SmartUploadModal from "@/components/SmartUploadModal";
+import CreativeWorkGallery from "@/components/CreativeWorkGallery";
+import CommandPalette from "@/components/CommandPalette";
 
 export interface ProfileData {
   name: string;
@@ -67,6 +69,7 @@ export default function Home() {
 
   const [recruiterMode, setRecruiterMode] = useState<boolean>(false);
   const [uploadModalOpen, setUploadModalOpen] = useState<boolean>(false);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState<boolean>(false);
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
@@ -85,9 +88,14 @@ export default function Home() {
       setRecruiterMode(savedMode === "true");
     }
 
-    // Keyboard shortcut: Ctrl + U or Cmd + U opens Asset Intelligence Studio
+    // Keyboard shortcuts:
+    // Ctrl/Cmd + K: Command Palette
+    // Ctrl/Cmd + U: Asset Intelligence Studio
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "u") {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setCommandPaletteOpen((prev) => !prev);
+      } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "u") {
         e.preventDefault();
         setUploadModalOpen((prev) => !prev);
       }
@@ -139,6 +147,7 @@ export default function Home() {
           recruiterMode={recruiterMode}
           onToggleRecruiterMode={toggleRecruiterMode}
           onOpenUpload={() => setUploadModalOpen(true)}
+          onOpenCommandPalette={() => setCommandPaletteOpen(true)}
         />
 
         {/* Content sections */}
@@ -155,7 +164,11 @@ export default function Home() {
               <ProjectShowcase profile={profile} />
               <SectionSeparator />
 
-              {/* 03: VISUAL SYSTEMS & ART DIRECTION (Curated 6 Previews + View Complete 30 Gallery) */}
+              {/* 03: MAJOR SYSTEM — CREATIVE WORK GALLERY (12 EXHIBITION ROOMS & CINEMATIC OVERLAYS) */}
+              <CreativeWorkGallery />
+              <SectionSeparator />
+
+              {/* 03-B: VISUAL SYSTEMS & ART DIRECTION (Curated Previews + Complete 30-Artwork Master Archive) */}
               <VisualSystems />
               <SectionSeparator />
 
@@ -237,6 +250,12 @@ export default function Home() {
         <SmartUploadModal 
           isOpen={uploadModalOpen} 
           onClose={() => setUploadModalOpen(false)} 
+        />
+
+        {/* Global Command Palette & Work Search (⌘K / Ctrl+K) */}
+        <CommandPalette
+          isOpen={commandPaletteOpen}
+          onClose={() => setCommandPaletteOpen(false)}
         />
       </div>
     </>

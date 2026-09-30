@@ -28,8 +28,8 @@ export default function About({ profile }: AboutProps) {
     { title: "Projects Shipped", count: 50, suffix: "+", detail: "UX, Mobile, Brand & Video", icon: <Layers className="w-4 h-4 text-neon-blue" /> },
     { title: "Certifications", count: 10, suffix: "+", detail: "Arena, Cisco, C/C++, CAD", icon: <Award className="w-4 h-4 text-[#D4AF37]" /> },
     { title: "Experience", count: 3, suffix: "+ Yrs", detail: "Design systems & leadership", icon: <Sparkles className="w-4 h-4 text-[#FF6B00]" /> },
-    { title: "Mentees Coached", count: 500, suffix: "+", detail: "Ducat Vikaspuri cohorts", icon: <Users className="w-4 h-4 text-emerald-400" /> },
-    { title: "Execution SLA", count: 100, suffix: "%", detail: "On-time delivery standard", icon: <CheckCircle className="w-4 h-4 text-[#00F0FF]" /> },
+    { title: "Cohort Instruction", count: 500, suffix: "+", detail: "Ducat Vikaspuri cohorts", icon: <Users className="w-4 h-4 text-emerald-400" /> },
+    { title: "Milestone Standard", count: 100, suffix: "%", detail: "Target milestone commitment", icon: <CheckCircle className="w-4 h-4 text-[#00F0FF]" /> },
   ];
 
   const lensData = {

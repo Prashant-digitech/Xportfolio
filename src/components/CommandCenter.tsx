@@ -163,7 +163,7 @@ export default function CommandCenter({ profile }: CommandCenterProps) {
                   <h3 className="text-4xl sm:text-5xl font-black text-gradient-gold select-none">
                     {clientCount.count}+
                   </h3>
-                  <span className="text-[10px] text-gray-400">Happy Global Clients</span>
+                  <span className="text-[10px] text-gray-400">Collaborations &amp; Deliverables</span>
                 </div>
                 <div className="h-1 bg-white/5 rounded-full overflow-hidden">
                   <div className="h-full bg-gold rounded-full w-4/5 animate-pulse" />
