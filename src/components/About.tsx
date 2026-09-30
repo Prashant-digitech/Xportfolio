@@ -414,9 +414,10 @@ export default function About({ profile }: AboutProps) {
                   <a
                     href="/resume.pdf"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="p-2.5 rounded-xl border border-black/10 dark:border-white/10 hover:border-[#D4AF37] text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors"
                     title="Preview Resume"
+                    aria-label="Preview Resume in new tab"
                   >
                     <ArrowUpRight className="w-4 h-4" />
                   </a>

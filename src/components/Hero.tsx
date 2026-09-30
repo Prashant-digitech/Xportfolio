@@ -65,7 +65,8 @@ export default function Hero({ profile }: HeroProps) {
   };
 
   return (
-    <section id="home" className="relative pt-32 pb-16 overflow-hidden bg-[#FAFAF7] dark:bg-[#090A0E] text-[#111318] dark:text-white min-h-screen flex flex-col justify-between transition-colors duration-250">
+    <section id="hero" data-section="home" className="relative pt-32 pb-16 overflow-hidden bg-[#FAFAF7] dark:bg-[#090A0E] text-[#111318] dark:text-white min-h-screen flex flex-col justify-between transition-colors duration-250">
+      <div id="home" className="absolute top-0 left-0 w-0 h-0 pointer-events-none" />
       {/* Decorative Golden Blur Background */}
       <div className="absolute top-[20%] left-[-10%] w-[300px] h-[300px] rounded-full bg-gold/5 blur-[100px] pointer-events-none animate-pulse-slow" />
       <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] rounded-full bg-[#00F0FF]/5 blur-[120px] pointer-events-none animate-pulse-slow" />

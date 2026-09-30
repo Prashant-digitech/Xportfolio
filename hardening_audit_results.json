@@ -1,0 +1,418 @@
+{
+  "timestamp": "2026-09-30T03:27:29.401Z",
+  "prodUrl": "https://xportfolio-sigma.vercel.app/",
+  "smoke": "PASS",
+  "consoleErrors": [],
+  "hydrationErrors": [],
+  "networkErrors": [],
+  "brokenImages": [],
+  "keyboardNav": [
+    {
+      "action": "Artwork Lightbox open & Escape close",
+      "status": "PASS"
+    },
+    {
+      "action": "AstroSage Gallery open, Arrow navigation & Escape close",
+      "status": "PASS"
+    },
+    {
+      "action": "In-App Case Study Reader open & close",
+      "status": "PASS"
+    }
+  ],
+  "reducedMotion": "PASS",
+  "responsiveMatrix": [
+    {
+      "device": "320px Small Mobile",
+      "width": 320,
+      "scrollWidth": 320,
+      "innerWidth": 320,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "360px Android",
+      "width": 360,
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "375px iPhone SE",
+      "width": 375,
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "390px iPhone 12/13/14",
+      "width": 390,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "412px Pixel 7",
+      "width": 412,
+      "scrollWidth": 412,
+      "innerWidth": 412,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "430px iPhone 14 Pro Max",
+      "width": 430,
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "600px Small Tablet",
+      "width": 600,
+      "scrollWidth": 600,
+      "innerWidth": 600,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "768px iPad Mini",
+      "width": 768,
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "820px iPad Air",
+      "width": 820,
+      "scrollWidth": 820,
+      "innerWidth": 820,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "1024px iPad Landscape",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "innerWidth": 1024,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "1280px Laptop 13\"",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "1366px HD Display",
+      "width": 1366,
+      "scrollWidth": 1366,
+      "innerWidth": 1366,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "1440px MacBook Pro",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "1600px Widescreen",
+      "width": 1600,
+      "scrollWidth": 1600,
+      "innerWidth": 1600,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "1920px Full HD",
+      "width": 1920,
+      "scrollWidth": 1920,
+      "innerWidth": 1920,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "2560px QHD 2K",
+      "width": 2560,
+      "scrollWidth": 2560,
+      "innerWidth": 2560,
+      "overflowPx": 0,
+      "status": "PASS"
+    },
+    {
+      "device": "3440px Ultrawide 21:9",
+      "width": 3440,
+      "scrollWidth": 3440,
+      "innerWidth": 3440,
+      "overflowPx": 0,
+      "status": "PASS"
+    }
+  ],
+  "seoAudit": {
+    "title": "Prashant Sisodhiya — Senior Product & UX Designer",
+    "metaDesc": "Portfolio of Prashant Sisodhiya — Senior Product Designer, UX Systems Lead, and Creative Technologist specializing in AI platforms, complex financial terminals, and accessible design systems.",
+    "ogTitle": "Prashant Sisodhiya — Senior Product & UX Designer",
+    "ogDesc": "Portfolio of Prashant Sisodhiya — Senior Product Designer, UX Systems Lead, and Creative Technologist specializing in AI platforms, complex financial terminals, and accessible design systems.",
+    "viewport": "width=device-width, initial-scale=1"
+  },
+  "linksAudit": [
+    {
+      "text": "RESUME",
+      "href": "/resume.pdf",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "DOWNLOAD RESUME",
+      "href": "/resume.pdf",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "7006998128",
+      "href": "tel:7006998128",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "psisodhiya01@gmail.com",
+      "href": "mailto:psisodhiya01@gmail.com",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "PDF SPEC",
+      "href": "/case-studies/futuremind/Futuremind case study.pdf",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "PDF SPEC",
+      "href": "/case-studies/presentx/PresentX_Page_Case_Study.pdf",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "PDF SPEC",
+      "href": "/case-studies/designos/DesignOS Case Study.pdf",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "VIEW GALLERY →",
+      "href": "/photoshop",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "VIEW GALLERY →",
+      "href": "/photoshop",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "VIEW GALLERY →",
+      "href": "/photoshop",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "VIEW GALLERY →",
+      "href": "/photoshop",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "VIEW GALLERY →",
+      "href": "/photoshop",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "LAUNCH 21 ARTWORKS ROOM",
+      "href": "/photoshop",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "Visit Live Platform",
+      "href": "https://veronixx.vercel.app",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "https://veronixx.vercel.app",
+      "href": "https://veronixx.vercel.app",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "Download 26-Page PDF Deck (57 ",
+      "href": "/Prashant_Senior_Product_Designer_Portfolio_26Pages.pdf",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "7006998128",
+      "href": "tel:7006998128",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "psisodhiya01@gmail.com",
+      "href": "mailto:psisodhiya01@gmail.com",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "DOWNLOAD CV (PDF)",
+      "href": "/resume.pdf",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "",
+      "href": "/resume.pdf",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "EMAIL ME",
+      "href": "mailto:psisodhiya01@gmail.com",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "LINKEDIN",
+      "href": "https://linkedin.com",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "VIEW RESUME",
+      "href": "/resume.pdf",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "7006998128",
+      "href": "tel:7006998128",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "psisodhiya01@gmail.com",
+      "href": "mailto:psisodhiya01@gmail.com",
+      "rel": null,
+      "target": null,
+      "safeRel": true
+    },
+    {
+      "text": "RESUME (PDF)",
+      "href": "/resume.pdf",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "",
+      "href": "https://linkedin.com",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "",
+      "href": "https://instagram.com",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "",
+      "href": "https://youtube.com",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "",
+      "href": "https://linkedin.com",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "",
+      "href": "https://instagram.com",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "",
+      "href": "https://youtube.com",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "",
+      "href": "https://behance.net",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "",
+      "href": "https://dribbble.com",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    },
+    {
+      "text": "",
+      "href": "mailto:psisodhiya01@gmail.com",
+      "rel": "noopener noreferrer",
+      "target": "_blank",
+      "safeRel": true
+    }
+  ],
+  "securityAudit": "PASS",
+  "overallStatus": "PASS"
+}
