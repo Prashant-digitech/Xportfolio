@@ -5,15 +5,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { 
   ChevronLeft, ChevronRight, X, ArrowLeft, Sparkles, Download, ImageIcon, Eye, 
-  ZoomIn, ZoomOut, RotateCcw, Maximize2, Minimize2, Filter, Layers, Check, ExternalLink
+  ZoomIn, ZoomOut, RotateCcw, Maximize2, Minimize2, Filter, Layers, Check, ExternalLink,
+  Printer, ArrowUpRight
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import BackgroundParticles from "@/components/BackgroundParticles";
+import FlyerScrollOverlay from "@/components/FlyerScrollOverlay";
 
 export interface PhotoshopArtwork {
   id: number;
   title: string;
-  category: "advertising" | "compositing" | "posters" | "editorial" | "deck";
+  category: "flyers" | "advertising" | "posters" | "editorial" | "invitations" | "compositing" | "retouching" | "social";
   categoryLabel: string;
   path: string;
   year: string;
@@ -22,11 +24,68 @@ export interface PhotoshopArtwork {
   technique: string;
 }
 
-// 50 Master Artworks: 29 Client & Conceptual Masterpieces + 21 Milestone Presentation Deck Pages
+// 50 Master Works from Prashant's Creative Library (Categorized by Showcase)
 const ALL_ARTWORKS: PhotoshopArtwork[] = [
-  // ── Commercial & Ad Campaigns (1-8) ──────────────────────────────────
+  // ── 1. Flyers Collection (1-5) ──────────────────────────────────────
   {
     id: 1,
+    title: "Corporate Direct-Response Business Flyer",
+    category: "flyers",
+    categoryLabel: "Marketing Flyer",
+    path: "/images/graphics/my-work/flyer.png",
+    year: "2023",
+    tools: ["InDesign", "Illustrator", "Photoshop", "Z-Pattern Scan"],
+    specs: "A5 Double-Sided • 300 DPI CMYK Print Master",
+    technique: "High-conversion Z-pattern visual scan, modular pricing matrix, and high-visibility CTAs."
+  },
+  {
+    id: 2,
+    title: "Executive Business Summit & Conference Flyer",
+    category: "flyers",
+    categoryLabel: "Conference Flyer",
+    path: "/images/graphics/my-work/flyer1.png",
+    year: "2024",
+    tools: ["Swiss Grid", "InDesign", "Illustrator", "Typography"],
+    specs: "A4 Master • 300 DPI Bleed Certified",
+    technique: "Structured Swiss grid timetable, executive keynote hierarchy, and corporate slate typography."
+  },
+  {
+    id: 3,
+    title: "Modern Tech Enterprise Solutions Flyer",
+    category: "flyers",
+    categoryLabel: "Enterprise Flyer",
+    path: "/images/graphics/my-work/flyer2.png",
+    year: "2024",
+    tools: ["Illustrator", "Photoshop", "Vector Tokens", "Dark Mode"],
+    specs: "Double-Sided A5 • 300 DPI Offset • Spot UV",
+    technique: "Dark mode visual aesthetics, scannable 3-column capability matrix, and enterprise compliance badges."
+  },
+  {
+    id: 4,
+    title: "Creative Agency Portfolio & Services Flyer",
+    category: "flyers",
+    categoryLabel: "Agency Flyer",
+    path: "/images/graphics/my-work/flyer3.png",
+    year: "2024",
+    tools: ["InDesign", "Photoshop", "Color Curation", "Gold Foil"],
+    specs: "Commercial Print Master • 300 DPI CMYK",
+    technique: "Dynamic diagonal geometric cuts, high-fidelity project vignettes, and gold foil registration marks."
+  },
+  {
+    id: 5,
+    title: "Retail Seasonal Campaign Promotional Leaflet",
+    category: "flyers",
+    categoryLabel: "Retail Flyer",
+    path: "/images/graphics/my-work/flyer4.png",
+    year: "2024",
+    tools: ["Photoshop", "Illustrator", "Commercial Print", "QR Code"],
+    specs: "Mass-Distribution Print Master • CMYK Offset",
+    technique: "High-contrast discount percentage bursts, 3D product hero framing, and instant store QR codes."
+  },
+
+  // ── 2. Commercial Advertising & Brand Campaigns (6-14) ──────────────
+  {
+    id: 6,
     title: "Belle Haute Parfumerie Luxury Campaign",
     category: "advertising",
     categoryLabel: "Commercial Ad",
@@ -34,10 +93,10 @@ const ALL_ARTWORKS: PhotoshopArtwork[] = [
     year: "2024",
     tools: ["Photoshop CC", "Camera Raw", "Frequency Separation", "Typography"],
     specs: "4500×6000px • 300 DPI • Print Ready",
-    technique: "Refractive glass lighting, micro floral dispersion, and gold foil typography."
+    technique: "Refractive glass lighting passes, micro floral dispersion, and gold foil serif typography."
   },
   {
-    id: 2,
+    id: 7,
     title: "Performance Audio Commercial Keyart",
     category: "advertising",
     categoryLabel: "Commercial Ad",
@@ -45,10 +104,10 @@ const ALL_ARTWORKS: PhotoshopArtwork[] = [
     year: "2023",
     tools: ["Photoshop", "Lightroom", "Volumetric Lighting"],
     specs: "4K Master • 16-Bit Color Depth",
-    technique: "Dynamic sonic soundwave particle flow and studio rim reflections."
+    technique: "Dynamic acoustic soundwave particle flow, precision bevel lighting, and studio metallic reflections."
   },
   {
-    id: 3,
+    id: 8,
     title: "boAt Lifestyle Audio Commercial Keyart",
     category: "advertising",
     categoryLabel: "Commercial Ad",
@@ -56,32 +115,32 @@ const ALL_ARTWORKS: PhotoshopArtwork[] = [
     year: "2024",
     tools: ["Photoshop CC", "Water Splash Dynamics", "Camera Raw", "Color Grading"],
     specs: "4K Master • 300 DPI Commercial Print",
-    technique: "High-speed fluid splash compositing, zero-gravity levitation, and neon driver accents."
+    technique: "High-speed water fluid splash compositing, zero-gravity levitation, and neon driver accents."
   },
   {
-    id: 4,
-    title: "Artisan Molten Chocolate Splash",
+    id: 9,
+    title: "Artisan Molten Chocolate Splash Composite",
     category: "advertising",
     categoryLabel: "Commercial Ad",
     path: "/images/graphics/my-work/chocolate ad.png",
     year: "2023",
     tools: ["Photoshop", "Liquid Blending", "Multi-Pass Lighting"],
     specs: "300 DPI CMYK Print Master",
-    technique: "Multi-exposure macro liquid splash masking and cocoa powder dispersion."
+    technique: "Multi-exposure macro liquid splash masking, gloss specular mapping, and cocoa powder dispersion."
   },
   {
-    id: 5,
-    title: "Denver Men's Grooming Chiaroscuro Ad",
+    id: 10,
+    title: "Denver Men's Grooming Chiaroscuro Campaign",
     category: "advertising",
     categoryLabel: "Commercial Ad",
     path: "/images/graphics/my-work/denver ad.png",
     year: "2023",
     tools: ["Photoshop", "Illustrator", "Matte Composite"],
     specs: "Billboard & Digital Display • 300 DPI",
-    technique: "Chiaroscuro studio keys, atmospheric smoke haze, and embossed brand typography."
+    technique: "Chiaroscuro studio keys, atmospheric smoke haze, and embossed masculine brand typography."
   },
   {
-    id: 6,
+    id: 11,
     title: "Next-Gen Smartphone Flagship Launch",
     category: "advertising",
     categoryLabel: "Commercial Ad",
@@ -89,21 +148,32 @@ const ALL_ARTWORKS: PhotoshopArtwork[] = [
     year: "2024",
     tools: ["Photoshop", "Optic Flares", "Vector Masking"],
     specs: "Retina Digital Keynote Master",
-    technique: "Custom glass bevel lighting, optical dispersion flares, and titanium highlights."
+    technique: "Custom glass bevel lighting, optical dispersion lens flares, and titanium highlight passes."
   },
   {
-    id: 7,
-    title: "Haute Horlogerie Luxury Timepiece",
+    id: 12,
+    title: "Haute Horlogerie Luxury Timepiece Keyart",
     category: "advertising",
     categoryLabel: "Commercial Ad",
     path: "/images/graphics/my-work/luxuryad.png",
     year: "2023",
     tools: ["Photoshop", "Macro Lighting", "Focus Stacking"],
     specs: "300 DPI Fine Art Magazine Spread",
-    technique: "Focus-stacked tourbillon movement detailing and sapphire crystal polarization."
+    technique: "Focus-stacked tourbillon mechanical detailing, sapphire crystal reflections, and gold sheen."
   },
   {
-    id: 8,
+    id: 13,
+    title: "Nike Athletic Performance Commercial Campaign",
+    category: "advertising",
+    categoryLabel: "Commercial Ad",
+    path: "/images/graphics/my-work/nike ad.png",
+    year: "2024",
+    tools: ["Photoshop CC", "Kinetic Particle Emitters", "Typography"],
+    specs: "Omni-Channel Stadium Billboard & Paid Social",
+    technique: "High-velocity explosive particle geometry, high-contrast rim glows, and kinetic typography velocity."
+  },
+  {
+    id: 14,
     title: "Athletic Footwear Kinetic Particle Keyart",
     category: "advertising",
     categoryLabel: "Commercial Ad",
@@ -111,89 +181,216 @@ const ALL_ARTWORKS: PhotoshopArtwork[] = [
     year: "2023",
     tools: ["Photoshop", "Action Particle FX", "Velocity Blur"],
     specs: "Omni-Channel Social & Stadium Billboard",
-    technique: "Zero-gravity sole disintegration particles and aerodynamic air vortex rings."
+    technique: "Zero-gravity sole disintegration particles and aerodynamic air vortex shockwaves."
   },
 
-  // ── Matte Painting & Composites (9-19) ──────────────────────────────
-  {
-    id: 9,
-    title: "High-End Beauty Skin Retouching",
-    category: "compositing",
-    categoryLabel: "Retouching",
-    path: "/images/graphics/my-work/before after.png",
-    year: "2022",
-    tools: ["Photoshop CC", "Dual Frequency Separation", "Micro-Dodge & Burn"],
-    specs: "Ultra-HD Portrait • Zero Texture Loss",
-    technique: "High/low frequency spatial filtering preserving natural dermal micropores."
-  },
-  {
-    id: 10,
-    title: "Camera Raw HDR Dynamic Range Grade",
-    category: "compositing",
-    categoryLabel: "Color Grading",
-    path: "/images/graphics/my-work/camera raw.png",
-    year: "2022",
-    tools: ["Adobe Camera Raw", "Photoshop", "Curve Mastering"],
-    specs: "6000×4000 RAW • ProPhoto RGB",
-    technique: "Multi-stop exposure bracket merging and calibrated HSL split-toning."
-  },
-  {
-    id: 11,
-    title: "Historical Archive Photo Colorization",
-    category: "compositing",
-    categoryLabel: "Restoration",
-    path: "/images/graphics/my-work/colorize.png",
-    year: "2021",
-    tools: ["Photoshop", "Luminance Masks", "Historical Archives"],
-    specs: "Fine Art Archive Restoration • 48 Layers",
-    technique: "Period-accurate textile tinting and multi-layer skin tone undertone balance."
-  },
-  {
-    id: 12,
-    title: "Surreal Double Exposure Fine Art",
-    category: "compositing",
-    categoryLabel: "Fine Art",
-    path: "/images/graphics/my-work/double exposure.png",
-    year: "2022",
-    tools: ["Photoshop CC", "Screen Blending", "Gradient Mapping"],
-    specs: "Gallery Exhibition Print • 300 DPI",
-    technique: "Luma silhouette keying merging portraiture with alpine wilderness horizons."
-  },
-  {
-    id: 13,
-    title: "Ethereal Botanical Surreal Portrait",
-    category: "compositing",
-    categoryLabel: "Surreal Composite",
-    path: "/images/graphics/my-work/manipulation girl and flower.png",
-    year: "2024",
-    tools: ["Photoshop CC", "Botanical Masking", "Volumetric Glow", "Lightroom"],
-    specs: "Ultra-HD Fine Art Print • 300 DPI",
-    technique: "Organic floral hair blending, delicate butterfly dispersion, and soft rim keys."
-  },
-  {
-    id: 14,
-    title: "Bioluminescent Nightscape Manipulation",
-    category: "compositing",
-    categoryLabel: "Surreal Composite",
-    path: "/images/graphics/my-work/manipulation glow.png",
-    year: "2023",
-    tools: ["Photoshop CC", "Digital Painting", "Color Dodge Modes"],
-    specs: "Ultra-HD Digital Artwork • 56 Layers",
-    technique: "Multi-layered color dodge glow channels and volumetric night fog scattering."
-  },
+  // ── 3. Theatrical Movie Posters & Cinema Keyart (15-19) ─────────────
   {
     id: 15,
-    title: "Mythological Titan Ruins Matte Painting",
+    title: "Cinematic Action Blockbuster Theatrical One-Sheet",
+    category: "posters",
+    categoryLabel: "Movie Poster",
+    path: "/images/graphics/my-work/movie poster1.png",
+    year: "2023",
+    tools: ["Photoshop CC", "Title Typographic Kerning", "Cinema Grading"],
+    specs: "27×40 in Studio One-Sheet • 300 DPI",
+    technique: "High-octane hero composition, explosive debris particle blending, and studio billing blocks."
+  },
+  {
+    id: 16,
+    title: "Psychological Thriller Theatrical Keyart",
+    category: "posters",
+    categoryLabel: "Movie Poster",
+    path: "/images/graphics/my-work/movie poster2.png",
+    year: "2023",
+    tools: ["Photoshop", "Illustrator", "Billing Block Kerning"],
+    specs: "27×40 in Studio One-Sheet",
+    technique: "Shattered glass refraction passes, crimson title accent, and studio credit billing typography."
+  },
+  {
+    id: 17,
+    title: "Cyberpunk Sci-Fi Cinema IMAX Blockbuster",
+    category: "posters",
+    categoryLabel: "Movie Poster",
+    path: "/images/graphics/my-work/movie poster3.png",
+    year: "2023",
+    tools: ["Photoshop CC", "Cinema 3D Passes", "Color Grading"],
+    specs: "Theatrical One-Sheet • IMAX Lightbox",
+    technique: "Rain-slicked neon skyscrapers, cybernetic character integration, and anamorphic flare bloom."
+  },
+  {
+    id: 18,
+    title: "Grimdark Supernatural Horror Keyart",
+    category: "posters",
+    categoryLabel: "Movie Poster",
+    path: "/images/graphics/my-work/movie poster4.png",
+    year: "2023",
+    tools: ["Photoshop", "Texture Blending", "Typography Kerning"],
+    specs: "Theatrical Cinema Release • 300 DPI",
+    technique: "Distressed parchment texture overlays, suffocating fog silhouettes, and weathered serif title."
+  },
+  {
+    id: 19,
+    title: "Epic Action Adventure Theatrical Poster",
+    category: "posters",
+    categoryLabel: "Movie Poster",
+    path: "/images/graphics/my-work/movie poster5.png",
+    year: "2023",
+    tools: ["Photoshop", "Particle Dynamics", "Title Design"],
+    specs: "27×40 Studio One-Sheet CMYK",
+    technique: "Multi-layered spark/debris emitters, heroic triangle lighting, and 3D embossed metallic title."
+  },
+
+  // ── 4. Magazines & Editorial Publications (20-27) ───────────────────
+  {
+    id: 20,
+    title: "Fashion & Culture Editorial Spread v1",
+    category: "editorial",
+    categoryLabel: "Magazine Spread",
+    path: "/images/graphics/my-work/magazine.png",
+    year: "2023",
+    tools: ["InDesign", "Photoshop", "Typography Pairing"],
+    specs: "Newsstand A4 Spread • Spot Varnishing",
+    technique: "Strict baseline grid alignment, optical kerning pairs, and asymmetric editorial photography."
+  },
+  {
+    id: 21,
+    title: "High-Fashion Editorial Publication Cover",
+    category: "editorial",
+    categoryLabel: "Magazine Cover",
+    path: "/images/graphics/my-work/magazine1.png",
+    year: "2024",
+    tools: ["InDesign", "Photoshop", "Masthead Typography"],
+    specs: "A4 Trim • Newsstand UV Coated",
+    technique: "Overlapping portrait silhouette across masthead typography and luxury editorial pacing."
+  },
+  {
+    id: 22,
+    title: "Contemporary Architectural Journal Spread v2",
+    category: "editorial",
+    categoryLabel: "Architectural Journal",
+    path: "/images/graphics/my-work/magazine2.png",
+    year: "2023",
+    tools: ["InDesign", "Photoshop", "Grid Architecture"],
+    specs: "Double Page Spread • CMYK Offset",
+    technique: "Swiss typography discipline, generous negative space, and architectural line drawings."
+  },
+  {
+    id: 23,
+    title: "Architectural Form & Structure Feature Spread",
+    category: "editorial",
+    categoryLabel: "Architecture Spread",
+    path: "/images/graphics/my-work/magazine2 (2).png",
+    year: "2024",
+    tools: ["InDesign", "Swiss Grid", "Photoshop"],
+    specs: "Double Page Spread • 300 DPI Fine Art Print",
+    technique: "Proportional column ratios, structural framing, and high-contrast geometric layout."
+  },
+  {
+    id: 24,
+    title: "Modern Lifestyle & Urban Culture Publication",
+    category: "editorial",
+    categoryLabel: "Culture Magazine",
+    path: "/images/graphics/my-work/magazine3.png",
+    year: "2024",
+    tools: ["InDesign", "Photoshop", "Color Palette"],
+    specs: "A4 Double Page Feature • 300 DPI",
+    technique: "Editorial narrative pull quotes, multi-column reading ergonomics, and calibrated margins."
+  },
+  {
+    id: 25,
+    title: "Avant-Garde Typography & Grid Architecture",
+    category: "editorial",
+    categoryLabel: "Editorial Layout",
+    path: "/images/graphics/my-work/magazine4.png",
+    year: "2024",
+    tools: ["InDesign", "Illustrator", "Grid Systems"],
+    specs: "Design Biennial Monograph Spread",
+    technique: "Experimental typographic weight pairing, modular column rhythm, and artistic negative space."
+  },
+  {
+    id: 26,
+    title: "Creative Arts & Visual Storytelling Monograph",
+    category: "editorial",
+    categoryLabel: "Arts Monograph",
+    path: "/images/graphics/my-work/magazine5.png",
+    year: "2024",
+    tools: ["Photoshop", "InDesign", "Fine Art Layout"],
+    specs: "Case-Bound Art Book Spread",
+    technique: "Gallery-standard exhibition catalog format, archival paper tone simulation, and caption hierarchy."
+  },
+  {
+    id: 27,
+    title: "International Design Review Editorial Journal",
+    category: "editorial",
+    categoryLabel: "Design Review",
+    path: "/images/graphics/my-work/magazine7.png",
+    year: "2024",
+    tools: ["InDesign", "Typography", "Offset Specs"],
+    specs: "Quarterly Design Journal Spread",
+    technique: "Refined serif body text, structured multi-tier subheadings, and high-resolution plate insets."
+  },
+
+  // ── 5. Invitations & Bespoke Stationery (28-31) ─────────────────────
+  {
+    id: 28,
+    title: "Luxury Gold Foil Gala Invitation Card v1",
+    category: "invitations",
+    categoryLabel: "Bespoke Invitation",
+    path: "/images/graphics/my-work/invitation1.png",
+    year: "2024",
+    tools: ["Illustrator", "Photoshop Texturing", "Foil Plates"],
+    specs: "5×7 in Custom Die-Cut • Metallic Gold Foil",
+    technique: "Foil plate vector separation layers, blind deboss registration marks, and luxury serif typography."
+  },
+  {
+    id: 29,
+    title: "Minimalist Royal Wedding & Formal Stationery v2",
+    category: "invitations",
+    categoryLabel: "Wedding Stationery",
+    path: "/images/graphics/my-work/invitation2.png",
+    year: "2024",
+    tools: ["Illustrator", "Photoshop 3D", "Typography"],
+    specs: "Fine Art Cotton Cardstock • 300 DPI",
+    technique: "Refined minimalist framing, hand-crafted calligraphic monograms, and tactile cardstock texture."
+  },
+  {
+    id: 30,
+    title: "Bespoke Executive Celebration Invitation v3",
+    category: "invitations",
+    categoryLabel: "Executive Invitation",
+    path: "/images/graphics/my-work/invitation 3.png",
+    year: "2024",
+    tools: ["Illustrator", "InDesign", "Die-Cut Specs"],
+    specs: "Custom Envelope & RSVP Card Suite",
+    technique: "Geometric gold foil filigree accents, understated luxury palette, and formal event hierarchy."
+  },
+  {
+    id: 31,
+    title: "Artisan Embossed Botanical Event Stationery v4",
+    category: "invitations",
+    categoryLabel: "Event Stationery",
+    path: "/images/graphics/my-work/invitation4.png",
+    year: "2024",
+    tools: ["Illustrator", "Photoshop", "Emboss Maps"],
+    specs: "Textured Linen Card • Spot Gold Varnish",
+    technique: "Delicate botanical contour vector illustrations, embossed relief channels, and luxury typography."
+  },
+
+  // ── 6. Surreal Photo Manipulation & World Building (32-42) ───────────
+  {
+    id: 32,
+    title: "Mythological Titan Ruins Digital Matte Painting",
     category: "compositing",
     categoryLabel: "Matte Painting",
     path: "/images/graphics/my-work/manipulation1.png",
     year: "2023",
     tools: ["Photoshop", "Matte Painting Brushes", "Atmospheric Haze"],
     specs: "Panoramic Master • 6000×3200px",
-    technique: "Scale-establishing character silhouette against colossal ancient monument ruins."
+    technique: "Scale-establishing character silhouette against colossal ancient titan ruins with aerial depth cues."
   },
   {
-    id: 16,
+    id: 33,
     title: "Celestial Titan Cosmic Matte Painting v2",
     category: "compositing",
     categoryLabel: "Matte Painting",
@@ -201,10 +398,32 @@ const ALL_ARTWORKS: PhotoshopArtwork[] = [
     year: "2024",
     tools: ["Photoshop CC", "Matte Painting", "Nebula Textures"],
     specs: "Ultra-Wide Cinematic Canvas • 16-Bit Color",
-    technique: "Planetary ring structures, celestial nebula vortexes, and exploratory perspective."
+    technique: "Planetary ring structures, celestial nebula vortexes, and solitary human exploratory perspective."
   },
   {
-    id: 17,
+    id: 34,
+    title: "Bioluminescent Nightscape Fantasy Manipulation",
+    category: "compositing",
+    categoryLabel: "Surreal Composite",
+    path: "/images/graphics/my-work/manipulation glow.png",
+    year: "2023",
+    tools: ["Photoshop CC", "Digital Painting", "Color Dodge Modes"],
+    specs: "Ultra-HD Digital Artwork • 56 Layers",
+    technique: "Multi-layered color dodge glow channels and volumetric night fog atmospheric scatter."
+  },
+  {
+    id: 35,
+    title: "Ethereal Botanical Surreal Portrait",
+    category: "compositing",
+    categoryLabel: "Surreal Composite",
+    path: "/images/graphics/my-work/manipulation girl and flower.png",
+    year: "2024",
+    tools: ["Photoshop CC", "Botanical Masking", "Volumetric Glow", "Lightroom"],
+    specs: "Ultra-HD Fine Art Print • 300 DPI",
+    technique: "Organic floral hair blending, delicate butterfly dispersion, and soft rim lighting keys."
+  },
+  {
+    id: 36,
     title: "Mystic Ancient Realm Environment Composite",
     category: "compositing",
     categoryLabel: "World Building",
@@ -212,10 +431,10 @@ const ALL_ARTWORKS: PhotoshopArtwork[] = [
     year: "2024",
     tools: ["Photoshop CC", "Environment Matte Painting", "Water Dynamics"],
     specs: "Panoramic Environmental Master • 300 DPI",
-    technique: "Crystalline architecture, cascading waterfall fluids, and aerial depth cues."
+    technique: "Crystalline architecture, cascading waterfall fluids, and aerial haze depth perspective."
   },
   {
-    id: 18,
+    id: 37,
     title: "Dark Coven Sorceress Fantasy Keyart",
     category: "compositing",
     categoryLabel: "Dark Fantasy",
@@ -225,373 +444,165 @@ const ALL_ARTWORKS: PhotoshopArtwork[] = [
     specs: "Theatrical Character Keyart • 300 DPI",
     technique: "Ember particle brushes, arcane spellcraft glows, and deep dramatic chiaroscuro."
   },
-
-  // ── Theatrical Cinema Posters (19-22) ───────────────────────────────
-  {
-    id: 19,
-    title: "Psychological Thriller Theatrical Keyart",
-    category: "posters",
-    categoryLabel: "Movie Poster",
-    path: "/images/graphics/my-work/movie poster2.png",
-    year: "2023",
-    tools: ["Photoshop", "Illustrator", "Billing Block Kerning"],
-    specs: "27×40 in Studio One-Sheet",
-    technique: "Shattered glass refraction passes, crimson title accent, and studio credit billing."
-  },
-  {
-    id: 20,
-    title: "Cyberpunk Sci-Fi Cinema Blockbuster",
-    category: "posters",
-    categoryLabel: "Movie Poster",
-    path: "/images/graphics/my-work/movie poster3.png",
-    year: "2023",
-    tools: ["Photoshop CC", "Cinema 3D Passes", "Color Grading"],
-    specs: "Theatrical One-Sheet • IMAX Lightbox",
-    technique: "Rain-slicked neon skyscrapers, cybernetic character integration, and anamorphic flare."
-  },
-  {
-    id: 21,
-    title: "Grimdark Supernatural Horror Keyart",
-    category: "posters",
-    categoryLabel: "Movie Poster",
-    path: "/images/graphics/my-work/movie poster4.png",
-    year: "2023",
-    tools: ["Photoshop", "Texture Blending", "Typography Kerning"],
-    specs: "Theatrical Cinema Release • 300 DPI",
-    technique: "Distressed parchment texture overlays, suffocating fog, and weathered serif title."
-  },
-  {
-    id: 22,
-    title: "Epic Action Adventure Theatrical Poster",
-    category: "posters",
-    categoryLabel: "Movie Poster",
-    path: "/images/graphics/my-work/movie poster5.png",
-    year: "2023",
-    tools: ["Photoshop", "Particle Dynamics", "Title Design"],
-    specs: "27×40 Studio One-Sheet CMYK",
-    technique: "Multi-layered spark/debris emitters, heroic triangle lighting, and 3D metallic bevel."
-  },
-
-  // ── Editorial, Journals & Corporate Flyers (23-29) ──────────────────
-  {
-    id: 23,
-    title: "Corporate Direct-Response Business Flyer",
-    category: "editorial",
-    categoryLabel: "Marketing Collateral",
-    path: "/images/graphics/my-work/flyer.png",
-    year: "2022",
-    tools: ["InDesign", "Illustrator", "Photoshop"],
-    specs: "A5 Double-Sided • Print Ready CMYK",
-    technique: "Z-pattern visual conversion hierarchy, card zoning, and high-visibility CTAs."
-  },
-  {
-    id: 24,
-    title: "Executive Business Summit & Conference Flyer",
-    category: "editorial",
-    categoryLabel: "Conference Collateral",
-    path: "/images/graphics/my-work/flyer1.png",
-    year: "2024",
-    tools: ["InDesign", "Illustrator", "Photoshop", "Swiss Grid"],
-    specs: "A4 / Letter Print Master • CMYK Bleed Ready",
-    technique: "Geometric typography hierarchy, speaker schedule grid, and corporate authority."
-  },
-  {
-    id: 25,
-    title: "Modern Tech Enterprise Solutions Flyer",
-    category: "editorial",
-    categoryLabel: "B2B Marketing",
-    path: "/images/graphics/my-work/flyer2.png",
-    year: "2024",
-    tools: ["Illustrator", "Photoshop", "Vector Tokens"],
-    specs: "Double-Sided A5 • 300 DPI Offset",
-    technique: "Dark mode visual accents, scannable feature pillars, and icon-driven list cards."
-  },
-  {
-    id: 26,
-    title: "Creative Agency Portfolio & Services Flyer",
-    category: "editorial",
-    categoryLabel: "Agency Showcase",
-    path: "/images/graphics/my-work/flyer3.png",
-    year: "2024",
-    tools: ["InDesign", "Photoshop", "Color Palette Curation"],
-    specs: "Commercial Print Ready • Spot UV Accents",
-    technique: "Dynamic diagonal dividers, high-fidelity project vignettes, and gold foil badges."
-  },
-  {
-    id: 27,
-    title: "Retail Seasonal Campaign Promotional Leaflet",
-    category: "editorial",
-    categoryLabel: "Retail Campaign",
-    path: "/images/graphics/my-work/flyer4.png",
-    year: "2024",
-    tools: ["Photoshop", "Illustrator", "Promotional Keyart"],
-    specs: "Mass-Distribution Print Master • CMYK",
-    technique: "High-contrast discount burst geometry, product focal framing, and QR code integration."
-  },
-  {
-    id: 28,
-    title: "Fashion & Culture Editorial Spread v1",
-    category: "editorial",
-    categoryLabel: "Editorial Magazine",
-    path: "/images/graphics/my-work/magazine.png",
-    year: "2023",
-    tools: ["InDesign", "Photoshop", "Typography Pairing"],
-    specs: "Newsstand A4 Spread • Spot Varnishing",
-    technique: "Strict baseline grid alignment, optical kerning pairs, and asymmetric editorial photos."
-  },
-  {
-    id: 29,
-    title: "Contemporary Architectural Journal v2",
-    category: "editorial",
-    categoryLabel: "Editorial Magazine",
-    path: "/images/graphics/my-work/magazine2.png",
-    year: "2023",
-    tools: ["InDesign", "Photoshop", "Grid Architecture"],
-    specs: "Double Page Spread • CMYK Offset",
-    technique: "Swiss typography discipline, generous negative space, and architectural line drawings."
-  },
-
-  // ── Milestone Presentation Deck Pages (30-50) ───────────────────────
-  {
-    id: 30,
-    title: "Executive Cover & Identity Design (2026 Master Deck)",
-    category: "deck",
-    categoryLabel: "Master Deck",
-    path: "/photoshop/page1.png",
-    year: "2026",
-    tools: ["Photoshop", "Figma", "Design Tokens"],
-    specs: "Master Cover Art • High-Res Vector Overlay",
-    technique: "Master typography hierarchy, golden ratio grid alignment, and executive branding."
-  },
-  {
-    id: 31,
-    title: "Surreal Atmospheric Composite (2020 Edition)",
-    category: "deck",
-    categoryLabel: "Foundational Craft",
-    path: "/photoshop/page2.png",
-    year: "2020",
-    tools: ["Photoshop CC", "Camera Raw", "Intuos Pro"],
-    specs: "Milestone Deck Page 02 • 300 DPI",
-    technique: "Multi-source shadow matching, atmospheric depth, and cinematic lighting balance."
-  },
-  {
-    id: 32,
-    title: "Cinematic Matte Painting Environment (2020 Edition)",
-    category: "deck",
-    categoryLabel: "Foundational Craft",
-    path: "/photoshop/page3.png",
-    year: "2020",
-    tools: ["Photoshop", "Custom Brushes", "Matte Painting"],
-    specs: "Milestone Deck Page 03 • 300 DPI",
-    technique: "Environmental world-building, celestial color palette, and aerial perspective."
-  },
-  {
-    id: 33,
-    title: "Geometric Brand Composition (2021 Transition)",
-    category: "deck",
-    categoryLabel: "Graphic Precision",
-    path: "/photoshop/page4.png",
-    year: "2021",
-    tools: ["Illustrator", "Photoshop", "Grid Systems"],
-    specs: "Milestone Deck Page 04 • 300 DPI",
-    technique: "High-contrast minimalist layout, negative space calibration, and typographic weight."
-  },
-  {
-    id: 34,
-    title: "Character Lighting Integration (2021 Transition)",
-    category: "deck",
-    categoryLabel: "Graphic Precision",
-    path: "/photoshop/page5.png",
-    year: "2021",
-    tools: ["Photoshop CC", "Luma Masks", "Subsurface Passes"],
-    specs: "Milestone Deck Page 05 • 300 DPI",
-    technique: "Subsurface scattering integration and multi-layer rim lighting compositing."
-  },
-  {
-    id: 35,
-    title: "Cosmic Landscape Study (2022 Systems)",
-    category: "deck",
-    categoryLabel: "Graphic Precision",
-    path: "/photoshop/page6.png",
-    year: "2022",
-    tools: ["Photoshop", "Nebula Brushes", "Gradient Maps"],
-    specs: "Milestone Deck Page 06 • 300 DPI",
-    technique: "Expansive horizon scale, nebula color harmony, and foreground depth anchoring."
-  },
-  {
-    id: 36,
-    title: "Atmospheric Visual Glow (2022 Systems)",
-    category: "deck",
-    categoryLabel: "Graphic Precision",
-    path: "/photoshop/page7.png",
-    year: "2022",
-    tools: ["Photoshop", "Color Dodge", "Volumetric Fog"],
-    specs: "Milestone Deck Page 07 • 300 DPI",
-    technique: "Volumetric fog scatter, specular flare blooming, and photographic grain balance."
-  },
-  {
-    id: 37,
-    title: "Dynamic Action Poster Keyart (2023 Brands)",
-    category: "deck",
-    categoryLabel: "Brand Systems",
-    path: "/photoshop/page8.png",
-    year: "2023",
-    tools: ["Photoshop", "Illustrator", "Typography Layout"],
-    specs: "Milestone Deck Page 08 • 300 DPI",
-    technique: "Kinetic visual flow, action title kerning, and explosive particle integration."
-  },
   {
     id: 38,
-    title: "Futuristic Cybernetic Art (2023 Brands)",
-    category: "deck",
-    categoryLabel: "Brand Systems",
-    path: "/photoshop/page9.png",
-    year: "2023",
-    tools: ["Photoshop CC", "Vector Shaders", "Neon Glows"],
-    specs: "Milestone Deck Page 09 • 300 DPI",
-    technique: "Neon vector luminescence, digital telemetry accents, and cybernetic textures."
+    title: "Submerged Aquatic Fantasy Matte Painting v1",
+    category: "compositing",
+    categoryLabel: "Aquatic Matte",
+    path: "/images/graphics/my-work/underwater.png",
+    year: "2024",
+    tools: ["Photoshop CC", "Underwater Caustics", "Volumetric Light Rays"],
+    specs: "Cinematic 4K Master • 16-Bit ProPhoto",
+    technique: "Refractive sunlight water caustics, submerged particulate suspension, and depth color grading."
   },
   {
     id: 39,
-    title: "Commercial Editorial Retouch (2023 Brands)",
-    category: "deck",
-    categoryLabel: "Brand Systems",
-    path: "/photoshop/page10.png",
-    year: "2023",
-    tools: ["Photoshop", "High-End Retouch", "Studio Illumination"],
-    specs: "Milestone Deck Page 10 • 300 DPI",
-    technique: "Commercial packaging fidelity, specular studio reflections, and tonal balance."
+    title: "Deep Sea Abyss Bioluminescent Concept v2",
+    category: "compositing",
+    categoryLabel: "Deep Sea Concept",
+    path: "/images/graphics/my-work/underwater2.png",
+    year: "2024",
+    tools: ["Photoshop", "Bioluminescent Shaders", "Fog Scatter"],
+    specs: "Digital Concept Art • 300 DPI",
+    technique: "Abyssal trench lighting, bioluminescent organism glow passes, and atmospheric marine snow."
   },
   {
     id: 40,
-    title: "Abstract Corporate Branding System (2024 Edition)",
-    category: "deck",
-    categoryLabel: "Brand Systems",
-    path: "/photoshop/page11.png",
+    title: "Atmospheric Oceanic Exploration Keyart v3",
+    category: "compositing",
+    categoryLabel: "Oceanic Matte",
+    path: "/images/graphics/my-work/underwater3.png",
     year: "2024",
-    tools: ["Figma", "Illustrator", "Brand Guidelines"],
-    specs: "Milestone Deck Page 11 • 300 DPI",
-    technique: "Modular geometric brand architecture, vector purity, and corporate guidelines."
+    tools: ["Photoshop CC", "Fluid Compositing", "Underwater Grading"],
+    specs: "Ultra-Wide Panoramic Canvas • 300 DPI",
+    technique: "Deep oceanic exploration, sunken architectural remnants, and cinematic blue-cyan grading."
   },
   {
     id: 41,
-    title: "High-Contrast Event Poster (2024 Edition)",
-    category: "deck",
-    categoryLabel: "Brand Systems",
-    path: "/photoshop/page12.png",
+    title: "VFX Atmospheric Glow & Particle Effects Showcase",
+    category: "compositing",
+    categoryLabel: "VFX Effects",
+    path: "/images/graphics/my-work/effect shocasw.png",
     year: "2024",
-    tools: ["InDesign", "Photoshop", "Swiss Grid"],
-    specs: "Milestone Deck Page 12 • 300 DPI",
-    technique: "Bold typographic hierarchy, architectural negative space, and spot color palette."
+    tools: ["Photoshop CC", "Particle Dynamics", "Lighting Passes"],
+    specs: "Digital Art Master • 300 DPI",
+    technique: "Specular spark emitters, chromatic light blooms, and high-energy magical displacement fields."
   },
   {
     id: 42,
-    title: "Creative Merchandise Showcase (2024 Edition)",
-    category: "deck",
-    categoryLabel: "Brand Systems",
-    path: "/photoshop/page13.png",
-    year: "2024",
-    tools: ["Photoshop 3D", "Illustrator", "Material Shaders"],
-    specs: "Milestone Deck Page 13 • 300 DPI",
-    technique: "Tactile material finish rendering, retail product mockups, and gold foil accents."
+    title: "Surreal Double Exposure Fine Art Portrait",
+    category: "compositing",
+    categoryLabel: "Fine Art",
+    path: "/images/graphics/my-work/double exposure.png",
+    year: "2022",
+    tools: ["Photoshop CC", "Screen Blending", "Gradient Mapping"],
+    specs: "Gallery Exhibition Print • 300 DPI",
+    technique: "Luma silhouette keying merging portraiture with alpine wilderness and celestial nebulas."
   },
+
+  // ── 7. Retouching, Color Grading & Restoration (43-48) ──────────────
   {
     id: 43,
-    title: "Environmental Experience Canvas (2025 Product)",
-    category: "deck",
-    categoryLabel: "Product & UX",
-    path: "/photoshop/page14.png",
-    year: "2025",
-    tools: ["Figma", "Photoshop", "Responsive Layout"],
-    specs: "Milestone Deck Page 14 • 300 DPI",
-    technique: "Digital product hero storytelling, responsive cross-screen layout, and visual flow."
+    title: "High-End Beauty Skin Frequency Separation",
+    category: "retouching",
+    categoryLabel: "Skin Retouching",
+    path: "/images/graphics/my-work/before after.png",
+    year: "2022",
+    tools: ["Photoshop CC", "Dual Frequency Separation", "Micro-Dodge & Burn"],
+    specs: "Ultra-HD Portrait • Zero Texture Loss",
+    technique: "High/low frequency spatial filtering strictly preserving natural dermal micropores."
   },
   {
     id: 44,
-    title: "Telemetry Glow & HUD System (2025 Product)",
-    category: "deck",
-    categoryLabel: "Product & UX",
-    path: "/photoshop/page15.png",
-    year: "2025",
-    tools: ["Photoshop", "After Effects", "HUD Vector Assets"],
-    specs: "Milestone Deck Page 15 • 300 DPI",
-    technique: "Real-time telemetry HUDs, sensor dashboard aesthetics, and accessible contrast."
+    title: "Camera Raw HDR Dynamic Range Color Grade",
+    category: "retouching",
+    categoryLabel: "Color Grading",
+    path: "/images/graphics/my-work/camera raw.png",
+    year: "2022",
+    tools: ["Adobe Camera Raw", "Photoshop", "Curve Mastering"],
+    specs: "6000×4000 RAW • ProPhoto RGB",
+    technique: "Multi-stop exposure bracket merging and calibrated HSL split-toning."
   },
   {
     id: 45,
-    title: "Cyber HUD Interface Concept (2025 Product)",
-    category: "deck",
-    categoryLabel: "Product & UX",
-    path: "/photoshop/page16.png",
-    year: "2025",
-    tools: ["Figma", "Tailwind Tokens", "TypeScript"],
-    specs: "Milestone Deck Page 16 • 300 DPI",
-    technique: "Dense operational status cards, information density control, and WCAG AA contrast."
+    title: "Historical Vintage Archive Photo Colorization",
+    category: "retouching",
+    categoryLabel: "Restoration",
+    path: "/images/graphics/my-work/colorize.png",
+    year: "2021",
+    tools: ["Photoshop", "Luminance Masks", "Historical Archives"],
+    specs: "Fine Art Archive Restoration • 48 Layers",
+    technique: "Period-accurate textile tinting and multi-layer skin tone undertone balance."
   },
   {
     id: 46,
-    title: "Cross-Platform Token Suite (2025 Product)",
-    category: "deck",
-    categoryLabel: "Product & UX",
-    path: "/photoshop/page17.png",
-    year: "2025",
-    tools: ["Figma Tokens", "Design Systems", "Vector Set"],
-    specs: "Milestone Deck Page 17 • 300 DPI",
-    technique: "Scalable color tokens, elevation layers, typographic rhythm, and iconography."
+    title: "Fine Art Archival Recolorization Master Study",
+    category: "retouching",
+    categoryLabel: "Recolorization",
+    path: "/images/graphics/my-work/recolorization.png",
+    year: "2024",
+    tools: ["Photoshop CC", "Selective Color", "Texture Inpainting"],
+    specs: "Museum Curation Master • 300 DPI",
+    technique: "Archival scratch removal, multi-pass historical color mapping, and specular preservation."
   },
   {
     id: 47,
-    title: "AI-Augmented Creative Concept (2026 Master)",
-    category: "deck",
-    categoryLabel: "Product & UX",
-    path: "/photoshop/page18.png",
-    year: "2026",
-    tools: ["Photoshop", "Generative Fill", "Human Curation"],
-    specs: "Milestone Deck Page 18 • 300 DPI",
-    technique: "Generative workflow synthesis, strict human artistic direction, and pixel polish."
+    title: "Portrait Vintage Photo Restoration & Retouching",
+    category: "retouching",
+    categoryLabel: "Restoration",
+    path: "/images/graphics/my-work/recolorize.png",
+    year: "2024",
+    tools: ["Photoshop", "Healing Brush", "Skin Tones"],
+    specs: "Fine Art Restoration Print • 300 DPI",
+    technique: "Facial contour reconstruction, grain harmonization, and lifelike skin tone gradation."
   },
   {
     id: 48,
-    title: "Spatial Navigation Architecture (2026 Master)",
-    category: "deck",
-    categoryLabel: "Product & UX",
-    path: "/photoshop/page19.png",
-    year: "2026",
-    tools: ["Figma", "Prototyping", "Spatial UI"],
-    specs: "Milestone Deck Page 19 • 300 DPI",
-    technique: "Context-aware progressive disclosure, depth layering, and ergonomic hit targets."
+    title: "Experimental Creative Typography & Masking Composition",
+    category: "retouching",
+    categoryLabel: "Creative Typography",
+    path: "/images/graphics/my-work/typography.png",
+    year: "2024",
+    tools: ["Photoshop CC", "Clipping Masks", "Kerning Optimization"],
+    specs: "Graphic Art Print • 300 DPI",
+    technique: "Negative space letterform interlocks, multi-plane clipping masks, and bold contrast."
   },
+
+  // ── 8. Social Media Creatives & Digital Branding (49-50) ─────────────
   {
     id: 49,
-    title: "Glassmorphic Lighting Model (2026 Master)",
-    category: "deck",
-    categoryLabel: "Product & UX",
-    path: "/photoshop/page20.png",
-    year: "2026",
-    tools: ["Tailwind CSS", "Photoshop", "Shader Math"],
-    specs: "Milestone Deck Page 20 • 300 DPI",
-    technique: "Calibrated backdrop blur, 1px specular micro-borders, and radiant gold glow."
+    title: "High-Converting Commercial Social Media Ad Post",
+    category: "social",
+    categoryLabel: "Social Ad",
+    path: "/images/graphics/my-work/social media post.png",
+    year: "2024",
+    tools: ["Photoshop", "Illustrator", "Social Sizing"],
+    specs: "1080×1080px Retina • Meta Verified",
+    technique: "Thumb-stopping visual contrast, clear promotion hierarchy, and mobile CTA anchors."
   },
   {
     id: 50,
-    title: "Unified Design Manifesto: Art, UX & Code (2026)",
-    category: "deck",
-    categoryLabel: "Product & UX",
-    path: "/photoshop/page21.png",
-    year: "2026",
-    tools: ["Next.js", "TypeScript", "WCAG AA", "Figma"],
-    specs: "Milestone Deck Page 21 • 300 DPI",
-    technique: "Synthesis of visual craft, ergonomic UX heuristics, and production engineering rigor."
+    title: "Instagram Reel & Story High-Impact Keyart",
+    category: "social",
+    categoryLabel: "Social Story",
+    path: "/images/graphics/my-work/social real.png",
+    year: "2024",
+    tools: ["Photoshop CC", "Motion Stills", "Story Canvas"],
+    specs: "1080×1920px Full Vertical HD",
+    technique: "9:16 mobile viewport optimization, thumb-friendly safe zones, and vibrant branding."
   }
 ];
 
 const CATEGORIES = [
   { id: "all", label: "All Works", count: 50 },
-  { id: "advertising", label: "Commercial & Brands", count: 8 },
-  { id: "compositing", label: "Matte & Compositing", count: 10 },
-  { id: "posters", label: "Theatrical Posters", count: 4 },
-  { id: "editorial", label: "Editorial & Flyers", count: 7 },
-  { id: "deck", label: "Master Milestone Decks", count: 21 },
+  { id: "flyers", label: "Flyers Collection", count: 5 },
+  { id: "advertising", label: "Commercial & Brands", count: 9 },
+  { id: "compositing", label: "Matte & Compositing", count: 11 },
+  { id: "posters", label: "Theatrical Posters", count: 5 },
+  { id: "editorial", label: "Editorial & Magazines", count: 8 },
+  { id: "invitations", label: "Invitations & Cards", count: 4 },
+  { id: "retouching", label: "Retouch & Color Grade", count: 6 },
+  { id: "social", label: "Social Media Creatives", count: 2 },
 ] as const;
 
 export default function PhotoshopGallery() {
@@ -601,6 +612,8 @@ export default function PhotoshopGallery() {
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
   const [zoomLevel, setZoomLevel] = useState<number>(1);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [flyerOverlayOpen, setFlyerOverlayOpen] = useState<boolean>(false);
+  const [initialFlyerIdx, setInitialFlyerIdx] = useState<number>(0);
 
   // Sync Accent from Profile
   useEffect(() => {
@@ -652,6 +665,7 @@ export default function PhotoshopGallery() {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (flyerOverlayOpen) return; // Handled inside FlyerScrollOverlay
       if (lightboxIdx === null) return;
       if (e.key === "ArrowLeft") handlePrev();
       if (e.key === "ArrowRight") handleNext();
@@ -663,7 +677,7 @@ export default function PhotoshopGallery() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [lightboxIdx, handlePrev, handleNext, handleClose]);
+  }, [lightboxIdx, flyerOverlayOpen, handlePrev, handleNext, handleClose]);
 
   if (!mounted) {
     return (
@@ -706,7 +720,7 @@ export default function PhotoshopGallery() {
           <div className="flex items-center space-x-2.5 text-gold bg-gold/5 border border-gold/20 px-4 py-1.5 rounded-full">
             <Sparkles className="w-4 h-4 animate-pulse-slow" />
             <span className="text-[11px] font-mono uppercase tracking-[0.25em] font-extrabold select-none">
-              Master Graphic Design & Matte Art Vault
+              Master Graphic Design & Creative Works Vault
             </span>
             <Sparkles className="w-4 h-4 animate-pulse-slow" />
           </div>
@@ -722,7 +736,7 @@ export default function PhotoshopGallery() {
         </header>
 
         {/* Main Title Banner */}
-        <div className="text-center mb-12 space-y-4">
+        <div className="text-center mb-10 space-y-4">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400 text-xs font-mono uppercase tracking-widest">
             <Layers className="w-3.5 h-3.5 text-gold" />
             <span>50 Curated High-Definition Deliverables</span>
@@ -732,8 +746,40 @@ export default function PhotoshopGallery() {
           </h1>
           <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto shadow-[0_0_12px_#D4AF37]" />
           <p className="text-gray-400 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
-            From high-stakes commercial ad campaigns and cinematic movie posters to multi-layer matte paintings, frequency separation retouching, and 26-page architectural executive decks. Click any artwork to launch the high-resolution viewport.
+            All 50 verified commercial client artworks, marketing flyers, theatrical movie posters, luxury campaigns, editorial publication journals, and surreal matte paintings designed by Prashant Sisodhiya.
           </p>
+        </div>
+
+        {/* ── Spotlight Banner: All 5 Flyers Scrollable Viewport ── */}
+        <div className="mb-10 p-5 rounded-2xl bg-gradient-to-r from-[#D4AF37]/20 via-[#00E5FF]/10 to-transparent border-2 border-[#D4AF37]/40 shadow-[0_0_35px_rgba(212,175,55,0.15)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center space-x-3.5">
+            <div className="w-11 h-11 rounded-2xl bg-[#D4AF37] text-black flex items-center justify-center font-black shadow-lg shrink-0">
+              <Printer className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex items-center space-x-2">
+                <span className="text-[10px] font-mono font-extrabold uppercase tracking-widest text-[#F5BA42]">
+                  Print Collateral Special
+                </span>
+                <span className="px-2 py-0.5 rounded bg-black/40 text-[9px] font-mono text-cyan-300 font-bold border border-cyan-500/30">
+                  5 Flyers Included
+                </span>
+              </div>
+              <h3 className="text-base sm:text-lg font-black text-white uppercase tracking-tight mt-0.5">
+                Complete Commercial & Corporate Flyer Collection
+              </h3>
+            </div>
+          </div>
+          <button
+            onClick={() => {
+              setInitialFlyerIdx(0);
+              setFlyerOverlayOpen(true);
+            }}
+            className="px-5 py-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#F5BA42] text-black font-black text-xs uppercase tracking-wider transition-all hover:scale-105 shadow-[0_0_20px_rgba(212,175,55,0.4)] flex items-center space-x-2 shrink-0 cursor-pointer"
+          >
+            <span>Open All Flyers (Scrollable Viewport)</span>
+            <ExternalLink className="w-4 h-4" />
+          </button>
         </div>
 
         {/* Category Filter Pills */}
@@ -780,7 +826,15 @@ export default function PhotoshopGallery() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3, delay: Math.min(idx * 0.03, 0.3) }}
-                onClick={() => setLightboxIdx(idx)}
+                onClick={() => {
+                  if (art.category === "flyers") {
+                    // Open in scrollable overlay format as requested
+                    setInitialFlyerIdx(art.id - 1);
+                    setFlyerOverlayOpen(true);
+                  } else {
+                    setLightboxIdx(idx);
+                  }
+                }}
                 className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-white/10 bg-[#0d0d0d] shadow-xl cursor-pointer hover:border-gold/50 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)] transition-all duration-300"
               >
                 {/* Thumbnail image scan */}
@@ -809,13 +863,13 @@ export default function PhotoshopGallery() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4 z-20">
                   <div className="flex justify-end pt-8">
                     <div className="w-9 h-9 rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center text-gold shadow-[0_0_12px_rgba(212,175,55,0.3)] group-hover:scale-110 transition-transform">
-                      <Eye className="w-4 h-4" />
+                      {art.category === "flyers" ? <Printer className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                     </div>
                   </div>
 
                   <div className="space-y-1.5">
                     <span className="text-[10px] font-mono font-bold text-gold uppercase tracking-wider block">
-                      #{art.id.toString().padStart(2, "0")} · {art.specs}
+                      #{art.id.toString().padStart(2, "0")} · {art.category === "flyers" ? "Click to open in scrollable overlay" : art.specs.split("•")[0]}
                     </span>
                     <h3 className="font-extrabold text-sm text-white leading-tight uppercase line-clamp-2">
                       {art.title}
@@ -834,10 +888,10 @@ export default function PhotoshopGallery() {
         <div className="mt-20 p-8 rounded-2xl glass-card border border-white/10 bg-white/[0.02] text-center flex flex-col items-center justify-center space-y-4">
           <div className="flex items-center space-x-2 text-xs text-gold font-bold uppercase tracking-widest">
             <ImageIcon className="w-4 h-4 text-gold" />
-            <span>50-Work Full High-Fidelity Archive</span>
+            <span>50-Work Authentic Production Archive</span>
           </div>
           <p className="text-xs sm:text-sm text-gray-400 max-w-xl leading-relaxed">
-            All artworks represent real production client assets, commercial advertising deliverables, and design system milestones designed by Prashant Sisodhiya.
+            All 50 deliverables represent authentic commercial client assets, marketing collateral, and design milestones created by Prashant Sisodhiya.
           </p>
           <div className="flex items-center space-x-4 pt-2">
             <Link
@@ -846,12 +900,16 @@ export default function PhotoshopGallery() {
             >
               Back to Portfolio
             </Link>
-            <Link
-              href="/#evolution"
-              className="px-6 py-2.5 bg-white/5 border border-white/10 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl hover:border-gold hover:text-gold transition-all duration-300 cursor-pointer"
+            <button
+              onClick={() => {
+                setInitialFlyerIdx(0);
+                setFlyerOverlayOpen(true);
+              }}
+              className="px-6 py-2.5 bg-white/5 border border-[#D4AF37]/50 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl hover:bg-[#D4AF37]/15 hover:text-gold transition-all duration-300 cursor-pointer flex items-center space-x-1.5"
             >
-              Explore Evolution Decks
-            </Link>
+              <span>Scrollable Flyer Overlay</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
@@ -1026,6 +1084,13 @@ export default function PhotoshopGallery() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* ── All 5 Flyers Scrollable Viewport Overlay ── */}
+      <FlyerScrollOverlay
+        isOpen={flyerOverlayOpen}
+        onClose={() => setFlyerOverlayOpen(false)}
+        initialFlyerIndex={initialFlyerIdx}
+      />
 
     </div>
   );

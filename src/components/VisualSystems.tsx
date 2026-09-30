@@ -9,6 +9,7 @@ import {
   Layers, Maximize2, CheckCircle2, SlidersHorizontal,
   ChevronLeft, ChevronRight
 } from "lucide-react";
+import FlyerScrollOverlay from "@/components/FlyerScrollOverlay";
 
 export interface GraphicItem {
   id: string;
@@ -56,6 +57,8 @@ export default function VisualSystems() {
   const [activeLogoStep, setActiveLogoStep] = useState<"concept" | "sketch" | "construction" | "final" | "application">("final");
   const [lightboxZoom, setLightboxZoom] = useState<number>(1);
   const [showFullArchive, setShowFullArchive] = useState<boolean>(false);
+  const [flyerOverlayOpen, setFlyerOverlayOpen] = useState<boolean>(false);
+  const [initialFlyerIdx, setInitialFlyerIdx] = useState<number>(0);
 
   /* ─── Scroll-trigger refs ─────────────────────────────── */
   const sectionRef = useRef<HTMLElement>(null);
@@ -754,6 +757,30 @@ export default function VisualSystems() {
           </div>
         </div>
 
+        {/* ── Flyer Collection Spotlight ── */}
+        <div className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-[#D4AF37]/15 via-[#00E5FF]/10 to-transparent border border-[#D4AF37]/35 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 rounded-xl bg-[#D4AF37]/20 border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] shadow-md shrink-0">
+              <Sparkles className="w-5 h-5 animate-pulse-slow" />
+            </div>
+            <div>
+              <span className="text-[10px] font-mono font-extrabold uppercase tracking-widest text-[#F5BA42] block">
+                Featured Print & Collateral Showcase
+              </span>
+              <h4 className="text-sm sm:text-base font-black text-[#0A0F1D] dark:text-white uppercase tracking-tight">
+                Complete 5-Flyer Commercial & Business Collection
+              </h4>
+            </div>
+          </div>
+          <button
+            onClick={() => setFlyerOverlayOpen(true)}
+            className="px-4 py-2 rounded-xl bg-[#D4AF37] hover:bg-[#F5BA42] text-black font-extrabold text-xs uppercase tracking-wider transition-transform hover:scale-105 shadow-md flex items-center space-x-1.5 shrink-0 cursor-pointer"
+          >
+            <span>Open Scrollable Flyer Viewport</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
         {/* ── Proper Card-Like System Grid with Hover Effects ── */}
         <div
           ref={gridRef}
@@ -768,7 +795,14 @@ export default function VisualSystems() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                onClick={() => setSelectedItem(item)}
+                onClick={() => {
+                  if (item.id.includes("flyer")) {
+                    setInitialFlyerIdx(item.id === "commercial-flyer" ? 1 : 0);
+                    setFlyerOverlayOpen(true);
+                  } else {
+                    setSelectedItem(item);
+                  }
+                }}
                 className="group relative rounded-2xl border border-gray-200 dark:border-[#2A3441] bg-white dark:bg-[#1A1F2B] hover:border-[#003882] dark:hover:border-[#00E5FF] p-5 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,56,130,0.1)] dark:hover:shadow-[0_20px_50px_rgba(0,229,255,0.14)]"
               >
                 <div>
@@ -1106,12 +1140,34 @@ export default function VisualSystems() {
                       ))}
                     </div>
                   </div>
+
+                  {/* In-Modal Trigger for Flyer Collection */}
+                  {selectedItem.id.includes("flyer") && (
+                    <button
+                      onClick={() => {
+                        closeModal();
+                        setInitialFlyerIdx(selectedItem.id === "commercial-flyer" ? 1 : 0);
+                        setFlyerOverlayOpen(true);
+                      }}
+                      className="w-full mt-4 py-3 px-4 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F5BA42] hover:from-[#F5BA42] hover:to-[#D4AF37] text-black font-black text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-xl hover:scale-[1.02] transition-transform cursor-pointer"
+                    >
+                      <Sparkles className="w-4 h-4" />
+                      <span>Open All 5 Flyers in Scrollable Viewport</span>
+                    </button>
+                  )}
                 </div>
               </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
+
+      {/* ── All 5 Flyers Scrollable Viewport Overlay ── */}
+      <FlyerScrollOverlay
+        isOpen={flyerOverlayOpen}
+        onClose={() => setFlyerOverlayOpen(false)}
+        initialFlyerIndex={initialFlyerIdx}
+      />
     </section>
   );
 }

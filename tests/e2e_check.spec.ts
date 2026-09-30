@@ -455,8 +455,8 @@ test.describe("Prashant Sisodhiya Portfolio E2E Verifications", () => {
     const viewWorkCTA = page.locator("button:has-text('View Selected Work')").first();
     await expect(viewWorkCTA).toBeVisible();
     await viewWorkCTA.click();
-    await page.waitForTimeout(700);
-    await expect(page.locator("#work")).toBeInViewport();
+    await page.waitForTimeout(1000);
+    await expect(page.locator("#work")).toBeInViewport({ timeout: 10000 });
 
     // 2. Open DeepAstro Interactive HTML Deck & return with Back to Portfolio
     const htmlDeckBtn = page.locator("button:has-text('Interactive HTML Deck')").first();

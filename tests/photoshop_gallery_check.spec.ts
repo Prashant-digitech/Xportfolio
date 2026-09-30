@@ -10,11 +10,11 @@ test.describe("Photoshop Master Gallery & 50-Deliverable Vault", () => {
 
     // Verify category filter pills exist
     await expect(page.locator("button:has-text('All Works')")).toBeVisible();
+    await expect(page.locator("button:has-text('Flyers Collection')")).toBeVisible();
     await expect(page.locator("button:has-text('Commercial & Brands')")).toBeVisible();
     await expect(page.locator("button:has-text('Matte & Compositing')")).toBeVisible();
     await expect(page.locator("button:has-text('Theatrical Posters')")).toBeVisible();
-    await expect(page.locator("button:has-text('Editorial & Flyers')")).toBeVisible();
-    await expect(page.locator("button:has-text('Master Milestone Decks')")).toBeVisible();
+    await expect(page.locator("button:has-text('Editorial & Magazines')")).toBeVisible();
 
     // Verify initial count of 50 articles in All Works
     const articles = page.locator("article");
@@ -25,26 +25,66 @@ test.describe("Photoshop Master Gallery & 50-Deliverable Vault", () => {
   test("should filter artworks by category dynamically", async ({ page }) => {
     await page.goto("/photoshop", { waitUntil: "networkidle" });
 
-    // Filter to Commercial & Brands (8 items)
+    // Filter to Commercial & Brands (9 items)
     const commBtn = page.locator("button:has-text('Commercial & Brands')");
     await commBtn.click();
-    await expect(page.locator("article")).toHaveCount(8, { timeout: 7000 });
+    await expect(page.locator("article")).toHaveCount(9, { timeout: 7000 });
 
-    // Filter to Theatrical Posters (4 items)
+    // Filter to Theatrical Posters (5 items)
     const posterBtn = page.locator("button:has-text('Theatrical Posters')");
     await posterBtn.click();
-    await expect(page.locator("article")).toHaveCount(4, { timeout: 7000 });
+    await expect(page.locator("article")).toHaveCount(5, { timeout: 7000 });
 
-    // Switch back to All Works
+    // Filter to Flyers Collection (5 items)
+    const flyerBtn = page.locator("button:has-text('Flyers Collection')");
+    await flyerBtn.click();
+    await expect(page.locator("article")).toHaveCount(5, { timeout: 7000 });
+
+    // Switch back to All Works (50 items)
     const allBtn = page.locator("button:has-text('All Works')");
     await allBtn.click();
     await expect(page.locator("article")).toHaveCount(50, { timeout: 7000 });
   });
 
-  test("should open high-res lightbox, navigate next/prev, zoom, and close via Escape", async ({ page }) => {
+  test("should open all flyers in overlay in scrollable format when clicked", async ({ page }) => {
     await page.goto("/photoshop", { waitUntil: "networkidle" });
 
-    // Click the first artwork
+    // Filter to Flyers Collection
+    const flyerBtn = page.locator("button:has-text('Flyers Collection')");
+    await flyerBtn.click();
+    await expect(page.locator("article")).toHaveCount(5, { timeout: 7000 });
+
+    // Click the first flyer article
+    const firstFlyer = page.locator("article").first();
+    await firstFlyer.click();
+    await page.waitForTimeout(400);
+
+    // Verify scrollable overlay opens
+    const flyerDialog = page.locator("div[role='dialog'][aria-label='All Flyers Collection - Scrollable Format']");
+    await expect(flyerDialog).toBeVisible();
+
+    // Verify all 5 flyers exist in the scrollable viewport
+    await expect(flyerDialog.getByText("01", { exact: true })).toBeVisible();
+    await expect(flyerDialog.getByText("02", { exact: true })).toBeVisible();
+    await expect(flyerDialog.getByText("03", { exact: true })).toBeVisible();
+    await expect(flyerDialog.getByText("04", { exact: true })).toBeVisible();
+    await expect(flyerDialog.getByText("05", { exact: true })).toBeVisible();
+
+    // Close via Escape key
+    await page.keyboard.press("Escape");
+    await page.waitForTimeout(400);
+    await expect(flyerDialog).toBeHidden();
+  });
+
+  test("should open high-res lightbox on commercial artwork, navigate next/prev, zoom, and close via Escape", async ({ page }) => {
+    await page.goto("/photoshop", { waitUntil: "networkidle" });
+
+    // Filter to Commercial & Brands
+    const commBtn = page.locator("button:has-text('Commercial & Brands')");
+    await commBtn.click();
+    await expect(page.locator("article")).toHaveCount(9, { timeout: 7000 });
+
+    // Click first commercial article (Belle)
     const firstArticle = page.locator("article").first();
     await firstArticle.click();
     await page.waitForTimeout(400);
