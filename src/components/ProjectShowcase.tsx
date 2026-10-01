@@ -12,6 +12,7 @@ import {
 import { uxProjectsList, UXProject } from "@/data/uxProjects";
 import UXCaseStudyModal from "@/components/UXCaseStudyModal";
 import InAppCaseStudyViewer from "@/components/InAppCaseStudyViewer";
+import ShowreelModal from "@/components/ShowreelModal";
 
 interface ShowcaseProject {
   title: string;
@@ -54,6 +55,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
   });
   const [selectedVideoProject, setSelectedVideoProject] = useState<ShowcaseProject | null>(null);
   const [showreelModalOpen, setShowreelModalOpen] = useState<boolean>(false);
+  const [selectedShowreelId, setSelectedShowreelId] = useState<string>("portfolio-showreel");
   const [isPlayingShowreel, setIsPlayingShowreel] = useState<boolean>(true);
   const [showreelChapter, setShowreelChapter] = useState<number>(0);
 
@@ -468,17 +470,30 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
 
     // Video Showreel & Commercials
     { 
-      title: "Cinematic Video Showreel 4K", 
+      title: "Portfolio Showreel 4K", 
       category: "video", 
-      description: "Flagship showreel highlighting precision speed ramping, Rec.709 color grading, sound design, and kinetic typography.", 
-      img: "/images/showreel/video-showreel.png", 
+      description: "Flagship master showreel compiling dynamic pacing edits, multi-track audio synchronization, visual transitions, 3D space tracking, and cinema-grade color grading.", 
+      img: "/images/portfolio_showreel_thumbnail.png", 
       caseStudy: "Launch Showreel", 
       figmaUrl: "#work",
       statsBadge: "4K Master • Speed Ramping",
-      videoUrl: "/videos/video-showreel.mp4",
-      tags: ["Premiere Pro", "After Effects", "Showreel", "Sound Design"],
+      videoUrl: "/videos/portfolio_showreel.mp4",
+      tags: ["Premiere Pro", "After Effects", "Color Grading", "Sound Design"],
       role: "Video Editing · Motion Graphics",
-      year: "2025"
+      year: "2026"
+    },
+    { 
+      title: "Travel Showreel 4K", 
+      category: "video", 
+      description: "High-impact cinematic travel showreel featuring atmospheric color grading, speed ramping, rhythmic match cuts, drone footage stabilization, and spatial acoustic design.", 
+      img: "/images/travel_showreel_thumbnail.png", 
+      caseStudy: "Launch Showreel", 
+      figmaUrl: "#work",
+      statsBadge: "4K Cinema • Speed Ramping",
+      videoUrl: "/videos/travel_showreel.mp4",
+      tags: ["Premiere Pro", "DaVinci Resolve", "Drone Stabilization", "Atmospheric LUTs"],
+      role: "Cinematography · Color Grading",
+      year: "2026"
     },
     { 
       title: "Veronixx Web & POS Platform Preview", 
@@ -492,19 +507,6 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       videoUrl: "/videos/veronixx-app-preview.mp4",
       tags: ["Next.js", "Client App", "POS Billing", "Production"],
       role: "Product Walkthrough · Screen Capture",
-      year: "2025"
-    },
-    { 
-      title: "Travel Cinematic Video", 
-      category: "video", 
-      description: "Cinematic travel compilation featuring advanced color grading, match cuts, and atmospheric speed ramping elements.", 
-      img: "/images/showreel/travel cinematic video thumbnail.png", 
-      caseStudy: "Watch Video", 
-      figmaUrl: "#work",
-      statsBadge: "Color LUTs • Sound Sync",
-      videoUrl: "/videos/video-showreel.mp4",
-      tags: ["Premiere Pro", "Color Grading", "Sound Design", "Rec.709"],
-      role: "Cinematography · Color Grading",
       year: "2025"
     },
     { 
@@ -842,7 +844,11 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                     <div 
                       onClick={() => {
                         if (p.category === "video") {
-                          if (p.title.includes("Showreel")) {
+                          if (p.title.toLowerCase().includes("travel")) {
+                            setSelectedShowreelId("travel-showreel");
+                            setShowreelModalOpen(true);
+                          } else if (p.title.toLowerCase().includes("showreel")) {
+                            setSelectedShowreelId("portfolio-showreel");
                             setShowreelModalOpen(true);
                           } else if (p.videoUrl) {
                             setSelectedVideoProject(p);
@@ -886,7 +892,11 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                     {p.category === "video" ? (
                       <button
                         onClick={() => {
-                          if (p.title.includes("Showreel")) {
+                          if (p.title.toLowerCase().includes("travel")) {
+                            setSelectedShowreelId("travel-showreel");
+                            setShowreelModalOpen(true);
+                          } else if (p.title.toLowerCase().includes("showreel")) {
+                            setSelectedShowreelId("portfolio-showreel");
                             setShowreelModalOpen(true);
                           } else {
                             setSelectedVideoProject(p);
@@ -895,7 +905,7 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                         className="w-full py-2.5 rounded-lg border border-[#D4AF37]/50 bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#B8941F] hover:text-black dark:text-[#F5BA42] dark:hover:text-black flex items-center justify-center space-x-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
                       >
                         <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>EXPLORE PROJECT →</span>
+                        <span>{p.title.toLowerCase().includes("showreel") ? "PLAY SHOWREEL →" : "EXPLORE PROJECT →"}</span>
                       </button>
                     ) : p.uxProjectId ? (
                       <div className="space-y-1.5">
@@ -1120,140 +1130,12 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
         subtitle={inAppViewerState.subtitle}
       />
 
-      {/* Dedicated Interactive Video Showreel Player Lightbox */}
-      <AnimatePresence>
-        {showreelModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/95 backdrop-blur-xl">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setShowreelModalOpen(false)}
-              className="absolute inset-0 cursor-pointer"
-            />
-
-            <motion.div
-              role="dialog"
-              aria-modal="true"
-              aria-label="Cinematic Video Showreel Player"
-              initial={{ opacity: 0, scale: 0.94, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.94, y: 20 }}
-              className="relative max-w-5xl w-full rounded-2xl border-[1.5px] border-[#D4AF37]/60 overflow-hidden shadow-[0_0_50px_rgba(255,107,0,0.3)] z-10 bg-[#070E1E] text-white"
-            >
-              {/* Top Modal Bar */}
-              <div className="px-5 py-3.5 bg-[#050B16] border-b border-white/10 flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#FF6B00] animate-pulse" />
-                  <span className="font-black text-xs uppercase tracking-widest text-white">
-                    CINEMATIC SHOWREEL 4K // PRASHANT SISODHIYA
-                  </span>
-                </div>
-                <button
-                  onClick={() => setShowreelModalOpen(false)}
-                  className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white transition-colors cursor-pointer"
-                  aria-label="Close showreel modal"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              {/* Video Screen Area */}
-              <div className="relative w-full aspect-[16/9] bg-black overflow-hidden flex items-center justify-center">
-                <Image
-                  src="/images/showreel/video-showreel.png"
-                  alt="Video Showreel Frame"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-                
-                {/* Visual Audio Waveform Simulation */}
-                <div className="absolute bottom-16 left-6 right-6 flex items-end gap-1 h-12 pointer-events-none opacity-80">
-                  {[24, 45, 18, 55, 78, 92, 40, 68, 85, 95, 30, 60, 48, 70, 88, 52, 34, 76, 90, 65, 42, 80, 95, 60, 38, 82, 58, 44, 72, 90, 36, 50].map((h, i) => (
-                    <div
-                      key={i}
-                      className="flex-1 bg-gradient-to-t from-[#FF6B00] via-[#F5BA42] to-[#00F0FF] rounded-t-sm transition-all duration-300"
-                      style={{ height: isPlayingShowreel ? `${(h * ((i % 3) + 1)) % 100}%` : "15%" }}
-                    />
-                  ))}
-                </div>
-
-                {/* Center Big Play Toggle Overlay */}
-                <button
-                  onClick={() => setIsPlayingShowreel(!isPlayingShowreel)}
-                  className="absolute z-20 w-16 h-16 rounded-full bg-black/60 backdrop-blur-md border border-[#F5BA42] text-[#F5BA42] hover:scale-110 transition-transform flex items-center justify-center cursor-pointer shadow-[0_0_25px_rgba(245,186,66,0.5)]"
-                >
-                  {isPlayingShowreel ? <Pause className="w-7 h-7" /> : <Play className="w-7 h-7 fill-current ml-1" />}
-                </button>
-
-                {/* Bottom Video Controls Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/95 via-black/70 to-transparent flex flex-col gap-2 z-20">
-                  {/* Scrubber Bar */}
-                  <div className="relative w-full h-1.5 bg-white/20 rounded-full overflow-hidden cursor-pointer">
-                    <div 
-                      className="h-full bg-gradient-to-r from-[#FF6B00] to-[#F5BA42] transition-all duration-300"
-                      style={{ width: `${((showreelChapter + 1) / 5) * 100}%` }}
-                    />
-                  </div>
-
-                  <div className="flex items-center justify-between text-xs font-mono text-slate-300">
-                    <div className="flex items-center gap-3">
-                      <button 
-                        onClick={() => setIsPlayingShowreel(!isPlayingShowreel)}
-                        className="hover:text-white transition-colors cursor-pointer"
-                      >
-                        {isPlayingShowreel ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-current" />}
-                      </button>
-                      <span className="text-[#F5BA42] font-bold">01:{showreelChapter * 25 + 15} / 02:45</span>
-                      <span className="hidden sm:inline text-slate-500">|</span>
-                      <span className="hidden sm:inline text-slate-300">Chapter {showreelChapter + 1} of 5</span>
-                    </div>
-
-                    <div className="flex items-center gap-4">
-                      <span className="px-2 py-0.5 rounded bg-black/60 border border-white/10 text-[10px] text-[#00F0FF] font-bold">
-                        REC.709 LUT
-                      </span>
-                      <Volume2 className="w-4 h-4 text-slate-400" />
-                      <Maximize2 className="w-4 h-4 text-slate-400 cursor-pointer hover:text-white" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Chapter Markers & Breakdown */}
-              <div className="p-5 bg-[#050C1A] border-t border-white/10">
-                <span className="text-[10px] font-mono text-[#F5BA42] uppercase tracking-widest block mb-2 font-bold">
-                  INTERACTIVE REEL CHAPTERS & EDITING CRAFT
-                </span>
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
-                  {[
-                    { id: 0, time: "00:15", title: "Match Cuts", tech: "Rhythm Cut" },
-                    { id: 1, time: "00:48", title: "Speed Ramping", tech: "Curve Re-timing" },
-                    { id: 2, time: "01:20", title: "Color Grading", tech: "Rec.709 & Teal/Orange" },
-                    { id: 3, time: "01:55", title: "Kinetic Titles", tech: "After Effects 3D" },
-                    { id: 4, time: "02:30", title: "Sound Design", tech: "Multi-Track SFX" },
-                  ].map((ch) => (
-                    <button
-                      key={ch.id}
-                      onClick={() => setShowreelChapter(ch.id)}
-                      className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
-                        showreelChapter === ch.id
-                          ? "bg-[#FF6B00]/15 border-[#FF6B00] text-white shadow-[0_0_12px_rgba(255,107,0,0.3)]"
-                          : "bg-white/5 border-white/10 text-slate-400 hover:border-white/30 hover:text-white"
-                      }`}
-                    >
-                      <span className="text-[9px] font-mono text-[#F5BA42] block">{ch.time}</span>
-                      <span className="text-xs font-bold block truncate">{ch.title}</span>
-                      <span className="text-[9px] text-slate-400 block truncate">{ch.tech}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+      {/* High-Definition 4K Responsive Showreel Cinema Overlay */}
+      <ShowreelModal
+        isOpen={showreelModalOpen}
+        initialReelId={selectedShowreelId}
+        onClose={() => setShowreelModalOpen(false)}
+      />
 
       {/* INDIVIDUAL VIDEO PROJECT PLAYER MODAL */}
       <AnimatePresence>

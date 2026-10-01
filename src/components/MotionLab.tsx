@@ -7,6 +7,7 @@ import {
   Play, Pause, Volume2, VolumeX, Maximize2, Film,
   CheckCircle2, ArrowRight, X,
 } from "lucide-react";
+import ShowreelModal from "@/components/ShowreelModal";
 
 interface MotionProject {
   id: string;
@@ -67,6 +68,8 @@ export default function MotionLab() {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [activeModalProject, setActiveModalProject] = useState<MotionProject | null>(null);
+  const [showreelCinemaOpen, setShowreelCinemaOpen] = useState<boolean>(false);
+  const [cinemaReelId, setCinemaReelId] = useState<string>("portfolio-showreel");
   const videoRef = useRef<HTMLVideoElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -81,17 +84,30 @@ export default function MotionLab() {
 
   const motionProjects: MotionProject[] = [
     {
-      id: "showreel-4k",
-      title: "Cinematic Video Showreel 4K",
+      id: "portfolio-showreel",
+      title: "Portfolio Showreel 4K",
       category: "Master Showreel",
       role: "Lead Video Editor & Motion Designer",
-      tools: ["Premiere Pro", "After Effects", "DaVinci Resolve", "Audition"],
-      duration: "00:34",
-      description: "Flagship showreel highlighting dynamic speed ramping, Rec.709 color grading, kinetic typography, and precision multi-track sound design.",
-      poster: "/images/showreel/video-showreel.png",
-      videoUrl: "/videos/video-showreel.mp4",
+      tools: ["Premiere Pro", "After Effects", "DaVinci Resolve", "Sound Design"],
+      duration: "01:10",
+      description: "The official master showreel compiling dynamic pacing edits, multi-track audio synchronization, visual transitions, 3D space tracking, keyframe animations, and cinema-grade color grading.",
+      poster: "/images/portfolio_showreel_thumbnail.png",
+      videoUrl: "/videos/portfolio_showreel.mp4",
       statsBadge: "4K Master • Speed Ramping",
       highlights: ["Frame-accurate beat matching", "Rec.709 film LUT calibration", "Kinetic subtitle typography"],
+    },
+    {
+      id: "travel-showreel",
+      title: "Travel Showreel 4K",
+      category: "Cinematic Travel Film",
+      role: "Cinematographer & Colorist",
+      tools: ["Premiere Pro", "DaVinci Resolve", "Drone Stabilization", "Atmospheric LUTs"],
+      duration: "00:30",
+      description: "High-impact cinematic travel showreel featuring atmospheric color grading, speed ramping, rhythmic match cuts, drone footage stabilization, and spatial acoustic design.",
+      poster: "/images/travel_showreel_thumbnail.png",
+      videoUrl: "/videos/travel_showreel.mp4",
+      statsBadge: "4K Cinema • Speed Ramping",
+      highlights: ["Natural spatial acoustic mix", "Speed-ramp mountain sweeps", "Teal and orange golden hour grading"],
     },
     {
       id: "veronixx-app-walkthrough",
@@ -105,19 +121,6 @@ export default function MotionLab() {
       videoUrl: "/videos/veronixx-app-preview.mp4",
       statsBadge: "Full App Preview • Production Client",
       highlights: ["Live app e-commerce interface", "Automated GST thermal receipts", "Offline-first catalog indexing"],
-    },
-    {
-      id: "travel-cinematic",
-      title: "Alpine Horizons // Travel Cinematic Film",
-      category: "Cinematic Travel",
-      role: "Director of Photography & Colorist",
-      tools: ["Premiere Pro", "FilmConvert", "Lumetri Color"],
-      duration: "02:30",
-      description: "Atmospheric travel portfolio captured across scenic mountain ranges and nature trails. Features seamless whip-pan transitions, speed ramps, and natural acoustic ambiance.",
-      poster: "/images/showreel/travel cinematic video thumbnail.png",
-      videoUrl: "/videos/video-showreel.mp4",
-      statsBadge: "Whip-Pans • 4K Cinematic",
-      highlights: ["Natural spatial acoustic mix", "Speed-ramp mountain sweeps", "Teal and orange golden hour grading"],
     },
     {
       id: "corporate-pitch-film",
@@ -213,6 +216,15 @@ export default function MotionLab() {
   }, [isMuted]);
 
   const closeModal = useCallback(() => setActiveModalProject(null), []);
+
+  const handleOpenProjectModal = useCallback((proj: MotionProject) => {
+    if (proj.id === "portfolio-showreel" || proj.id === "travel-showreel") {
+      setCinemaReelId(proj.id);
+      setShowreelCinemaOpen(true);
+    } else {
+      setActiveModalProject(proj);
+    }
+  }, []);
 
   /* ─── Pause inline player when project changes ────────── */
   useEffect(() => {
@@ -340,9 +352,9 @@ export default function MotionLab() {
                       {currentProject.statsBadge}
                     </span>
                     <button
-                      onClick={() => setActiveModalProject(currentProject)}
+                      onClick={() => handleOpenProjectModal(currentProject)}
                       className="p-1.5 rounded-lg bg-white/10 hover:bg-[#D4AF37] hover:text-black transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D4AF37]"
-                      aria-label={`Open ${currentProject.title} in fullscreen`}
+                      aria-label={`Open ${currentProject.title} in fullscreen cinema overlay`}
                     >
                       <Maximize2 className="w-4 h-4" aria-hidden="true" />
                     </button>
@@ -474,7 +486,7 @@ export default function MotionLab() {
                     ))}
                   </div>
                   <button
-                    onClick={() => { setActiveProjectIdx(idx); setActiveModalProject(proj); }}
+                    onClick={() => { setActiveProjectIdx(idx); handleOpenProjectModal(proj); }}
                     aria-label={`Watch ${proj.title}`}
                     className="text-[#B8941F] dark:text-[#D4AF37] hover:underline font-bold text-xs uppercase flex items-center space-x-1 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D4AF37] rounded"
                   >
@@ -557,6 +569,13 @@ export default function MotionLab() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* ── High-Definition 4K Cinema Overlay for Showreels ── */}
+      <ShowreelModal
+        isOpen={showreelCinemaOpen}
+        initialReelId={cinemaReelId}
+        onClose={() => setShowreelCinemaOpen(false)}
+      />
     </section>
   );
 }
