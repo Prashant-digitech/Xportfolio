@@ -23,12 +23,6 @@ export default function Hero({ profile }: HeroProps) {
         behavior: "smooth",
         block: "start",
       });
-      setTimeout(() => {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }, 350);
     }
   };
 

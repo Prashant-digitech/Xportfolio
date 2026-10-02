@@ -106,14 +106,16 @@ export default function CinematicCategoryGalleryModal({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, isFullscreen, onClose, handleNext, handlePrev]);
 
-  // Auto-scroll active thumbnail into view in filmstrip
+  // Auto-scroll active thumbnail inside filmstrip container ONLY (never scrolls window)
   useEffect(() => {
-    if (!filmstripRef.current) return;
-    const activeThumb = filmstripRef.current.children[currentIndex] as HTMLElement | undefined;
+    if (!isOpen || !filmstripRef.current) return;
+    const container = filmstripRef.current;
+    const activeThumb = container.children[currentIndex] as HTMLElement | undefined;
     if (activeThumb) {
-      activeThumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      const targetLeft = activeThumb.offsetLeft - (container.clientWidth - activeThumb.clientWidth) / 2;
+      container.scrollTo({ left: targetLeft, behavior: "smooth" });
     }
-  }, [currentIndex]);
+  }, [isOpen, currentIndex]);
 
   // Mobile Swipe Handlers
   const handleTouchStart = (e: React.TouchEvent) => {

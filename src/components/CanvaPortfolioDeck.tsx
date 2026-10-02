@@ -64,12 +64,14 @@ export default function CanvaPortfolioDeck() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handlePrev, handleNext]);
 
-  // Scroll active thumbnail into view
+  // Scroll active thumbnail inside the thumbnail strip container ONLY (never scrolls window)
   useEffect(() => {
     if (thumbnailContainerRef.current) {
-      const activeEl = thumbnailContainerRef.current.children[activeSlideIndex] as HTMLElement;
+      const container = thumbnailContainerRef.current;
+      const activeEl = container.children[activeSlideIndex] as HTMLElement | undefined;
       if (activeEl) {
-        activeEl.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        const targetLeft = activeEl.offsetLeft - (container.clientWidth - activeEl.clientWidth) / 2;
+        container.scrollTo({ left: targetLeft, behavior: "smooth" });
       }
     }
   }, [activeSlideIndex]);

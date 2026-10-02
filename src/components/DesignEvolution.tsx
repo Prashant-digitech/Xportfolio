@@ -160,12 +160,14 @@ export default function DesignEvolution() {
     return () => clearInterval(interval);
   }, [isPlayingCarousel, pdfModalOpen]);
 
-  // Scroll active thumbnail into view
+  // Scroll active thumbnail inside the thumbnail strip container ONLY (never scrolls window)
   useEffect(() => {
     if (thumbnailStripRef.current) {
-      const activeThumb = thumbnailStripRef.current.children[currentSlideIdx] as HTMLElement;
+      const container = thumbnailStripRef.current;
+      const activeThumb = container.children[currentSlideIdx] as HTMLElement | undefined;
       if (activeThumb) {
-        activeThumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        const targetLeft = activeThumb.offsetLeft - (container.clientWidth - activeThumb.clientWidth) / 2;
+        container.scrollTo({ left: targetLeft, behavior: "smooth" });
       }
     }
   }, [currentSlideIdx]);

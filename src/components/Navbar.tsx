@@ -156,13 +156,6 @@ export default function Navbar({ profile, onUpdateProfile, recruiterMode, onTogg
         behavior: "smooth",
         block: "start",
       });
-      // Settle adjustment in case of lazy image expansion
-      scrollTimeoutRef.current = setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 750);
     }
   };
 
