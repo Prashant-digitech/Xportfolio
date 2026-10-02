@@ -483,6 +483,19 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       year: "2026"
     },
     { 
+      title: "Brand Showreel 4K", 
+      category: "video", 
+      description: "High-concept futuristic brand commercial for PRASOLAR featuring autonomous electric vehicle tracking, clean energy smart-grid telemetry graphics, dynamic camera sweeps, and cinema-grade color science.", 
+      img: "/images/brand_showreel_thumbnail.png", 
+      caseStudy: "Launch Showreel", 
+      figmaUrl: "#work",
+      statsBadge: "4K Brand Film • 3D VFX",
+      videoUrl: "/videos/brand_showreel.mp4",
+      tags: ["Premiere Pro", "After Effects", "3D Camera Tracking", "Sound Design"],
+      role: "Cinematic Direction · Motion VFX",
+      year: "2026"
+    },
+    { 
       title: "Travel Showreel 4K", 
       category: "video", 
       description: "High-impact cinematic travel showreel featuring atmospheric color grading, speed ramping, rhythmic match cuts, drone footage stabilization, and spatial acoustic design.", 
@@ -844,10 +857,13 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                     <div 
                       onClick={() => {
                         if (p.category === "video") {
-                          if (p.title.toLowerCase().includes("travel")) {
+                          if (p.title.toLowerCase().includes("brand")) {
+                            setSelectedShowreelId("brand-showreel");
+                            setShowreelModalOpen(true);
+                          } else if (p.title.toLowerCase().includes("travel")) {
                             setSelectedShowreelId("travel-showreel");
                             setShowreelModalOpen(true);
-                          } else if (p.title.toLowerCase().includes("showreel")) {
+                          } else if (p.title.toLowerCase().includes("portfolio") || p.title.toLowerCase().includes("showreel")) {
                             setSelectedShowreelId("portfolio-showreel");
                             setShowreelModalOpen(true);
                           } else if (p.videoUrl) {
@@ -892,10 +908,13 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                     {p.category === "video" ? (
                       <button
                         onClick={() => {
-                          if (p.title.toLowerCase().includes("travel")) {
+                          if (p.title.toLowerCase().includes("brand")) {
+                            setSelectedShowreelId("brand-showreel");
+                            setShowreelModalOpen(true);
+                          } else if (p.title.toLowerCase().includes("travel")) {
                             setSelectedShowreelId("travel-showreel");
                             setShowreelModalOpen(true);
-                          } else if (p.title.toLowerCase().includes("showreel")) {
+                          } else if (p.title.toLowerCase().includes("portfolio") || p.title.toLowerCase().includes("showreel")) {
                             setSelectedShowreelId("portfolio-showreel");
                             setShowreelModalOpen(true);
                           } else {

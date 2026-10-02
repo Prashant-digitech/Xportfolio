@@ -94,6 +94,7 @@ export function buildSearchIndex(): SearchEntry[] {
   // 4. Motion / Video Projects
   const motionItems = [
     { id: "showreel-4k", title: "Cinematic Video Showreel 4K", desc: "Flagship showreel with speed ramping and Rec.709 grading", tools: "Premiere, After Effects, DaVinci" },
+    { id: "brand-showreel", title: "PRASOLAR Brand Commercial 4K", desc: "Futuristic clean energy & electric mobility commercial with 3D VFX motion tracking", tools: "Premiere Pro, After Effects, 3D Tracking" },
     { id: "veronixx-app-walkthrough", title: "Veronixx Storefront & POS // Full System Walkthrough", desc: "Complete live app and offline POS engine walkthrough", tools: "Next.js, Tailwind, ESC/POS" },
     { id: "travel-cinematic", title: "Alpine Horizons // Travel Cinematic Film", desc: "Atmospheric travel portfolio captured across mountain ranges", tools: "Premiere, FilmConvert" },
     { id: "fitness-promo", title: "Apex Athletic Performance Commercial", desc: "High-octane gym promo video with speed-ramped whip transitions", tools: "After Effects, Audition" },
@@ -107,9 +108,9 @@ export function buildSearchIndex(): SearchEntry[] {
       category: "motion",
       categoryBadge: "Motion & Film",
       description: m.desc,
-      keywords: [m.title.toLowerCase(), "video", "motion", "film", "premiere", "after effects", "showreel", m.tools.toLowerCase()],
+      keywords: [m.title.toLowerCase(), "video", "motion", "film", "premiere", "after effects", "showreel", "brand", "prasolar", m.tools.toLowerCase()],
       actionType: "scroll_to_section",
-      target: "motion-lab",
+      target: "motion",
       extraMeta: "Motion Project",
     });
   });

@@ -97,6 +97,19 @@ export default function MotionLab() {
       highlights: ["Frame-accurate beat matching", "Rec.709 film LUT calibration", "Kinetic subtitle typography"],
     },
     {
+      id: "brand-showreel",
+      title: "PRASOLAR // Brand Commercial 4K",
+      category: "Brand Commercial Film",
+      role: "Cinematic Direction & Motion VFX",
+      tools: ["Premiere Pro", "After Effects", "3D Camera Tracking", "Sound Design"],
+      duration: "00:40",
+      description: "High-concept futuristic brand commercial for PRASOLAR featuring autonomous electric vehicle tracking, clean energy smart-grid telemetry graphics, dynamic camera sweeps, and cinema-grade color science.",
+      poster: "/images/brand_showreel_thumbnail.png",
+      videoUrl: "/videos/brand_showreel.mp4",
+      statsBadge: "4K Brand Film • 3D VFX",
+      highlights: ["Futuristic smart grid HUD tracking", "Dynamic high-speed camera sweeps", "Spatial synthesizer audio master"],
+    },
+    {
       id: "travel-showreel",
       title: "Travel Showreel 4K",
       category: "Cinematic Travel Film",
@@ -218,7 +231,7 @@ export default function MotionLab() {
   const closeModal = useCallback(() => setActiveModalProject(null), []);
 
   const handleOpenProjectModal = useCallback((proj: MotionProject) => {
-    if (proj.id === "portfolio-showreel" || proj.id === "travel-showreel") {
+    if (proj.id === "portfolio-showreel" || proj.id === "travel-showreel" || proj.id === "brand-showreel") {
       setCinemaReelId(proj.id);
       setShowreelCinemaOpen(true);
     } else {
@@ -438,11 +451,11 @@ export default function MotionLab() {
                 <div>
                   {/* Poster Thumbnail */}
                   <div
-                    onClick={() => { setActiveProjectIdx(idx); setActiveModalProject(proj); }}
+                    onClick={() => { setActiveProjectIdx(idx); handleOpenProjectModal(proj); }}
                     role="button"
                     tabIndex={0}
                     aria-label={`Watch ${proj.title}`}
-                    onKeyDown={(e) => { if (e.key === "Enter") { setActiveProjectIdx(idx); setActiveModalProject(proj); } }}
+                    onKeyDown={(e) => { if (e.key === "Enter") { setActiveProjectIdx(idx); handleOpenProjectModal(proj); } }}
                     className="relative aspect-[16/10] w-full rounded-xl overflow-hidden bg-black border border-black/10 dark:border-white/10 mb-4 cursor-pointer group/vid focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D4AF37]"
                   >
                     <Image

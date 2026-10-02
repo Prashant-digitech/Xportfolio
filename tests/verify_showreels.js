@@ -2,10 +2,10 @@ const { chromium } = require("playwright");
 const fs = require("fs");
 const path = require("path");
 
-const ARTIFACTS_DIR = "C:/Users/sisod/.gemini/antigravity-ide/brain/9ed4b36f-3889-469f-81db-03454f66c7f3";
+const ARTIFACTS_DIR = "C:/Users/sisod/.gemini/antigravity-ide/brain/c8a0f5da-bd97-4a27-bbec-672f25c34a2e";
 
 async function runVerification() {
-  console.log("Starting Playwright Showreel Responsive & Modal Verification...");
+  console.log("Starting Playwright Brand & Showreel Responsive Verification...");
   const browser = await chromium.launch({ headless: true });
 
   const viewports = [
@@ -50,22 +50,27 @@ async function runVerification() {
     });
     console.log(`Saved screenshot: showreel_work_section_${vp.name}.png`);
 
-    // Verify Portfolio Showreel and Travel Showreel cards exist
-    const portfolioCard = page.locator("text=Portfolio Showreel 4K").first();
-    const travelCard = page.locator("text=Travel Showreel 4K").first();
+    // Verify Portfolio, Brand, and Travel Showreel cards exist
+    const portfolioCard = page.locator("h4:has-text('Portfolio Showreel 4K')").first();
+    const brandCard = page.locator("h4:has-text('Brand Showreel 4K')").first();
+    const travelCard = page.locator("h4:has-text('Travel Showreel 4K')").first();
     const hasPortfolio = await portfolioCard.isVisible();
+    const hasBrand = await brandCard.isVisible();
     const hasTravel = await travelCard.isVisible();
     console.log(`Portfolio Showreel 4K card visible: ${hasPortfolio}`);
+    console.log(`Brand Showreel 4K card visible: ${hasBrand}`);
     console.log(`Travel Showreel 4K card visible: ${hasTravel}`);
 
-    // Click Portfolio Showreel card / button
-    const playPortfolioBtn = page.locator("button:has-text('PLAY SHOWREEL →')").first();
-    if (await playPortfolioBtn.isVisible()) {
-      await playPortfolioBtn.click();
+    // Click Brand Showreel button to test direct modal opening
+    const brandBtn = page.locator(".group:has(h4:has-text('Brand Showreel 4K')) button:has-text('PLAY SHOWREEL')").first();
+    if (await brandBtn.isVisible()) {
+      console.log("Found Brand Showreel button, clicking...");
+      await brandBtn.click();
     } else {
-      await portfolioCard.click();
+      console.log("Clicking fallback brand card image...");
+      await page.locator(".group:has(h4:has-text('Brand Showreel 4K'))").first().click();
     }
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(1500);
 
     // Verify Showreel Modal is open
     const modal = page.locator("#showreel-modal");
@@ -76,11 +81,11 @@ async function runVerification() {
     const videoSrc = await videoEl.getAttribute("src");
     console.log(`Video src in modal: ${videoSrc}`);
 
-    // Capture modal screenshot with Portfolio Showreel
+    // Capture modal screenshot with Brand Showreel
     await page.screenshot({
-      path: path.join(ARTIFACTS_DIR, `modal_portfolio_${vp.name}.png`),
+      path: path.join(ARTIFACTS_DIR, `modal_brand_${vp.name}.png`),
     });
-    console.log(`Saved screenshot: modal_portfolio_${vp.name}.png`);
+    console.log(`Saved screenshot: modal_brand_${vp.name}.png`);
 
     // Switch to Travel Showreel via button
     const travelSwitchBtn = page.locator("button[data-reel-id='travel-showreel']").first();
@@ -90,16 +95,29 @@ async function runVerification() {
       const switchedSrc = await videoEl.getAttribute("src");
       console.log(`Switched to Travel Showreel. Video src: ${switchedSrc}`);
       
-      // Capture modal screenshot with Travel Showreel
       await page.screenshot({
         path: path.join(ARTIFACTS_DIR, `modal_travel_${vp.name}.png`),
       });
       console.log(`Saved screenshot: modal_travel_${vp.name}.png`);
     }
 
+    // Switch to Portfolio Showreel via button
+    const portfolioSwitchBtn = page.locator("button[data-reel-id='portfolio-showreel']").first();
+    if (await portfolioSwitchBtn.isVisible()) {
+      await portfolioSwitchBtn.click();
+      await page.waitForTimeout(800);
+      const switchedPortfolioSrc = await videoEl.getAttribute("src");
+      console.log(`Switched to Portfolio Showreel. Video src: ${switchedPortfolioSrc}`);
+      
+      await page.screenshot({
+        path: path.join(ARTIFACTS_DIR, `modal_portfolio_${vp.name}.png`),
+      });
+      console.log(`Saved screenshot: modal_portfolio_${vp.name}.png`);
+    }
+
     // Test ESC key dismissal
     await page.keyboard.press("Escape");
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(600);
     const modalAfterEsc = await modal.isVisible();
     console.log(`Modal dismissed after ESC: ${!modalAfterEsc}`);
 

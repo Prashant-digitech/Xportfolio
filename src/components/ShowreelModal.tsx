@@ -37,6 +37,20 @@ export const SHOWREELS: ShowreelItem[] = [
     accent: "#D4A017",
   },
   {
+    id: "brand-showreel",
+    title: "Brand Showreel",
+    subtitle: "PRASOLAR Clean Tech & Mobility Commercial • 4K UHD",
+    category: "Brand Commercial",
+    duration: "00:40",
+    resolution: "4K UHD (3840×2160)",
+    fps: "24 FPS",
+    software: ["Premiere Pro", "After Effects", "3D Camera Tracking", "Sound Design"],
+    description: "High-concept futuristic brand commercial for PRASOLAR featuring autonomous electric vehicle tracking, clean energy smart-grid telemetry graphics, dynamic camera sweeps, and cinema-grade color science.",
+    videoUrl: "/videos/brand_showreel.mp4",
+    thumbnail: "/images/brand_showreel_thumbnail.png",
+    accent: "#10B981",
+  },
+  {
     id: "travel-showreel",
     title: "Travel Showreel",
     subtitle: "Cinematic Travel Film • 4K UHD",
@@ -247,7 +261,7 @@ export default function ShowreelModal({
                     }`}
                   >
                     <Film className="w-3.5 h-3.5 shrink-0" />
-                    <span className="truncate">{reel.title}</span>
+                    <span className="truncate">{reel.title.replace(" Showreel", "")}</span>
                   </button>
                 );
               })}
