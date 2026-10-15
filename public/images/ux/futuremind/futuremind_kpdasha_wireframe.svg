@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <rect width="800" height="500" fill="#080C14"/>
+  <defs>
+    <linearGradient id="purple-fade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9d4edd"/>
+      <stop offset="100%" stop-color="rgba(157, 78, 221, 0.2)"/>
+    </linearGradient>
+    <linearGradient id="cyan-fade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F2FE"/>
+      <stop offset="100%" stop-color="rgba(0, 242, 254, 0.1)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title Header -->
+  <text x="30" y="35" fill="#E2E8F0" font-family="'Poppins', sans-serif" font-size="18" font-weight="600">FUTUREMIND OS // KP DASHA TIMELINE</text>
+  <rect x="30" y="45" width="740" height="1" fill="rgba(212, 175, 55, 0.3)"/>
+
+  <!-- Left Sidebar: Planet Strengths -->
+  <rect x="30" y="80" width="220" height="380" rx="8" fill="rgba(9, 13, 24, 0.7)" stroke="rgba(212, 175, 55, 0.35)"/>
+  <text x="45" y="110" fill="#E2E8F0" font-family="'Poppins', sans-serif" font-size="13" font-weight="600">PLANETARY SHADBALA</text>
+  
+  <!-- Jupiter -->
+  <text x="45" y="145" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Jupiter (Guru)</text>
+  <text x="215" y="145" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="11" text-anchor="end">1.45 (Strong)</text>
+  <rect x="45" y="155" width="170" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+  <rect x="45" y="155" width="145" height="6" rx="3" fill="#00F2FE"/>
+
+  <!-- Saturn -->
+  <text x="45" y="195" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Saturn (Shani)</text>
+  <text x="215" y="195" fill="#9d4edd" font-family="'Inter', sans-serif" font-size="11" text-anchor="end">1.12 (Average)</text>
+  <rect x="45" y="205" width="170" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+  <rect x="45" y="205" width="112" height="6" rx="3" fill="#9d4edd"/>
+
+  <!-- Mercury -->
+  <text x="45" y="245" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Mercury (Budha)</text>
+  <text x="215" y="245" fill="#fbbf24" font-family="'Inter', sans-serif" font-size="11" text-anchor="end">0.85 (Weak)</text>
+  <rect x="45" y="255" width="170" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+  <rect x="45" y="255" width="85" height="6" rx="3" fill="#fbbf24"/>
+
+  <!-- Ketu -->
+  <text x="45" y="295" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Ketu</text>
+  <text x="215" y="295" fill="#F43F5E" font-family="'Inter', sans-serif" font-size="11" text-anchor="end">0.60 (Afflicted)</text>
+  <rect x="45" y="305" width="170" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+  <rect x="45" y="305" width="60" height="6" rx="3" fill="#F43F5E"/>
+
+  <!-- Right Pane: Timeline Cycles -->
+  <rect x="270" y="80" width="500" height="380" rx="8" fill="rgba(9, 13, 24, 0.7)" stroke="rgba(212, 175, 55, 0.35)"/>
+  <text x="290" y="110" fill="#00F2FE" font-family="'Poppins', sans-serif" font-size="14" font-weight="600">CURRENT MAHADASHA RUN</text>
+  <text x="290" y="130" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Active Planet: JUPITER (16 Years) • 2020 to 2036</text>
+
+  <!-- Timeline visual block 1: Jupiter Mahadasha -->
+  <rect x="290" y="160" width="460" height="35" rx="4" fill="url(#purple-fade)" stroke="rgba(157, 78, 221, 0.4)"/>
+  <text x="305" y="182" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11" font-weight="bold">MAHADASHA: JUPITER (Guru)</text>
+  <text x="735" y="182" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11" text-anchor="end">2020-04-10 - 2036-04-10</text>
+
+  <!-- Timeline visual block 2: Antardasha (Sub-cycle) -->
+  <text x="290" y="225" fill="#00F2FE" font-family="'Poppins', sans-serif" font-size="13" font-weight="600">ANTARDASHA (SUB-CYCLES)</text>
+  
+  <!-- Sub-row 1: Sat -->
+  <rect x="290" y="245" width="220" height="30" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+  <text x="300" y="264" fill="#64748B" font-family="'Inter', sans-serif" font-size="10">Saturn (Finished)</text>
+  <text x="500" y="264" fill="#64748B" font-family="'Inter', sans-serif" font-size="10" text-anchor="end">2022-2024</text>
+
+  <!-- Sub-row 2: Merc (Active) -->
+  <rect x="290" y="285" width="460" height="35" rx="4" fill="url(#cyan-fade)" stroke="#00F2FE" stroke-width="1.5"/>
+  <text x="305" y="307" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11" font-weight="bold">ACTIVE: Mercury (Budha)</text>
+  <text x="735" y="307" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" text-anchor="end">2024-06-15 - 2027-01-20</text>
+
+  <!-- Sub-row 3: Ketu -->
+  <rect x="290" y="330" width="460" height="30" rx="4" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" opacity="0.5"/>
+  <text x="305" y="349" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="10">Ketu (Upcoming)</text>
+  <text x="735" y="349" fill="#64748B" font-family="'Inter', sans-serif" font-size="10" text-anchor="end">2027-01-20 - 2027-12-26</text>
+  
+  <text x="290" y="390" fill="#fbbf24" font-family="'Inter', sans-serif" font-size="11" font-weight="bold">PRO-TIP FOR FIGJAM:</text>
+  <text x="290" y="410" fill="#64748B" font-family="'Inter', sans-serif" font-size="10">Use these periods to align product release timelines, roadmap forecasting, or personal milestones.</text>
+</svg>

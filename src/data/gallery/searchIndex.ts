@@ -95,6 +95,7 @@ export function buildSearchIndex(): SearchEntry[] {
   const motionItems = [
     { id: "showreel-4k", title: "Cinematic Video Showreel 4K", desc: "Flagship showreel with speed ramping and Rec.709 grading", tools: "Premiere, After Effects, DaVinci" },
     { id: "brand-showreel", title: "PRASOLAR Brand Commercial 4K", desc: "Futuristic clean energy & electric mobility commercial with 3D VFX motion tracking", tools: "Premiere Pro, After Effects, 3D Tracking" },
+    { id: "witch-trailer", title: "Witch — 4K Dark Fantasy Movie Trailer", desc: "Cinematic dark fantasy trailer with suspense rhythm cuts, VFX compositing, and spatial audio", tools: "Premiere Pro, After Effects, VFX Compositing" },
     { id: "veronixx-app-walkthrough", title: "Veronixx Storefront & POS // Full System Walkthrough", desc: "Complete live app and offline POS engine walkthrough", tools: "Next.js, Tailwind, ESC/POS" },
     { id: "travel-cinematic", title: "Alpine Horizons // Travel Cinematic Film", desc: "Atmospheric travel portfolio captured across mountain ranges", tools: "Premiere, FilmConvert" },
     { id: "fitness-promo", title: "Apex Athletic Performance Commercial", desc: "High-octane gym promo video with speed-ramped whip transitions", tools: "After Effects, Audition" },

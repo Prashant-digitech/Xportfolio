@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <rect width="800" height="500" fill="#080C14"/>
+  <defs>
+    <linearGradient id="cyan-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE"/>
+      <stop offset="100%" stop-color="#4FACFE"/>
+    </linearGradient>
+    <linearGradient id="purple-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9d4edd"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0c1226"/>
+      <stop offset="100%" stop-color="#080C14"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg-glow)"/>
+  
+  <!-- Cyber Grid -->
+  <g stroke="rgba(31, 46, 77, 0.2)" stroke-width="1">
+    <line x1="0" y1="50" x2="800" y2="50"/>
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="250" x2="800" y2="250"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="350" x2="800" y2="350"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="0" y1="450" x2="800" y2="450"/>
+    <line x1="100" y1="0" x2="100" y2="500"/>
+    <line x1="200" y1="0" x2="200" y2="500"/>
+    <line x1="300" y1="0" x2="300" y2="500"/>
+    <line x1="400" y1="0" x2="400" y2="500"/>
+    <line x1="500" y1="0" x2="500" y2="500"/>
+    <line x1="600" y1="0" x2="600" y2="500"/>
+    <line x1="700" y1="0" x2="700" y2="500"/>
+  </g>
+
+  <!-- Title Header -->
+  <text x="30" y="35" fill="#E2E8F0" font-family="'Poppins', sans-serif" font-size="18" font-weight="600">FUTUREMIND OS // PALMISTRY SCANNER</text>
+  <rect x="30" y="45" width="740" height="1" fill="rgba(212, 175, 55, 0.3)"/>
+
+  <!-- Palm Scanning Interface -->
+  <circle cx="400" cy="270" r="160" fill="none" stroke="rgba(0, 242, 254, 0.2)" stroke-dasharray="5,5"/>
+  <circle cx="400" cy="270" r="180" fill="none" stroke="url(#purple-glow)" stroke-width="1.5" opacity="0.4"/>
+  <circle cx="400" cy="270" r="10" fill="url(#cyan-glow)"/>
+
+  <!-- Glowing wireframe hand -->
+  <path d="M 370,390 C 370,390 350,330 350,280 C 350,250 330,220 330,200 C 330,190 340,180 345,190 C 355,205 375,240 375,250 C 375,210 365,150 365,130 C 365,120 375,120 380,130 C 390,150 395,210 395,230 C 395,190 395,110 395,90 C 395,80 405,80 410,90 C 415,110 415,190 415,225 C 415,195 425,120 425,105 C 425,95 435,95 438,105 C 442,125 440,200 440,230 C 440,210 455,160 460,150 C 465,140 475,145 470,160 C 460,190 450,240 450,270 C 450,320 430,390 430,390 Z" 
+        fill="none" stroke="url(#cyan-glow)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- SCAN line -->
+  <line x1="200" y1="220" x2="600" y2="220" stroke="#00F2FE" stroke-width="2" opacity="0.8">
+    <animate attributeName="y1" values="100;420;100" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="y2" values="100;420;100" dur="4s" repeatCount="indefinite" />
+  </line>
+
+  <!-- Analytics Side Cards -->
+  <!-- Left Card -->
+  <rect x="30" y="80" width="180" height="380" rx="8" fill="rgba(9, 13, 24, 0.7)" stroke="rgba(212, 175, 55, 0.35)"/>
+  <text x="45" y="110" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="12" font-weight="600">LIFE LINE ANALYSIS</text>
+  <text x="45" y="135" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Length: 92% (High)</text>
+  <text x="45" y="155" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Vitality: Dynamic</text>
+  <text x="45" y="175" fill="#64748B" font-family="'Inter', sans-serif" font-size="10">Strong life force, high</text>
+  <text x="45" y="190" fill="#64748B" font-family="'Inter', sans-serif" font-size="10">resistance to stress.</text>
+
+  <text x="45" y="240" fill="#9d4edd" font-family="'Inter', sans-serif" font-size="12" font-weight="600">HEAD LINE ANALYSIS</text>
+  <text x="45" y="265" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Structure: Curved</text>
+  <text x="45" y="285" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Focus: Creative</text>
+  <text x="45" y="305" fill="#64748B" font-family="'Inter', sans-serif" font-size="10">Intuitive mindset with</text>
+  <text x="45" y="320" fill="#64748B" font-family="'Inter', sans-serif" font-size="10">strong artistic vision.</text>
+
+  <!-- Right Card -->
+  <rect x="590" y="80" width="180" height="380" rx="8" fill="rgba(9, 13, 24, 0.7)" stroke="rgba(212, 175, 55, 0.35)"/>
+  <text x="605" y="110" fill="#fbbf24" font-family="'Inter', sans-serif" font-size="12" font-weight="600">HEART LINE ANALYSIS</text>
+  <text x="605" y="135" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Type: Warm &amp; Deep</text>
+  <text x="605" y="155" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Empathy Score: 9.4</text>
+  <text x="605" y="175" fill="#64748B" font-family="'Inter', sans-serif" font-size="10">Deep emotional depth,</text>
+  <text x="605" y="190" fill="#64748B" font-family="'Inter', sans-serif" font-size="10">passionate expression.</text>
+
+  <text x="605" y="240" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="12" font-weight="600">SYS STATUS</text>
+  <rect x="605" y="255" width="150" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+  <rect x="605" y="255" width="120" height="6" rx="3" fill="url(#cyan-glow)"/>
+  <text x="605" y="280" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="10">Calibration: Done</text>
+  <text x="605" y="295" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="10">Model: Gemini Vision</text>
+</svg>

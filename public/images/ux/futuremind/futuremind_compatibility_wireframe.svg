@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <rect width="800" height="500" fill="#080C14"/>
+  <defs>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d4af37"/>
+    </linearGradient>
+    <linearGradient id="purple-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9d4edd"/>
+      <stop offset="100%" stop-color="#662d91"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title Header -->
+  <text x="30" y="35" fill="#E2E8F0" font-family="'Poppins', sans-serif" font-size="18" font-weight="600">FUTUREMIND OS // KUNDLI COMPATIBILITY</text>
+  <rect x="30" y="45" width="740" height="1" fill="rgba(212, 175, 55, 0.3)"/>
+
+  <!-- Left Chart: Score Wheel -->
+  <g transform="translate(180, 240)">
+    <circle r="90" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="12"/>
+    <circle r="90" fill="none" stroke="url(#gold-grad)" stroke-width="12" stroke-dasharray="565" stroke-dashoffset="150"/>
+    <text x="0" y="-10" fill="#E2E8F0" font-family="'Poppins', sans-serif" font-size="24" font-weight="bold" text-anchor="middle">28 / 36</text>
+    <text x="0" y="15" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="10" font-weight="600" text-anchor="middle">MUTUAL POINTS</text>
+    <text x="0" y="35" fill="#fbbf24" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" text-anchor="middle">HIGH COMPATIBILITY</text>
+  </g>
+
+  <!-- Side comparison details -->
+  <!-- Partner A (Self) -->
+  <rect x="30" y="360" width="130" height="100" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)"/>
+  <text x="40" y="380" fill="#64748B" font-family="'Inter', sans-serif" font-size="10">PARTNER A</text>
+  <text x="40" y="400" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="12" font-weight="bold">Rishi S.</text>
+  <text x="40" y="420" fill="#fbbf24" font-family="'Inter', sans-serif" font-size="11">Rashi: Aries</text>
+  <text x="40" y="440" fill="#64748B" font-family="'Inter', sans-serif" font-size="10">Nakshatra: Ashwini</text>
+
+  <!-- Partner B (Target) -->
+  <rect x="180" y="360" width="130" height="100" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)"/>
+  <text x="190" y="380" fill="#64748B" font-family="'Inter', sans-serif" font-size="10">PARTNER B</text>
+  <text x="190" y="400" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="12" font-weight="bold">Aria V.</text>
+  <text x="190" y="420" fill="#9d4edd" font-family="'Inter', sans-serif" font-size="11">Rashi: Leo</text>
+  <text x="190" y="440" fill="#64748B" font-family="'Inter', sans-serif" font-size="10">Nakshatra: Magha</text>
+
+  <!-- Right Side: Detailed Table (Ashta Koota) -->
+  <rect x="350" y="80" width="420" height="380" rx="8" fill="rgba(9, 13, 24, 0.7)" stroke="rgba(212, 175, 55, 0.35)"/>
+  <text x="370" y="110" fill="#E2E8F0" font-family="'Poppins', sans-serif" font-size="14" font-weight="600">ASHTA KOOTA DETAILED REPORT</text>
+
+  <!-- Table Headers -->
+  <text x="370" y="145" fill="#64748B" font-family="'Inter', sans-serif" font-size="11" font-weight="bold">KOOTA (ASPECT)</text>
+  <text x="560" y="145" fill="#64748B" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" text-anchor="middle">MAX</text>
+  <text x="640" y="145" fill="#64748B" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" text-anchor="middle">OBTAINED</text>
+  <text x="720" y="145" fill="#64748B" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" text-anchor="middle">STATUS</text>
+  <line x1="370" y1="155" x2="750" y2="155" stroke="rgba(255,255,255,0.06)"/>
+
+  <!-- Row 1: Varna -->
+  <text x="370" y="180" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Varna (Work archetype)</text>
+  <text x="560" y="180" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">1</text>
+  <text x="640" y="180" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">1</text>
+  <text x="720" y="180" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" text-anchor="middle">MATCH</text>
+
+  <!-- Row 2: Vashya -->
+  <text x="370" y="215" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Vashya (Dominance)</text>
+  <text x="560" y="215" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">2</text>
+  <text x="640" y="215" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">1.5</text>
+  <text x="720" y="215" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" text-anchor="middle">GOOD</text>
+
+  <!-- Row 3: Tara -->
+  <text x="370" y="250" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Tara (Destiny/Stars)</text>
+  <text x="560" y="250" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">3</text>
+  <text x="640" y="250" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">3</text>
+  <text x="720" y="250" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" text-anchor="middle">MATCH</text>
+
+  <!-- Row 4: Yoni -->
+  <text x="370" y="285" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Yoni (Sexual affinity)</text>
+  <text x="560" y="285" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">4</text>
+  <text x="640" y="285" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">2</text>
+  <text x="720" y="285" fill="#fbbf24" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" text-anchor="middle">AVERAGE</text>
+
+  <!-- Row 5: Graha Maitri -->
+  <text x="370" y="320" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Graha Maitri (Friendship)</text>
+  <text x="560" y="320" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">5</text>
+  <text x="640" y="320" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">5</text>
+  <text x="720" y="320" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" text-anchor="middle">MATCH</text>
+
+  <!-- Row 6: Bhakoot -->
+  <text x="370" y="355" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Bhakoot (Emotional link)</text>
+  <text x="560" y="355" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">7</text>
+  <text x="640" y="355" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">7</text>
+  <text x="720" y="355" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" text-anchor="middle">MATCH</text>
+
+  <!-- Row 7: Nadi -->
+  <text x="370" y="390" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Nadi (Genetic health)</text>
+  <text x="560" y="390" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">8</text>
+  <text x="640" y="390" fill="#F43F5E" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">0</text>
+  <text x="720" y="390" fill="#F43F5E" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" text-anchor="middle">DOSHA</text>
+</svg>

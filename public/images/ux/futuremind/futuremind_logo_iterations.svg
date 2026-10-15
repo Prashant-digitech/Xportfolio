@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <rect width="800" height="500" fill="#080C14"/>
+  <defs>
+    <linearGradient id="gold-line" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d4af37"/>
+    </linearGradient>
+    <linearGradient id="blue-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE"/>
+      <stop offset="100%" stop-color="#4FACFE"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title Header -->
+  <text x="30" y="35" fill="#E2E8F0" font-family="'Poppins', sans-serif" font-size="18" font-weight="600">FUTUREMIND OS // LOGO DESIGN ITERATIONS</text>
+  <rect x="30" y="45" width="740" height="1" fill="rgba(212, 175, 55, 0.3)"/>
+
+  <!-- Concept 1: The Third Eye / Star Node -->
+  <g transform="translate(150, 220)">
+    <circle r="60" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3"/>
+    <!-- Eye shape paths -->
+    <path d="M -50,0 C -20,-30 20,-30 50,0 C 20,30 -20,30 -50,0 Z" fill="none" stroke="url(#blue-cyan)" stroke-width="2"/>
+    <!-- Central Node Star -->
+    <polygon points="0,-25 6,-7 24,-7 9,5 15,22 0,11 -15,22 -9,5 -24,-7 -6,-7" fill="url(#gold-line)"/>
+    <text x="0" y="90" fill="#E2E8F0" font-family="'Poppins', sans-serif" font-size="12" font-weight="bold" text-anchor="middle">CONCEPT 01: CELESTIAL EYE</text>
+    <text x="0" y="105" fill="#64748B" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">Vedic vision + Neural Nodes</text>
+  </g>
+
+  <!-- Concept 2: Orbital Rings + Brain -->
+  <g transform="translate(400, 220)">
+    <circle r="60" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3"/>
+    <!-- Concentric Rings (Astrology style) -->
+    <ellipse rx="50" ry="15" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1" transform="rotate(-30)"/>
+    <ellipse rx="55" ry="25" fill="none" stroke="url(#blue-cyan)" stroke-width="1.5" stroke-dasharray="4,2" transform="rotate(15)"/>
+    <!-- Brain/Mind Sphere -->
+    <circle r="18" fill="url(#gold-line)"/>
+    <circle r="18" fill="none" stroke="#080C14" stroke-width="1.5"/>
+    <path d="M -8,-5 C -4,-10 4,-10 8,-5 M -12,0 C -6,-5 6,-5 12,0 M -8,5 C -4,10 4,10 8,5" fill="none" stroke="#080C14" stroke-width="1.5"/>
+    <text x="0" y="90" fill="#E2E8F0" font-family="'Poppins', sans-serif" font-size="12" font-weight="bold" text-anchor="middle">CONCEPT 02: ORBITAL BRAIN</text>
+    <text x="0" y="105" fill="#64748B" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">Planetary Transits + Intelligence</text>
+  </g>
+
+  <!-- Concept 3: Monogram F + M Monolith -->
+  <g transform="translate(650, 220)">
+    <circle r="60" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3"/>
+    <!-- Futuristic monogram F/M -->
+    <path d="M -25,-25 L 20,-25 L 20,-15 L -10,-15 L -10,-5 L 10,-5 L 10,5 L -10,5 L -10,25 L -20,25 Z" fill="url(#blue-cyan)"/>
+    <path d="M -5,-25 L 25,-25 L 25,25 L 15,25 L 15,-10 L 5,-10 L 5,-25 Z" fill="url(#gold-line)" opacity="0.8"/>
+    <text x="0" y="90" fill="#E2E8F0" font-family="'Poppins', sans-serif" font-size="12" font-weight="bold" text-anchor="middle">CONCEPT 03: FM MONOLITH</text>
+    <text x="0" y="105" fill="#64748B" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">Minimalist branding &amp; Monogram</text>
+  </g>
+</svg>

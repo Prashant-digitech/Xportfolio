@@ -64,6 +64,20 @@ export const SHOWREELS: ShowreelItem[] = [
     thumbnail: "/images/travel_showreel_thumbnail.png",
     accent: "#00F0FF",
   },
+  {
+    id: "witch-trailer",
+    title: "Witch — 4K Movie Trailer",
+    subtitle: "Cinematic Dark Fantasy Teaser • 4K UHD",
+    category: "Movie Trailer",
+    duration: "00:35",
+    resolution: "4K UHD (3840×2160)",
+    fps: "24 FPS",
+    software: ["Adobe Premiere Pro", "After Effects", "VFX Compositing", "Spatial Audio"],
+    description: "Atmospheric dark fantasy cinematic trailer with suspense-driven rhythm cuts, high-impact sound design, dramatic color grading, and Hollywood-grade title motion sequence.",
+    videoUrl: "/videos/witch_trailer.mp4",
+    thumbnail: "/images/graphics/my-work/witch.png",
+    accent: "#EC4899",
+  },
 ];
 
 interface ShowreelModalProps {

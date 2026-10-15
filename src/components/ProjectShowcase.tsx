@@ -509,6 +509,19 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
       year: "2026"
     },
     { 
+      title: "Witch — 4K Movie Trailer", 
+      category: "video", 
+      description: "Atmospheric dark fantasy cinematic teaser featuring suspense-driven rhythm cuts, high-impact sound design, dramatic color grading, and Hollywood-grade title motion sequence.", 
+      img: "/images/graphics/my-work/witch.png", 
+      caseStudy: "Launch Trailer", 
+      figmaUrl: "#work", 
+      statsBadge: "4K Dark Fantasy • Sound Design", 
+      videoUrl: "/videos/witch_trailer.mp4", 
+      tags: ["Premiere Pro", "After Effects", "VFX Compositing", "Spatial Audio"], 
+      role: "Trailer Direction · Sound Design", 
+      year: "2026" 
+    },
+    { 
       title: "Veronixx Web & POS Platform Preview", 
       category: "video", 
       description: "Full production platform walkthrough showcasing real-time inventory, offline POS billing, and automated GST receipt printing.", 
@@ -857,7 +870,10 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                     <div 
                       onClick={() => {
                         if (p.category === "video") {
-                          if (p.title.toLowerCase().includes("brand")) {
+                          if (p.title.toLowerCase().includes("witch") || p.title.toLowerCase().includes("trailer")) {
+                            setSelectedShowreelId("witch-trailer");
+                            setShowreelModalOpen(true);
+                          } else if (p.title.toLowerCase().includes("brand")) {
                             setSelectedShowreelId("brand-showreel");
                             setShowreelModalOpen(true);
                           } else if (p.title.toLowerCase().includes("travel")) {
@@ -908,7 +924,10 @@ export default function ProjectShowcase({ profile }: ProjectShowcaseProps) {
                     {p.category === "video" ? (
                       <button
                         onClick={() => {
-                          if (p.title.toLowerCase().includes("brand")) {
+                          if (p.title.toLowerCase().includes("witch") || p.title.toLowerCase().includes("trailer")) {
+                            setSelectedShowreelId("witch-trailer");
+                            setShowreelModalOpen(true);
+                          } else if (p.title.toLowerCase().includes("brand")) {
                             setSelectedShowreelId("brand-showreel");
                             setShowreelModalOpen(true);
                           } else if (p.title.toLowerCase().includes("travel")) {

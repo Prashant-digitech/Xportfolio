@@ -901,6 +901,7 @@ export const uxProjectsList: UXProject[] = [
     subtitle: "AI Career Intelligence Operating System",
     category: "uiux",
     featured: true,
+    htmlCaseStudyUrl: "/case-studies/futuremind/index.html",
     pdfUrl: "/case-studies/futuremind/Futuremind case study.pdf",
     credibilityBadge: "AUTHENTIC ARTIFACT",
     image: "/images/ux/futuremind/overview-case-study.png",
@@ -909,6 +910,51 @@ export const uxProjectsList: UXProject[] = [
         url: "/images/ux/futuremind/overview-case-study.png",
         title: "FutureMind Verified Case Study Overview Board",
         caption: "Authentic project artifact showcasing product overview, value proposition, multi-device UI architecture, and career milestones.",
+      },
+      {
+        url: "/images/ux/futuremind/futuremind_dashboard_wireframe_1783675460258.png",
+        title: "Screen 01 // Interactive Dashboard & RAG Engine",
+        caption: "Predictive console featuring natural query synthesis, grounding document dropzone, and active telemetry logs.",
+      },
+      {
+        url: "/images/ux/futuremind/futuremind_agent_logs_wireframe_1783675472938.png",
+        title: "Screen 02 // Live Agent Execution Terminal",
+        caption: "Real-time WebSocket streaming of LangGraph reasoning steps from Research, Analyst, and Forecaster sub-agents.",
+      },
+      {
+        url: "/images/ux/futuremind/futuremind_results_wireframe_1783675485883.png",
+        title: "Screen 03 // Telemetry & Probabilistic Projections",
+        caption: "Structured markdown report featuring side-by-side Best/Worst case probabilistic scenario trees and risk levers.",
+      },
+      {
+        url: "/images/ux/futuremind/futuremind_palmistry_wireframe.svg",
+        title: "Screen 04 // Palmistry Biometric Scanner",
+        caption: "Vector computer-vision wireframe overlay mapping crease line lengths, mount density, and life domain indicators.",
+      },
+      {
+        url: "/images/ux/futuremind/futuremind_compatibility_wireframe.svg",
+        title: "Screen 05 // Kundli Compatibility Matrix (36-Point)",
+        caption: "Ashta Koota multi-variable matching engine with authentic Vedic planetary house overlays and harmony indices.",
+      },
+      {
+        url: "/images/ux/futuremind/futuremind_kpdasha_wireframe.svg",
+        title: "Screen 06 // KP Dasha Timeline & Chronological Cycles",
+        caption: "Chronological Gantt-style mapping of Mahadasha and Antardasha cycles correlated with planetary Shadbala strengths.",
+      },
+      {
+        url: "/images/ux/futuremind/futuremind_marketplace_wireframe.svg",
+        title: "Screen 07 // Specialized AI Astrologer Advisors",
+        caption: "Live messaging marketplace connecting users to domain-specific AI advisor personas with passing chart context.",
+      },
+      {
+        url: "/images/ux/futuremind/Future-mind.png",
+        title: "FutureMind Brand Identity & Celestial Theme",
+        caption: "Brand system and typography hierarchy implementing the Golden Celestial Cyberpunk glassmorphism language.",
+      },
+      {
+        url: "/images/ux/futuremind/Stationary.png",
+        title: "FutureMind Corporate Stationery & Print Design",
+        caption: "High-resolution physical stationery mockups including business cards, letterheads, and brand guidelines.",
       },
       {
         url: "/images/ux/futuremind-hero.jpg",
@@ -1068,6 +1114,26 @@ export const uxProjectsList: UXProject[] = [
         url: "/images/ux/projects/presentX.png",
         title: "PresentX Intelligent Slide Workspace",
         caption: "Real-time AI narrative outline, slide layout tokens, data visualization transforms, and audience presentation mode.",
+      },
+      {
+        url: "/images/ux/presentx/presenterx_highfi_dashboard.png",
+        title: "PresentX High-Fidelity Dashboard & AI Copilot",
+        caption: "Floating glassmorphism canvas workspace with dynamic pattern engine, slide inspector, and real-time prompt editor.",
+      },
+      {
+        url: "/images/ux/presentx/presenterx_midfi_wireframe.png",
+        title: "PresentX Mid-Fidelity Wireframe Blueprint",
+        caption: "Functional workspace grid, structured card containers, timeline milestones, and 2px border contrast system.",
+      },
+      {
+        url: "/images/ux/presentx/presenterx_lofi_wireframe.png",
+        title: "PresentX Low-Fidelity Conceptual Sketch",
+        caption: "Early layout explorations balancing wide presentation canvas with contextual AI co-pilot and navigation sidebar.",
+      },
+      {
+        url: "/images/ux/presentx/presenterx_design_system.png",
+        title: "PresentX Design System & Color Tokens",
+        caption: "Futuristic dark mode palette (Velvet Dark Navy, Electric Pearl White, Tech Cyan, Neon Purple) with Outfit & Inter typography.",
       },
       {
         url: "/images/ux/projects/Ux projects overview.png",

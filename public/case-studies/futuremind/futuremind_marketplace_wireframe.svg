@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <rect width="800" height="500" fill="#080C14"/>
+  <defs>
+    <radialGradient id="shastri-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00F2FE"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Title Header -->
+  <text x="30" y="35" fill="#E2E8F0" font-family="'Poppins', sans-serif" font-size="18" font-weight="600">FUTUREMIND OS // ADVISOR MARKETPLACE</text>
+  <rect x="30" y="45" width="740" height="1" fill="rgba(212, 175, 55, 0.3)"/>
+
+  <!-- Left: Advisors List -->
+  <rect x="30" y="80" width="240" height="380" rx="8" fill="rgba(9, 13, 24, 0.7)" stroke="rgba(212, 175, 55, 0.35)"/>
+  <text x="45" y="110" fill="#E2E8F0" font-family="'Poppins', sans-serif" font-size="13" font-weight="600">ONLINE ADVISORS</text>
+  
+  <!-- Advisor 1 (Selected) -->
+  <rect x="40" y="130" width="220" height="70" rx="6" fill="rgba(0, 242, 254, 0.08)" stroke="#00F2FE" stroke-width="1.5"/>
+  <circle cx="70" cy="165" r="20" fill="#0E1524" stroke="#00F2FE" stroke-width="2"/>
+  <text x="70" y="170" fill="#00F2FE" font-family="'Poppins', sans-serif" font-size="16" font-weight="bold" text-anchor="middle">AS</text>
+  <text x="100" y="155" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11" font-weight="bold">Acharya Shastri</text>
+  <text x="100" y="170" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="9">KP &amp; Nadi specialist</text>
+  <text x="100" y="185" fill="#fbbf24" font-family="'Inter', sans-serif" font-size="9">★ 4.9 (124 reviews)</text>
+
+  <!-- Advisor 2 -->
+  <rect x="40" y="210" width="220" height="70" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)"/>
+  <circle cx="70" cy="245" r="20" fill="#0E1524" stroke="#9d4edd" stroke-width="1.5"/>
+  <text x="70" y="250" fill="#9d4edd" font-family="'Poppins', sans-serif" font-size="16" font-weight="bold" text-anchor="middle">EV</text>
+  <text x="100" y="235" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Dr. Evelyn Vance</text>
+  <text x="100" y="250" fill="#9D4EDD" font-family="'Inter', sans-serif" font-size="9">Hellenistic Expert</text>
+  <text x="100" y="265" fill="#fbbf24" font-family="'Inter', sans-serif" font-size="9">★ 4.8 (89 reviews)</text>
+
+  <!-- Advisor 3 -->
+  <rect x="40" y="290" width="220" height="70" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)"/>
+  <circle cx="70" cy="325" r="20" fill="#0E1524" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="70" y="330" fill="#fbbf24" font-family="'Poppins', sans-serif" font-size="16" font-weight="bold" text-anchor="middle">GR</text>
+  <text x="100" y="315" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Guru Ravishankar</text>
+  <text x="100" y="330" fill="#fbbf24" font-family="'Inter', sans-serif" font-size="9">Lal Kitab Remedies</text>
+  <text x="100" y="345" fill="#fbbf24" font-family="'Inter', sans-serif" font-size="9">★ 4.9 (245 reviews)</text>
+
+  <!-- Right: Selected Advisor Chat Window -->
+  <rect x="290" y="80" width="480" height="380" rx="8" fill="rgba(9, 13, 24, 0.7)" stroke="rgba(212, 175, 55, 0.35)"/>
+  
+  <!-- Chat Header -->
+  <rect x="290" y="80" width="480" height="50" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.05)"/>
+  <circle cx="325" cy="105" r="14" fill="#0E1524" stroke="#00F2FE" stroke-width="1.5"/>
+  <text x="325" y="110" fill="#00F2FE" font-family="'Poppins', sans-serif" font-size="12" font-weight="bold" text-anchor="middle">AS</text>
+  <text x="350" y="105" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="12" font-weight="bold">Chatting with Acharya Shastri</text>
+  <text x="350" y="118" fill="#10B981" font-family="'Inter', sans-serif" font-size="9">● Online • Rate: $2.5/min</text>
+
+  <!-- Messages -->
+  <!-- Shastri Message -->
+  <rect x="305" y="150" width="360" height="65" rx="6" fill="rgba(0, 242, 254, 0.04)" stroke="rgba(0, 242, 254, 0.15)"/>
+  <text x="315" y="165" fill="#00F2FE" font-family="'Inter', sans-serif" font-size="10" font-weight="bold">ACHARYA SHASTRI</text>
+  <text x="315" y="182" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Your Saturn Mahadasha has completed, which explains the transition in</text>
+  <text x="315" y="198" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">your career. Jupiter is now in your 10th house, indicating expansion.</text>
+
+  <!-- User Message -->
+  <rect x="390" y="230" width="360" height="50" rx="6" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.08)"/>
+  <text x="400" y="245" fill="#64748B" font-family="'Inter', sans-serif" font-size="10" font-weight="bold">YOU (USER)</text>
+  <text x="400" y="265" fill="#E2E8F0" font-family="'Inter', sans-serif" font-size="11">Understood, should I expect major shifts in financial stability?</text>
+
+  <!-- Input Field -->
+  <rect x="305" y="410" width="450" height="35" rx="6" fill="#0E1524" stroke="rgba(255,255,255,0.06)"/>
+  <text x="320" y="432" fill="#64748B" font-family="'Inter', sans-serif" font-size="11">Type your question for Vedic analysis...</text>
+  <rect x="715" y="415" width="35" height="25" rx="4" fill="#00F2FE"/>
+  <polygon points="727,422 727,432 738,427" fill="#080C14"/>
+</svg>

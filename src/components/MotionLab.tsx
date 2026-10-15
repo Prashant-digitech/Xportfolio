@@ -123,6 +123,19 @@ export default function MotionLab() {
       highlights: ["Natural spatial acoustic mix", "Speed-ramp mountain sweeps", "Teal and orange golden hour grading"],
     },
     {
+      id: "witch-trailer",
+      title: "Witch // 4K Movie Trailer",
+      category: "Dark Fantasy Teaser",
+      role: "Trailer Direction & Sound Design",
+      tools: ["Premiere Pro", "After Effects", "VFX Compositing", "Spatial Audio"],
+      duration: "00:35",
+      description: "Atmospheric dark fantasy cinematic teaser featuring suspense-driven rhythm cuts, high-impact sound design, dramatic color grading, and Hollywood-grade title motion sequence.",
+      poster: "/images/graphics/my-work/witch.png",
+      videoUrl: "/videos/witch_trailer.mp4",
+      statsBadge: "4K Dark Fantasy • Sound Design",
+      highlights: ["High-impact suspense sound design", "Hollywood-grade title typography motion", "Dramatic low-light contrast grading"],
+    },
+    {
       id: "veronixx-app-walkthrough",
       title: "Veronixx Storefront & POS // Full System Walkthrough",
       category: "Client Product Showcase",
@@ -231,7 +244,7 @@ export default function MotionLab() {
   const closeModal = useCallback(() => setActiveModalProject(null), []);
 
   const handleOpenProjectModal = useCallback((proj: MotionProject) => {
-    if (proj.id === "portfolio-showreel" || proj.id === "travel-showreel" || proj.id === "brand-showreel") {
+    if (proj.id === "portfolio-showreel" || proj.id === "travel-showreel" || proj.id === "brand-showreel" || proj.id === "witch-trailer") {
       setCinemaReelId(proj.id);
       setShowreelCinemaOpen(true);
     } else {
